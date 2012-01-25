@@ -40,18 +40,7 @@ function [x, it] = semismooth_newton(f, gradf, hessf, lambda, a, b, x0, itmax, t
 endfunction
 
 
-
-
-function w = projection_one_dim(v, a, b)
-	if (a > b)
-		error ("a suppose to be smaller than b");
-	endif
-	
-	w = v;
-	if (v < a)
-		w = a;
-	elseif (b < v)
-		w = b;
-	endif
-
+function w = projection(v, a, b)
+	## TODO: ueberpruefe ob a <= b gilt
+	w = min(b,max(a,v));
 endfunction
