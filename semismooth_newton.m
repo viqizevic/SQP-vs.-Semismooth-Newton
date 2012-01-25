@@ -40,7 +40,27 @@ function [x, it] = semismooth_newton(f, gradf, hessf, lambda, a, b, x0, itmax, t
 endfunction
 
 
-function w = projection(v, a, b)
-	## TODO: ueberpruefe ob a <= b gilt
+function w = projection(v,a,b)
+	n = length(v);
+	if (length(a) ~= n || length(b) ~= n)
+		error ("Die Laenge der Vektoren sind nicht gleich.");
+	endif
+	for k=1:n
+		if (a(k) > b(k))
+			error ("Es muss a <= b gelten.");
+		endif
+	endfor
 	w = min(b,max(a,v));
+endfunction
+
+function w = grad_projection(v,a,b)
+	w = projection(v,a,b);
+	n = length(v);
+	for k=1:n
+		if (w(k) == v(k))
+			w(k) = 1;
+		else
+			w(k) = 0;
+		endif
+	endfor
 endfunction
