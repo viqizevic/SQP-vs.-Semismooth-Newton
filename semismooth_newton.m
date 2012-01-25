@@ -41,19 +41,23 @@ endfunction
 
 
 function w = projection(v,a,b)
+	## return max(a,min(v,b));
 	n = length(v);
 	if (length(a) ~= n || length(b) ~= n)
-		error ("Die Laenge der Vektoren sind nicht gleich.");
+		error ("We have dimension problem here.");
 	endif
 	for k=1:n
 		if (a(k) > b(k))
-			error ("Es muss a <= b gelten.");
+			error ("It should be a <= b.");
 		endif
 	endfor
-	w = min(b,max(a,v));
+	w = max(a,min(v,b));
 endfunction
 
 function w = grad_projection(v,a,b)
+	## w_k := 1 if the projection of v_k equals to v_k
+	## otherwise w_k := 0
+	## for k in {1,...,n}
 	w = projection(v,a,b);
 	n = length(v);
 	for k=1:n
