@@ -11,6 +11,7 @@
 
 function [x,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
 	x = x0;
+	n = length(x);
 	it = 0;
 	stop = false;
 	
@@ -21,11 +22,12 @@ function [x,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
 
 	while( ~stop )
 		it = it + 1;
-		A = gra
-		b = x - projection( (-1/lambda)*feval(gradf,x), a, b );
-		d = feval(hessf,x) \ -feval(gradf,x);
+		A = (1/lambda) * grad_projection( (-1/lambda)*feval(gradf,x), a, b ) * feval(hessf,x) + eye(n);
+		b = projection( (-1/lambda)*feval(gradf,x), a, b ) - x;
+		d = A\b;
 		##sigma = armijo_schrittweite(f, gradf, x, d, 0.75, 4, 0.5);
 		##sigma = powell_schrittweite(f, gradf, x, d, 0.01, 0.9);
+		## x = x + sigma*d;
 		x = x + d;
 		## Check the stop criteria
 		if (norm(feval(gradf,x)) < tol)
@@ -54,10 +56,12 @@ function w = projection(v,a,b)
 	w = max(a,min(v,b));
 endfunction
 
-function w = grad_projection(v,a,b)
-	## w_k := 1 if the projection of v_k equals to v_k
-	## otherwise w_k := 0
+function W = grad_projection(v,a,b)
+	## W = [w_ij]
+	## w_kk := 1 if the projection of v_k equals to v_k
+	## otherwise w_kk := 0
 	## for k in {1,...,n}
+	## w_ij = 0 if i ~= j
 	w = projection(v,a,b);
 	n = length(v);
 	for k=1:n
@@ -67,4 +71,5 @@ function w = grad_projection(v,a,b)
 			w(k) = 0;
 		endif
 	endfor
+	W = diag(w);
 endfunction
