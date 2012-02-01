@@ -15,22 +15,16 @@ function [x,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
 	it = 0;
 	stop = false;
 	
-	## Check the stop criteria for x0
-	if (norm(feval(gradf,x)) < tol)
-		stop = true;
-	endif
-
 	while( ~stop )
 		it = it + 1;
 		A = (1/lambda) * grad_projection( (-1/lambda)*feval(gradf,x), a, b ) * feval(hessf,x) + eye(n);
-		b = projection( (-1/lambda)*feval(gradf,x), a, b ) - x;
-		d = A\b;
+		c = projection( (-1/lambda)*feval(gradf,x), a, b ) - x;
+		d = A\c;
 		##sigma = armijo_schrittweite(f, gradf, x, d, 0.75, 4, 0.5);
 		##sigma = powell_schrittweite(f, gradf, x, d, 0.01, 0.9);
-		## x = x + sigma*d;
 		x = x + d;
 		## Check the stop criteria
-		if (norm(feval(gradf,x)) < tol)
+		if (norm(d) < tol)
 			stop = true;
 		endif
 		% If there are too many iterations
