@@ -1,0 +1,3 @@
+function g = grad_quad_func(x)
+	g = 2*(x-xd);
+endfunction
