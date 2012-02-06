@@ -1,9 +1,9 @@
 %SQP Sequential Quadratic Programming
-%   [x, it] = sqp(f,gradf,hessf,A,b,x0,tol) attempts to solve the problem:
+%   [x, it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol) attempts to solve the problem:
 %
 %   min f(x) subject to: A*x <= b
 %    x
-function [x, it] = sqp(f,gradf,hessf,A,b,x0,tol,itmax)
+function [x, it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol)
 	it = 0;
 	x = x0;
 	stop = false;
@@ -15,7 +15,7 @@ function [x, it] = sqp(f,gradf,hessf,A,b,x0,tol,itmax)
 			Q = feval(hessf,x);
 			q = feval(gradf,x);
 			z = zeros(length(x),1);
-			d = aktive_mengen_methode(Q,q,[],[],A,b-A*x,z,tol,itmax)
+			d = aktive_mengen_methode(Q,q,[],[],A,b-A*x,z,tol,itmax);
 			if( norm(d) < tol )
 				stop = true; % => x is the solution
 			else
@@ -24,31 +24,32 @@ function [x, it] = sqp(f,gradf,hessf,A,b,x0,tol,itmax)
 	endwhile
 endfunction
 
-% Funktion: [x, it] = qpnl(Q,q,A,b,G,r,x0,tol)
-%
-%   Aktive-Mengen-Methode fuer
-%   (QLU) min f(x) := 0.5*x'*Q*x + q'*x
-%          x
-%         mit Nebenbedingung A*x = b und G*x <= r
-%   (Quadratisches Problem mit linearen Ungleichungsrestriktionen)
-%
-%   Q sei eine symmetriche nxn-Matrix, q aus R^n.
-%   A sei eine mxn-Matrix, m <= n, b aus R^m.
-%   G sei eine pxn-Matrix, r aus R^p.
-%   x0 sei der Startpunkt, wobei x0 die Nebenbedingungen erfuellt.
-%   tol sei die Toleranz für das Abbruchskriterium.
-function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol)
+function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
+	% Funktion: [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
+	%
+	%   Aktive-Mengen-Methode fuer
+	%   (QLU) min f(x) := 0.5*x'*Q*x + q'*x
+	%          x
+	%         mit Nebenbedingung A*x = b und G*x <= r
+	%   (Quadratisches Problem mit linearen Ungleichungsrestriktionen)
+	%
+	%   Q sei eine symmetriche nxn-Matrix, q aus R^n.
+	%   A sei eine mxn-Matrix, m <= n, b aus R^m.
+	%   G sei eine pxn-Matrix, r aus R^p.
+	%   x0 sei der Startpunkt, wobei x0 die Nebenbedingungen erfuellt.
+	%   tol sei die Toleranz für das Abbruchskriterium.
+	%   itmax sei die maximale Anzahl von Iterationen.
 	k = 0;
 	x_k = x0;
 	m = length(b);
 	p = length(r);
-	stop = false;
-	while ~stop
-		% Bilde die Matrix G_k := [g_j'], wobei j aus J_k
-		% Dabei sei J_k := { 1<=j<=p | (g_j)'*x_k = r_j }
+	while true
+		% Bilde die Matrix G_k := [g_j'], wobei j aus J_k.
+		% J_k := { 1<=j<=p | (g_j)'*x_k = r_j }
 		% die Indexmenge der in x_k aktiven Ungleichungsrestriktionen.
 		%
 		l = 1;
+		G_k = [];
 		for j=1:p
 			if ( G(j,:)*x_k == r(j) )
 				G_k(l,:) = G(j,:);
@@ -59,14 +60,18 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol)
 		[m_k,n_k] = size(B_k);
 		z = zeros(m_k,1);
 		% TODO: Was ist wenn m_k > n_k ?
-		% Loese das Problem
+		% Loese das Problem (QLG)_k
 		% min 0.5*d'*Q*d + (Q*x_k+q)'*d
 		%  x
 		% mit Nebenbedingung B_k = 0
 		%
 		[d_k,v_k] = nullraum_verfahren(Q,(Q*x_k+q),B_k,z);
-		lambda_k = v_k(1:m,1);
-		miu_k = v_k(m+1:m_k);
+		if v_k ~= []
+			lambda_k = v_k(1:m,1);
+			miu_k = v_k(m+1:m_k);
+		else
+			miu_k = [];
+		endif
 		if norm(d_k) < tol
 			% Falls d_k = 0 und miu_k >= 0 : STOP
 			%
@@ -78,15 +83,79 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol)
 				endif
 			endfor
 			if miu_nicht_negative
-				x = x_k;
-				it = k;
-				return
+				break;
 			endif
 			% Falls d_k = 0 und es existiert j, so dass miu_k(j) < 0
+			% Dann Inaktivierungsschritt.
+			%
+			% Bestimme j_min, so dass  miu_k(j_min) das Minimum in miu ist.
+			j_min = 1;
+			min_elem = miu_k(1);
+			for j=2:p_k
+				if miu_k(j) < min_elem
+					j_min = j;
+					min_elem = miu_k(j);
+				endif
+			endfor
+			% Streiche in G_k die Zeile mit dem Index j_min
+			if j_min == p_k
+				G_k = [];
+			else
+				H_k = [];
+				H_k(1:j_min-1,:) = G_k(1:j_min-1,:);
+				H_k(j_min:p_k-1,:) = G_k(j_min+1:p_k,:);
+				G_k = H_k;
+			endif
+			% Loese wieder das Problem (QLG)_k
+			B_k = [A; G_k];
+			[m_k,n_k] = size(B_k);
+			z = zeros(m_k,1);
+			% min 0.5*d'*Q*d + (Q*x_k+q)'*d
+			%  x
+			% mit Nebenbedingung B_k = 0
+			[d_k,v_k] = nullraum_verfahren(Q,(Q*x_k+q),B_k,z);
+			% Nun ist d_k ungleich 0
 		endif
-	stop = true;
+		% Berechne Scrittweite sigma_k.
+		%
+		% Bestimme I_k := { j=1,...,p | (g_j)'*d_k > 0 }
+		l = 1;
+		I_k = [];
+		for j=1:p
+			if ( G(j,:)*d_k > 0 )
+				I_k = [I_k; j];
+				l = l+1;
+			endif
+		endfor
+		% tao_k := min { (r_j - (g_j)'*x_k) / ((g_j)'*d_k) | j aus I_k}
+		% falls I_k nicht leer, sonst +infty
+		% sigma_k := min { 1, tao_k }
+		if I_k == []
+			sigma_k = 1;
+		else
+			l = length(I_k);
+			j = I_k(1);
+			tao_k = (r(j) - G(j,:)*x_k) / (G(j,:)*d_k);
+			for t=2:l
+				j = I_k(t);
+				if tao_k > (r(j) - G(j,:)*x_k) / (G(j,:)*d_k)
+					tao_k = (r(j) - G(j,:)*x_k) / (G(j,:)*d_k);
+				endif
+			endfor
+			sigma_k = min(1,tao_k);
+		endif
+		% Setze x_{k+1} := x_k + sigma_k*d_k und k = k+1.
+		%
+		x_k = x_k + sigma_k*d_k;
+		k = k+1;
+		if k >= itmax
+			break;
+		endif
 	endwhile
+	x = x_k;
+	it = k;
 endfunction
+
 
 % Funktion: [x, lambda] = nullraum_verfahren(Q,q,A,b)
 %
@@ -103,12 +172,12 @@ endfunction
 %   Dann hat das Problem (QLG) eine eindeutig bestimmte Loesung.
 %   (Siehe Satz 5.4.13, Walter Alt: Nichtlineare Optimierung, Vieweg, 2002)
 function [x,lambda] = nullraum_verfahren(Q,q,A,b)
-	[m,n] = size(A);
-	if ( A == [] || b == [] )
+	if ( isempty(A) || isempty(b) )
 		x = -Q\q;
 		lambda = [];
 		return
 	endif
+	[m,n] = size(A);
 	% Berechne die QR-Zerlegung von A'
 	%
 	[P, S] = qr(A'); % Die Funktion qr gibt P und S zurück, wobei A' = P*S
