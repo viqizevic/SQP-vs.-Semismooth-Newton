@@ -8,21 +8,25 @@ function [x, it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol)
 	x = x0;
 	stop = false;
 	while( ~stop )
-			it = it + 1;
-			% solve the problem:
-			% min 0.5*d'*hessf(x)*d + gradf(x)'*d subject to: A*x + A*d <= b
-			%  d
-			Q = feval(hessf,x);
-			q = feval(gradf,x);
-			z = zeros(length(x),1);
-			d = aktive_mengen_methode(Q,q,[],[],A,b-A*x,z,tol,itmax);
-			if( norm(d) < tol )
-				stop = true; % => x is the solution
-			else
-				x = x + d;
-			endif
-	endwhile
-endfunction
+		it = it + 1;
+		% solve the problem:
+		% min 0.5*d'*hessf(x)*d + gradf(x)'*d subject to: A*x + A*d <= b
+		%  d
+		Q = feval(hessf,x);
+		q = feval(gradf,x);
+		z = zeros(length(x),1);
+		d = aktive_mengen_methode(Q,q,[],[],A,b-A*x,z,tol,itmax);
+		if( norm(d) < tol )
+			stop = true; % => x is the solution
+		else
+			x = x + d;
+        end
+        % If there are too many iterations
+		if (it >= itmax)
+			stop = true;
+        end
+	end
+end
 
 function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 	% Funktion: [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
@@ -37,7 +41,7 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 	%   A sei eine mxn-Matrix, m <= n, b aus R^m.
 	%   G sei eine pxn-Matrix, r aus R^p.
 	%   x0 sei der Startpunkt, wobei x0 die Nebenbedingungen erfuellt.
-	%   tol sei die Toleranz für das Abbruchskriterium.
+	%   tol sei die Toleranz fï¿½r das Abbruchskriterium.
 	%   itmax sei die maximale Anzahl von Iterationen.
 	k = 0;
 	x_k = x0;
@@ -54,8 +58,8 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 			if ( G(j,:)*x_k == r(j) )
 				G_k(l,:) = G(j,:);
 				l = l+1;
-			endif
-		endfor
+			end
+		end
 		B_k = [A; G_k];
 		[m_k,n_k] = size(B_k);
 		z = zeros(m_k,1);
@@ -71,7 +75,7 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 			miu_k = v_k(m+1:m_k);
 		else
 			miu_k = [];
-		endif
+		end
 		if norm(d_k) < tol
 			% Falls d_k = 0 und miu_k >= 0 : STOP
 			%
@@ -80,11 +84,11 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 			for j=1:p_k
 				if miu_k(j) < 0
 					miu_nicht_negative = false;
-				endif
-			endfor
+				end
+			end
 			if miu_nicht_negative
 				break;
-			endif
+			end
 			% Falls d_k = 0 und es existiert j, so dass miu_k(j) < 0
 			% Dann Inaktivierungsschritt.
 			%
@@ -95,8 +99,8 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 				if miu_k(j) < min_elem
 					j_min = j;
 					min_elem = miu_k(j);
-				endif
-			endfor
+				end
+			end
 			% Streiche in G_k die Zeile mit dem Index j_min
 			if j_min == p_k
 				G_k = [];
@@ -105,7 +109,7 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 				H_k(1:j_min-1,:) = G_k(1:j_min-1,:);
 				H_k(j_min:p_k-1,:) = G_k(j_min+1:p_k,:);
 				G_k = H_k;
-			endif
+			end
 			% Loese wieder das Problem (QLG)_k
 			B_k = [A; G_k];
 			[m_k,n_k] = size(B_k);
@@ -115,7 +119,7 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 			% mit Nebenbedingung B_k = 0
 			[d_k,v_k] = nullraum_verfahren(Q,(Q*x_k+q),B_k,z);
 			% Nun ist d_k ungleich 0
-		endif
+		end
 		% Berechne Scrittweite sigma_k.
 		%
 		% Bestimme I_k := { j=1,...,p | (g_j)'*d_k > 0 }
@@ -125,8 +129,8 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 			if ( G(j,:)*d_k > 0 )
 				I_k = [I_k; j];
 				l = l+1;
-			endif
-		endfor
+			end
+		end
 		% tao_k := min { (r_j - (g_j)'*x_k) / ((g_j)'*d_k) | j aus I_k}
 		% falls I_k nicht leer, sonst +infty
 		% sigma_k := min { 1, tao_k }
@@ -140,21 +144,21 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 				j = I_k(t);
 				if tao_k > (r(j) - G(j,:)*x_k) / (G(j,:)*d_k)
 					tao_k = (r(j) - G(j,:)*x_k) / (G(j,:)*d_k);
-				endif
-			endfor
+				end
+			end
 			sigma_k = min(1,tao_k);
-		endif
+		end
 		% Setze x_{k+1} := x_k + sigma_k*d_k und k = k+1.
 		%
 		x_k = x_k + sigma_k*d_k;
 		k = k+1;
 		if k >= itmax
 			break;
-		endif
-	endwhile
+		end
+	end
 	x = x_k;
 	it = k;
-endfunction
+end
 
 
 % Funktion: [x, lambda] = nullraum_verfahren(Q,q,A,b)
@@ -176,13 +180,13 @@ function [x,lambda] = nullraum_verfahren(Q,q,A,b)
 		x = -Q\q;
 		lambda = [];
 		return
-	endif
+	end
 	[m,n] = size(A);
 	% Berechne die QR-Zerlegung von A'
 	%
-	[P, S] = qr(A'); % Die Funktion qr gibt P und S zurück, wobei A' = P*S
-	H = P';          % Diese H erfüllt H*A' = S
-	R = S(1:m,1:m);  % Diese R erfüllt H*A = [R; 0]
+	[P, S] = qr(A'); % Die Funktion qr gibt P und S zurï¿½ck, wobei A' = P*S
+	H = P';          % Diese H erfï¿½llt H*A' = S
+	R = S(1:m,1:m);  % Diese R erfï¿½llt H*A = [R; 0]
 	% Berechne h := -H*q und [h1; h2] := h, wobei h1 aus R^m
 	%
 	h = -H*q;
@@ -208,7 +212,7 @@ function [x,lambda] = nullraum_verfahren(Q,q,A,b)
 		x_z = B22\(h2-B21*x_y);
 	else
 		x_z = [];
-	endif
+	end
 	% Berechne die Loesung x := H'*[x_y; x_z]
 	% und lambda Loesung von R*lambda = h1 - B11*x_y - B12*x_z
 	%
@@ -217,5 +221,5 @@ function [x,lambda] = nullraum_verfahren(Q,q,A,b)
 		lambda = R\(h1-B11*x_y-B12*x_z);
 	else
 		lambda = R\(h1-B11*x_y);
-	endif
-endfunction
+	end
+end
