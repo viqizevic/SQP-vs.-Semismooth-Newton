@@ -1,0 +1,1 @@
+# SQP vs. Semismooth Newton
