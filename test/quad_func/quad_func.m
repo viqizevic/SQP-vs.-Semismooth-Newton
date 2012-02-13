@@ -1,4 +1,4 @@
 function y = quad_func(x)
-	xd = 3;
+	xd = [4; 7];
 	y = norm(x-xd)^2;
 end

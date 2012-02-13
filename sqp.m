@@ -134,7 +134,7 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 		% tao_k := min { (r_j - (g_j)'*x_k) / ((g_j)'*d_k) | j aus I_k}
 		% falls I_k nicht leer, sonst +infty
 		% sigma_k := min { 1, tao_k }
-		if I_k == []
+		if length(I_k) == 0
 			sigma_k = 1;
 		else
 			l = length(I_k);
