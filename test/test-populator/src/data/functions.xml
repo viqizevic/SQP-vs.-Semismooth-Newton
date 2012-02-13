@@ -1,0 +1,32 @@
+<functions>
+
+	<function>
+		<name>quad_func</name>
+		<var>x</var>
+		<constant>
+			<constant_name>xd</constant_name>
+			<constant_value>3</constant_value>
+		</constant>
+		<def>y = norm(x-xd)^2;</def>
+		<grad>g = 2*(x-xd);</grad>
+		<hess>H = 2*eye(length(x));</hess>
+	</function>
+	
+	<function>
+		<name>exp_func</name>
+		<var>x</var>
+		<def>y = exp(norm(x)^2);</def>
+		<grad>g = 2*exp_func(x)*x;</grad>
+		<hess>
+	n = length(x);
+	efx = exp(norm(x)^2);
+	H = 2*efx*eye(n);
+	for k=1:n
+		for l=1:n
+			H(k,l) = H(k,l) + 4*efx*x(k)*x(l);
+			end
+	end
+		</hess>
+	</function>
+	
+</functions>

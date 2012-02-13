@@ -1,0 +1,18 @@
+<problems>
+
+	<problem>
+		<name>quad_func</name>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>xd</constant_name>
+			<constant_value>[4; 7]</constant_value>
+		</constant>
+		<lambda>1</lambda>
+		<a>[-10; -2]</a>
+		<b>[10; 20]</b>
+		<x0>[40; 70]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+	
+</problems>
