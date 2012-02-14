@@ -19,13 +19,17 @@ public class Main {
 	
 	private static HashMap<String, TestFunction> testFunctions = new HashMap<String, TestFunction>();
 	
+	private static HashMap<String, Integer> functionOccurences = new HashMap<String, Integer>();
+	
 	private static LinkedList<TestProblem> testProblems = new LinkedList<TestProblem>();
-
+	
+	private static String testDirectoryPath = "../../SQP-vs.-Semismooth-Newton/test/";
+	
 	public static void main(String[] args) {
 		parseFunctionsFromXMLFile("src/data/functions.xml");
 		parseProblemsFromXMLFile("src/data/problems.xml");
 		for (TestProblem p : testProblems) {
-			MFileCreator.create(p, "test/"+p.getTestProblemName());
+			MFileCreator.create(p, testDirectoryPath+p.getTestProblemName());
 		}
 	}
 
@@ -118,8 +122,15 @@ public class Main {
 	}
 
 	private static TestProblem parseTestProblem(Element element) {
-		String problemName = getTagValue("name", element);
 		String functionName = getTagValue("function_name", element);
+		String problemName = functionName;
+		if (!functionOccurences.containsKey(functionName)) {
+			functionOccurences.put(functionName, 1);
+		} else {
+			int nr = functionOccurences.get(functionName);
+			functionOccurences.put(functionName, nr+1);
+			problemName = functionName + "_" + nr;
+		}
 		if (!testFunctions.containsKey(functionName)) {
 			return null;
 		}

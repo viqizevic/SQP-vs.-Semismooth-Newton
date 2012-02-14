@@ -28,5 +28,16 @@
 	end
 		</hess>
 	</function>
+
+	<function>
+		<name>rosenbrock_func</name>
+		<var>x</var>
+		<def>y = 100*(x(2)-x(1)^2)^2+(1-x(1))^2;</def>
+		<grad>g = [-400*x(1)*(x(2)-x(1)^2)-2*(1-x(1)); 200*(x(2)-x(1)^2)];</grad>
+		<hess>
+	H = [ 1200*x(1)^2-400*x(2)+2 -400*x(1);
+              -400*x(1)          200  ];
+        </hess>
+	</function>
 	
 </functions>
