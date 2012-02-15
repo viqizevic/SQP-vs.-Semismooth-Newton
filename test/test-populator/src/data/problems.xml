@@ -29,13 +29,43 @@
 	</problem>
 
 	<problem>
-		<function_name>rosenbrock_func</function_name>
-		<lambda>0.00001</lambda>
+		<function_name>exp_func</function_name>
+		<lambda>1</lambda>
 		<a>[-10; -2]</a>
 		<b>[10; 20]</b>
-		<x0>[-1.9; 2]</x0>
+		<x0>[4; 7]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
+		<max_iteration>500</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>rosenbrock_func</function_name>
+		<lambda>0.000000001</lambda>
+		<a>[-10; -20]</a>
+		<b>[10; 20]</b>
+		<x0>[-1.9; 2]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>2000</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>himmelblau_func</function_name>
+		<lambda>0.000000001</lambda>
+		<a>[-20; -20]</a>
+		<b>[20; 20]</b>
+		<x0>[5; 5]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>2000</max_iteration>
+	</problem>
+	
+	<problem>
+		<function_name>bazaraa_shetty_func</function_name>
+		<lambda>0.000000001</lambda>
+		<a>[-20; -20]</a>
+		<b>[20; 20]</b>
+		<x0>[5; 5]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>2000</max_iteration>
 	</problem>
 	
 </problems>
