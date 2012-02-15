@@ -8,19 +8,19 @@ function [x, it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol)
 	x = x0;
 	stop = false;
 	while( ~stop )
-		it = it + 1;
 		% solve the problem:
 		% min 0.5*d'*hessf(x)*d + gradf(x)'*d subject to: A*x + A*d <= b
 		%  d
 		Q = feval(hessf,x);
 		q = feval(gradf,x);
 		z = zeros(length(x),1);
-		d = aktive_mengen_methode(Q,q,[],[],A,b-A*x,z,tol,itmax);
+		[d, it2] = aktive_mengen_methode(Q,q,[],[],A,b-A*x,z,tol,itmax);
+		it = it + it2;
 		if( norm(d) < tol )
 			stop = true; % => x is the solution
 		else
 			x = x + d;
-        end
+		end
         % If there are too many iterations
 		if (it >= itmax)
 			stop = true;

@@ -19,7 +19,7 @@ function [x,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
 		A = (1/lambda) * grad_projection((-1/lambda)*feval(gradf,x),a,b) * feval(hessf,x) + eye(n);
 		c = projection((-1/lambda)*feval(gradf,x),a,b) - x;
 		d = A\c;
-        sigma = armijo_increment(f,gradf,lambda,x,d,0.75,4,0.5);
+    sigma = armijo_increment(f,gradf,lambda,x,d,0.75,4,0.5);
 		x = x + sigma*d;
 		% Check the stop criteria
 		if (norm(x-projection((-1/lambda)*feval(gradf,x),a,b)) < tol)
