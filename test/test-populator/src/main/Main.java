@@ -26,8 +26,8 @@ public class Main {
 	private static String testDirectoryPath = "../../SQP-vs.-Semismooth-Newton/test/";
 	
 	public static void main(String[] args) {
-		parseFunctionsFromXMLFile("src/data/functions.xml");
-		parseProblemsFromXMLFile("src/data/problems.xml");
+		parseFunctionsFromXMLFile("../../SQP-vs.-Semismooth-Newton/test/test-populator/src/data/functions.xml");
+		parseProblemsFromXMLFile("../../SQP-vs.-Semismooth-Newton/test/test-populator/src/data/problems.xml");
 		for (TestProblem p : testProblems) {
 			MFileCreator.create(p, testDirectoryPath+p.getTestProblemName());
 		}

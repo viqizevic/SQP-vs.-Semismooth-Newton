@@ -49,6 +49,16 @@
 	</problem>
 
 	<problem>
+		<function_name>rosenbrock_func</function_name>
+		<lambda>0.000000001</lambda>
+		<a>[-2; -2]</a>
+		<b>[0; 2]</b>
+		<x0>[-1.9; 2]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>2000</max_iteration>
+	</problem>
+
+	<problem>
 		<function_name>himmelblau_func</function_name>
 		<lambda>0.000000001</lambda>
 		<a>[-20; -20]</a>
