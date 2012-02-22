@@ -78,4 +78,14 @@
 		<max_iteration>2000</max_iteration>
 	</problem>
 	
+	<problem>
+		<function_name>dixon_2_dim_func</function_name>
+		<lambda>0.0000000001</lambda>
+		<a>[-10; -10]</a>
+		<b>[10; 10]</b>
+		<x0>[1.5; 1.5]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+	
 </problems>

@@ -23,14 +23,17 @@ public class Main {
 	
 	private static LinkedList<TestProblem> testProblems = new LinkedList<TestProblem>();
 	
-	private static String testDirectoryPath = "../../SQP-vs.-Semismooth-Newton/test/";
+	private static String defaultTestDirectoryPath = "../../SQP-vs.-Semismooth-Newton/test/";
 	
 	public static void main(String[] args) {
-		parseFunctionsFromXMLFile("../../SQP-vs.-Semismooth-Newton/test/test-populator/src/data/functions.xml");
-		parseProblemsFromXMLFile("../../SQP-vs.-Semismooth-Newton/test/test-populator/src/data/problems.xml");
+		// Uncomment this next line if you are in grafix
+		//defaultTestDirectoryPath = "../../minimix/SQP-vs.-Semismooth-Newton/test/";
+		parseFunctionsFromXMLFile(defaultTestDirectoryPath+"test-populator/src/data/functions.xml");
+		parseProblemsFromXMLFile(defaultTestDirectoryPath+"test-populator/src/data/problems.xml");
 		for (TestProblem p : testProblems) {
-			MFileCreator.create(p, testDirectoryPath+p.getTestProblemName());
+			MFileCreator.create(p, defaultTestDirectoryPath+p.getTestProblemName());
 		}
+		System.out.println("Finish!");
 	}
 
 	public static void parseFunctionsFromXMLFile(String fileName) {
@@ -109,6 +112,10 @@ public class Main {
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					Element element = (Element) node;
 					TestProblem problem = parseTestProblem(element);
+					if (problem == null) {
+						testProblems.clear();
+						return;
+					}
 					testProblems.add(problem);
 				}
 			}
@@ -132,6 +139,7 @@ public class Main {
 			problemName = functionName + "_" + nr;
 		}
 		if (!testFunctions.containsKey(functionName)) {
+			System.err.println("Cannot find function: " + functionName);
 			return null;
 		}
 		TestFunction function = testFunctions.get(functionName);
