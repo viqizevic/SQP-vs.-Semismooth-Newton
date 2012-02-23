@@ -114,6 +114,26 @@ public class MFileCreator {
 		createFile(fileName+extension, content);
 	}
 
+	private void createTestProblemFileWithFmincon() {
+		String fileName = testFileName + "_with_fmincon_too";
+		String content = "function " + fileName + "()\n";
+		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
+		content += "\ta = " + testProblem.get_a() + ";\n";
+		content += "\tb = " + testProblem.get_b() + ";\n";
+		content += "\tx0 = " + testProblem.get_x0() + ";\n";
+		content += "\ttol = " + testProblem.getTolerance() + ";\n";
+		content += "\titmax = " + testProblem.getMaxIteration() + ";\n";
+		content += "\t[x,it] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol)\n";
+		content += "\tA = [ -eye(length(a)); eye(length(b)) ];\n";
+		content += "\tc = [ -a; b ];\n";
+		content += "\t[x,it] = sqp('" + defFileName+v0 + "','" + gradFileName+v0 + "','" + hessFileName+v0 + "',A,c,x0,itmax,tol)\n";
+		content += "\toptions=optimset('Algorithm','active-set');\n";
+		content += "\t[x,fval] = fmincon('" + defFileName+v0 + "',x0,[],[],[],[],a,b,[],options)\n";
+		content += "end";
+		createFile(fileName+extension, content);
+	}
+
+
 	private void createFile(String fileName, String fileContens) {
 		if (!directoryPath.equals("")) {
 			fileName = directoryPath + "/" + fileName;
@@ -135,6 +155,7 @@ public class MFileCreator {
 		mFileCreator.createFunctionGradientFile();
 		mFileCreator.createFunctionHessianFile();
 		mFileCreator.createTestProblemFile();
+		mFileCreator.createTestProblemFileWithFmincon();
 	}
 
 }
