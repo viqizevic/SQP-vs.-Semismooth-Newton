@@ -55,7 +55,7 @@
 		<b>[0; 2]</b>
 		<x0>[-1.9; 2]</x0>
 		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<max_iteration>10000</max_iteration>
 	</problem>
 
 	<problem>

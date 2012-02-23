@@ -1,4 +1,4 @@
-% Function: [x,it] = semismooth_newton(f,gradf,hessf,lamda,a,b,x0,itmax,tol)
+% Function: [x,fval,it] = semismooth_newton(f,gradf,hessf,lamda,a,b,x0,itmax,tol)
 %
 %  Semismooth-Newton-Method solves the problem
 %        min ( f(x) + (lambda/2)*|x|^2 )
@@ -8,7 +8,7 @@
 %  Let f : R^n -> R
 %  lambda a real number
 %  a and b in R^n
-function [x,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
+function [x,fval,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
 	x = x0;
 	n = length(x);
 	it = 0;
@@ -30,6 +30,7 @@ function [x,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
 			stop = true;
         end
     end
+    fval = feval(f,x);
 end
 
 function w = projection(v,a,b)

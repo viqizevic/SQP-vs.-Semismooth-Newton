@@ -106,10 +106,10 @@ public class MFileCreator {
 		content += "\tx0 = " + testProblem.get_x0() + ";\n";
 		content += "\ttol = " + testProblem.getTolerance() + ";\n";
 		content += "\titmax = " + testProblem.getMaxIteration() + ";\n";
-		content += "\t[x,it] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol)\n";
+		content += "\t[x,fval,it] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol)\n";
 		content += "\tA = [ -eye(length(a)); eye(length(b)) ];\n";
 		content += "\tc = [ -a; b ];\n";
-		content += "\t[x,it] = sqp('" + defFileName+v0 + "','" + gradFileName+v0 + "','" + hessFileName+v0 + "',A,c,x0,itmax,tol)\n";
+		content += "\t[x,fval,it] = sqp('" + defFileName+v0 + "','" + gradFileName+v0 + "','" + hessFileName+v0 + "',A,c,x0,itmax,tol)\n";
 		content += "end";
 		createFile(fileName+extension, content);
 	}
@@ -123,10 +123,10 @@ public class MFileCreator {
 		content += "\tx0 = " + testProblem.get_x0() + ";\n";
 		content += "\ttol = " + testProblem.getTolerance() + ";\n";
 		content += "\titmax = " + testProblem.getMaxIteration() + ";\n";
-		content += "\t[x,it] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol)\n";
+		content += "\t[x,fval,it] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol)\n";
 		content += "\tA = [ -eye(length(a)); eye(length(b)) ];\n";
 		content += "\tc = [ -a; b ];\n";
-		content += "\t[x,it] = sqp('" + defFileName+v0 + "','" + gradFileName+v0 + "','" + hessFileName+v0 + "',A,c,x0,itmax,tol)\n";
+		content += "\t[x,fval,it] = sqp('" + defFileName+v0 + "','" + gradFileName+v0 + "','" + hessFileName+v0 + "',A,c,x0,itmax,tol)\n";
 		content += "\toptions=optimset('Algorithm','active-set');\n";
 		content += "\t[x,fval] = fmincon('" + defFileName+v0 + "',x0,[],[],[],[],a,b,[],options)\n";
 		content += "end";

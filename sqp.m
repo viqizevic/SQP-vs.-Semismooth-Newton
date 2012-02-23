@@ -1,9 +1,9 @@
 %SQP Sequential Quadratic Programming
-%   [x, it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol) attempts to solve the problem:
+%   [x,fval,it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol) attempts to solve the problem:
 %
 %   min f(x) subject to: A*x <= b
 %    x
-function [x, it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol)
+function [x,fval,it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol)
 	it = 0;
 	x = x0;
 	stop = false;
@@ -25,7 +25,8 @@ function [x, it] = sqp(f,gradf,hessf,A,b,x0,itmax,tol)
 		if (it >= itmax)
 			stop = true;
         end
-	end
+    end
+    fval = feval(f,x);
 end
 
 function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
