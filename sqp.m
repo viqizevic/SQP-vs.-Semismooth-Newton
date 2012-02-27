@@ -71,7 +71,7 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 		% mit Nebenbedingung B_k = 0
 		%
 		[d_k,v_k] = nullraum_verfahren(Q,(Q*x_k+q),B_k,z);
-		if v_k ~= []
+		if ~isempty(v_k)
 			lambda_k = v_k(1:m,1);
 			miu_k = v_k(m+1:m_k);
 		else
@@ -209,7 +209,7 @@ function [x,lambda] = nullraum_verfahren(Q,q,A,b)
 	% und x_z Loesung von B22*x_z = h2 - B21*x_y
 	%
 	x_y = R'\b;
-	if B22 ~= []
+	if ~isempty(B22)
 		x_z = B22\(h2-B21*x_y);
 	else
 		x_z = [];
@@ -218,7 +218,7 @@ function [x,lambda] = nullraum_verfahren(Q,q,A,b)
 	% und lambda Loesung von R*lambda = h1 - B11*x_y - B12*x_z
 	%
 	x = H'*[x_y; x_z];
-	if x_z ~= []
+	if ~isempty(x_z)
 		lambda = R\(h1-B11*x_y-B12*x_z);
 	else
 		lambda = R\(h1-B11*x_y);

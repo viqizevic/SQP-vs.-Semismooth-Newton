@@ -61,25 +61,25 @@ function W = grad_projection(v,a,b)
 		else
 			w(k) = 0;
 		end
-    end
+  end
 	W = diag(w);
 end
 
 function sigma = armijo_increment(f,gradf,lambda,x,d,delta,gamma,beta)
-    sigma = -(gamma/(norm(d)^2))*complete_gradf(gradf,lambda,x)'*d;
-    while( true )
-        if( complete_f(f,lambda,x+sigma*d) <= complete_f(f,lambda,x)+delta*sigma*complete_gradf(gradf,lambda,x)'*d )
-            break; % fertig
-        end
-        % verkleinere sigma
-        sigma = beta * sigma;
-    end
+	sigma = -(gamma/(norm(d)^2))*complete_gradf(gradf,lambda,x)'*d;
+	while( true )
+		if( complete_f(f,lambda,x+sigma*d) <= complete_f(f,lambda,x)+delta*sigma*complete_gradf(gradf,lambda,x)'*d )
+			break; % fertig
+		end
+		% verkleinere sigma
+		sigma = beta * sigma;
+	end
 end
 
 function y = complete_f(f,lambda,x)
-    y = feval(f,x) + (lambda/2)*norm(x)^2;
+	y = feval(f,x) + (lambda/2)*norm(x)^2;
 end
 
 function g = complete_gradf(gradf,lambda,x)
-    g = feval(gradf,x) + lambda*x;
+	g = feval(gradf,x) + lambda*x;
 end
