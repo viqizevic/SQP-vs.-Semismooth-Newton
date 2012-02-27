@@ -24,7 +24,7 @@
 	for k=1:n
 		for l=1:n
 			H(k,l) = H(k,l) + 4*efx*x(k)*x(l);
-			end
+		end
 	end
 		</hess>
 	</function>
@@ -95,6 +95,46 @@
 	H = [ 2+12*x(1)^2    -4*x(1)       0;
              -4*x(1)   2+12*x(2)^2  -4*x(2);
                0         -4*x(2)       4 ];
+        </hess>
+	</function>
+
+	<function>
+		<name>dixon_func</name>
+		<var>x</var>
+		<constant>
+			<constant_name>n</constant_name>
+			<constant_value>10</constant_value>
+		</constant>
+		<def>
+	y = (1-x(1))^2;
+	for k=1:(n-1)
+		y = y + (x(k)^2-x(k+1))^2;
+	end
+	y = y + (1-x(n))^2;
+		</def>
+		<grad>
+	g(1,1) = -2*(1-x(1)) + 4*x(1)*(x(1)^2-x(2));
+    for k=2:(n-1)
+		g(k,1) = -2*(x(k-1)^2-x(k)) + 4*x(k)*(x(k)^2-x(k+1));
+	end
+	g(n,1) = -2*(x(n-1)^2-x(n)) - 2*(1-x(n));
+		</grad>
+		<hess>
+	for k=1:n
+		for l=1:n
+			H(k,l) = 0;
+			if (l == k-1)
+				H(k,l) = -4*x(k-1);
+			end
+			if (l == k)
+				H(k,l) = 2+12*x(k)^2;
+			end
+			if (l == k+1)
+				H(k,l) = -4*x(k);
+			end
+		end
+	end
+	H(n,n) = 4;
         </hess>
 	</function>
 	
