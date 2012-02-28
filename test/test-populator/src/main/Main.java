@@ -33,6 +33,7 @@ public class Main {
 		for (TestProblem p : testProblems) {
 			MFileCreator.create(p, defaultTestDirectoryPath+p.getTestProblemName());
 		}
+		MFileCreator.createMainTestFile(testProblems, "test_all", defaultTestDirectoryPath);
 		System.out.println("Finish!");
 	}
 
