@@ -13,7 +13,7 @@ function [x,fval,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
 	n = length(x);
 	it = 0;
 	stop = false;
-	
+    
 	while( ~stop )
 		it = it + 1;
 		A = (1/lambda) * grad_projection((-1/lambda)*feval(gradf,x),a,b) * feval(hessf,x) + eye(n);
