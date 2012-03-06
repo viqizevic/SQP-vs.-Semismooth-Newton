@@ -9,6 +9,8 @@ public class MFileCreator {
 	
 	private static final String extension = ".m";
 	
+	private static final String withFmincon = "_with_fmincon_too";
+	
 	private final String v0 = "_v0";
 	
 	private TestProblem testProblem;
@@ -135,7 +137,7 @@ public class MFileCreator {
 	}
 
 	private void createTestProblemFileWithFmincon() {
-		String fileName = testFileName + "_with_fmincon_too";
+		String fileName = testFileName + withFmincon;
 		String content = "function " + fileName + "()\n";
 		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
 		content += "\ta = " + testProblem.get_a() + ";\n";
@@ -205,18 +207,24 @@ public class MFileCreator {
 	
 	public static void createMainTestFile(LinkedList<TestProblem> list, String fileName, String directoryPath) {
 		MFileCreator mFileCreator = new MFileCreator(list.getFirst(), directoryPath);
-		String content = "function " + fileName + "()\n";
+		String content1 = "function " + fileName + "()\n";
+		String content2 = "function " + fileName + withFmincon + "()\n";
 		for (TestProblem p : list) {
-			content += "\tdisp('test_" + p.getTestProblemName() + "');\n";
+			content1 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
+			content2 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
 			if (!p.getTestProblemName().startsWith("exp_func")) {
-				content += "\ttest_" + p.getTestProblemName() + "_with_fmincon_too();\n";
+				content2 += "\ttest_" + p.getTestProblemName() + withFmincon + "();\n";
 			} else {
-				content += "\ttest_" + p.getTestProblemName() + "();\n";
+				content2 += "\ttest_" + p.getTestProblemName() + "();\n";
 			}
-			content += "\tdisp(sprintf('\\n'));\n";
+			content1 += "\ttest_" + p.getTestProblemName() + "();\n";
+			content1 += "\tdisp(sprintf('\\n'));\n";
+			content2 += "\tdisp(sprintf('\\n'));\n";
 		}
-		content += "end";
-		mFileCreator.createFile(fileName+extension, content);
+		content1 += "end";
+		content2 += "end";
+		mFileCreator.createFile(fileName+extension, content1);
+		mFileCreator.createFile(fileName+withFmincon+extension, content2);
 	}
 
 }
