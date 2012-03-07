@@ -1,36 +1,50 @@
-\documentclass[a4paper, 12pt]{scrartcl}
-\usepackage[german,ngerman]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{graphicx}
+% Header mit Deklarationen
+\input{extras/header}
 
 \begin{document}
 
-\titlehead{Technische Universität Berlin\\
-Fakultät II}
-\subject{Bachelorarbeit}
-\title{SQP vs. Semismooth Newton}
-\author{Vicky H. Tanzil}
-\date{14.2.2012}
-\publishers{betreut durch Prof. Fredi Tröltzsch}
-\maketitle
+% Römische Nummerierung für Sonderseiten, wie Verzeichnisse und Anhang
+\pagenumbering{Roman}
 
+% Titelblatt
+\input{extras/titelseite}
+
+% Eidesstattliche Erklärung
+\input{extras/eidesstattliche}
+
+% Verzeichnisse
+% Kopfzeile links Kapitel, rechts leer
+\ihead{\leftmark}
+\ohead{}
+\input{extras/verzeichnisse}
+
+% Merke mir die römische Seitenzahl in 'roemisch' und setzte Nummeriernung 
+% auf arabisch für die eigentlichen Kapitel
 \newpage
+\newcounter{roemisch}
+\setcounter{roemisch}{\value{page}}
+\pagenumbering{arabic}
 
-\tableofcontents
+% Die einzelnen Kapitel
+% Kopfzeile: links Kapitel, rechts Sektion
+\ihead{\leftmark}
+\ohead{\rightmark}
+\input{chapters/grundlagen}
+\input{chapters/sqp}
+\input{chapters/ssn}
+\input{chapters/vergleich}
 
+% Setze Numerierung wieder auf römisch zurück und setzte von oben fort
+% Wert ist demnach der von 'roemisch'
 \newpage
+\pagenumbering{Roman}
+\setcounter{page}{\value{roemisch}}
 
-\section{Einleitung}
+% Literaturverzeichnis
+\bibliography{biblio/bib}
 
-...
-
-\section{Grundlagen}
-
-\subsection{SQP}
-
-\subsection{Semismooth Newton}
+% Appendix, falls vorhanden
+\appendix
+\input{extras/anhang}
 
 \end{document}

@@ -1,0 +1,806 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.5.25)  7 MAR 2012 18:49
+entering extended mode
+**Bachelor-Thesis.tex
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.tex"
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\extras/header.tex"
+("C:\Programme\MiKTeX 2.9\tex\latex\koma-script\scrbook.cls"
+Document Class: scrbook 2011/06/16 v3.09a KOMA-Script document class (book)
+("C:\Programme\MiKTeX 2.9\tex\latex\koma-script\scrkbase.sty"
+Package: scrkbase 2011/06/16 v3.09a KOMA-Script package (KOMA-Script-dependent 
+basics and keyval usage)
+
+("C:\Programme\MiKTeX 2.9\tex\latex\koma-script\scrbase.sty"
+Package: scrbase 2011/06/16 v3.09a KOMA-Script package (KOMA-Script-independent
+ basics and keyval usage)
+
+("C:\Programme\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\koma-script\scrlfile.sty"
+Package: scrlfile 2011/03/09 v3.09 KOMA-Script package (loading files)
+
+Package scrlfile, 2011/03/09 v3.09 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+))) ("C:\Programme\MiKTeX 2.9\tex\latex\koma-script\tocbasic.sty"
+Package: tocbasic 2011/05/30 v3.09a KOMA-Script package (handling toc-files)
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 117.
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 118.
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 119.
+Class scrbook Info: You've used standard option `oneside'.
+(scrbook)           This is correct!
+(scrbook)           Internally I'm using `twoside=false'.
+(scrbook)           If you'd like to set the option with \KOMAoptions,
+(scrbook)           you'd have to use `twoside=false' there
+(scrbook)           instead of `oneside', too.
+
+
+Class scrbook Warning: You've used obsolete option `bibtotoc'.
+(scrbook)              Usage of this option indicates an old document and
+(scrbook)              changes compatibility level using
+(scrbook)              `bibliography=totoc,version=first'.
+(scrbook)              If you don't want this, you should simply replace
+(scrbook)              usage of option `bibtotoc' by `bibliography=totoc'.
+
+Class scrbook Info: Switching compatibility level to `first'.
+
+Class scrbook Warning: You've used obsolete option `liststotoc'.
+(scrbook)              Usage of this option indicates an old document and
+(scrbook)              changes compatibility level using
+(scrbook)              `listof=totoc,version=first'.
+(scrbook)              If you don't want this, you should simply replace
+(scrbook)              usage of option `liststotoc' by `listof=totoc'.
+
+Class scrbook Info: Switching compatibility level to `first'.
+
+Class scrbook Warning: You've used obsolete option `idxtotoc'.
+(scrbook)              Usage of this option indicates an old document and
+(scrbook)              changes compatibility level using
+(scrbook)              `index=totoc,version=first'.
+(scrbook)              If you don't want this, you should simply replace
+(scrbook)              usage of option `idxtotoc' by `index=totoc'.
+
+Class scrbook Info: Switching compatibility level to `first'.
+
+Class scrbook Warning: You've used obsolete option `halfparskip'.
+(scrbook)              Usage of this option indicates an old document and
+(scrbook)              changes compatibility level using
+(scrbook)              `parskip=half,version=first'.
+(scrbook)              If you don't want this, you should simply replace
+(scrbook)              usage of option `halfparskip' by `parskip=half'.
+
+Class scrbook Info: Switching compatibility level to `first'.
+Package scrbook Info: You've used obsolete option `12pt'.
+(scrbook)             \KOMAExecuteOptions{fontsize=12pt} will be
+(scrbook)             used instead.
+(scrbook)             You may simply replace `12pt'
+(scrbook)             by `fontsize=12pt'.
+Class scrbook Info: File `scrsize12pt.clo' used to setup font sizes on input li
+ne 1348.
+("C:\Programme\MiKTeX 2.9\tex\latex\koma-script\scrsize12pt.clo"
+File: scrsize12pt.clo 2011/06/16 v3.09a KOMA-Script font size class option (12p
+t)
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\koma-script\typearea.sty"
+Package: typearea 2011/06/16 v3.09a KOMA-Script package (type area)
+
+Package typearea, 2011/06/16 v3.09a KOMA-Script package (type area)
+                  Copyright (C) Frank Neukam, 1992-1994
+                  Copyright (C) Markus Kohm, 1994-
+
+\ta@bcor=\skip41
+\ta@div=\count79
+Package typearea Info: You've used standard option `pdftex'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `pagesize=pdftex'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `pagesize=pdftex' there
+(typearea)             instead of `pdftex', too.
+Package typearea Info: You've used standard option `a4paper'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `paper=a4'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `paper=a4' there
+(typearea)             instead of `a4paper', too.
+Package typearea Info: You've used standard option `oneside'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `twoside=false'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `twoside=false' there
+(typearea)             instead of `oneside', too.
+\ta@hblk=\skip42
+\ta@vblk=\skip43
+\ta@temp=\skip44
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 12
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 597.50793pt
+(typearea)              \textwidth      = 448.13095pt
+(typearea)              DIV departure   = -6%
+(typearea)              \evensidemargin = 2.4185pt
+(typearea)              \oddsidemargin  = 2.4185pt
+(typearea)             \paperheight     = 845.04694pt
+(typearea)              \textheight     = 606.5pt
+(typearea)              \topmargin      = -1.84941pt
+(typearea)              \headheight     = 18.125pt
+(typearea)              \headsep        = 21.75pt
+(typearea)              \topskip        = 12.0pt
+(typearea)              \footskip       = 50.75pt
+(typearea)              \baselineskip   = 14.5pt
+(typearea)              on input line 1139.
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\abovecaptionskip=\skip45
+\belowcaptionskip=\skip46
+\c@pti@nb@sid@b@x=\box26
+\c@figure=\count87
+\c@table=\count88
+\bibindent=\dimen102
+) ("C:\Programme\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2008/07/06 v3.8l The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Programme\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Programme\MiKTeX 2.9\tex\generic\babel\frenchb.ldf"
+Language: frenchb 2009/03/16 v2.3d French support from the babel system
+
+("C:\Programme\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count89
+\U@D=\dimen103
+)
+Package babel Info: Making : an active character on input line 120.
+Package babel Info: Making ; an active character on input line 121.
+Package babel Info: Making ! an active character on input line 122.
+Package babel Info: Making ? an active character on input line 123.
+\FB@Mht=\dimen104
+\std@mcc=\count90
+\dec@mcc=\count91
+\parindentFFN=\dimen105
+
+*************************************
+* Local config file frenchb.cfg used
+*
+("C:\Programme\MiKTeX 2.9\tex\generic\babel\frenchb.cfg"))
+("C:\Programme\MiKTeX 2.9\tex\generic\babel\ngermanb.ldf"
+Language: ngermanb 2008/07/06 v2.6n new German support from the babel system
+\l@naustrian = a dialect from \language\l@ngerman 
+Package babel Info: Making " an active character on input line 92.
+))
+("C:\Programme\MiKTeX 2.9\tex\latex\carlisle\scalefnt.sty")
+("C:\Programme\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+
+("C:\Programme\MiKTeX 2.9\tex\latex\base\latin1.def"
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+("C:\Programme\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+("C:\Programme\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+("C:\Programme\MiKTeX 2.9\tex\latex\csquotes\csquotes.sty"
+Package: csquotes 2011/10/22 v5.1d context-sensitive quotations
+
+("C:\Programme\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
+Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
+
+("C:\Programme\MiKTeX 2.9\tex\latex\misc\etex.sty"
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count92
+)
+\etb@tempcnta=\count93
+)
+\csq@reset=\count94
+\csq@gtype=\count95
+\csq@glevel=\count96
+\csq@qlevel=\count97
+\csq@maxlvl=\count98
+\csq@tshold=\count99
+\csq@ltx@everypar=\toks17
+
+("C:\Programme\MiKTeX 2.9\tex\latex\csquotes\csquotes.def"
+File: csquotes.def 2011/10/22 v5.1d csquotes generic definitions
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\csquotes\csquotes.cfg"
+File: csquotes.cfg 
+)
+Package csquotes Info: Option 'babel' depreciated.
+(csquotes)             Using 'autostyle'.
+Package csquotes Info: Enabling multilingual quotes.
+Package csquotes Info: Redefining alias 'french' -> 'french/guillemets'.
+Package csquotes Info: Redefining alias 'german' -> 'german/swiss'.
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen106
+\extrarowheight=\dimen107
+\NC@list=\toks18
+\extratabsurround=\skip47
+\backup@length=\skip48
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen108
+\lightrulewidth=\dimen109
+\cmidrulewidth=\dimen110
+\belowrulesep=\dimen111
+\belowbottomsep=\dimen112
+\aboverulesep=\dimen113
+\abovetopsep=\dimen114
+\cmidrulesep=\dimen115
+\cmidrulekern=\dimen116
+\defaultaddspace=\dimen117
+\@cmidla=\count100
+\@cmidlb=\count101
+\@aboverulesep=\dimen118
+\@belowrulesep=\dimen119
+\@thisruleclass=\count102
+\@lastruleclass=\count103
+\@thisrulewidth=\dimen120
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Programme\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Programme\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/04/25 v0.06b Graphics/color for pdfTeX
+
+("C:\Programme\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+("C:\Programme\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count104
+))
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
+)
+Package scrkbase Info: You've told me to redefine the font selection of the
+(scrkbase)             element `sectioning' that is an alias of element
+(scrkbase)             `disposition' on input line 51.
+Package scrkbase Info: You've told me to redefine the font selection of the
+(scrkbase)             element `pagehead' that is an alias of element
+(scrkbase)             `pageheadfoot' on input line 53.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\koma-script\scrpage2.sty"
+Package: scrpage2 2010/04/22 v2.5 LaTeX2e KOMA-Script package
+LaTeX Info: Redefining \pagemark on input line 176.
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+("C:\Programme\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Programme\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks19
+\ex@=\dimen123
+))
+("C:\Programme\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen124
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count105
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count106
+\leftroot@=\count107
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count108
+\DOTSCASE@=\count109
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen125
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count110
+\c@MaxMatrixCols=\count111
+\dotsspace@=\muskip10
+\c@parentequation=\count112
+\dspbrk@lvl=\count113
+\tag@help=\toks20
+\row@=\count114
+\column@=\count115
+\maxfields@=\count116
+\andhelp@=\toks21
+\eqnshift@=\dimen126
+\alignsep@=\dimen127
+\tagshift@=\dimen128
+\tagwidth@=\dimen129
+\totwidth@=\dimen130
+\lineht@=\dimen131
+\@envbody=\toks22
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+("C:\Programme\MiKTeX 2.9\tex\latex\psnfss\courier.sty"
+Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\rotating\rotating.sty"
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+("C:\Programme\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count117
+\rotFPtop=\skip52
+\rotFPbot=\skip53
+\rot@float@box=\box29
+\rot@mess@toks=\toks24
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Programme\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2011/04/17 v6.82g Hypertext links for LaTeX
+
+("C:\Programme\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2011/04/23 v1.4 Bundle oberdiek, subset hyperref (HO)
+
+("C:\Programme\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2011/04/23 v1.4 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2011/04/23 v1.4 Subsetting bundle oberdiek (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2011/04/07 v1.13 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Defining keys (HO)
+Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/04/04 v1.12 Provides string conversions (HO)
+Package: bigintcalc 2011/01/30 v1.2 Expandable big integer calculations (HO)
+Package: bitset 2011/01/30 v1.1 Data type bit set (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provides unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2011/01/30 v1.0 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/04/23 v1.7 Hooks at very end of document (HO)
+Package: atbegshi 2011/01/30 v1.15 At begin shipout hook (HO)
+Package: refcount 2010/12/01 v3.2 Data extraction from references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options of hyperref/bookmark (HO)
+)
+("C:\Programme\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2010/12/23 v3.10 Keyval support for LaTeX options (HO)
+)
+\@linkdim=\dimen132
+\Hy@linkcounter=\count118
+\Hy@pagecounter=\count119
+
+("C:\Programme\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2011/04/17 v6.82g Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count120
+
+("C:\Programme\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4026.
+Package hyperref Info: Link nesting OFF on input line 4031.
+Package hyperref Info: Hyper index ON on input line 4034.
+Package hyperref Info: Plain pages OFF on input line 4041.
+Package hyperref Info: Backreferencing OFF on input line 4046.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4264.
+\c@Hy@tempcnt=\count121
+
+("C:\Programme\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4617.
+\Fld@menulength=\count122
+\Field@Width=\dimen133
+\Fld@charsize=\dimen134
+Package hyperref Info: Hyper figures OFF on input line 5701.
+Package hyperref Info: Link nesting OFF on input line 5706.
+Package hyperref Info: Hyper index ON on input line 5709.
+Package hyperref Info: backreferencing OFF on input line 5716.
+Package hyperref Info: Link coloring OFF on input line 5721.
+Package hyperref Info: Link coloring with OCG OFF on input line 5726.
+Package hyperref Info: PDF/A mode OFF on input line 5731.
+LaTeX Info: Redefining \ref on input line 5771.
+LaTeX Info: Redefining \pageref on input line 5775.
+\Hy@abspage=\count123
+\c@Item=\count124
+\c@Hfootnote=\count125
+)
+
+Package hyperref Message: Driver: hpdftex.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2011/04/17 v6.82g Hyperref driver for pdfTeX
+\Fld@listcount=\count126
+\c@bookmark@seq@number=\count127
+
+("C:\Programme\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip54
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 110.
+
+
+Package hyperref Warning: Option `pagecolor' is not available anymore.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count128
+\lst@gtempboxa=\box30
+\lst@token=\toks25
+\lst@length=\count129
+\lst@currlwidth=\dimen135
+\lst@column=\count130
+\lst@pos=\count131
+\lst@lostspace=\dimen136
+\lst@width=\dimen137
+\lst@newlines=\count132
+\lst@lineno=\count133
+\lst@maxwidth=\dimen138
+
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count134
+\lst@skipnumbers=\count135
+\lst@framebox=\box31
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
+File: lstlang2.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang3.sty"
+File: lstlang3.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
+File: lstlang2.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang3.sty"
+File: lstlang3.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
+File: lstlang2.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang3.sty"
+File: lstlang3.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang2.sty"
+File: lstlang2.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstlang3.sty"
+File: lstlang3.sty 2004/09/05 1.3 listings language file
+)
+("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+))
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... found 'babel' package.
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Info: Redefining \degres on input line 4.
+
+
+Package frenchb.ldf Warning: The definition of \@makecaption has been changed,
+(frenchb.ldf)                frenchb will NOT customise it;
+(frenchb.ldf)                reported on input line 4.
+
+LaTeX Info: Redefining \dots on input line 4.
+LaTeX Info: Redefining \up on input line 4.
+("C:\Programme\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count136
+\scratchdimen=\dimen139
+\scratchbox=\box32
+\nofMPsegments=\count137
+\nofMParguments=\count138
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count139
+\MPscratchDim=\dimen140
+\MPnumerator=\count140
+\makeMPintoPDFobject=\count141
+\everyMPtoPDFconversion=\toks27
+)
+\AtBeginShipoutBox=\box33
+Package hyperref Info: Link coloring ON on input line 4.
+ ("C:\Programme\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+
+("C:\Programme\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count142
+)
+LaTeX Info: Redefining \ref on input line 4.
+LaTeX Info: Redefining \pageref on input line 4.
+LaTeX Info: Redefining \nameref on input line 4.
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.out")
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.out")
+\@outlinefile=\write3
+\c@lstlisting=\count143
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\extras/titelseite.tex"
+LaTeX Font Info:    Try loading font information for U+msa on input line 26.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 26.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+<images/TUBerlin_Logo.jpg, id=59, 910.602pt x 677.6517pt>
+File: images/TUBerlin_Logo.jpg Graphic file (type jpg)
+
+<use images/TUBerlin_Logo.jpg>
+Package pdftex.def Info: images/TUBerlin_Logo.jpg used on input line 27.
+(pdftex.def)             Requested size: 728.48259pt x 542.1221pt.
+
+Overfull \hbox (11.74713pt too wide) in paragraph at lines 35--36
+[][][] 
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 72--11
+
+ []
+
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\extras/eidesstattliche.tex" [1
+
+{C:/Dokumente und Einstellungen/Viqicevic/Lokale Einstellungen/Anwendungsdaten/
+MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Dokumente und Einstellungen/Viqicevic/
+Eigene Dateien/SQP-vs.-Semismooth-Newton/tex/images/TUBerlin_Logo.jpg>])
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\extras/verzeichnisse.tex" [2
+
+]
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.toc")
+\tf@toc=\write4
+ [3
+
+]
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.lof")
+\tf@lof=\write5
+ [4
+
+]
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.lot")
+\tf@lot=\write6
+) [5
+
+]
+\c@roemisch=\count144
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/grundlagen.tex"
+Kapitel 1.
+
+Class scrbook Warning: \float@addtolists detected!
+(scrbook)              You should use the features of package `tocbasic'
+(scrbook)              instead of \float@addtolists.
+(scrbook)              Support for \float@addtolists may be removed from
+(scrbook)              `scrbook' soon .
+
+)
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/sqp.tex" [1
+
+]
+Kapitel 2.
+File: images/TUBerlin_Logo.jpg Graphic file (type jpg)
+<use images/TUBerlin_Logo.jpg>
+Package pdftex.def Info: images/TUBerlin_Logo.jpg used on input line 10.
+(pdftex.def)             Requested size: 313.69029pt x 233.43852pt.
+ [2
+
+])
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/ssn.tex" [3]
+Kapitel 3.
+)
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/vergleich.tex" [4
+
+]
+Kapitel 4.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 6.
+("C:\Programme\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 6.
+) [5
+
+]
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.bbl")
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\extras/anhang.tex" [6
+
+]
+Anhang A.
+[7
+
+]
+Anhang B.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 50.
+ [8
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 50.
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.aux")
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 50.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 50.
+Package rerunfilecheck Info: File `Bachelor-Thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 838770E5388B10683867261FCC805BAC;812.
+ ) 
+Here is how much of TeX's memory you used:
+ 10975 strings out of 494053
+ 162892 string characters out of 3150137
+ 334016 words of memory out of 3000000
+ 13999 multiletter control sequences out of 15000+200000
+ 16832 words of font info for 49 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 43i,11n,67p,822b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdat
+en\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:\Dokumente und
+ Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Dokumente und Einstellungen\Viqic
+evic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\e
+c\dpi600\ecrm0700.pk> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstell
+ungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk
+> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdate
+n\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\Dokumente und 
+Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\p
+k\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Dokumente und Einstellungen\Viqice
+vic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
+\dpi600\ecrm1200.pk> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellu
+ngen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk>
+ <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten
+\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk><C:/Programme/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Bachelor-Thesis.pdf (13 pages, 1216349 bytes).
+PDF statistics:
+ 434 PDF objects out of 1000 (max. 8388607)
+ 37 named destinations out of 1000 (max. 500000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
+
