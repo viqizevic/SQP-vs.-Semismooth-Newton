@@ -41,4 +41,16 @@ function test_all()
 	disp('test_dixon_func');
 	test_dixon_func();
 	disp(sprintf('\n'));
+	disp('test_dixon_func_1');
+	test_dixon_func_1();
+	disp(sprintf('\n'));
+	disp('test_dixon_func_2');
+	test_dixon_func_2();
+	disp(sprintf('\n'));
+	disp('test_dixon_func_3');
+	test_dixon_func_3();
+	disp(sprintf('\n'));
+	disp('test_dixon_func_4');
+	test_dixon_func_4();
+	disp(sprintf('\n'));
 end

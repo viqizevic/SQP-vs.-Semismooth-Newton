@@ -155,5 +155,53 @@
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
 	</problem>
+
+	<problem>
+		<function_name>dixon_func</function_name>
+		<lambda>0.0000000001</lambda>
+		<a>[2; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
+		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>1000</max_iteration>
+	</problem>
 	
+	<problem>
+		<function_name>dixon_func</function_name>
+		<lambda>0.0000000001</lambda>
+		<a>[3; 3; 3; 3; 3; 2; 2; 2; 2; 2]</a>
+		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>1000</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>dixon_func</function_name>
+        <constant>
+            <constant_name>n</constant_name>
+            <constant_value>20</constant_value>
+        </constant>
+		<lambda>0.0000000001</lambda>
+		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
+		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>1000</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>dixon_func</function_name>
+        <constant>
+            <constant_name>n</constant_name>
+            <constant_value>40</constant_value>
+        </constant>
+		<lambda>0.0000000001</lambda>
+		<a>[2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2]</a>
+		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>1000</max_iteration>
+	</problem>
+
 </problems>
