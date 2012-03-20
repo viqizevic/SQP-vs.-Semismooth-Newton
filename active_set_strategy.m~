@@ -48,14 +48,15 @@ function [x,fval,it] = active_set_strategy(f,gradf,lambda,a,b,x0,m0,itmax,tol)
 			end
 		end
 		w = A\y;
-		x = w(1:n,1);
+		u = w(1:n,1);
 		m = w(n+1:2*n,1);
 		
+		x = u;
 		% Check the stop criteria
-		d = feval(gradf,x)+lambda*x+m;
-		if (norm(d) < tol)
+		d = feval(gradf,x)
+		if (norm(d) > tol)
 				complete = true;
-				w = max(zeros(n,1),m+lambda*(x-b))+min(zeros(n,1),m+lambda*(x-a));
+				w = max(zeros(n,1),m+lambda*(x-b))+min(zeros(n,1),m+lambda*(x-a))
 			for k=1:n
 				if m(k) ~= w(k)
 					complete = false;

@@ -3,10 +3,12 @@ function test_himmelblau_func_1()
 	a = [5; 5];
 	b = [20; 20];
 	x0 = [15; 15];
+	m0 = zeros(2,1);
 	tol = 0.0001;
 	itmax = 10;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',lambda,a,b,x0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('himmelblau_func_1','grad_himmelblau_func_1',lambda,a,b,x0,m0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);

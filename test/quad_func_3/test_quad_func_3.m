@@ -3,10 +3,12 @@ function test_quad_func_3()
 	a = [3; 6; 2];
 	b = [10; 20; 9];
 	x0 = [8; 17; 4];
+	m0 = zeros(3,1);
 	tol = 0.001;
 	itmax = 100;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func_3','grad_quad_func_3','hess_quad_func_3',lambda,a,b,x0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_func_3','grad_quad_func_3',lambda,a,b,x0,m0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func_3','grad_quad_func_3','hess_quad_func_3',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);

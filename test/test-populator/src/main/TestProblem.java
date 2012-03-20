@@ -85,4 +85,13 @@ public class TestProblem {
 		this.maxIteration = maxIteration;
 	}
 	
+	public int getDimension() {
+		if (x0 != null) {
+			String[] s = x0.split(";");
+			return s.length;
+		} else {
+			System.err.println("Unable to compute dimension, since x0 undefined");
+			return 0;
+		}
+	}
 }

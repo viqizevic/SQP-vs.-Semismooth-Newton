@@ -107,10 +107,12 @@ public class MFileCreator {
 		content += "\ta = " + testProblem.get_a() + ";\n";
 		content += "\tb = " + testProblem.get_b() + ";\n";
 		content += "\tx0 = " + testProblem.get_x0() + ";\n";
+		content += "\tm0 = zeros(" + testProblem.getDimension() + ",1);\n";
 		content += "\ttol = " + testProblem.getTolerance() + ";\n";
 		content += "\titmax = " + testProblem.getMaxIteration() + ";\n";
 		content += "\ttic;\n";
-		content += "\t[x_ssn,fval_ssn,it_ssn] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol);\n";
+		content += "\t[x_ssn,fval_ssn,it_ssn] = active_set_strategy('" + defFileName + "','" + gradFileName + "',lambda,a,b,x0,m0,itmax,tol);\n";
+		content += "\t%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol);\n";
 		content += "\tt_ssn = toc;\n";
 		content += "\tx1 = sprintf('%.3f ',x_ssn);\n";
 		content += "\tf1 = sprintf('f(x_ssn) = %.3f',fval_ssn);\n";

@@ -3,10 +3,12 @@ function test_dixon_func_4()
 	a = [2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2];
 	b = [10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10];
 	x0 = [10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10];
+	m0 = zeros(40,1);
 	tol = 0.001;
 	itmax = 1000;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_func_4','grad_dixon_func_4','hess_dixon_func_4',lambda,a,b,x0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_func_4','grad_dixon_func_4',lambda,a,b,x0,m0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_func_4','grad_dixon_func_4','hess_dixon_func_4',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);

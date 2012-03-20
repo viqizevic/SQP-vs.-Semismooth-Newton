@@ -3,10 +3,12 @@ function test_exp_func_1()
 	a = [1; 0.5; 1];
 	b = [10; 20; 4];
 	x0 = [5; 2; 4];
+	m0 = zeros(3,1);
 	tol = 0.001;
 	itmax = 500;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('exp_func_1','grad_exp_func_1','hess_exp_func_1',lambda,a,b,x0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('exp_func_1','grad_exp_func_1',lambda,a,b,x0,m0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('exp_func_1','grad_exp_func_1','hess_exp_func_1',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
