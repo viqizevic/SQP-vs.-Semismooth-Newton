@@ -1,16 +1,22 @@
 package main;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class MFileCreator {
 	
 	private static final String extension = ".m";
+
+	private static final String withFmincon = "_with_fmincon";
 	
-	private static final String withFmincon = "_with_fmincon_too";
-	
+	private static final String withFminconToo = "_with_fmincon_too";
+
 	private final String v0 = "_v0";
 	
 	private TestProblem testProblem;
@@ -138,8 +144,41 @@ public class MFileCreator {
 		createFile(fileName+extension, content);
 	}
 
-	private void createTestProblemFileWithFmincon() {
+	private void createTestProblemFileWithFmincon(String templateFilePath) {
+		HashMap<String, String> vars = new HashMap<String, String>();
+		vars.put("{var_function_name}", defFileName);
+		vars.put("{var_lambda}", testProblem.get_lambda());
+		vars.put("{var_a}", testProblem.get_a());
+		vars.put("{var_b}", testProblem.get_b());
+		vars.put("{var_x0}", testProblem.get_x0());
+		vars.put("{var_tol}", testProblem.getTolerance());
+		vars.put("{var_itmax}", testProblem.getMaxIteration());
+		vars.put("{var_function_name_v0}", defFileName+v0);
+		
+		String content = "";
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(templateFilePath));
+			String line = "";
+			while ( (line=br.readLine()) != null ) {
+				for (String s : vars.keySet()) {
+					if (line.contains(s)) {
+						line = line.replace(s, vars.get(s));
+					}
+				}
+				content += line + "\n";
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		String fileName = testFileName + withFmincon;
+		createFile(fileName+extension, content);
+	}
+
+	private void createTestProblemFileWithFminconToo() {
+		String fileName = testFileName + withFminconToo;
 		String content = "function " + fileName + "()\n";
 		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
 		content += "\ta = " + testProblem.get_a() + ";\n";
@@ -198,35 +237,42 @@ public class MFileCreator {
 		}
 	}
 	
-	public static void create(TestProblem testProblem, String directoryPath) {
+	public static void create(TestProblem testProblem, String directoryPath, String templateFilePath) {
 		MFileCreator mFileCreator = new MFileCreator(testProblem, directoryPath);
 		mFileCreator.createFunctionDefinitionFile();
 		mFileCreator.createFunctionGradientFile();
 		mFileCreator.createFunctionHessianFile();
 		mFileCreator.createTestProblemFile();
-		mFileCreator.createTestProblemFileWithFmincon();
+		mFileCreator.createTestProblemFileWithFminconToo();
+		mFileCreator.createTestProblemFileWithFmincon(templateFilePath);
 	}
 	
 	public static void createMainTestFile(LinkedList<TestProblem> list, String fileName, String directoryPath) {
 		MFileCreator mFileCreator = new MFileCreator(list.getFirst(), directoryPath);
 		String content1 = "function " + fileName + "()\n";
-		String content2 = "function " + fileName + withFmincon + "()\n";
+		String content2 = "function " + fileName + withFminconToo + "()\n";
+		String content3 = "function " + fileName + withFmincon + "()\n";
 		for (TestProblem p : list) {
 			content1 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
 			content2 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
+			content3 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
+			content1 += "\ttest_" + p.getTestProblemName() + "();\n";
 			if (!p.getTestProblemName().startsWith("exp_func")) {
-				content2 += "\ttest_" + p.getTestProblemName() + withFmincon + "();\n";
+				content2 += "\ttest_" + p.getTestProblemName() + withFminconToo + "();\n";
+				content3 += "\ttest_" + p.getTestProblemName() + withFmincon + "();\n";
 			} else {
 				content2 += "\ttest_" + p.getTestProblemName() + "();\n";
 			}
-			content1 += "\ttest_" + p.getTestProblemName() + "();\n";
 			content1 += "\tdisp(sprintf('\\n'));\n";
 			content2 += "\tdisp(sprintf('\\n'));\n";
+			content3 += "\tdisp(sprintf('\\n'));\n";
 		}
 		content1 += "end";
 		content2 += "end";
+		content3 += "end";
 		mFileCreator.createFile(fileName+extension, content1);
-		mFileCreator.createFile(fileName+withFmincon+extension, content2);
+		mFileCreator.createFile(fileName+withFminconToo+extension, content2);
+		mFileCreator.createFile(fileName+withFmincon+extension, content3);
 	}
 
 }

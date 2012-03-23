@@ -27,11 +27,11 @@ public class Main {
 	
 	public static void main(String[] args) {
 		// Uncomment this next line if you are in grafix
-		//defaultTestDirectoryPath = "../../minimix/SQP-vs.-Semismooth-Newton/test/";
+		defaultTestDirectoryPath = "../../minimix/SQP-vs.-Semismooth-Newton/test/";
 		parseFunctionsFromXMLFile(defaultTestDirectoryPath+"test-populator/src/data/functions.xml");
 		parseProblemsFromXMLFile(defaultTestDirectoryPath+"test-populator/src/data/problems.xml");
 		for (TestProblem p : testProblems) {
-			MFileCreator.create(p, defaultTestDirectoryPath+p.getTestProblemName());
+			MFileCreator.create(p, defaultTestDirectoryPath+p.getTestProblemName(), defaultTestDirectoryPath+"test-populator/src/data/test.template");
 		}
 		MFileCreator.createMainTestFile(testProblems, "test_all", defaultTestDirectoryPath);
 		System.out.println("Finish!");

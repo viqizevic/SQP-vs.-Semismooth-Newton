@@ -2,7 +2,7 @@ function test_quad_func_1()
 	lambda = 1;
 	a = [-3; -6];
 	b = [10; 20];
-	x0 = [3; 5];
+	x0 = [8; 17];
 	m0 = zeros(2,1);
 	tol = 0.001;
 	itmax = 100;
