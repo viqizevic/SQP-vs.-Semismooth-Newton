@@ -4,7 +4,7 @@ function test_bazaraa_shetty_func_with_fmincon_too()
     b = [20; 20];
     x0 = [5; 5];
     tol = 0.0001;
-    itmax = 2000;
+    itmax = 200;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     options = optimset('Algorithm','active-set','Display','off');

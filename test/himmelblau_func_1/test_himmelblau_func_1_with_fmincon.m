@@ -1,10 +1,10 @@
 function test_himmelblau_func_1_with_fmincon_too()
-    lambda = 0.000000001;
+    lambda = 0.01;
     a = [5; 5];
     b = [20; 20];
     x0 = [15; 15];
     tol = 0.0001;
-    itmax = 10;
+    itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     options = optimset('Algorithm','active-set','Display','off');

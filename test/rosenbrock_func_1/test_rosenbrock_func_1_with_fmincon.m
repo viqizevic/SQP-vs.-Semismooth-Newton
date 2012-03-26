@@ -1,10 +1,10 @@
 function test_rosenbrock_func_1_with_fmincon_too()
-    lambda = 0.000000001;
+    lambda = 0.001;
     a = [-2; -2];
     b = [0; 2];
-    x0 = [-1.9; 2];
-    tol = 0.0001;
-    itmax = 2000;
+    x0 = [-1; 2];
+    tol = 0.00000001;
+    itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     options = optimset('Algorithm','active-set','Display','off');

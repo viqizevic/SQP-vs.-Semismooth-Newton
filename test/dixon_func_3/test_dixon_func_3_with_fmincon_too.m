@@ -4,7 +4,7 @@ function test_dixon_func_3_with_fmincon_too()
 	b = [10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10];
 	x0 = [10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10];
 	tol = 0.001;
-	itmax = 1000;
+	itmax = 500;
 	tic;
 	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_func_3','grad_dixon_func_3','hess_dixon_func_3',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;

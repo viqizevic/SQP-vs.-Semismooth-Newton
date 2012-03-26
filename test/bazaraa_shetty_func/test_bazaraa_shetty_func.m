@@ -5,7 +5,7 @@ function test_bazaraa_shetty_func()
 	x0 = [5; 5];
 	m0 = zeros(2,1);
 	tol = 0.0001;
-	itmax = 2000;
+	itmax = 200;
 	tic;
 	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('bazaraa_shetty_func','grad_bazaraa_shetty_func',lambda,a,b,x0,m0,itmax,tol);
 	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('bazaraa_shetty_func','grad_bazaraa_shetty_func','hess_bazaraa_shetty_func',lambda,a,b,x0,itmax,tol);

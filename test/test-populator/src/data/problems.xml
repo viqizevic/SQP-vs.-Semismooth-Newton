@@ -78,22 +78,22 @@
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<lambda>0.000000001</lambda>
+		<lambda>0.001</lambda>
 		<a>[-10; -20]</a>
 		<b>[10; 20]</b>
-		<x0>[-1.9; 2]</x0>
-		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<x0>[-1; 2]</x0>
+		<tolerance>0.0000001</tolerance>
+		<max_iteration>100</max_iteration>
 	</problem>
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<lambda>0.000000001</lambda>
+		<lambda>0.001</lambda>
 		<a>[-2; -2]</a>
 		<b>[0; 2]</b>
-		<x0>[-1.9; 2]</x0>
-		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<x0>[-1; 2]</x0>
+		<tolerance>0.00000001</tolerance>
+		<max_iteration>100</max_iteration>
 	</problem>
 
 	<problem>
@@ -103,17 +103,17 @@
 		<b>[20; 20]</b>
 		<x0>[5; 5]</x0>
 		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<max_iteration>200</max_iteration>
 	</problem>
 
     <problem>
         <function_name>himmelblau_func</function_name>
-        <lambda>0.000000001</lambda>
+        <lambda>0.01</lambda>
         <a>[5; 5]</a>
         <b>[20; 20]</b>
         <x0>[15; 15]</x0>
         <tolerance>0.0001</tolerance>
-        <max_iteration>10</max_iteration>
+        <max_iteration>100</max_iteration>
     </problem>
 	
 	<problem>
@@ -123,7 +123,7 @@
 		<b>[20; 20]</b>
 		<x0>[5; 5]</x0>
 		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<max_iteration>200</max_iteration>
 	</problem>
 	
 	<problem>
@@ -163,7 +163,7 @@
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
+		<max_iteration>500</max_iteration>
 	</problem>
 	
 	<problem>
@@ -173,7 +173,7 @@
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
+		<max_iteration>500</max_iteration>
 	</problem>
 
 	<problem>
@@ -187,7 +187,7 @@
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
+		<max_iteration>500</max_iteration>
 	</problem>
 
 	<problem>
@@ -201,7 +201,7 @@
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
+		<max_iteration>500</max_iteration>
 	</problem>
 
 </problems>
