@@ -7,7 +7,9 @@ function test_bazaraa_shetty_func()
 	tol = 0.0001;
 	itmax = 2000;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('bazaraa_shetty_func','grad_bazaraa_shetty_func',lambda,a,b,x0,m0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = projection_newton('bazaraa_shetty_func_v0','grad_bazaraa_shetty_func_v0','hess_bazaraa_shetty_func_v0',a,b,x0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = projiziertes_gradientenverfahren('bazaraa_shetty_func','grad_bazaraa_shetty_func',lambda,a,b,x0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('bazaraa_shetty_func','grad_bazaraa_shetty_func',lambda,a,b,x0,m0,itmax,tol);
 	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('bazaraa_shetty_func','grad_bazaraa_shetty_func','hess_bazaraa_shetty_func',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);

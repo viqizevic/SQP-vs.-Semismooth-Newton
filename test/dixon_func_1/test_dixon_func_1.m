@@ -7,7 +7,9 @@ function test_dixon_func_1()
 	tol = 0.001;
 	itmax = 1000;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_func_1','grad_dixon_func_1',lambda,a,b,x0,m0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = projection_newton('dixon_func_1_v0','grad_dixon_func_1_v0','hess_dixon_func_1_v0',a,b,x0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = projiziertes_gradientenverfahren('dixon_func_1','grad_dixon_func_1',lambda,a,b,x0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_func_1','grad_dixon_func_1',lambda,a,b,x0,m0,itmax,tol);
 	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_func_1','grad_dixon_func_1','hess_dixon_func_1',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);

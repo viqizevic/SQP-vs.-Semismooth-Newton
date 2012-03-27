@@ -7,7 +7,9 @@ function test_exp_func()
 	tol = 0.001;
 	itmax = 500;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('exp_func','grad_exp_func',lambda,a,b,x0,m0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = projection_newton('exp_func_v0','grad_exp_func_v0','hess_exp_func_v0',a,b,x0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = projiziertes_gradientenverfahren('exp_func','grad_exp_func',lambda,a,b,x0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('exp_func','grad_exp_func',lambda,a,b,x0,m0,itmax,tol);
 	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('exp_func','grad_exp_func','hess_exp_func',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
