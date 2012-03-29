@@ -3,6 +3,7 @@
 
 \begin{document}
 
+
 % Römische Nummerierung für Sonderseiten, wie Verzeichnisse und Anhang
 \pagenumbering{Roman}
 
@@ -29,10 +30,18 @@
 % Kopfzeile: links Kapitel, rechts Sektion
 \ihead{\leftmark}
 \ohead{\rightmark}
+
+
+
 \input{chapters/grundlagen}
-\input{chapters/sqp}
-\input{chapters/ssn}
-\input{chapters/vergleich}
+
+%\input{chapters/sqp}
+
+%\input{chapters/ssn}
+
+%\input{chapters/vergleich}
+
+
 
 % Setze Numerierung wieder auf römisch zurück und setzte von oben fort
 % Wert ist demnach der von 'roemisch'
@@ -46,5 +55,6 @@
 % Appendix, falls vorhanden
 \appendix
 %\input{extras/anhang}
+
 
 \end{document}
