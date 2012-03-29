@@ -7,7 +7,7 @@ function test_quad_func()
 	tol = 0.001;
 	itmax = 100;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_func','grad_quad_func',lambda,a,b,x0,m0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_func','grad_quad_func','hess_quad_func',lambda,a,b,x0,m0,itmax,tol);
 	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func','grad_quad_func','hess_quad_func',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);

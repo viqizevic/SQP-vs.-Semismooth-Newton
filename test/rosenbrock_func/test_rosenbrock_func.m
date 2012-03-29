@@ -7,7 +7,7 @@ function test_rosenbrock_func()
 	tol = 0.0000001;
 	itmax = 100;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('rosenbrock_func','grad_rosenbrock_func',lambda,a,b,x0,m0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('rosenbrock_func','grad_rosenbrock_func','hess_rosenbrock_func',lambda,a,b,x0,m0,itmax,tol);
 	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('rosenbrock_func','grad_rosenbrock_func','hess_rosenbrock_func',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);

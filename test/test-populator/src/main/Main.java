@@ -24,10 +24,10 @@ public class Main {
 	private static LinkedList<TestProblem> testProblems = new LinkedList<TestProblem>();
 	
 	private static String defaultTestDirectoryPath = "../../SQP-vs.-Semismooth-Newton/test/";
+	//private static String defaultTestDirectoryPath = "../../minimix/SQP-vs.-Semismooth-Newton/test/";
+	// Use the last line if you are in grafix
 	
 	public static void main(String[] args) {
-		// Uncomment this next line if you are in grafix
-		defaultTestDirectoryPath = "../../minimix/SQP-vs.-Semismooth-Newton/test/";
 		parseFunctionsFromXMLFile(defaultTestDirectoryPath+"test-populator/src/data/functions.xml");
 		parseProblemsFromXMLFile(defaultTestDirectoryPath+"test-populator/src/data/problems.xml");
 		for (TestProblem p : testProblems) {

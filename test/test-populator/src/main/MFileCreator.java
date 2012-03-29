@@ -117,7 +117,7 @@ public class MFileCreator {
 		content += "\ttol = " + testProblem.getTolerance() + ";\n";
 		content += "\titmax = " + testProblem.getMaxIteration() + ";\n";
 		content += "\ttic;\n";
-		content += "\t[x_ssn,fval_ssn,it_ssn] = active_set_strategy('" + defFileName + "','" + gradFileName + "',lambda,a,b,x0,m0,itmax,tol);\n";
+		content += "\t[x_ssn,fval_ssn,it_ssn] = active_set_strategy('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,m0,itmax,tol);\n";
 		content += "\t%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol);\n";
 		content += "\tt_ssn = toc;\n";
 		content += "\tx1 = sprintf('%.3f ',x_ssn);\n";

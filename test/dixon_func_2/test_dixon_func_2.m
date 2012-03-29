@@ -7,7 +7,7 @@ function test_dixon_func_2()
 	tol = 0.001;
 	itmax = 500;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_func_2','grad_dixon_func_2',lambda,a,b,x0,m0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_func_2','grad_dixon_func_2','hess_dixon_func_2',lambda,a,b,x0,m0,itmax,tol);
 	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_func_2','grad_dixon_func_2','hess_dixon_func_2',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);

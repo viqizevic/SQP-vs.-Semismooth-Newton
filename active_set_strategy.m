@@ -8,13 +8,13 @@
 %  Let f : R^n -> R
 %  lambda a real number
 %  a and b in R^n
-function [x,fval,it] = active_set_strategy(f,gradf,lambda,a,b,x0,m0,itmax,tol)
+function [x,fval,it] = active_set_strategy(f,gradf,hessf,lambda,a,b,x0,m0,itmax,tol)
 	x = x0;
 	m = m0;
 	n = length(x);
 	it = 0;
 	stop = false;
-    
+	
 	while( ~stop )
 		it = it + 1;
 		
@@ -47,11 +47,12 @@ function [x,fval,it] = active_set_strategy(f,gradf,lambda,a,b,x0,m0,itmax,tol)
 					y(k) = b(k);
 				end
 			end
-        end
-        fh = @(u) A*[u(1:n,1);u(n+1:2*n,1)] + [feval(gradf,u(1:n,1));-y];
-        opt = optimset('Display','off');
-		w = fsolve(fh,[x;m],opt);
-        x = w(1:n,1);
+		end
+		fh = @(u) A*[u(1:n,1);u(n+1:2*n,1)] + [feval(gradf,u(1:n,1));-y];
+		fhjac = @(u) A + [feval(hessf,u(1:n,1)) zeros(n,n); zeros(n,2*n)];
+		[w,it2] = newton_solve(fh,fhjac,[x;m],itmax,tol);
+		it = it + it2;
+		x = w(1:n,1);
 		m = w(n+1:2*n,1);
 		
 		% Check the stop criteria
@@ -75,6 +76,27 @@ function [x,fval,it] = active_set_strategy(f,gradf,lambda,a,b,x0,m0,itmax,tol)
 		end
 	end
 	fval = complete_f(f,lambda,x);
+end
+
+function [w,it] = newton_solve(fvec,fjac,w0,itmax,tol)
+	w = w0;
+	k = 0;
+	stop = false;
+	if (norm(fvec(w)) < tol)
+		stop = true;
+	end
+	while (~stop)
+		k = k+1;
+		d = - fjac(w) \ fvec(w);
+		w = w + d;
+		if (norm(fvec(w)) < tol)
+			stop = true;
+		end
+		if (k >= itmax)
+			stop = true;
+		end
+	end
+	it = k;
 end
 
 function w = projection(v,a,b)
