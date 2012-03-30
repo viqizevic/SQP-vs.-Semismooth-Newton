@@ -1,5 +1,5 @@
 function test_dixon_2_dim_func_with_fmincon_too()
-    lambda = 0.0000000001;
+    lambda = 0.00001;
     a = [-10; -10];
     b = [10; 10];
     x0 = [1.5; 1.5];

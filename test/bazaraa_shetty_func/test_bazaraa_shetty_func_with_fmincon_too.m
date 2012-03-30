@@ -1,5 +1,5 @@
 function test_bazaraa_shetty_func_with_fmincon_too()
-	lambda = 0.000000001;
+	lambda = 0.0001;
 	a = [-20; -20];
 	b = [20; 20];
 	x0 = [5; 5];
