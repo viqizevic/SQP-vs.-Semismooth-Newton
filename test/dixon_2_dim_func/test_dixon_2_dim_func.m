@@ -17,7 +17,7 @@ function test_dixon_2_dim_func()
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = sqp('dixon_2_dim_func_v0','grad_dixon_2_dim_func_v0','hess_dixon_2_dim_func_v0',A,c,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('dixon_2_dim_func_v0','grad_dixon_2_dim_func_v0','hess_dixon_2_dim_func_v0',A,c,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);

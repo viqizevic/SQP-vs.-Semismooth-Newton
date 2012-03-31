@@ -17,7 +17,7 @@ function test_{var_function_name}()
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = sqp('{var_function_name_v0}','{var_grad_function_name_v0}','{var_hess_function_name_v0}',A,c,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('{var_function_name_v0}','{var_grad_function_name_v0}','{var_hess_function_name_v0}',A,c,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);

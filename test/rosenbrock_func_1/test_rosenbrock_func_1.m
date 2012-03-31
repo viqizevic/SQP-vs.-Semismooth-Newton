@@ -1,10 +1,10 @@
 function test_rosenbrock_func_1()
     lambda = 0.001;
-    a = [-2; 1.5];
-    b = [0; 5];
+    a = [-10; 1.5];
+    b = [10; 10];
     x0 = [-1; 2];
     m0 = zeros(2,1);
-    tol = 0.00000001;
+    tol = 0.000001;
     itmax = 100;
     tic;
     [x_ssn,fval_ssn,it_ssn] = active_set_strategy('rosenbrock_func_1','grad_rosenbrock_func_1','hess_rosenbrock_func_1',lambda,a,b,x0,m0,itmax,tol);
@@ -17,7 +17,7 @@ function test_rosenbrock_func_1()
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = sqp('rosenbrock_func_1_v0','grad_rosenbrock_func_1_v0','hess_rosenbrock_func_1_v0',A,c,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('rosenbrock_func_1_v0','grad_rosenbrock_func_1_v0','hess_rosenbrock_func_1_v0',A,c,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);

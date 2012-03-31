@@ -1,9 +1,9 @@
 function test_rosenbrock_func_1_with_fmincon_too()
     lambda = 0.001;
-    a = [-2; 1.5];
-    b = [0; 5];
+    a = [-10; 1.5];
+    b = [10; 10];
     x0 = [-1; 2];
-    tol = 0.00000001;
+    tol = 0.000001;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];

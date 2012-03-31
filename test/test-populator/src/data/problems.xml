@@ -89,10 +89,10 @@
 	<problem>
 		<function_name>rosenbrock_func</function_name>
 		<lambda>0.001</lambda>
-		<a>[-2; 1.5]</a>
-		<b>[0; 5]</b>
+		<a>[-10; 1.5]</a>
+		<b>[10; 10]</b>
 		<x0>[-1; 2]</x0>
-		<tolerance>0.00000001</tolerance>
+		<tolerance>0.000001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
 
