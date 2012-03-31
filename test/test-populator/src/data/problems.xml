@@ -188,7 +188,7 @@
 
 	<problem>
 		<function_name>dixon_func</function_name>
-		<lambda>0.001</lambda>
+		<lambda>0.01</lambda>
 		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
 		<b>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5]</b>
 		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
@@ -198,6 +198,10 @@
 	
 	<problem>
 		<function_name>dixon_func</function_name>
+        <constant>
+            <constant_name>n</constant_name>
+            <constant_value>5</constant_value>
+        </constant>
 		<lambda>0.001</lambda>
 		<a>[3; -3; 5; 3; 2]</a>
 		<b>[7; 0; 5; 10; 14]</b>
