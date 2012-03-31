@@ -145,6 +145,16 @@
 		<tolerance>0.0001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
+	
+	<problem>
+		<function_name>mccormick_func</function_name>
+		<lambda>0.00001</lambda>
+		<a>[-1.5; -3]</a>
+		<b>[4; 3]</b>
+		<x0>[0; -0.75]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>200</max_iteration>
+	</problem>
 
 	<problem>
 		<function_name>dixon_2_dim_func</function_name>

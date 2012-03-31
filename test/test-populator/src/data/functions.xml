@@ -85,6 +85,14 @@
 	</function>
 
 	<function>
+		<name>mccormick_func</name>
+		<var>x</var>
+		<def>y = sin(x(1)+x(2)) + (x(1)-x(2))^2 - 1.5*x(1) + 2.5*x(2) + 1;</def>
+		<grad>not available</grad>
+		<hess>not available</hess>
+	</function>
+
+	<function>
 		<name>dixon_2_dim_func</name>
 		<var>x</var>
 		<def>y = (1-x(1))^2+(x(1)^2-x(2))^2+(1-x(2))^2;</def>
