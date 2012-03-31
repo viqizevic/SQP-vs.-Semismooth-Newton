@@ -127,6 +127,26 @@
 	</problem>
 	
 	<problem>
+		<function_name>schuldt_func</function_name>
+		<lambda>0.0001</lambda>
+		<a>[-20; 0]</a>
+		<b>[20; 20]</b>
+		<x0>[10; 1]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+	
+	<problem>
+		<function_name>asaadi_func</function_name>
+		<lambda>0.0001</lambda>
+		<a>[1; 0]</a>
+		<b>[20; 20]</b>
+		<x0>[1.125; 0.125]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+
+	<problem>
 		<function_name>dixon_2_dim_func</function_name>
 		<lambda>0.0001</lambda>
 		<a>[-10; -10]</a>

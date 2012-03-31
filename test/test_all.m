@@ -32,6 +32,12 @@ function test_all()
 	disp('test_bazaraa_shetty_func');
 	test_bazaraa_shetty_func();
 	disp(sprintf('\n'));
+	disp('test_schuldt_func');
+	test_schuldt_func();
+	disp(sprintf('\n'));
+	disp('test_asaadi_func');
+	test_asaadi_func();
+	disp(sprintf('\n'));
 	disp('test_dixon_2_dim_func');
 	test_dixon_2_dim_func();
 	disp(sprintf('\n'));

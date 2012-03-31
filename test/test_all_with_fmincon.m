@@ -30,6 +30,12 @@ function test_all_with_fmincon()
 	disp('test_bazaraa_shetty_func');
 	test_bazaraa_shetty_func_with_fmincon();
 	disp(sprintf('\n'));
+	disp('test_schuldt_func');
+	test_schuldt_func_with_fmincon();
+	disp(sprintf('\n'));
+	disp('test_asaadi_func');
+	test_asaadi_func_with_fmincon();
+	disp(sprintf('\n'));
 	disp('test_dixon_2_dim_func');
 	test_dixon_2_dim_func_with_fmincon();
 	disp(sprintf('\n'));

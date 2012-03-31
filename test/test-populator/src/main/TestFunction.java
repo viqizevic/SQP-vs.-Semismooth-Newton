@@ -68,7 +68,7 @@ public class TestFunction {
 	}
 
 	public String getGradient() {
-		if (usingApproximationDifferentiation || gradient == null) {
+		if (usingApproximationDifferentiation || gradient.equals("not available")) {
 			gradient = "g = approx_gradient('"+name+"',x,"+eps+");";
 		}
 		return gradient;
@@ -79,7 +79,7 @@ public class TestFunction {
 	}
 
 	public String getHessianMatrix() {
-		if (usingApproximationDifferentiation || hessianMatrix == null) {
+		if (usingApproximationDifferentiation || hessianMatrix.equals("not available")) {
 			hessianMatrix = "H = approx_hessian('"+name+"',x,"+eps+");";
 		}
 		return hessianMatrix;
