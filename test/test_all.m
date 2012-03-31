@@ -35,6 +35,9 @@ function test_all()
 	disp('test_dixon_2_dim_func');
 	test_dixon_2_dim_func();
 	disp(sprintf('\n'));
+	disp('test_dixon_2_dim_func_1');
+	test_dixon_2_dim_func_1();
+	disp(sprintf('\n'));
 	disp('test_dixon_3_dim_func');
 	test_dixon_3_dim_func();
 	disp(sprintf('\n'));

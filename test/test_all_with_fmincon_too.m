@@ -35,6 +35,9 @@ function test_all_with_fmincon_too()
 	disp('test_dixon_2_dim_func');
 	test_dixon_2_dim_func_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_dixon_2_dim_func_1');
+	test_dixon_2_dim_func_1_with_fmincon_too();
+	disp(sprintf('\n'));
 	disp('test_dixon_3_dim_func');
 	test_dixon_3_dim_func_with_fmincon_too();
 	disp(sprintf('\n'));

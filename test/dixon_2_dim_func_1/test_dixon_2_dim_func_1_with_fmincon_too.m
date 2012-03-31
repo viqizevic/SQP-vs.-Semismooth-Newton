@@ -1,12 +1,12 @@
-function test_dixon_2_dim_func_with_fmincon_too()
-	lambda = 0.0001;
+function test_dixon_2_dim_func_1_with_fmincon_too()
+	lambda = 0.001;
 	a = [-10; -10];
-	b = [10; 10];
-	x0 = [1.5; 1.5];
+	b = [2; -5];
+	x0 = [-6; -7];
 	tol = 0.001;
 	itmax = 500;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_2_dim_func','grad_dixon_2_dim_func','hess_dixon_2_dim_func',lambda,a,b,x0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_2_dim_func_1','grad_dixon_2_dim_func_1','hess_dixon_2_dim_func_1',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
@@ -15,7 +15,7 @@ function test_dixon_2_dim_func_with_fmincon_too()
 	A = [ -eye(length(a)); eye(length(b)) ];
 	c = [ -a; b ];
 	tic;
-	[x_sqp,fval_sqp,it_sqp] = sqp('dixon_2_dim_func_v0','grad_dixon_2_dim_func_v0','hess_dixon_2_dim_func_v0',A,c,x0,itmax,tol);
+	[x_sqp,fval_sqp,it_sqp] = sqp('dixon_2_dim_func_1_v0','grad_dixon_2_dim_func_1_v0','hess_dixon_2_dim_func_1_v0',A,c,x0,itmax,tol);
 	t_sqp = toc;
 	x2 = sprintf('%.3f ',x_sqp);
 	f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
@@ -23,7 +23,7 @@ function test_dixon_2_dim_func_with_fmincon_too()
 	str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
 	options = optimset('Algorithm','active-set','Display','off');
 	tic;
-	[x_fmc,fval_fmc,exitflag,output] = fmincon('dixon_2_dim_func_v0',x0,[],[],[],[],a,b,[],options);
+	[x_fmc,fval_fmc,exitflag,output] = fmincon('dixon_2_dim_func_1_v0',x0,[],[],[],[],a,b,[],options);
 	t_fmc = toc;
 	x3 = sprintf('%.3f ',x_fmc);
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);

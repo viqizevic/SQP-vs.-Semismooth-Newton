@@ -31,11 +31,11 @@ function [x,fval,it] = active_set_strategy(f,gradf,hessf,lambda,a,b,x0,m0,itmax,
 					v(k) = 2;
 				end
 			end
-        end
-        
-        A = [lambda*eye(n) eye(n);
+		end
+		
+		A = [lambda*eye(n) eye(n);
               zeros(n,2*n)];
-        y = zeros(n,1);
+		y = zeros(n,1);
 		for k=1:n
 			if (v(k) == 2)
 				A(n+k,n+k) = 1;
@@ -99,53 +99,6 @@ function [w,it] = newton_solve(fvec,fjac,w0,itmax,tol)
 	it = k;
 end
 
-function w = projection(v,a,b)
-	% return max(a,min(v,b));
-	n = length(v);
-	if (length(a) ~= n || length(b) ~= n)
-		error ('We have dimension problem here.');
-	end
-	for k=1:n
-		if (a(k) > b(k))
-			error ('It should be a <= b.');
-		end
-    end
-	w = max(a,min(v,b));
-end
-
-function W = grad_projection(v,a,b)
-	% W = [w_ij]
-	% w_kk := 1 if the projection of v_k equals to v_k
-	% otherwise w_kk := 0
-	% for k in {1,...,n}
-	% w_ij = 0 if i ~= j
-	w = projection(v,a,b);
-	n = length(v);
-	for k=1:n
-		if (w(k) == v(k))
-			w(k) = 1;
-		else
-			w(k) = 0;
-		end
-  end
-	W = diag(w);
-end
-
-function sigma = armijo_increment(f,gradf,lambda,x,d,delta,gamma,beta)
-	sigma = -(gamma/(norm(d)^2))*complete_gradf(gradf,lambda,x)'*d;
-	while( true )
-		if( complete_f(f,lambda,x+sigma*d) <= complete_f(f,lambda,x)+delta*sigma*complete_gradf(gradf,lambda,x)'*d )
-			break; % fertig
-		end
-		% verkleinere sigma
-		sigma = beta * sigma;
-	end
-end
-
 function y = complete_f(f,lambda,x)
 	y = feval(f,x) + (lambda/2)*norm(x)^2;
-end
-
-function g = complete_gradf(gradf,lambda,x)
-	g = feval(gradf,x) + lambda*x;
 end
