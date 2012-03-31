@@ -90,7 +90,14 @@ public class Main {
 		testTemplates.add(dataPath+"test.tpl");
 		testTemplates.add(dataPath+"testWithFmincon.tpl");
 		
+		boolean usingApproxDiff = true;
+		// set this to false to use given gradient and hessian definitions
+		// set to true to approximate all gradient and hessian
+		
 		for (TestProblem p : testProblems) {
+			if (usingApproxDiff) {
+				p.getTestFunction().setUsingApproximationDifferentiation(usingApproxDiff);
+			}
 			MFileCreator.create(p, testDirPath+p.getTestProblemName(), testTemplates);
 		}
 		

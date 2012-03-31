@@ -1,4 +1,3 @@
 function H = hess_rosenbrock_func(x)
-	H = [ 1200*x(1)^2-400*x(2)+2  -400*x(1);
-              -400*x(1)              200  ];
+	H = approx_hessian('rosenbrock_func',x,0.001);
 end

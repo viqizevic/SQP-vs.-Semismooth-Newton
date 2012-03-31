@@ -15,10 +15,15 @@ public class TestFunction {
 	private String gradient;
 	
 	private String hessianMatrix;
+	
+	private boolean usingApproximationDifferentiation;
+	
+	private String eps;
 
 	public TestFunction(String name) {
 		this.name = name;
 		constants = new HashMap<String, String>();
+		eps = "0.001";
 	}
 
 	public String getName() {
@@ -57,7 +62,15 @@ public class TestFunction {
 		this.definition = definition;
 	}
 
+	public void setUsingApproximationDifferentiation(
+			boolean usingApproximationDifferentiation) {
+		this.usingApproximationDifferentiation = usingApproximationDifferentiation;
+	}
+
 	public String getGradient() {
+		if (usingApproximationDifferentiation || gradient == null) {
+			gradient = "g = approx_gradient('"+name+"',x,"+eps+");";
+		}
 		return gradient;
 	}
 
@@ -66,6 +79,9 @@ public class TestFunction {
 	}
 
 	public String getHessianMatrix() {
+		if (usingApproximationDifferentiation || hessianMatrix == null) {
+			hessianMatrix = "H = approx_hessian('"+name+"',x,"+eps+");";
+		}
 		return hessianMatrix;
 	}
 
