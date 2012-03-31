@@ -1,7 +1,7 @@
 function test_rosenbrock_func_1()
     lambda = 0.001;
-    a = [-2; -2];
-    b = [0; 2];
+    a = [-2; 1.5];
+    b = [0; 5];
     x0 = [-1; 2];
     m0 = zeros(2,1);
     tol = 0.00000001;

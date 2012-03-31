@@ -1,7 +1,7 @@
 function test_rosenbrock_func_with_fmincon_too()
 	lambda = 0.001;
-	a = [-10; -20];
-	b = [10; 20];
+	a = [-10; -10];
+	b = [10; 10];
 	x0 = [-1; 2];
 	tol = 0.0000001;
 	itmax = 100;
