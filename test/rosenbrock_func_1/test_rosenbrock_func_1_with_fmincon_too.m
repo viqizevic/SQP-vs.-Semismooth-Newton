@@ -1,10 +1,10 @@
 function test_rosenbrock_func_1_with_fmincon_too()
-	lambda = 0.000000001;
-	a = [-2; -2];
-	b = [0; 2];
-	x0 = [-1.9; 2];
-	tol = 0.0001;
-	itmax = 2000;
+	lambda = 0.001;
+	a = [-2; 1.5];
+	b = [0; 5];
+	x0 = [-1; 2];
+	tol = 0.00000001;
+	itmax = 100;
 	tic;
 	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('rosenbrock_func_1','grad_rosenbrock_func_1','hess_rosenbrock_func_1',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;

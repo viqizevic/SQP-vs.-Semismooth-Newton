@@ -1,10 +1,10 @@
 function test_dixon_func_1_with_fmincon_too()
-	lambda = 0.0000000001;
+	lambda = 0.001;
 	a = [2; -10; -10; -10; -10; -10; -10; -10; -10; -10];
 	b = [10; 10; 10; 10; 10; 10; 10; 10; 10; 10];
 	x0 = [10; 10; 10; 10; 10; 10; 10; 10; 10; 10];
 	tol = 0.001;
-	itmax = 1000;
+	itmax = 500;
 	tic;
 	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_func_1','grad_dixon_func_1','hess_dixon_func_1',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;

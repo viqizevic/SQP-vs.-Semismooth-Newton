@@ -78,67 +78,77 @@
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<lambda>0.000000001</lambda>
-		<a>[-10; -20]</a>
-		<b>[10; 20]</b>
-		<x0>[-1.9; 2]</x0>
-		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<lambda>0.001</lambda>
+		<a>[-10; -10]</a>
+		<b>[10; 10]</b>
+		<x0>[-1; 2]</x0>
+		<tolerance>0.0000001</tolerance>
+		<max_iteration>100</max_iteration>
 	</problem>
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<lambda>0.000000001</lambda>
-		<a>[-2; -2]</a>
-		<b>[0; 2]</b>
-		<x0>[-1.9; 2]</x0>
-		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<lambda>0.001</lambda>
+		<a>[-2; 1.5]</a>
+		<b>[0; 5]</b>
+		<x0>[-1; 2]</x0>
+		<tolerance>0.00000001</tolerance>
+		<max_iteration>100</max_iteration>
 	</problem>
 
 	<problem>
 		<function_name>himmelblau_func</function_name>
-		<lambda>0.000000001</lambda>
+		<lambda>0.001</lambda>
 		<a>[-20; -20]</a>
 		<b>[20; 20]</b>
 		<x0>[5; 5]</x0>
 		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<max_iteration>200</max_iteration>
 	</problem>
 
     <problem>
         <function_name>himmelblau_func</function_name>
-        <lambda>0.000000001</lambda>
+        <lambda>0.01</lambda>
         <a>[5; 5]</a>
         <b>[20; 20]</b>
         <x0>[15; 15]</x0>
         <tolerance>0.0001</tolerance>
-        <max_iteration>10</max_iteration>
+        <max_iteration>100</max_iteration>
     </problem>
 	
 	<problem>
 		<function_name>bazaraa_shetty_func</function_name>
-		<lambda>0.000000001</lambda>
+		<lambda>0.0001</lambda>
 		<a>[-20; -20]</a>
 		<b>[20; 20]</b>
 		<x0>[5; 5]</x0>
 		<tolerance>0.0001</tolerance>
-		<max_iteration>2000</max_iteration>
+		<max_iteration>200</max_iteration>
 	</problem>
 	
 	<problem>
 		<function_name>dixon_2_dim_func</function_name>
-		<lambda>0.0000000001</lambda>
+		<lambda>0.0001</lambda>
 		<a>[-10; -10]</a>
 		<b>[10; 10]</b>
 		<x0>[1.5; 1.5]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
 	</problem>
+	
+	<problem>
+		<function_name>dixon_2_dim_func</function_name>
+		<lambda>0.001</lambda>
+		<a>[-10; -10]</a>
+		<b>[2; -5]</b>
+		<x0>[-6; -7]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
 
 	<problem>
 		<function_name>dixon_3_dim_func</function_name>
-		<lambda>0.0000000001</lambda>
+		<lambda>0.0001</lambda>
 		<a>[-10; -10; -10]</a>
 		<b>[10; 10; 10]</b>
 		<x0>[1.5; 1.5; 1.5]</x0>
@@ -148,7 +158,7 @@
 
 	<problem>
 		<function_name>dixon_func</function_name>
-		<lambda>0.0000000001</lambda>
+		<lambda>0.0001</lambda>
 		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
@@ -158,22 +168,56 @@
 
 	<problem>
 		<function_name>dixon_func</function_name>
-		<lambda>0.0000000001</lambda>
+		<lambda>0.001</lambda>
 		<a>[2; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
+		<max_iteration>500</max_iteration>
 	</problem>
 	
 	<problem>
 		<function_name>dixon_func</function_name>
-		<lambda>0.0000000001</lambda>
+		<lambda>0.001</lambda>
 		<a>[3; 3; 3; 3; 3; 2; 2; 2; 2; 2]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
+		<max_iteration>500</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>dixon_func</function_name>
+		<lambda>0.001</lambda>
+		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
+		<b>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5]</b>
+		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+	
+	<problem>
+		<function_name>dixon_func</function_name>
+		<lambda>0.001</lambda>
+		<a>[3; -3; 5; 3; 2]</a>
+		<b>[7; 0; 5; 10; 14]</b>
+		<x0>[4; -1; 5; 4; 7]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+
+	<!--problem>
+		<function_name>dixon_func</function_name>
+        <constant>
+            <constant_name>n</constant_name>
+            <constant_value>20</constant_value>
+        </constant>
+		<lambda>0.001</lambda>
+		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
+		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
 	</problem>
 
 	<problem>
@@ -182,12 +226,12 @@
             <constant_name>n</constant_name>
             <constant_value>20</constant_value>
         </constant>
-		<lambda>0.0000000001</lambda>
+		<lambda>0.001</lambda>
 		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
-		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
-		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<b>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5 ]</b>
+		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
+		<max_iteration>500</max_iteration>
 	</problem>
 
 	<problem>
@@ -196,12 +240,12 @@
             <constant_name>n</constant_name>
             <constant_value>40</constant_value>
         </constant>
-		<lambda>0.0000000001</lambda>
+		<lambda>0.001</lambda>
 		<a>[2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
-		<max_iteration>1000</max_iteration>
-	</problem>
+		<max_iteration>500</max_iteration>
+	</problem-->
 
 </problems>

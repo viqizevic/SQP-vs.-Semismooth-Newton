@@ -15,25 +15,93 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+/**
+ * This is a project for a bachelor thesis using Matlab
+ * comparing two methods of the nonlinear optimization:
+ * SQP and Semismooth-Newton.
+ * 
+ * This Java project should create the needed Matlab test files.
+ * Therefore is the name of this project: Matlab-Test-Files-Creator.
+ * 
+ * This class is called Main, since it is the only one that has a main function.
+ * The main function reads the xml files
+ * containing the test functions and the test problems
+ * and then calls the file creator.
+ * 
+ * Directories tree:
+ * |
+ * |-- Eclipse-Workspace
+ * |     |-- Matlab-Test-Files-Creator
+ * |
+ * |-- SQP-vs.-Semismooth-Newton
+ *       |-- tex
+ *       |-- test
+ *             |-- 1st_test_problem_func
+ *             |-- ...
+ *             |-- n-th_test_problem_func
+ *             |-- test-populator
+ *                   |-- src
+ *                         |-- data
+ *                         |-- main
+ * 
+ * @author Vicky H. Tanzil
+ */
 public class Main {
 	
+	/**
+	 * A hash map containing all test functions as values
+	 * and the functions names as keys.
+	 */
 	private static HashMap<String, TestFunction> testFunctions = new HashMap<String, TestFunction>();
-	
+
+	/**
+	 * A hash map with the functions names as keys
+	 * and the number of occurence of this function in the test problems.
+	 * Needed for naming the test file of the problems.
+	 */
 	private static HashMap<String, Integer> functionOccurences = new HashMap<String, Integer>();
 	
+	/**
+	 * A list containing all test problems.
+	 */
 	private static LinkedList<TestProblem> testProblems = new LinkedList<TestProblem>();
 	
-	private static String defaultTestDirectoryPath = "../../SQP-vs.-Semismooth-Newton/test/";
+	/**
+	 * The path to the test directory.
+	 * All the new test files created will be saved here.
+	 * See directories tree in the comment of this class.
+	 */
+	private static String testDirPath = "../../SQP-vs.-Semismooth-Newton/test/";
+	//private static String testDirPath = "../../minimix/SQP-vs.-Semismooth-Newton/test/";
+	// The last line over this line is to be used in grafix.math.tu-berlin.de (another directories tree)
 	
+	/**
+	 * The main function.
+	 * Reads the xml files containing the test functions and the test problems
+	 * and then calls the file creator.
+	 */
 	public static void main(String[] args) {
-		// Uncomment this next line if you are in grafix
-		//defaultTestDirectoryPath = "../../minimix/SQP-vs.-Semismooth-Newton/test/";
-		parseFunctionsFromXMLFile(defaultTestDirectoryPath+"test-populator/src/data/functions.xml");
-		parseProblemsFromXMLFile(defaultTestDirectoryPath+"test-populator/src/data/problems.xml");
+		String dataPath = testDirPath+"test-populator/src/data/";
+		
+		parseFunctionsFromXMLFile(dataPath+"functions.xml");
+		parseProblemsFromXMLFile(dataPath+"problems.xml");
+		
+		LinkedList<String> testTemplates = new LinkedList<String>();
+		testTemplates.add(dataPath+"test.tpl");
+		testTemplates.add(dataPath+"testWithFmincon.tpl");
+		
+		boolean usingApproxDiff = true;
+		// set this to false to use given gradient and hessian definitions
+		// set to true to approximate all gradient and hessian
+		
 		for (TestProblem p : testProblems) {
-			MFileCreator.create(p, defaultTestDirectoryPath+p.getTestProblemName());
+			if (usingApproxDiff) {
+				p.getTestFunction().setUsingApproximationDifferentiation(usingApproxDiff);
+			}
+			MFileCreator.create(p, testDirPath+p.getTestProblemName(), testTemplates);
 		}
-		MFileCreator.createMainTestFile(testProblems, "test_all", defaultTestDirectoryPath);
+		
+		MFileCreator.createMainTestFile(testProblems, "test_all", testDirPath);
 		System.out.println("Finish!");
 	}
 
