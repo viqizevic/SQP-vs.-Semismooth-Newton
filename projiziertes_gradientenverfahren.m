@@ -1,4 +1,4 @@
-% Function: [x,fval,it] = projiziertes_gradienenverfahren(f,gradf,hessf,lamda,a,b,x0,itmax,tol)
+% Function: [x,fval,it] = projiziertes_gradienenverfahren(f,gradf,lamda,a,b,x0,itmax,tol)
 %
 %  Projiziertes Gradienenverfahren solves the problem
 %        min ( f(x) + (lambda/2)*|x|^2 )
@@ -8,7 +8,7 @@
 %  Let f : R^n -> R
 %  lambda a real number
 %  a and b in R^n
-function [x,fval,it] = projiziertes_gradienenverfahren(f,gradf,lambda,a,b,x0,itmax,tol)
+function [x,fval,it] = projiziertes_gradientenverfahren(f,gradf,lambda,a,b,x0,itmax,tol)
 	x = x0;
 	n = length(x);
 	it = 0;
