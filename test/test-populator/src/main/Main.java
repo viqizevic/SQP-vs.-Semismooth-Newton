@@ -87,8 +87,8 @@ public class Main {
 		parseProblemsFromXMLFile(dataPath+"problems.xml");
 		
 		LinkedList<String> testTemplates = new LinkedList<String>();
-		testTemplates.add(dataPath+"test.template");
-		testTemplates.add(dataPath+"testWithFmincon.template");
+		testTemplates.add(dataPath+"test.tpl");
+		testTemplates.add(dataPath+"testWithFmincon.tpl");
 		
 		for (TestProblem p : testProblems) {
 			MFileCreator.create(p, testDirPath+p.getTestProblemName(), testTemplates);
