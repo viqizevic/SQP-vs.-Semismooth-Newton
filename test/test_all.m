@@ -41,6 +41,9 @@ function test_all()
 	disp('test_mccormick_func');
 	test_mccormick_func();
 	disp(sprintf('\n'));
+	disp('test_holzmann_func');
+	test_holzmann_func();
+	disp(sprintf('\n'));
 	disp('test_dixon_2_dim_func');
 	test_dixon_2_dim_func();
 	disp(sprintf('\n'));

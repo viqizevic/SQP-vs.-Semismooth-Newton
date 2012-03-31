@@ -155,6 +155,16 @@
 		<tolerance>0.0001</tolerance>
 		<max_iteration>200</max_iteration>
 	</problem>
+	
+	<problem>
+		<function_name>holzmann_func</function_name>
+		<lambda>0.00001</lambda>
+		<a>[0.1; 0; 0]</a>
+		<b>[100; 25.6; 5]</b>
+		<x0>[100; 12.5; 3]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>200</max_iteration>
+	</problem>
 
 	<problem>
 		<function_name>dixon_2_dim_func</function_name>
