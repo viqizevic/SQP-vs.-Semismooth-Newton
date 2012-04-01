@@ -225,7 +225,11 @@ public class MFileCreator {
 	}
 	
 	public static void createMainTestFile(LinkedList<TestProblem> list, String fileName, String directoryPath) {
+		if (list.isEmpty()) {
+			return;
+		}
 		MFileCreator mFileCreator = new MFileCreator(list.getFirst(), directoryPath);
+		// create a dummy MFileCreator object, to be able to use the createFile() method
 		String content1 = "function " + fileName + "()\n";
 		String content2 = "function " + fileName + withFminconToo + "()\n";
 		String content3 = "function " + fileName + withFmincon + "()\n";

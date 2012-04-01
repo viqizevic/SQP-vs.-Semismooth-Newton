@@ -41,9 +41,6 @@ function test_all_with_fmincon_too()
 	disp('test_mccormick_func');
 	test_mccormick_func_with_fmincon_too();
 	disp(sprintf('\n'));
-	disp('test_holzmann_func');
-	test_holzmann_func_with_fmincon_too();
-	disp(sprintf('\n'));
 	disp('test_dixon_2_dim_func');
 	test_dixon_2_dim_func_with_fmincon_too();
 	disp(sprintf('\n'));
@@ -67,5 +64,8 @@ function test_all_with_fmincon_too()
 	disp(sprintf('\n'));
 	disp('test_dixon_func_4');
 	test_dixon_func_4_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_colville_func');
+	test_colville_func_with_fmincon_too();
 	disp(sprintf('\n'));
 end

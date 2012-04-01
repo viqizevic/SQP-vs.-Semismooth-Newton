@@ -92,7 +92,7 @@
 		<hess>not available</hess>
 	</function>
 
-	<function>
+	<!--function>
 		<name>holzmann_func</name>
 		<var>x</var>
 		<def>
@@ -104,7 +104,7 @@
 		</def>
 		<grad>not available</grad>
 		<hess>not available</hess>
-	</function>
+	</function-->
 
 	<function>
 		<name>dixon_2_dim_func</name>
@@ -174,6 +174,15 @@
 	end
 	H(n,n) = 4;
         </hess>
+	</function>
+
+	<function>
+		<name>colville_func</name>
+		<var>x</var>
+		<def>y = 100*(x(2)-x(1)^2)^2 + (1-x(1))^2 + 90*(x(4)-x(3)^2)^2 + (1-x(3))^2 ...
+				 + 10.1*((x(2)-1)^2 + (x(4)-1)^2) + 19.8*(x(2)-1)*(x(4)-1);</def>
+		<grad>not available</grad>
+		<hess>not available</hess>
 	</function>
 	
 </functions>
