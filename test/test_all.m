@@ -68,4 +68,7 @@ function test_all()
 	disp('test_colville_func');
 	test_colville_func();
 	disp(sprintf('\n'));
+	disp('test_betts_func');
+	test_betts_func();
+	disp(sprintf('\n'));
 end

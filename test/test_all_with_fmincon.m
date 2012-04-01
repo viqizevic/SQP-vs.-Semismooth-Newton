@@ -66,4 +66,7 @@ function test_all_with_fmincon()
 	disp('test_colville_func');
 	test_colville_func_with_fmincon();
 	disp(sprintf('\n'));
+	disp('test_betts_func');
+	test_betts_func_with_fmincon();
+	disp(sprintf('\n'));
 end

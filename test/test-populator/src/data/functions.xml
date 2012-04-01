@@ -184,5 +184,13 @@
 		<grad>not available</grad>
 		<hess>not available</hess>
 	</function>
+
+	<function>
+		<name>betts_func</name>
+		<var>x</var>
+		<def>y = 2 - (1/120)*x(1)*x(2)*x(3)*x(4)*x(5);</def>
+		<grad>not available</grad>
+		<hess>not available</hess>
+	</function>
 	
 </functions>

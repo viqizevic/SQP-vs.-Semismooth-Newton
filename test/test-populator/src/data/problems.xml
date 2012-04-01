@@ -301,5 +301,15 @@
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
+	
+	<problem>
+		<function_name>betts_func</function_name>
+		<lambda>0.001</lambda>
+		<a>[0; 0; 0; 0; 0]</a>
+		<b>[1; 2; 3; 4; 5]</b>
+		<x0>[0; 2; 2; 3; 2]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
 
 </problems>
