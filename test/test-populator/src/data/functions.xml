@@ -193,4 +193,20 @@
 		<hess>not available</hess>
 	</function>
 	
+	<function>
+		<name>paviani_func</name>
+		<var>x</var>
+		<def>
+	y = 0;
+	u = 1;
+	for k=1:10
+		y = y + ( (log(x(k)-2))^2 + (log(10-x(k)))^2 );
+		u = u*x(k);
+	end
+	y = y - u^2;
+		</def>
+		<grad>not available</grad>
+		<hess>not available</hess>
+	</function>
+	
 </functions>

@@ -71,4 +71,7 @@ function test_all()
 	disp('test_betts_func');
 	test_betts_func();
 	disp(sprintf('\n'));
+	disp('test_paviani_func');
+	test_paviani_func();
+	disp(sprintf('\n'));
 end

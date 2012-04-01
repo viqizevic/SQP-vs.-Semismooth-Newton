@@ -71,4 +71,7 @@ function test_all_with_fmincon_too()
 	disp('test_betts_func');
 	test_betts_func_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_paviani_func');
+	test_paviani_func_with_fmincon_too();
+	disp(sprintf('\n'));
 end

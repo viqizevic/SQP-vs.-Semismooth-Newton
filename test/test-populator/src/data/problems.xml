@@ -311,5 +311,15 @@
 		<tolerance>0.0001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
+	
+	<problem>
+		<function_name>paviani_func</function_name>
+		<lambda>0.001</lambda>
+		<a>[2; 2; 2; 2; 2; 2; 2; 2; 2; 2]</a>
+		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<x0>[9; 9; 9; 9; 9; 9; 9; 9; 9; 9]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
 
 </problems>

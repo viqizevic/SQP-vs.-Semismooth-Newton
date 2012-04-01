@@ -69,4 +69,7 @@ function test_all_with_fmincon()
 	disp('test_betts_func');
 	test_betts_func_with_fmincon();
 	disp(sprintf('\n'));
+	disp('test_paviani_func');
+	test_paviani_func_with_fmincon();
+	disp(sprintf('\n'));
 end
