@@ -152,6 +152,9 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 		% Setze x_{k+1} := x_k + sigma_k*d_k und k = k+1.
 		%
 		x_k = x_k + sigma_k*d_k;
+		if sigma_k == 0
+			break;
+		end
 		k = k+1;
 		if k >= itmax
 			break;

@@ -1,15 +1,15 @@
-function test_paviani_func_with_fmincon_too()
+function test_paviani_func_1_with_fmincon_too()
     lambda = 0.001;
     a = [3; 3];
     b = [9; 9];
-    x0 = [4; 5];
+    x0 = [6; 6];
     tol = 0.001;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     options = optimset('Algorithm','active-set','Display','off');
     tic;
-    [x_as,fval_as,exitflag,output] = fmincon('paviani_func_v0',x0,[],[],[],[],a,b,[],options);
+    [x_as,fval_as,exitflag,output] = fmincon('paviani_func_1_v0',x0,[],[],[],[],a,b,[],options);
     t_as = toc;
     x1 = sprintf('%.3f ',x_as);
     f1 = sprintf('f(x_as) = %.3f',fval_as);
@@ -17,7 +17,7 @@ function test_paviani_func_with_fmincon_too()
     str1 = ['x_as = [ ', x1, '], ', f1, ', ', t1];
     options = optimset('Algorithm','sqp','Display','off');
     tic;
-    [x_sqp,fval_sqp,exitflag,output] = fmincon('paviani_func_v0',x0,[],[],[],[],a,b,[],options);
+    [x_sqp,fval_sqp,exitflag,output] = fmincon('paviani_func_1_v0',x0,[],[],[],[],a,b,[],options);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);

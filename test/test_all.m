@@ -74,4 +74,7 @@ function test_all()
 	disp('test_paviani_func');
 	test_paviani_func();
 	disp(sprintf('\n'));
+	disp('test_paviani_func_1');
+	test_paviani_func_1();
+	disp(sprintf('\n'));
 end

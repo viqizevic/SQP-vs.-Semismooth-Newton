@@ -74,4 +74,7 @@ function test_all_with_fmincon_too()
 	disp('test_paviani_func');
 	test_paviani_func_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_paviani_func_1');
+	test_paviani_func_1_with_fmincon_too();
+	disp(sprintf('\n'));
 end

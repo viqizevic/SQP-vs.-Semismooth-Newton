@@ -1,8 +1,8 @@
 function test_betts_func_with_fmincon_too()
     lambda = 0.001;
-    a = [0; 0; 0; 0; 0];
-    b = [1; 2; 3; 4; 5];
-    x0 = [0; 2; 2; 3; 2];
+    a = [0.25; 0.25];
+    b = [1; 2];
+    x0 = [0.5; 1.5];
     tol = 0.0001;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];

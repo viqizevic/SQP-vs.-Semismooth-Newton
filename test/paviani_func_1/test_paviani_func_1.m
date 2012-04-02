@@ -1,14 +1,14 @@
-function test_betts_func()
+function test_paviani_func_1()
     lambda = 0.001;
-    a = [0.25; 0.25];
-    b = [1; 2];
-    x0 = [0.5; 1.5];
+    a = [3; 3];
+    b = [9; 9];
+    x0 = [6; 6];
     m0 = zeros(2,1);
-    tol = 0.0001;
+    tol = 0.001;
     itmax = 100;
     tic;
-    [x_ssn,fval_ssn,it_ssn] = active_set_strategy('betts_func','grad_betts_func','hess_betts_func',lambda,a,b,x0,m0,itmax,tol);
-    %[x_ssn,fval_ssn,it_ssn] = semismooth_newton('betts_func','grad_betts_func','hess_betts_func',lambda,a,b,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = active_set_strategy('paviani_func_1','grad_paviani_func_1','hess_paviani_func_1',lambda,a,b,x0,m0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = semismooth_newton('paviani_func_1','grad_paviani_func_1','hess_paviani_func_1',lambda,a,b,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
@@ -17,7 +17,7 @@ function test_betts_func()
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('betts_func_v0','grad_betts_func_v0','hess_betts_func_v0',A,c,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('paviani_func_1_v0','grad_paviani_func_1_v0','hess_paviani_func_1_v0',A,c,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
