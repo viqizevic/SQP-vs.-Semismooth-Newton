@@ -1,67 +1,57 @@
 \chapter{Einführung}
-%\section{}
 
-Die Mathematik hat schon immer eine enge Beziehung mit Optimierung.
-Viele Theorien wurden entwickelt, um eine Optimierungsaufgabe zu lösen.
-In der Industrie werden immer wieder gefragt, wie man einen maximalen Gewinn
-erzielen kann.
-Oft ist auch die Frage wie man etwas minimieren kann,
-wie zum Beispiel die gebrauchte Stoffe.
-Optimierung spielt immer wieder eine wichtige Rolle,
-wenn es um eine Entscheidung geht.
+Die nichtlineare Optimierung ist ein bedeutendes Gebiet der Mathematik.
+Sie findet immer wieder Anwendungen in der schwierigen Problemen der Technik und
+der Wirtschaft. Es wurden viele Verfahren entwickelt, um nichtlineare
+Optimierungsprobleme zu lösen. In dieser Arbeit werden zwei Verfahren, das
+halbglatte Newton-Verfahren und das SQP-Verfahren, betrachtet und verglichen.
 
-Im Alltag optimiert man auch oft unbewusst.
-Wenn man beispielsweise verreisen will, vorbereitet man dann sein Gepäck.
-Dabei versucht man so viele Dinge wie möglich in den Koffer
-einzupacken, damit man alle Sachen mitbringen kann,
-die man nachher braucht.
-(Das ist wie das Problem der Dieben mit den Sacken)
+Das SQP-Verfahren gehört zu den bekanntesten Verfahren der nichtlinearen
+Optimierung. Es wurde schon seit den 60er Jahren entwickelt und wurde in vielen
+Optimierungsproblemen angewendet sowie weiterentwickelt. Das halbglatte
+Newton-Verfahren ist weniger bekannt als das SQP-Verfahren. Es basiert aber auf
+das bekannte Newton-Verfahren.
 
-Die erste Optimierungsaufgabe? (Euler? Lagrange?)
+\section{Optimierungsprobleme}
 
-Zur Optimierung gehören folgende:
-\begin{itemize}
-\item Zielfunktion
-\item Variablen
-\item Bedingungen
-\end{itemize}
+Allgemein ist die Aufgabenstellung der nichtlinearen Optimierung wie folgt
+definiert:
+\begin{equation}
+  \min_{x \in \F} f(x)
+\end{equation}
 
-Modellierung (kann zu kompliziert sein und sogar nicht lösbar => vereinfachen)
-
-Optimierungsalgorithmen
-
-Iterative Methode:
-\[ f(x^{k+1}) < f(x^k) \]
-
-
-Optimierung
-
-Aufgabenstellung
-
-
-
-Allgemein sieht die Aufgabenstellung bei der nichtlinearen Optimierung so aus:
-\[ \min_{x \in \F} f(x) \]
-
-$f:\R^n \rightarrow \R$ ist die sogennante Zielfunktion.
+Die Funktion $f:\R^n \rightarrow \R$ ist die sogennante Zielfunktion.
 $\F$ ist eine Teilmenge von $\R^n$, die man als Lösungsmenge bezeichnet.
 Alle Elemente von $\F$ werden als zulässige Punkte bezeichnet.
+$\F$ wird oft durch Nebenbedingungen definiert.
 
+Man kann hierbei den Unterschied zwischen der linearen Optimierung und der
+nichtlinearen Optimierung erkennen. Bei der linearen Optimierung muss die
+Zielfunktion linear sein und die Nebenbedingungen sind durch lineare
+Gleichungssysteme oder Ungleichungssyteme definiert. Bei der nichtlinearen
+Optimierung gibt es dagegen keine Einschränkung, wie die Zielfunktion und die
+Nebenbedingungen aussehen sollen.
+Für die lineare Optimierung ist ein in der Praxis sehr effizientes Verfahren
+bekannt. Man kann aber auch die Verfahren der nichtlinearen Optimierung für die
+linearen Optimierungsprobleme anwenden. Umgekehrt ist das aber nicht möglich.
 
+Ein einfaches Beispiel nichtlinearer Optimierung ist das Problem
+\[
+  \min_{x \in \R} (x-1)^2.
+\]
 
+Falls $\F = \R^n$ gilt, bezeichnet man das Optimierungsproblem als
+unrestringiert. Es besitzt also keine Nebenbedingungen. Ansonsten heißt es ein
+restingiertes Optimierungsproblem.
 
-Beispiel (mit Bild) 
-Ein einfaches Beispiel: $f(x) = (x-1)^2$
+% TODO: Minima?
 
+% TODO: Globale Optimierung vs. Lokale Optimierung
 
+% TODO?: Konvexität
 
-Minima?
+% TODO: Iterative Methode: \[ f(x^{k+1}) < f(x^k) \]
 
-Globale Optimierung vs. Lokale Optimierung
-Restringiert oder Unrestringiert
-Konvexität?
-Unrestringierte Optimierung?
+% TODO: Unrestringerte Optimierungsprobleme: Theorie und Verfahren
 
-
-Approximation der Gradient und Hesse-Matrix?
-
+% TODO: Approximation der Gradient und Hesse-Matrix?
