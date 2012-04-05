@@ -8,50 +8,118 @@ halbglatte Newton-Verfahren und das SQP-Verfahren, betrachtet und verglichen.
 
 Das SQP-Verfahren gehört zu den bekanntesten Verfahren der nichtlinearen
 Optimierung. Es wurde schon seit den 60er Jahren entwickelt und wurde in vielen
-Optimierungsproblemen angewendet sowie weiterentwickelt. Das halbglatte
-Newton-Verfahren ist weniger bekannt als das SQP-Verfahren. Es basiert aber auf
+Optimierungsproblemen als Standardwerkzeug angewendet sowie weiterentwickelt.
+Das halbglatte Newton-Verfahren ist weniger bekannt als das SQP-Verfahren. Es basiert aber auf
 das bekannte Newton-Verfahren.
+
+% TODO tell more about SQP and Semismooth-Newton
 
 \section{Optimierungsprobleme}
 
 Allgemein ist die Aufgabenstellung der nichtlinearen Optimierung wie folgt
 definiert:
 \begin{equation}
-  \min_{x \in \F} f(x)
+  \min_{x \in \F} f(x) \label{P} %TODO set to (P) not (1.1)
 \end{equation}
 
-Die Funktion $f:\R^n \rightarrow \R$ ist die sogennante Zielfunktion.
-$\F$ ist eine Teilmenge von $\R^n$, die man als Lösungsmenge bezeichnet.
+Die Funktion $f:D \subseteq \R^n \rightarrow \R$ ist die sogennante Zielfunktion.
+$D$ sei der Definitionsbereich von $f$.
+$\F$ sei eine Teilmenge von $D$, die man als Lösungsmenge bezeichnet.
 Alle Elemente von $\F$ werden als zulässige Punkte bezeichnet.
-$\F$ wird oft durch Nebenbedingungen definiert.
+$\F$ wird durch Nebenbedingungen definiert.
 
-Man kann hierbei den Unterschied zwischen der linearen Optimierung und der
-nichtlinearen Optimierung erkennen. Bei der linearen Optimierung muss die
-Zielfunktion linear sein und die Nebenbedingungen sind durch lineare
-Gleichungssysteme oder Ungleichungssyteme definiert. Bei der nichtlinearen
-Optimierung gibt es dagegen keine Einschränkung, wie die Zielfunktion und die
-Nebenbedingungen aussehen sollen.
+Man kann hierbei den Unterschied zwischen der linearen Optimierung und
+der nichtlinearen Optimierung erkennen.
+Bei der linearen Optimierung muss die Zielfunktion linear sein
+(d.h. die Zielfunktion besitzt die Form $f(x) = c^T x$, $c \in \R^n$)
+und die Nebenbedingungen sind durch lineare Gleichungssysteme oder
+Ungleichungssyteme definiert.
+Bei der nichtlinearen Optimierung gibt es dagegen keine Einschränkung,
+wie die Zielfunktion und die Nebenbedingungen aussehen sollen.
 Für die lineare Optimierung ist ein in der Praxis sehr effizientes Verfahren
-bekannt. Man kann aber auch die Verfahren der nichtlinearen Optimierung für die
-linearen Optimierungsprobleme anwenden. Umgekehrt ist das aber nicht möglich.
+bekannt. Aber die Verfahren der nichtlinearen Optimierung sind auch für die
+linearen Optimierungsprobleme anwendbar.
+Umgekehrt ist es jedoch nicht möglich.
 
 Ein einfaches Beispiel nichtlinearer Optimierung ist das Problem
 \[
   \min_{x \in \R} (x-1)^2.
 \]
 
-Falls $\F = \R^n$ gilt, bezeichnet man das Optimierungsproblem als
-unrestringiert. Es besitzt also keine Nebenbedingungen. Ansonsten heißt es ein
-restingiertes Optimierungsproblem.
+Falls $\F = D$ gilt,
+dann bezeichnet man das Optimierungsproblem als unrestringiert.
+Es besitzt also keine Nebenbedingungen.
+Ansonsten heißt es ein restingiertes Optimierungsproblem.
 
-% TODO: Minima?
+Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~(\ref{P}),
+wenn
+\begin{equation}
+  f(\xopt) \leq f(x) \qquad \forall x \in \F
+\end{equation}
+gilt.
+Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems~(\ref{P}),
+wenn
+\begin{equation}
+  f(\xopt) < f(x) \qquad \forall x \in \F\backslash\{\xopt\}
+\end{equation}
+gilt.
+Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~(\ref{P}), wenn für
+eine Umgebung $U(\xopt)$ von $\xopt$
+\begin{equation}
+  f(\xopt) \leq f(x) \qquad \forall x \in U(\xopt) \cap \F
+\end{equation}
+gilt.
+Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~(\ref{P}),
+wenn für eine Umgebung $U(\xopt)$ von $\xopt$
+\begin{equation}
+  f(\xopt) < f(x) \qquad \forall x \in U(\xopt) \cap \F\backslash\{\xopt\}
+\end{equation}
+gilt.
+Eine Umgebung von $\xopt$ ist einfach eine offene Menge, die $\xopt$ beinhaltet.
 
-% TODO: Globale Optimierung vs. Lokale Optimierung
+% x^4 \cos(1/x) + 2x^4 ?
+
+Wegen dieser Definitionen kommt die Unterscheidung zwischen der globalen
+und der lokalen Optimierung. Globale Optimierung versucht, globale Lösungen
+zu finden. Lokale Optimierung versucht dagegen, lokale Lösungen zu finden.
+Viele Verfahren finden lokale Lösungen, die jedoch nicht unbedingt
+globale Lösungen sind.
 
 % TODO?: Konvexität
 
 % TODO: Iterative Methode: \[ f(x^{k+1}) < f(x^k) \]
 
 % TODO: Unrestringerte Optimierungsprobleme: Theorie und Verfahren
+
+Wir betrachten nun das unrestringierte Optimierungsproblem
+\begin{equation}
+  \min_{x \in D} f(x). \label{PU}
+\end{equation}
+
+Notwendige Bedingung erster Ordnung:
+
+Seien $\xopt$ eine lokale Lösung des Problems~(\ref{PU}) und $f$ einmal
+stetig differenzierbar in einer Umgebung von $\xopt$, dann gilt
+\begin{equation}
+  \nabla f(\xopt) = 0
+\end{equation}
+
+Notwendige Bedingung zweiter Ordnung:
+
+Sei $\xopt$ eine lokale Lösung des Problems~(\ref{PU}) und es existiere
+die Hessian-Matrix $H_f$, die stetig in einer Umgebung von $\xopt$ sei,
+dann gilt
+\begin{equation}
+  \nabla f(\xopt) = 0
+  \text{ und }
+  H_f(\xopt) \text{ ist positiv semidefinit.}
+\end{equation}
+
+Hinreichende Bedingung zweiter Ordnung:
+
+Es existiere die Hessian-Matrix $H_f$, die stetig in einer Umgebung von $\xopt$
+sei, und es gelte $\nabla f(\xopt) = 0$ und $H_f(\xopt)$ sei positiv definit,
+dann ist $\xopt$ eine strikte Lösung des Problems~(\ref{PU}).
+
 
 % TODO: Approximation der Gradient und Hesse-Matrix?
