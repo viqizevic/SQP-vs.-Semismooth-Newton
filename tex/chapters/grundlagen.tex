@@ -19,7 +19,7 @@ das bekannte Newton-Verfahren.
 Allgemein ist die Aufgabenstellung der nichtlinearen Optimierung wie folgt
 definiert:
 \begin{equation}
-  \min_{x \in \F} f(x) \label{P}
+  \min_{x \in \F} f(x) \label{P} %TODO set to (P) not (1.1)
 \end{equation}
 
 Die Funktion $f:D \subseteq \R^n \rightarrow \R$ ist die sogennante Zielfunktion.
@@ -51,26 +51,26 @@ dann bezeichnet man das Optimierungsproblem als unrestringiert.
 Es besitzt also keine Nebenbedingungen.
 Ansonsten heißt es ein restingiertes Optimierungsproblem.
 
-Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems (\ref{P}),
+Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~(\ref{P}),
 wenn
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in \F
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems
-(\ref{P}), wenn
+Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems~(\ref{P}),
+wenn
 \begin{equation}
   f(\xopt) < f(x) \qquad \forall x \in \F\backslash\{\xopt\}
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems
-(\ref{P}), wenn für eine Umgebung $U(\xopt)$ von $\xopt$
+Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~(\ref{P}), wenn für
+eine Umgebung $U(\xopt)$ von $\xopt$
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in U(\xopt) \cap \F
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems
-(\ref{P}), wenn für eine Umgebung $U(\xopt)$ von $\xopt$
+Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~(\ref{P}),
+wenn für eine Umgebung $U(\xopt)$ von $\xopt$
 \begin{equation}
   f(\xopt) < f(x) \qquad \forall x \in U(\xopt) \cap \F\backslash\{\xopt\}
 \end{equation}
@@ -98,7 +98,7 @@ Wir betrachten nun das unrestringierte Optimierungsproblem
 
 Notwendige Bedingung erster Ordnung:
 
-Seien $\xopt$ eine lokale Lösung des Problems (\ref{PU}) und $f$ einmal
+Seien $\xopt$ eine lokale Lösung des Problems~(\ref{PU}) und $f$ einmal
 stetig differenzierbar in einer Umgebung von $\xopt$, dann gilt
 \begin{equation}
   \nabla f(\xopt) = 0
@@ -106,7 +106,7 @@ stetig differenzierbar in einer Umgebung von $\xopt$, dann gilt
 
 Notwendige Bedingung zweiter Ordnung:
 
-Sei $\xopt$ eine lokale Lösung des Problems (\ref{PU}) und es existiere
+Sei $\xopt$ eine lokale Lösung des Problems~(\ref{PU}) und es existiere
 die Hessian-Matrix $H_f$, die stetig in einer Umgebung von $\xopt$ sei,
 dann gilt
 \begin{equation}
@@ -119,7 +119,7 @@ Hinreichende Bedingung zweiter Ordnung:
 
 Es existiere die Hessian-Matrix $H_f$, die stetig in einer Umgebung von $\xopt$
 sei, und es gelte $\nabla f(\xopt) = 0$ und $H_f(\xopt)$ sei positiv definit,
-dann ist $\xopt$ eine strikte Lösung des Problems (\ref{PU}).
+dann ist $\xopt$ eine strikte Lösung des Problems~(\ref{PU}).
 
 
 % TODO: Approximation der Gradient und Hesse-Matrix?
