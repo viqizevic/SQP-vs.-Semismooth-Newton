@@ -33,24 +33,25 @@ function [x,fval,it] = active_set_strategy(f,gradf,hessf,lambda,a,b,x0,m0,itmax,
 			end
 		end
 		
-		H = feval(hessf,x);
-		A = [H+lambda*eye(n) eye(n);
-						zeros(n,2*n)];
-		y = [H*x - feval(gradf,x);
-						zeros(n,1)];
+		A = [lambda*eye(n) eye(n);
+              zeros(n,2*n)];
+		y = zeros(n,1);
 		for k=1:n
 			if (v(k) == 2)
 				A(n+k,n+k) = 1;
 			else
 				A(n+k,k) = 1;
 				if (v(k) == 3)
-					y(n+k) = a(k);
+					y(k) = a(k);
 				else
-					y(n+k) = b(k);
+					y(k) = b(k);
 				end
 			end
 		end
-		w = A\y;
+		fh = @(u) A*[u(1:n,1);u(n+1:2*n,1)] + [feval(gradf,u(1:n,1));-y];
+		fhjac = @(u) A + [feval(hessf,u(1:n,1)) zeros(n,n); zeros(n,2*n)];
+		[w,it2] = newton_solve(fh,fhjac,[x;m],itmax,tol);
+		it = it + it2;
 		x = w(1:n,1);
 		m = w(n+1:2*n,1);
 		
@@ -75,4 +76,29 @@ function [x,fval,it] = active_set_strategy(f,gradf,hessf,lambda,a,b,x0,m0,itmax,
 		end
 	end
 	fval = complete_f(f,lambda,x);
+end
+
+function [w,it] = newton_solve(fvec,fjac,w0,itmax,tol)
+	w = w0;
+	k = 0;
+	stop = false;
+	if (norm(fvec(w)) < tol)
+		stop = true;
+	end
+	while (~stop)
+		k = k+1;
+		d = - fjac(w) \ fvec(w);
+		w = w + d;
+		if (norm(fvec(w)) < tol)
+			stop = true;
+		end
+		if (k >= itmax)
+			stop = true;
+		end
+	end
+	it = k;
+end
+
+function y = complete_f(f,lambda,x)
+	y = feval(f,x) + (lambda/2)*norm(x)^2;
 end
