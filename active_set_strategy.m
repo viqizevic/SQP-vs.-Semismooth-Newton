@@ -50,7 +50,6 @@ function [x,fval,it] = active_set_strategy(f,gradf,hessf,lambda,a,b,x0,m0,itmax,
 				end
 			end
 		end
-		A
 		w = A\y;
 		x = w(1:n,1);
 		m = w(n+1:2*n,1);
