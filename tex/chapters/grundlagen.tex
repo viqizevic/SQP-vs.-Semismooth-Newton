@@ -1,7 +1,7 @@
 \chapter{Einführung}
 
 Die nichtlineare Optimierung ist ein bedeutendes Gebiet der Mathematik.
-Sie findet immer wieder Anwendungen in der schwierigen Problemen der Technik und
+Sie findet immer wieder Anwendungen in den schwierigen Problemen der Technik und
 der Wirtschaft. Es wurden viele Verfahren entwickelt, um nichtlineare
 Optimierungsprobleme zu lösen. In dieser Arbeit werden zwei Verfahren, das
 halbglatte Newton-Verfahren und das SQP-Verfahren, betrachtet und verglichen.
@@ -16,17 +16,18 @@ das bekannte Newton-Verfahren.
 
 \section{Optimierungsprobleme}
 
+\begin{definition}
 Allgemein ist die Aufgabenstellung der nichtlinearen Optimierung wie folgt
 definiert:
 \begin{equation}
   \min_{x \in \F} f(x) \label{P} %TODO set to (P) not (1.1)
 \end{equation}
-
 Die Funktion $f:D \subseteq \R^n \rightarrow \R$ ist die sogennante Zielfunktion.
 $D$ sei der Definitionsbereich von $f$.
 $\F$ sei eine Teilmenge von $D$, die man als Lösungsmenge bezeichnet.
 Alle Elemente von $\F$ werden als zulässige Punkte bezeichnet.
 $\F$ wird durch Nebenbedingungen definiert.
+\end{definition}
 
 Man kann hierbei den Unterschied zwischen der linearen Optimierung und
 der nichtlinearen Optimierung erkennen.
@@ -38,7 +39,7 @@ Bei der nichtlinearen Optimierung gibt es dagegen keine Einschränkung,
 wie die Zielfunktion und die Nebenbedingungen aussehen sollen.
 Für die lineare Optimierung ist ein in der Praxis sehr effizientes Verfahren
 bekannt. Aber die Verfahren der nichtlinearen Optimierung sind auch für die
-linearen Optimierungsprobleme anwendbar.
+linearen Optimierungsprobleme anwendbar. % TODO: Stimmt das?
 Umgekehrt ist es jedoch nicht möglich.
 
 Ein einfaches Beispiel nichtlinearer Optimierung ist das Problem
@@ -51,6 +52,8 @@ dann bezeichnet man das Optimierungsproblem als unrestringiert.
 Es besitzt also keine Nebenbedingungen.
 Ansonsten heißt es ein restingiertes Optimierungsproblem.
 
+\begin{definition}
+\emph{(Globale und lokale Lösung)}\\
 Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~(\ref{P}),
 wenn
 \begin{equation}
@@ -76,8 +79,7 @@ wenn für eine Umgebung $U(\xopt)$ von $\xopt$
 \end{equation}
 gilt.
 Eine Umgebung von $\xopt$ ist einfach eine offene Menge, die $\xopt$ beinhaltet.
-
-% x^4 \cos(1/x) + 2x^4 ?
+\end{definition}
 
 Wegen dieser Definitionen kommt die Unterscheidung zwischen der globalen
 und der lokalen Optimierung. Globale Optimierung versucht, globale Lösungen
@@ -87,39 +89,52 @@ globale Lösungen sind.
 
 % TODO?: Konvexität
 
+Wir betrachten nun das unrestringierte Optimierungsproblem
+\begin{equation}
+  \min_{x \in \R^n} f(x). \label{PU} % TODO: change to (PU) not (1.6)
+\end{equation}
+
+Wir nehmen hier an, dass der Definitionsbereich $D$ gleich $\R^n$ sei.
+
+\begin{theorem}
+\emph{(Notwendige Bedingung erster Ordnung)}\\
+Seien $\xopt$ eine lokale Lösung des Problems~(\ref{PU}) und $f$ einmal stetig
+differenzierbar in einer Umgebung von $\xopt$, dann gilt
+\begin{equation}
+  \nabla f(\xopt) = 0 \label{Gradient ist null}
+\end{equation}
+\end{theorem}
+
+\begin{definition}
+\emph{(Stationärer Punkt)}\\
+$f$ sei in $\xopt$ differenzierbar. $\xopt$ heißt ein stationärer Punkt von $f$,
+wenn $\xopt$ die notwendige Bedingung~(\ref{Gradient ist null}) erfüllt.
+\end{definition}
+
+\begin{theorem}
+\emph{(Notwendige Bedingung zweiter Ordnung)}\\
+Seien $\xopt$ eine lokale Lösung des Problems~(\ref{PU}) und $f$ zweimal stetig
+differenzierbar in einer Umgebung von $\xopt$, dann gilt~(\ref{Gradient ist
+null}) und
+\begin{equation}
+  x^T f''(\xopt) x \geq 0 \qquad \forall x \in \R^n,
+\end{equation}
+$f''(\xopt)$ ist also positiv semidefinit.
+\end{theorem}
+
+\begin{theorem}
+\emph{(Hinreichende Bedingung zweiter Ordnung)}\\
+Sei $f$ zweimal stetig differenzierbar in einer Umgebung von $\xopt$.
+Die notwendige Bedingung~(\ref{Gradient ist null}) sei erfüllt und $f''(\xopt)$
+sei positiv definit, d.h.
+\begin{equation}
+  x^T f''(\xopt) x > 0 \qquad \forall x \in \R^n.
+\end{equation}
+Dann ist $\xopt$ eine strikte Lösung des Problems~(\ref{PU}).
+\end{theorem}
+
 % TODO: Iterative Methode: \[ f(x^{k+1}) < f(x^k) \]
 
 % TODO: Unrestringerte Optimierungsprobleme: Theorie und Verfahren
-
-Wir betrachten nun das unrestringierte Optimierungsproblem
-\begin{equation}
-  \min_{x \in D} f(x). \label{PU}
-\end{equation}
-
-Notwendige Bedingung erster Ordnung:
-
-Seien $\xopt$ eine lokale Lösung des Problems~(\ref{PU}) und $f$ einmal
-stetig differenzierbar in einer Umgebung von $\xopt$, dann gilt
-\begin{equation}
-  \nabla f(\xopt) = 0
-\end{equation}
-
-Notwendige Bedingung zweiter Ordnung:
-
-Sei $\xopt$ eine lokale Lösung des Problems~(\ref{PU}) und es existiere
-die Hessian-Matrix $H_f$, die stetig in einer Umgebung von $\xopt$ sei,
-dann gilt
-\begin{equation}
-  \nabla f(\xopt) = 0
-  \text{ und }
-  H_f(\xopt) \text{ ist positiv semidefinit.}
-\end{equation}
-
-Hinreichende Bedingung zweiter Ordnung:
-
-Es existiere die Hessian-Matrix $H_f$, die stetig in einer Umgebung von $\xopt$
-sei, und es gelte $\nabla f(\xopt) = 0$ und $H_f(\xopt)$ sei positiv definit,
-dann ist $\xopt$ eine strikte Lösung des Problems~(\ref{PU}).
-
 
 % TODO: Approximation der Gradient und Hesse-Matrix?
