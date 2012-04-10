@@ -3,59 +3,53 @@
 
 \begin{document}
 
-
 % Römische Nummerierung für Sonderseiten, wie Verzeichnisse und Anhang
 \pagenumbering{Roman}
 
-% Titelblatt
+% ----- TITELBLATT
 %\input{extras/titelseite}
 
-% Eidesstattliche Erklärung
+% ----- EIDESSTATTLICHE ERKLÄRUNG
 %\input{extras/eidesstattliche}
 
-% Verzeichnisse
-% Kopfzeile links Kapitel, rechts leer
+% Kopfzeile: links Kapitel, rechts leer
 \ihead{\leftmark}
 \ohead{}
+
+% ----- VERZEICHNISSE
 %\input{extras/verzeichnisse}
 
-% Merke mir die römische Seitenzahl in 'roemisch' und setzte Nummeriernung 
-% auf arabisch für die eigentlichen Kapitel
 \newpage
+% Merke mir die römische Seitenzahl in 'roemisch'
 \newcounter{roemisch}
 \setcounter{roemisch}{\value{page}}
+% Setzte Nummerierung auf arabisch für die eigentlichen Kapitel
 \pagenumbering{arabic}
 
-% Die einzelnen Kapitel
 % Kopfzeile: links Kapitel, rechts Sektion
 \ihead{\leftmark}
 \ohead{\rightmark}
 
-
-
+% ----- DIE EINZELNEN KAPITEL
 \input{chapters/grundlagen}
-
 %\input{chapters/sqp}
-
-\input{chapters/ssn}
-
+%\input{chapters/ssn}
 %\input{chapters/vergleich}
-
 %\input{chapters/test}
+% ---------------------------
 
-
-% Setze Numerierung wieder auf römisch zurück und setzte von oben fort
-% Wert ist demnach der von 'roemisch'
 \newpage
-\pagenumbering{Roman}
-\setcounter{page}{\value{roemisch}}
+% Setze Numerierung wieder auf römisch zurück
+\pagenumbering{Roman} 
+% Setze von oben fort
+\setcounter{page}{\value{roemisch}} 
+% Wert ist demnach der von 'roemisch'
 
-% Literaturverzeichnis
+% ----- LITERATURVERZEICHNIS
 %\bibliography{biblio/bib}
 
-% Appendix, falls vorhanden
+% ----- APPENDIX (falls vorhanden)
 \appendix
 %\input{extras/anhang}
-
 
 \end{document}

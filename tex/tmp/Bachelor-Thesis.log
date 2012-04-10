@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.5.25)  4 APR 2012 22:46
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.5.25)  10 APR 2012 13:44
 entering extended mode
 **Bachelor-Thesis.tex
 
@@ -567,7 +567,10 @@ File: lstlang3.sty 2004/09/05 1.3 listings language file
 )
 ("C:\Programme\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-))
+)
+\c@theorem=\count134
+\c@definition=\count135
+)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 
@@ -590,16 +593,16 @@ LaTeX Font Info:    ... okay on input line 4.
 
 ("C:\Programme\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
+\scratchcounter=\count136
 \scratchdimen=\dimen137
 \scratchbox=\box32
-\nofMPsegments=\count135
-\nofMParguments=\count136
+\nofMPsegments=\count137
+\nofMParguments=\count138
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count137
+\MPscratchCnt=\count139
 \MPscratchDim=\dimen138
-\MPnumerator=\count138
-\makeMPintoPDFobject=\count139
+\MPnumerator=\count140
+\makeMPintoPDFobject=\count141
 \everyMPtoPDFconversion=\toks27
 )
 \AtBeginShipoutBox=\box33
@@ -610,7 +613,7 @@ Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 ("C:\Programme\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count140
+\c@section@level=\count142
 )
 LaTeX Info: Redefining \ref on input line 4.
 LaTeX Info: Redefining \pageref on input line 4.
@@ -621,8 +624,8 @@ wton\tex\Bachelor-Thesis.out")
 ("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
 wton\tex\Bachelor-Thesis.out")
 \@outlinefile=\write3
-\c@lstlisting=\count141
-\c@roemisch=\count142
+\c@lstlisting=\count143
+\c@roemisch=\count144
 
 ("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
 wton\tex\chapters/grundlagen.tex"
@@ -634,11 +637,11 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              Support for \float@addtolists may be removed from
 (scrbook)              `scrbook' soon .
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+LaTeX Font Info:    Try loading font information for U+msa on input line 22.
 ("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 22.
 
 ("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -647,40 +650,43 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 {C:/Dokumente und Einstellungen/Viqicevic/Lokale Einstellungen/Anwendungsdaten/
 MiKTeX/2.9/pdftex/config/pdftex.map}] [2]) [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 55.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
 
 ("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
 wton\tex\Bachelor-Thesis.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 61.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 61.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 55.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 55.
 Package rerunfilecheck Info: File `Bachelor-Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 66F6EBD909AA5511A13BC57A8E8C1BA8;116.
  ) 
 Here is how much of TeX's memory you used:
- 10417 strings out of 494053
- 152417 string characters out of 3150137
+ 10440 strings out of 494053
+ 152701 string characters out of 3150137
  328479 words of memory out of 3000000
- 13518 multiletter control sequences out of 15000+200000
- 12906 words of font info for 38 fonts, out of 3000000 for 9000
+ 13535 multiletter control sequences out of 15000+200000
+ 12060 words of font info for 37 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 43i,11n,67p,822b,391s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,10n,67p,822b,457s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdat
-en\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Dokumente und
+en\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:\Dokumente und
  Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\
-pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\Dokumente und Einstellungen\Viqic
+pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Dokumente und Einstellungen\Viqic
 evic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\e
-c\dpi600\ecrm1200.pk> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstell
-ungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk
-><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program
-me/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Programme/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr8.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.p
-fb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Bachelor-Thesis.pdf (3 pages, 112464 bytes).
+c\dpi600\ecbx1728.pk> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstell
+ungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk
+> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdate
+n\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk><C:/Programme/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Programme/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi6.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mr12.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/P
+rogramme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Programme/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Programme/MiKTeX 2.9/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Bachelor-Thesis.pdf (3 pages, 143725 bytes).
 PDF statistics:
- 212 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
+ 287 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
  17 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,14 +2,14 @@
 	pdftex,%              PDFTex verwenden
 	a4paper,%             A4 Papier
 	oneside,%             Einseitig
-	bibtotoc,%    		Literaturverzeichnis einfügen bibtotocnumbered: nummeriert
-	liststotoc,%		Verzeichnisse einbinden in toc
+	bibtotoc,%    		  Literaturverzeichnis einfügen bibtotocnumbered: nummeriert
+	liststotoc,%		  Verzeichnisse einbinden in toc
 	idxtotoc,%            Index ins Verzeichnis einfügen
-	halfparskip,%        Europäischer Satz mit abstand zwischen Absätzen
+	halfparskip,%         Europäischer Satz mit abstand zwischen Absätzen
 	chapterprefix,%       Kapitel anschreiben als Kapitel
 	headsepline,%         Linie nach Kopfzeile
-	%footsepline,%         Linie vor Fusszeile
-	%pointlessnumbers,%     Nummern ohne abschließenden Punkt
+	%footsepline,%        Linie vor Fusszeile
+	%pointlessnumbers,%   Nummern ohne abschließenden Punkt
 	12pt%                 Grössere Schrift, besser lesbar am bildschrim
 ]{scrbook}
 
@@ -106,7 +106,6 @@
 	citecolor=LinkColor,%
 	filecolor=LinkColor,%
 	menucolor=LinkColor,%
-	pagecolor=LinkColor,%
 	urlcolor=LinkColor}
 
 %
@@ -174,9 +173,16 @@
 %
 %\renewcommand{\baselinestretch}{1.5}
 
+%
+% Neue Umgebungen
+%
 \newtheorem{theorem}{Satz}[chapter]
 \newtheorem{definition}{Definition}[chapter]
+\newtheorem{algorithm}{Verfahren}[chapter]
 
+%
+% Neue Mathe-Befehle
+%
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\xopt}{x^*}
