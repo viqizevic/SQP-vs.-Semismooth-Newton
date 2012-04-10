@@ -14,7 +14,7 @@ das bekannte Newton-Verfahren.
 
 % TODO tell more about SQP and Semismooth-Newton
 
-\section{Optimierungsprobleme}
+\section{Allgemeine Optimierungsprobleme}
 
 \begin{definition}
 Allgemein ist die Aufgabenstellung der nichtlinearen Optimierung wie folgt
@@ -52,28 +52,32 @@ dann bezeichnet man das Optimierungsproblem als unrestringiert.
 Es besitzt also keine Nebenbedingungen.
 Ansonsten heißt es ein restingiertes Optimierungsproblem.
 
+Es ist üblich, dass man nur Minimierungsproblem betrachtet, weil ein
+Maximierungsproblem $\max g(x)$ zu dem Minimierungsproblem $\min f(x) := -g(x)$
+äquivalent ist.
+
 \begin{definition}
 \emph{(Globale und lokale Lösung)}\\
-Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~(\ref{P}),
-wenn
+Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~(\ref{P}) oder
+globales Minimum von $f$, wenn
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in \F
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems~(\ref{P}),
-wenn
+Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems~(\ref{P}) oder
+striktes globales Minimum von $f$, wenn
 \begin{equation}
   f(\xopt) < f(x) \qquad \forall x \in \F\backslash\{\xopt\}
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~(\ref{P}), wenn für
-eine Umgebung $U(\xopt)$ von $\xopt$
+Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~(\ref{P}) oder
+lokales Minimum von $f$, wenn für eine Umgebung $U(\xopt)$ von $\xopt$
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in U(\xopt) \cap \F
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~(\ref{P}),
-wenn für eine Umgebung $U(\xopt)$ von $\xopt$
+Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~(\ref{P}) oder
+striktes lokales Minimum von $f$, wenn für eine Umgebung $U(\xopt)$ von $\xopt$
 \begin{equation}
   f(\xopt) < f(x) \qquad \forall x \in U(\xopt) \cap \F\backslash\{\xopt\}
 \end{equation}
@@ -89,12 +93,15 @@ globale Lösungen sind.
 
 % TODO?: Konvexität
 
+\section{Unrestringierte Optimierungsprobleme}
+
 Wir betrachten nun das unrestringierte Optimierungsproblem
 \begin{equation}
   \min_{x \in \R^n} f(x). \label{PU} % TODO: change to (PU) not (1.6)
 \end{equation}
 
-Wir nehmen hier an, dass der Definitionsbereich $D$ gleich $\R^n$ sei.
+Wir nehmen hier der Einfachheit halber an, dass der Definitionsbereich $D$
+gleich $\R^n$ sei.
 
 \begin{theorem}
 \emph{(Notwendige Bedingung erster Ordnung)}\\
@@ -105,11 +112,17 @@ differenzierbar in einer Umgebung von $\xopt$, dann gilt
 \end{equation}
 \end{theorem}
 
+Diese Bedingung gilt aber nicht nur für lokales Minimum sondern auch für lokales
+Maximum von $f$.
+
 \begin{definition}
 \emph{(Stationärer Punkt)}\\
 $f$ sei in $\xopt$ differenzierbar. $\xopt$ heißt ein stationärer Punkt von $f$,
 wenn $\xopt$ die notwendige Bedingung~(\ref{Gradient ist null}) erfüllt.
 \end{definition}
+
+Viele Optimierungsverfahren suchen normalerweise nach einem stationärem
+Punkt von~$f$. Aber ein stationärer Punkt muss nicht ein globales oder lokales Minimum sein.
 
 \begin{theorem}
 \emph{(Notwendige Bedingung zweiter Ordnung)}\\
@@ -122,6 +135,9 @@ null}) und
 $f''(\xopt)$ ist also positiv semidefinit.
 \end{theorem}
 
+Durch diese notwendige Bedingung können wir zwischen einem lokalen Minimum und
+Maximum unterscheiden.
+
 \begin{theorem}
 \emph{(Hinreichende Bedingung zweiter Ordnung)}\\
 Sei $f$ zweimal stetig differenzierbar in einer Umgebung von $\xopt$.
@@ -133,8 +149,63 @@ sei positiv definit, d.h.
 Dann ist $\xopt$ eine strikte Lösung des Problems~(\ref{PU}).
 \end{theorem}
 
-% TODO: Iterative Methode: \[ f(x^{k+1}) < f(x^k) \]
+Diese hinreichende Bedingung benutzt man in der Regel erst dann, wenn man einen
+stationären Punkt findet.
 
-% TODO: Unrestringerte Optimierungsprobleme: Theorie und Verfahren
+\begin{definition}
+\emph{(Abstiegsrichtung)}\\
+Sei $f:\R^n \rightarrow \R$ differenzierbar in $x$. Ein Vektor
+$d \in \R^n\backslash\{0\}$ heißt Abstiegsrichtung von~$f$ in~$x$, wenn
+\begin{equation}
+  \nabla f(x)^T d < 0
+\end{equation}
+gilt.
+\end{definition}
+
+Ist $\nabla f(x) \neq 0$, dann ist beispielsweise $d = - \nabla f(x)$ eine
+Abstiegsrichtung von $f$ in $x$.
+
+\begin{theorem}
+Seien $f:\R^n \rightarrow \R$ differenzierbar in $x$ und $d$ eine
+Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
+\begin{equation}
+  f( x + \sigma d) < f(x) \qquad \forall \sigma \in ]0, \hat{\sigma}[.
+\end{equation}
+\end{theorem}
+
+Die meisten Optimierungsverfahren sind iterativ. Sie fangen mit einem
+Anfangspunkt $x^0$ an und versuchen dann weitere Punkte ($x^1, x^2, \ldots , x^k
+, \ldots$) zu finden, die besser als die vorherige sind.
+Viele iterative Verfahren zur Bestimmung eine lokale Lösung sind häufig
+Abstiegsverfahren. In der $k$-ten Iteration bestimmen sie zu einem Punkt $x^k$
+eine Abstiegsrichtung $d^k$ und eine Schrittweite $\sigma_k$, sodass für
+$x^{k+1} := x^k + \sigma_k d^k$
+\begin{equation}
+  f(x^{k+1}) < f(x^k)
+\end{equation}
+gilt.
+
+Ein Verfahren, welches die negative Gradienten als Abstiegsrichtungen verwendet,
+ist das Gradientenverfahren.
+
+\begin{algorithm}
+\emph{(Gradientenverfahren)}
+\begin{enumerate}
+  \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
+        Setze $k := 0$.
+  \item Ist $||\nabla f(x^k)|| < \epsilon$
+        $\Rightarrow$ STOP.
+  \item Setze $d^k := - \nabla f(x^k)$.
+  \item Bestimme $\sigma_k$ so, dass
+        \begin{equation}
+          f(x^k + \sigma_k d^k) < f(x^k + \sigma d^k)
+            \qquad \forall \sigma \geq 0.
+        \end{equation}
+  \item Setze $x^{k+1} := x^k + \sigma_k d^k$ und $k := k+1$ $\Rightarrow$
+        Gehe zu Schritt 2. %TODO use reference, not 2.
+\end{enumerate}
+\end{algorithm}
+
+% TODO: Newton-Verfahren
 
 % TODO: Approximation der Gradient und Hesse-Matrix?
