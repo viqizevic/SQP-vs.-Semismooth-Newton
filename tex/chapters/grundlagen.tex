@@ -206,6 +206,33 @@ ist das Gradientenverfahren.
 \end{enumerate}
 \end{algorithm}
 
+
 % TODO: Newton-Verfahren
 
 % TODO: Approximation der Gradient und Hesse-Matrix?
+
+\begin{definition}
+Das allgemeine nichtlineare Optimierungsprobleme ist wie folgt definiert:
+\begin{align}
+       \min\,& f(x) \\
+ \text{mit } & g_i(x) \leq 0 \qquad \text{für } i = 1, \ldots, p \\
+             & h_j(x) \leq 0 \qquad \text{für } j = 1, \ldots, m
+\end{align}
+Man schreibt auch normalerweise nur:
+\begin{align}
+       \min\,& f(x) \\
+ \text{mit } & g(x) \leq 0 \\
+             & h(x) \leq 0
+\end{align}
+\end{definition}
+
+\begin{equation}
+  \nabla f(x) = \left(
+    \frac{\partial f(x)}{\partial x_1},\ldots,\frac{\partial f(x)}{\partial x_n}
+      \right) ^ T
+\end{equation}
+
+\begin{equation}
+  H_f(x) = f''(x) = \left[ \frac{\partial^2 f}{\partial x_i \partial x_j} (x)
+    \right]_{i,j}
+\end{equation}
