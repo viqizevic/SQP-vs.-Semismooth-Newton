@@ -208,6 +208,27 @@ ist das Gradientenverfahren.
 
 
 % TODO: Newton-Verfahren
+\begin{algorithm}
+\emph{(Newton-Verfahren)}
+\begin{enumerate}
+  \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
+        Setze $k := 0$.
+  \item Ist $||\nabla f(x^k)|| < \epsilon$
+        $\Rightarrow$ STOP.
+  \item Berechne die Lösung $d$ des linearen Gleichungssystems
+        \begin{equation}
+          f''(x^k) d = - \nabla f(x^k).
+        \end{equation}
+        Setze $d^k := d$.
+  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$ $\Rightarrow$
+        Gehe zu Schritt 2. %TODO use reference, not 2.
+\end{enumerate}
+\end{algorithm}
+
+Man kann auch noch eine Scrittweitensteuerung durchführen, dann bekommt man ein
+Abstiegsverfahren, welches man als das gedämpfte Newton-Verfahren bezeichnet.
+Man ersetzt dazu den Schritt 4 in dem Newton-Verfahren mit den Schritten 4 und 5
+in dem Gradientenverfahren.
 
 % TODO: Approximation der Gradient und Hesse-Matrix?
 
