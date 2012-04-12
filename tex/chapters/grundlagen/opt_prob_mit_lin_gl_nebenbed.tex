@@ -1,0 +1,62 @@
+\begin{definition}
+\emph{Optimierungsproblem mit linearen Gleichungsnebenbedingungen}
+\begin{align}
+  \min_{x \in \R^n}\ & f(x) \label{eq:opmlgnb} \\
+              \nb & Ax = b \notag
+\end{align}
+$A$ sei eine $(m \times n)$-Matrix und $b$ sei ein Vektor mit $m$ Elementen.
+\end{definition}
+
+D.h. die Menge $\F$ sieht hier so aus:
+\begin{equation}
+  \F := \{ x | A x = b  \}.
+\end{equation}
+
+\begin{theorem}
+\emph{Notwendige Bedingung erster Ordnung}
+Sei $\xopt$ lokale Lösung des linearen restringierten Optimierungsproblems und
+$f$ sein in $\xopt$ differenzierbar. Dann gibt es ein $\lambda \in \R^m$ mit
+\begin{equation}
+  \nabla f(\xopt) + A^T \lambda = 0.
+\end{equation}
+Hat A einen vollen Rang, dann ist $\lambda$ eindeutig zu bestimmen.
+\end{theorem}
+
+Diese Bedingung heißt die Multiplikatoren Regel von Lagrange. Man bezeichnet
+$\lambda$ als die Lagrange-Multiplikator.
+
+\begin{theorem}
+\emph{Hinreichende Bedingung zweiter Ordnung}
+Sei $f$ in $\xopt$ zweimal stetig differenzierbar. Die notwendige Bedingung
+erster Ordnung sei erfüllt. Es gäbe eine Konstante $\alpha > 0$ mit
+\begin{equation}
+  d^T f''(x) d \geq \alpha ||d||^2 \qquad d \in \kr A.
+\end{equation}
+Dann ist $\xopt$ eine strikte Lösung des linearen restringierten Problems.
+\end{theorem}
+
+\begin{definition}
+\emph{Nullraum-Matrix}
+Eine $(n \times l)$-Matrix $Z$ heißt Nullraum-Matrix von $A$, wenn für $d \in
+\R^n$ gilt
+\begin{equation}
+d \in \kr A \quad \Leftrightarrow \quad d = Z z \text{ für ein } z \in \R^l.
+\end{equation}
+D.h., $\im Z = \kr A$.
+\end{definition}
+
+Sei $w$ eine Lösung von der Gleichung $Ax=b$. Man kann nun für $\F$ so
+schreiben:
+\begin{equation}
+  \F = w + \kr A = w + \im Z = w + \{ Z z | z \in \R^l \}.
+\end{equation}
+
+Das Problem~\eqref{eq:opmlgnb} ist dann äquivalent zu
+\begin{equation}
+  \min_{z \in \R^l} F(z) := f(w + Zz).
+\end{equation}
+Dieses Problem hat keine Nebenbedingung mehr, also unrestringiert.
+Man kann also die Verfahren für unrestringierte Probleme anwenden.
+
+Wir werden aber nachher sehen, wie man dieses Problem effektiv lösen kann,
+wenn die Zeilfunktion quadratisch ist.

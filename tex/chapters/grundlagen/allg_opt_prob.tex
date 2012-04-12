@@ -1,0 +1,92 @@
+\begin{definition}
+Allgemein ist die Aufgabenstellung der Optimierung wie folgt
+definiert:
+\begin{equation}
+  \min_{x \in \F} f(x) \label{eq:op} %use \tag{P} to make (P) as reference
+\end{equation}
+Die Funktion $f:D \subseteq \R^n \rightarrow \R$ ist die sogennante
+Zielfunktion.
+$D$ sei der Definitionsbereich von $f$.
+$\F$ sei eine nichtleere Teilmenge von $D$, die man als Lösungsmenge bezeichnet.
+Alle Elemente von $\F$ werden als zulässige Punkte bezeichnet.
+$\F$ wird durch die sogennanten Nebenbedingungen definiert.
+\end{definition}
+
+Ein einfaches Beispiel ist das Problem
+\[
+  \min_{x \in \R}\ (x-1)^2.
+\]
+
+Falls $\F = D$ gilt,
+dann bezeichnet man das Optimierungsproblem als unrestringiert.
+Es besitzt also keine Nebenbedingungen.
+Ansonsten heißt es ein restingiertes Optimierungsproblem.
+
+Es ist üblich, dass man nur Minimierungsproblem betrachtet, weil ein
+Maximierungsproblem $\max g(x)$ zu dem Minimierungsproblem $\min f(x) := -g(x)$
+äquivalent ist.
+
+\begin{definition}
+\emph{(Globale und lokale Lösung)}
+Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~\eqref{eq:op} oder
+globales Minimum von $f$, wenn
+\begin{equation}
+  f(\xopt) \leq f(x) \qquad \forall x \in \F
+\end{equation}
+gilt.
+Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems~\eqref{eq:op} oder
+striktes globales Minimum von $f$, wenn
+\begin{equation}
+  f(\xopt) < f(x) \qquad \forall x \in \F\backslash\{\xopt\}
+\end{equation}
+gilt.
+Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~\eqref{eq:op} oder
+lokales Minimum von~$f$, wenn für eine Umgebung $U(\xopt)$ von $\xopt$
+\begin{equation}
+  f(\xopt) \leq f(x) \qquad \forall x \in U(\xopt) \cap \F
+\end{equation}
+gilt.
+Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~\eqref{eq:op}
+oder striktes lokales Minimum von~$f$, wenn für eine Umgebung $U(\xopt)$ von
+$\xopt$
+\begin{equation}
+  f(\xopt) < f(x) \qquad \forall x \in U(\xopt) \cap \F\backslash\{\xopt\}
+\end{equation}
+gilt.
+Eine Umgebung $U(\xopt)$ von $\xopt$ ist einfach eine offene Menge, die $\xopt$
+beinhaltet.
+\end{definition}
+
+Wegen dieser Definitionen kommt die Unterscheidung zwischen der globalen
+und der lokalen Optimierung. Globale Optimierung versucht, globale Lösungen
+zu finden. Lokale Optimierung versucht dagegen, lokale Lösungen zu finden.
+Viele Verfahren finden lokale Lösungen, die jedoch nicht unbedingt
+globale Lösungen sind. Globale Lösungen sind nicht so einfach zu finden.
+
+\begin{definition}
+Das allgemeine nichtlineare Optimierungsproblem ist wie folgt definiert:
+\begin{align}
+       \min\ & f(x) \\
+         \nb & g(x) \leq 0 \\
+             & h(x) = 0
+\end{align}
+Die Zielfunktion ist wieder die Funktion $f:D_f \subseteq \R^n \rightarrow \R$.
+Die Nebenbedingungen sind von den Funktionen
+$g:D_g \subseteq \R^n \rightarrow \R^p$ und
+$h:D_h \subseteq \R^n \rightarrow \R^m$
+abhängig.
+\end{definition}
+
+D.h. die Menge $\F$ sieht hier so aus:
+\begin{equation}
+  \F := \{ x | g(x) \leq 0, h(x) = 0  \}.
+\end{equation}
+
+Man kann hierbei den Unterschied zwischen der linearen Optimierung und
+der nichtlinearen Optimierung gut erkennen.
+Bei der linearen Optimierung muss die Zielfunktion linear sein
+(d.h. die Zielfunktion besitzt die Form $f(x) = c^T x$, $c \in \R^n$)
+und die Nebenbedingungen sind durch lineare Gleichungssysteme oder
+Ungleichungssyteme definiert.
+Bei der nichtlinearen Optimierung gibt es dagegen keine Einschränkung,
+wie die Zielfunktion und die Nebenbedingungen aussehen sollen.
