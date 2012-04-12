@@ -1,5 +1,27 @@
-% Anhänge, beliebig, kein Zwang
-\chapter{Anhang Eins}
 
-\chapter{Anhang Zwei}
-% usw ...
+% --- ANHÄNGE ---
+
+\chapter{Notationen}
+
+Der Gradient von $f$ in $x$ ist wie folgt definiert:
+\begin{equation}
+  \nabla f(x) = \left(
+    \frac{\partial f(x)}{\partial x_1},\cdots,\frac{\partial f(x)}{\partial x_n}
+      \right) ^ T
+\end{equation}
+
+Die Hesse-Matrix von $f$ in $x$ ist wie folgt definiert:
+\begin{equation}
+  H_f(x) = f''(x) =
+    \left(
+    \begin{array}{ccc}
+      \frac{\partial^2 f}{\partial x_1 \partial x_1} (x) & \cdots &
+                             \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+      \vdots & \ddots & \vdots \\
+      \frac{\partial^2 f}{\partial x_n \partial x_1} (x) & \cdots &
+                             \frac{\partial^2 f}{\partial x_n \partial x_n}
+    \end{array}
+    \right) 
+\end{equation}
+
+%\chapter{Anhang Zwei}
