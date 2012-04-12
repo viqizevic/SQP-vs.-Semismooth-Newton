@@ -111,8 +111,6 @@ Ungleichungssyteme definiert.
 Bei der nichtlinearen Optimierung gibt es dagegen keine Einschränkung,
 wie die Zielfunktion und die Nebenbedingungen aussehen sollen.
 
-% TODO?: Konvexität
-
 \section{Unrestringierte Optimierungsprobleme}
 
 Wir betrachten nun das unrestringierte Optimierungsproblem
@@ -141,8 +139,9 @@ $f$ sei in $\xopt$ differenzierbar. $\xopt$ heißt ein stationärer Punkt von $f$,
 wenn $\xopt$ die notwendige Bedingung~(\ref{eq:grad_zero}) erfüllt.
 \end{definition}
 
-Viele Optimierungsverfahren suchen normalerweise nach einem stationärem
-Punkt von~$f$. Aber ein stationärer Punkt muss nicht ein globales oder lokales Minimum sein.
+Viele Optimierungsverfahren suchen in der Regel nach einem stationärem Punkt
+von~$f$.
+Aber ein stationärer Punkt muss nicht ein globales oder lokales Minimum sein.
 
 \begin{theorem}
 \emph{(Notwendige Bedingung zweiter Ordnung)}\\
@@ -204,8 +203,8 @@ $x^{k+1} := x^k + \sigma_k d^k$
 \end{equation}
 gilt.
 
-Ein Verfahren, welches die negative Gradienten als Abstiegsrichtungen verwendet,
-ist das Gradientenverfahren.
+Das Gradientenverfahren ist ein einfaches Abstiegsverfahren,
+welches die negative Gradienten als Abstiegsrichtungen verwendet.
 
 \begin{algorithm}
 \emph{(Gradientenverfahren)}
@@ -225,7 +224,8 @@ ist das Gradientenverfahren.
 \end{enumerate}
 \end{algorithm}
 
-% TODO: Newton-Verfahren erklären
+Eine andere Möglichkeit ist, dass man das Newton-Verfahren verwendet,
+um die Lösung der Gleichung~\eqref{eq:grad_zero} zu finden.
 
 \begin{algorithm}
 \emph{(Newton-Verfahren)}
@@ -254,10 +254,16 @@ in dem Gradientenverfahren.
 \begin{definition}
 \emph{Optimierungsproblem mit linearen Gleichungsnebenbedingungen}\\
 \begin{align}
-  \min_{x \in \R^n}\ & f(x) \\
-              \nb & Ax = b
+  \min_{x \in \R^n}\ & f(x) \label{eq:opmlgnb} \\
+              \nb & Ax = b \notag
 \end{align}
+$A$ sei eine $(m \times n)$-Matrix und $b$ sei ein Vektor mit $m$ Elementen.
 \end{definition}
+
+D.h. die Menge $\F$ sieht hier so aus:
+\begin{equation}
+  \F := \{ x | A x = b  \}.
+\end{equation}
 
 \begin{theorem}
 \emph{Notwendige Bedingung erster Ordnung}\\
@@ -282,6 +288,25 @@ erster Ordnung sei erfüllt. Es gäbe eine Konstante $\alpha > 0$ mit
 Dann ist $\xopt$ eine strikte Lösung des linearen restringierten Problems.
 \end{theorem}
 
-% TODO Nullraum Matrizen
+\begin{definition}
+\emph{Nullraum-Matrix}\\
+Eine $(n \times l)$-Matrix $Z$ heißt Nullraum-Matrix von $A$, wenn für $d \in
+\R^n$ gilt
+\begin{equation}
+d \in \kr A \quad \Leftrightarrow \quad d = Z z \text{ für ein } z \in \R^l.
+\end{equation}
+D.h., $\im Z = \kr A$.
+\end{definition}
+
+Sei $w$ eine Lösung von der Gleichung $Ax=b$. Man kann nun für $\F$ so
+schreiben:
+\begin{equation}
+  \F = w + \kr A = w + \im Z = w + \{ Z z | z \in \R^l \}.
+\end{equation}
+
+Das Problem~\eqref{eq:opmlgnb} ist dann äquivalent zu
+\begin{equation}
+  \min_{z \in \R^l} F(z) := f(w + Zz).
+\end{equation}
 
 % TODO: Approximation der Gradient und Hesse-Matrix?
