@@ -207,7 +207,8 @@ ist das Gradientenverfahren.
 \end{algorithm}
 
 
-% TODO: Newton-Verfahren
+% TODO: Newton-Verfahren erklären
+
 \begin{algorithm}
 \emph{(Newton-Verfahren)}
 \begin{enumerate}
@@ -247,6 +248,8 @@ Man schreibt auch normalerweise nur:
 \end{align}
 \end{definition}
 
+% TODO als Notation woanders platzieren
+
 \begin{equation}
   \nabla f(x) = \left(
     \frac{\partial f(x)}{\partial x_1},\ldots,\frac{\partial f(x)}{\partial x_n}
@@ -257,3 +260,36 @@ Man schreibt auch normalerweise nur:
   H_f(x) = f''(x) = \left[ \frac{\partial^2 f}{\partial x_i \partial x_j} (x)
     \right]_{i,j}
 \end{equation}
+
+\section{Restringierte Optimierungsprobleme}
+
+\begin{definition}
+\emph{Optimierungsproblem mit linearen Gleichungsnebenbedingungen}\\
+\begin{align}
+  \min_{x \in \R^n}\ & f(x) \\
+              Nb.\ & Ax = b
+\end{align}
+\end{definition}
+
+\begin{theorem}
+\emph{Notwendige Bedingung erster Ordnung}\\
+Sei $\xopt$ lokale Lösung des linearen restringierten Optimierungsproblems und
+$f$ sein in $\xopt$ differenzierbar. Dann gibt es ein $\lambda \in \R^m$ mit
+\begin{equation}
+  \nabla f(\xopt) + A^T \lambda = 0.
+\end{equation}
+Hat A einen vollen Rang, dann ist $\lambda$ eindeutig zu bestimmen.
+\end{theorem}
+
+Diese Bedingung heißt die Multiplikatoren Regel von Lagrange. Man bezeichnet
+$\lambda$ als die Lagrange-Multiplikator.
+
+\begin{theorem}
+\emph{Hinreichende Bedingung zweiter Ordnung}\\
+Sei $f$ in $\xopt$ zweimal stetig differenzierbar. Die notwendige Bedingung
+erster Ordnung sei erfüllt. Es gäbe eine Konstante $\alpha > 0$ mit
+\begin{equation}
+  d^T f''(x) d \geq \alpha ||d||^2 \qquad d \in \ker A.
+\end{equation}
+Dann ist $\xopt$ eine strikte Lösung des linearen restringierten Problems.
+\end{theorem}
