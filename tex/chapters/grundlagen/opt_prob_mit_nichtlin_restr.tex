@@ -5,3 +5,35 @@ Wir schreiben nochmal das Problem~\eqref{eq:opt_prob_mit_nichtlin_restr}.
          \nb & g(x) \leq 0 \notag \\
              & h(x) = 0 \notag
 \end{align}
+
+% TODO h und g seien diffbar
+
+\begin{definition}
+Sei $x \in \F$. Mit
+$\I(x) := \{ i \in \{1,\ldots,p\} \ | \ g_i(x) = 0 \}$
+wird die Indexmenge der in $x$ aktiven Ungleichungsrestriktionen bezeichnet.
+$x$ erfüllt die Mangasarian-Fromowitz-Regularitätsbedingung,
+wenn die Gradienten \mbox{$\nabla h_j(x),\ j = 1,\ldots,m,$} linear unabhängig
+sind und ein Vektor $d \in \R^n$ existiert mit
+\begin{equation}
+  \nabla g_i(x)^T d < 0,\ i \in \I(x)
+  \quad \text{und} \quad
+  \nabla h_j(x)^T d = 0,\ j = 1,\ldots,m.
+\end{equation}
+\end{definition}
+
+\begin{theorem}
+Sei $\xopt$ eine lokale Lösung des
+Problems~\eqref{eq:opt_prob_mit_nichtlin_restr} und $x$ erfülle die
+Mangasarian-Fromowitz-Regularitätsbedingung.
+Dann existieren die Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$,
+so dass
+\begin{align}
+  \nabla f(\xopt) + \sum_{i=1}^{m} \lambda_i \nabla h_i(\xopt)
+    + \sum_{j=1}^{p} \mu_i \nabla g_j(\xopt) & = 0 \\
+  h(\xopt) & = 0 \\
+  \mu \geq 0, \quad \mu^T g(\xopt) = 0, \quad g(\xopt) & \leq 0
+\end{align}
+\end{theorem}
+
+% TODO hinreichende Bedingung?
