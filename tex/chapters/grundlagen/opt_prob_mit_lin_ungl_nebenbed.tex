@@ -68,4 +68,21 @@ d^T f''(\xopt) d \geq \alpha ||d||^2 \quad
 Dann ist $\xopt$ eine strikte lokale Lösung des Problems~\eqref{eq:opmlugnb}
 \end{theorem}
 
-% TODO Probleme mit box constarins
+Spezialfall des Problems~\eqref{eq:opmlugnb} ist das Optimierungsproblem mit
+unteren und oberen Schranken für die Variablen.
+
+\begin{definition}
+\emph{(Optimierungsproblem mit Variablenbeschränkungen)}
+\begin{align}
+  \min_{x \in \R^n}\ & f(x) \label{eq:opmlugnb} \\
+                 \nb & a \leq x \leq b \notag
+\end{align}
+$a, b \in \R^n$ mit $a \leq b$.
+\end{definition}
+
+Mit
+$G := \left( \begin{array}{c} -I \\ I \end{array} \right)$ und
+$r := \left( \begin{array}{c} -v \\ w \end{array} \right)$ hat $\F$ die Form
+$\F := \{ x \in \R^n \ | \ G x \leq r \}$.
+
+% TODO: sufficient condition?

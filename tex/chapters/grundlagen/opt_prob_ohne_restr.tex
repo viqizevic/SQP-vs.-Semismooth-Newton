@@ -1,15 +1,19 @@
-Wir betrachten nun das unrestringierte Optimierungsproblem
+Wir betrachten nun zuerst unrestringierte Optimierungsprobleme.
+
+\begin{definition}
+\emph{(Unrestringierte Optimierungsprobleme)}
 \begin{equation}
   \min_{x \in \R^n} f(x). \label{eq:uop}
 \end{equation}
-
-Wir nehmen hier der Einfachheit halber an, dass der Definitionsbereich $D$
-gleich $\R^n$ sei.
+\end{definition}
+Wir nehmen hier der Einfachheit halber an, dass der Definitionsbereich
+$D$ gleich $\R^n$ sei.
 
 \begin{theorem}
 \emph{(Notwendige Bedingung erster Ordnung)}
-Seien $\xopt$ eine lokale Lösung des Problems~(\ref{eq:uop}) und $f$ einmal stetig
-differenzierbar in einer Umgebung von $\xopt$, dann gilt
+Sei $\xopt$ eine lokale Lösung des Problems~(\ref{eq:uop}) und
+sei $f$ einmal stetig differenzierbar in einer Umgebung von $\xopt$,
+dann gilt
 \begin{equation}
   \nabla f(\xopt) = 0 \label{eq:grad_zero}
 \end{equation}
@@ -30,16 +34,17 @@ Aber ein stationärer Punkt muss nicht ein globales oder lokales Minimum sein.
 
 \begin{theorem}
 \emph{(Notwendige Bedingung zweiter Ordnung)}
-Seien $\xopt$ eine lokale Lösung des Problems~(\ref{eq:uop}) und $f$ zweimal stetig
-differenzierbar in einer Umgebung von $\xopt$, dann gilt~(\ref{eq:grad_zero}) und
+Sei $\xopt$ eine lokale Lösung des Problems~(\ref{eq:uop})
+und sei $f$ zweimal stetig differenzierbar in einer Umgebung von $\xopt$,
+dann gilt~(\ref{eq:grad_zero}) und
 \begin{equation}
-  x^T f''(\xopt) x \geq 0 \qquad \forall x \in \R^n,
+  x^T f''(\xopt) x \geq 0 \qquad \forall x \in \R^n.
 \end{equation}
 $f''(\xopt)$ ist also positiv semidefinit.
 \end{theorem}
 
-Durch diese notwendige Bedingung können wir zwischen einem lokalen Minimum und
-Maximum unterscheiden.
+Durch diese notwendige Bedingung kann man zwischen einem lokalen Minimum und
+einem lokalen Maximum unterscheiden.
 
 \begin{theorem}
 \emph{(Hinreichende Bedingung zweiter Ordnung)}
@@ -55,6 +60,9 @@ Dann ist $\xopt$ eine strikte Lösung des Problems~(\ref{eq:uop}).
 Diese hinreichende Bedingung benutzt man in der Regel erst dann, wenn man einen
 stationären Punkt findet.
 
+Eine wichtige Grundlage für einige Verfahren ist
+die Definition von der Abstiegsrichtung.
+
 \begin{definition}
 \emph{(Abstiegsrichtung)}
 Sei $f:\R^n \rightarrow \R$ differenzierbar in $x$. Ein Vektor
@@ -65,18 +73,18 @@ $d \in \R^n\backslash\{0\}$ heißt Abstiegsrichtung von~$f$ in~$x$, wenn
 gilt.
 \end{definition}
 
-Ist $\nabla f(x) \neq 0$, dann ist beispielsweise $d = - \nabla f(x)$ eine
-Abstiegsrichtung von $f$ in $x$.
+Sei $x \in \R^n$ mit $\nabla f(x) \neq 0$, dann ist beispielsweise $d = - \nabla
+f(x)$ eine Abstiegsrichtung von $f$ in $x$.
 
 \begin{theorem}
-Seien $f:\R^n \rightarrow \R$ differenzierbar in $x$ und $d$ eine
-Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
+Seien $x \in \R^n$, $f:\R^n \rightarrow \R$ differenzierbar in $x$ und $d$
+eine Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
 \begin{equation}
-  f( x + \sigma d) < f(x) \qquad \forall \sigma \in ]0, \hat{\sigma}[.
+  f( x + \sigma d) < f(x) \qquad \forall \sigma \in \ ]0, \hat{\sigma}[.
 \end{equation}
 \end{theorem}
 
-Die meisten Optimierungsverfahren sind iterativ. Sie fangen mit einem
+Die meisten Optimierungsverfahren sind iterativ. Sie fangen also mit einem
 Anfangspunkt $x^0$ an und versuchen dann weitere Punkte ($x^1, x^2, \ldots , x^k
 , \ldots$) zu finden, die besser als die vorherige sind.
 Viele iterative Verfahren zur Bestimmung eine lokale Lösung sind häufig

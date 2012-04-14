@@ -20,11 +20,11 @@ Ein einfaches Beispiel ist das Problem
 Falls $\F = D$ gilt,
 dann bezeichnet man das Optimierungsproblem als unrestringiert.
 Es besitzt also keine Nebenbedingungen.
-Ansonsten heißt es ein restingiertes Optimierungsproblem.
+Ansonsten heißt es ein restringiertes Optimierungsproblem.
 
-Es ist üblich, dass man nur Minimierungsproblem betrachtet, weil ein
-Maximierungsproblem $\max g(x)$ zu dem Minimierungsproblem $\min f(x) := -g(x)$
-äquivalent ist.
+Man definiert in der Regel Optimierungsproblem als ein Minimierungsproblem,
+weil ein Maximierungsproblem $\max g(x)$ zu dem Minimierungsproblem
+$\min f(x) := -g(x)$ äquivalent ist.
 
 \begin{definition}
 \emph{(Globale und lokale Lösung)}
@@ -57,18 +57,20 @@ Eine Umgebung $U(\xopt)$ von $\xopt$ ist einfach eine offene Menge, die $\xopt$
 beinhaltet.
 \end{definition}
 
-Wegen dieser Definitionen kommt die Unterscheidung zwischen der globalen
-und der lokalen Optimierung. Globale Optimierung versucht, globale Lösungen
-zu finden. Lokale Optimierung versucht dagegen, lokale Lösungen zu finden.
-Viele Verfahren finden lokale Lösungen, die jedoch nicht unbedingt
-globale Lösungen sind. Globale Lösungen sind nicht so einfach zu finden.
+Wegen dieser Definitionen kommt der Begriff \emph{globale Optimierung}.
+Bei der globalen Optimierung versucht man, eine globale Lösung zu finden.
+Viele Verfahren versuchen nur lokale Lösungen zu bestimmen,
+weil Globale Lösungen nicht so einfach zu bestimmen sind.
+
+Die Aufgabenstellung bei der nichtlinearen Optimierung kann man
+spezifischer wie folgt definieren:
 
 \begin{definition}
-Das allgemeine nichtlineare Optimierungsproblem ist wie folgt definiert:
+\emph{(Nichtlineare Optimierungsprobleme)}
 \begin{align}
-       \min\ & f(x) \\
-         \nb & g(x) \leq 0 \\
-             & h(x) = 0
+       \min\ & f(x) \label{eq:opt_prob_mit_nichtlin_restr} \\
+         \nb & g(x) \leq 0 \notag \\
+             & h(x) = 0 \notag
 \end{align}
 Die Zielfunktion ist wieder die Funktion $f:D_f \subseteq \R^n \rightarrow \R$.
 Die Nebenbedingungen sind von den Funktionen
@@ -77,16 +79,44 @@ $h:D_h \subseteq \R^n \rightarrow \R^m$
 abhängig.
 \end{definition}
 
-D.h. die Menge $\F$ sieht hier so aus:
-\begin{equation}
-  \F := \{ x | g(x) \leq 0, h(x) = 0  \}.
-\end{equation}
+D.h., die Menge $\F$ sieht hier so aus % TODO: 'D.h.' oder 'D.h.,'?
+$\F := \{ x \in \R^n \,|\, g(x) \leq 0, \, h(x) = 0  \}$.
+
+Man kann dieses Problem ausführlicher schreiben, indem man die Funktionen
+$g$ und $h$ in mehreren skalaren Funktionen $g_1, \ldots, g_p : \R^n \rightarrow \R$
+und $h_1, \ldots, h_m: \R^n \rightarrow \R$ zerlegen, so dass
+\begin{equation*}
+  g(x) =
+    \left(
+    \begin{array}{c}
+      g_1(x) \\
+      \vdots \\
+      g_p(x)
+    \end{array}
+    \right)
+\quad \text{und} \quad
+  h(x) =
+    \left(
+    \begin{array}{c}
+      h_1(x) \\
+      \vdots \\
+      h_m(x)
+    \end{array}
+    \right).
+\end{equation*}
+
+Man bekommt dann das Problem
+\begin{align*}
+       \min\ & f(x) \\
+         \nb & g_i(x) \leq 0 \text{ für } i = 1,\ldots,p \\
+             & h_j(x) = 0 \text{ für } j = 1,\ldots,m
+\end{align*}
 
 Man kann hierbei den Unterschied zwischen der linearen Optimierung und
 der nichtlinearen Optimierung gut erkennen.
 Bei der linearen Optimierung muss die Zielfunktion linear sein
-(d.h. die Zielfunktion besitzt die Form $f(x) = c^T x$, $c \in \R^n$)
-und die Nebenbedingungen sind durch lineare Gleichungssysteme oder
-Ungleichungssyteme definiert.
+(d.h. die Zielfunktion muss in der Form $f(x) = c^T x$, $c \in \R^n$, sein)
+und die Nebenbedingungen sollen durch lineare Gleichungssysteme oder
+Ungleichungssyteme definiert werden.
 Bei der nichtlinearen Optimierung gibt es dagegen keine Einschränkung,
 wie die Zielfunktion und die Nebenbedingungen aussehen sollen.
