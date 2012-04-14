@@ -1,8 +1,88 @@
 \begin{definition}
 \emph{Optimierungsproblem mit linearen Ungleichungsnebenbedingungen}
 \begin{align}
-  \min_{x \in \R^n}\ & f(x) \label{eq:opmlgnb} \\
-              \nb & Gx = r \notag
+  \min_{x \in \R^n}\ & f(x) \label{eq:opmlugnb} \\
+                 \nb & Ax = b \notag \\
+                     & Gx \leq r \notag
 \end{align}
-$G$ sei eine $(p \times n)$-Matrix und $b$ sei ein Vektor mit $p$ Elementen.
+$A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
+$G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
 \end{definition}
+
+D.h. die Menge $\F$ sieht hier so aus:
+\begin{equation}
+  \F := \{ x \in \R^n | A x = b, G x \leq r \}.
+\end{equation}
+
+Wir bezeichnen mit $g_j \in \R^n, j = 1,\ldots,p$, die Zeilenvektoren in der
+Matrix $G$.
+D.h.,
+\begin{equation}
+  G =
+  \left(
+    \begin{array}{c}
+      (g_1)^T \\
+      \vdots \\
+      (g_p)^T
+    \end{array}
+  \right).
+\end{equation}
+
+\begin{theorem} \label{satz:kkt}
+\emph{(Karush-Kuhn-Tucker-Satz)}
+Sei $\xopt$ lokale Lösung des Problems~\eqref{eq:opmlugnb} und
+$f$ sei in~$\xopt$ differenzierbar.
+Dann existieren die Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$
+zu~$\xopt$ mit
+\begin{align}
+  \nabla f(\xopt) + A^T \lambda + G^T \mu & = 0 \\
+  \mu \geq 0, \quad \mu_j (\langle g^j,\xopt \rangle - r_j ) & = 0,
+    \quad j = 1,\ldots,p.
+\end{align}
+$\lambda$ und $\mu$ heißen Lagrange-Multiplikatoren zu $\xopt$.
+\end{theorem}
+
+\begin{definition}
+Sei $x \in \F$. Wir bezeichnen mit
+\begin{equation}
+  J(x) := \{ 1 \leq j \leq p \ | \ \langle g_j,x \rangle = r_j \}
+\end{equation}
+die Indexmenge der in $x$ aktiven Ungleichungsrestriktionen.
+\end{definition}
+
+\begin{theorem}
+\emph{(Hinreichende Optimalitätsbedingungen)}
+$f$ sei in $\xopt \in \F$ zweimal stetig differenzierbar. Die notwendige
+Bedingung von Satz~\ref{satz:kkt} sei erfüllt und es gelte mit $\alpha > 0$
+\begin{equation}
+d^T f''(\xopt) d \geq \alpha ||d||^2 \quad
+  \forall d \in \R^n :
+  \begin{cases}
+    Ad = 0, & \\
+    \langle g_j,d \rangle \leq 0
+      & \text{für } j \in J(\xopt) \text{ mit } \mu_j = 0, \\
+    \langle g_j,d \rangle = 0
+      & \text{für } j \in J(\xopt) \text{ mit } \mu_j > 0.
+  \end{cases}
+\end{equation}
+Dann ist $\xopt$ eine strikte lokale Lösung des Problems~\eqref{eq:opmlugnb}
+\end{theorem}
+
+Spezialfall des Problems~\eqref{eq:opmlugnb} ist das Optimierungsproblem mit
+unteren und oberen Schranken für die Variablen.
+
+\begin{definition}
+\emph{(Optimierungsproblem mit Variablenbeschränkungen)}
+\begin{align}
+  \min_{x \in \R^n}\ & f(x) \label{eq:opmlugnb} \\
+                 \nb & a \leq x \leq b \notag
+\end{align}
+$a, b \in \R^n$ mit $a \leq b$.
+\end{definition}
+
+Mit
+$G := \left( \begin{array}{c} -I \\ I \end{array} \right)$ und
+$r := \left( \begin{array}{c} -v \\ w \end{array} \right)$ hat $\F$ die Form
+$\F := \{ x \in \R^n \ | \ G x \leq r \}$.
+
+% TODO: sufficient condition?
