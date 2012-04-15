@@ -7,21 +7,21 @@
 \pagenumbering{Roman}
 
 % ----- TITELBLATT
-%\input{extras/titelseite}
+\input{extras/titelseite}
 
 % ----- EIDESSTATTLICHE ERKLÄRUNG
-%\input{extras/eidesstattliche}
+\input{extras/eidesstattliche}
 
 % Kopfzeile: links Kapitel, rechts leer
 \ihead{\leftmark}
 \ohead{}
 
 % ----- VERZEICHNISSE
-%\input{extras/verzeichnisse}
+\input{extras/verzeichnisse}
 
 \newpage
 % Merke mir die römische Seitenzahl in 'roemisch'
-\newcounter{roemisch}
+\newcounter{roemisch} %FIXME use small roman
 \setcounter{roemisch}{\value{page}}
 % Setzte Nummerierung auf arabisch für die eigentlichen Kapitel
 \pagenumbering{arabic}

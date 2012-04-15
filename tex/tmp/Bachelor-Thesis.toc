@@ -1,3 +1,8 @@
 \select@language {ngerman}
 \contentsline {chapter}{\numberline {1}Einf\"uhrung}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Optimierungsprobleme}{1}{section.1.1}
+\contentsline {section}{\numberline {1.1}Allgemeine Optimierungsprobleme}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Optimierungsprobleme ohne Restriktionen}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Optimierungsprobleme mit linearen Restriktionen}{6}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Optimierungsprobleme mit linearen Gleichungsnebenbedingungen}{6}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Optimierungsprobleme mit linearen Ungleichungsnebenbedingungen}{7}{subsection.1.3.2}
+\contentsline {section}{\numberline {1.4}Optimierungsprobleme mit nichtlinearen Restriktionen}{9}{section.1.4}

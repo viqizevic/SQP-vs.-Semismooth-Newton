@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.5.25)  12 APR 2012 14:53
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.5.25)  15 APR 2012 11:04
 entering extended mode
 **Bachelor-Thesis.tex
 
@@ -573,7 +573,11 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 
 ("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
-wton\tex\Bachelor-Thesis.aux")
+wton\tex\Bachelor-Thesis.aux"
+
+LaTeX Warning: Label `eq:opmlugnb' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
@@ -588,8 +592,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
-
-("C:\Programme\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Programme\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count137
 \scratchdimen=\dimen137
@@ -623,10 +626,56 @@ wton\tex\Bachelor-Thesis.out")
 wton\tex\Bachelor-Thesis.out")
 \@outlinefile=\write3
 \c@lstlisting=\count144
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\extras/titelseite.tex"
+LaTeX Font Info:    Try loading font information for U+msa on input line 27.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 27.
+
+("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+<images/TUBerlin_Logo.jpg, id=31, 96.36pt x 71.7882pt>
+File: images/TUBerlin_Logo.jpg Graphic file (type jpg)
+
+<use images/TUBerlin_Logo.jpg>
+Package pdftex.def Info: images/TUBerlin_Logo.jpg used on input line 28.
+(pdftex.def)             Requested size: 71.13188pt x 52.99315pt.
+
+Overfull \hbox (11.74713pt too wide) in paragraph at lines 36--37
+[][][] 
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 73--11
+
+ []
+
+
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\extras/eidesstattliche.tex" [1
+
+{C:/Dokumente und Einstellungen/Viqicevic/Lokale Einstellungen/Anwendungsdaten/
+MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Dokumente und Einstellungen/Viqicevic/
+Eigene Dateien/SQP-vs.-Semismooth-Newton/tex/images/TUBerlin_Logo.jpg>])
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\extras/verzeichnisse.tex" [2
+
+]
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\Bachelor-Thesis.toc")
+\tf@toc=\write4
+) [3
+
+]
 \c@roemisch=\count145
 
 ("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
-wton\tex\chapters/grundlagen.tex"
+wton\tex\chapters/grundlagen/grundlagen.tex"
 Kapitel 1.
 
 Class scrbook Warning: \float@addtolists detected!
@@ -635,30 +684,19 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              Support for \float@addtolists may be removed from
 (scrbook)              `scrbook' soon .
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
-("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
 
-("C:\Programme\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) [1
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/grundlagen/allg_opt_prob.tex" [1
 
-
-{C:/Dokumente und Einstellungen/Viqicevic/Lokale Einstellungen/Anwendungsdaten/
-MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-Overfull \hbox (0.52994pt too wide) in paragraph at lines 144--146
-[][]\T1/cmr/m/n/12 Viele Op-ti-mie-rungs-ver-fah-ren su-chen nor-ma-ler-wei-se 
-nach ei-nem sta-tio-närem Punkt von $\OML/cmm/m/it/12 f$\T1/cmr/m/n/12 .
- []
-
-[3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
-
- []
-
-[5]) [6]
+] [2])
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/grundlagen/opt_prob_ohne_restr.tex" [3] [4]) [5]
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/grundlagen/opt_prob_mit_lin_gl_nebenbed.tex" [6])
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/grundlagen/opt_prob_mit_lin_ungl_nebenbed.tex" [7])
+("C:\Dokumente und Einstellungen\Viqicevic\Eigene Dateien\SQP-vs.-Semismooth-Ne
+wton\tex\chapters/grundlagen/opt_prob_mit_nichtlin_restr.tex" [8])) [9]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 55.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
 
@@ -666,46 +704,44 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
 wton\tex\Bachelor-Thesis.aux")
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 55.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 55.
+Package rerunfilecheck Info: File `Bachelor-Thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 402858D98397A50ECC4EFE1BEB847771;636.
 
 
-Package rerunfilecheck Warning: File `Bachelor-Thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: Checksums for `Bachelor-Thesis.out':
-(rerunfilecheck)             Before: 176025D1261179C0EB2E3836EF0CFB06;338
-(rerunfilecheck)             After:  E4E07F655F2414267010A44B0CAD05DD;291.
  ) 
 Here is how much of TeX's memory you used:
- 10499 strings out of 494053
- 153357 string characters out of 3150137
- 331511 words of memory out of 3000000
- 13554 multiletter control sequences out of 15000+200000
- 14963 words of font info for 41 fonts, out of 3000000 for 9000
+ 10622 strings out of 494053
+ 157812 string characters out of 3150137
+ 332511 words of memory out of 3000000
+ 13613 multiletter control sequences out of 15000+200000
+ 16516 words of font info for 43 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 43i,11n,67p,822b,500s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{appendix.A} has been referenced but does not exis
-t, replaced by a fixed one
-
- <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten
-\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:\Dokumente und E
-instellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk
-\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Dokumente und Einstellungen\Viqicev
-ic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\
-dpi600\ecbx1728.pk> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellun
-gen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> 
-<C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten\
-MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk><C:/Programme/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Programme/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmmi6.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmmi8.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Pro
-gramme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Programme/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Programme/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Bachelor-Thesis.pdf (6 pages, 175199 bytes).
+ 43i,11n,67p,822b,458s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdat
+en\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Dokumente und
+ Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:\Dokumente und Einstellungen\Viqic
+evic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\e
+c\dpi600\ecbx1728.pk> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstell
+ungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk
+> <C:\Dokumente und Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdate
+n\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Dokumente und 
+Einstellungen\Viqicevic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\p
+k\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Dokumente und Einstellungen\Viqice
+vic\Lokale Einstellungen\Anwendungsdaten\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
+\dpi600\ecbx2074.pk><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cme
+x10.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
+Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Programme/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Programme/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmr12.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr8.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msy10.pfb><C:/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:
+/Programme/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Bachelor-Thesis.pdf (12 pages, 286226 bytes).
 PDF statistics:
- 378 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 535 PDF objects out of 1000 (max. 8388607)
+ 88 named destinations out of 1000 (max. 500000)
+ 62 words of extra memory for PDF output out of 10000 (max. 10000000)
 
