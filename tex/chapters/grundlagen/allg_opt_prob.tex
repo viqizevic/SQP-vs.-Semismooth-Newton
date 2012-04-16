@@ -2,7 +2,7 @@
 Allgemein ist die Aufgabenstellung der Optimierung wie folgt
 definiert:
 \begin{equation}
-  \min_{x \in \F} f(x) \label{eq:op} %use \tag{P} to make (P) as reference
+  \min_{x \in \F} f(x) \tag{P} \label{prob:allg_opt_prob}
 \end{equation}
 Die Funktion $f:D \subseteq \R^n \rightarrow \R$ ist die sogennante
 Zielfunktion.
@@ -28,25 +28,25 @@ $\min f(x) := -g(x)$ äquivalent ist.
 
 \begin{definition}
 \emph{(Globale und lokale Lösung)}
-Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~\eqref{eq:op} oder
+Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
 globales Minimum von $f$, wenn
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in \F
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems~\eqref{eq:op} oder
+Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
 striktes globales Minimum von $f$, wenn
 \begin{equation}
   f(\xopt) < f(x) \qquad \forall x \in \F\backslash\{\xopt\}
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~\eqref{eq:op} oder
+Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
 lokales Minimum von~$f$, wenn für eine Umgebung $U(\xopt)$ von $\xopt$
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in U(\xopt) \cap \F
 \end{equation}
 gilt.
-Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~\eqref{eq:op}
+Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~\eqref{prob:allg_opt_prob}
 oder striktes lokales Minimum von~$f$, wenn für eine Umgebung $U(\xopt)$ von
 $\xopt$
 \begin{equation}
@@ -68,7 +68,7 @@ spezifischer wie folgt definieren:
 \begin{definition}
 \emph{(Nichtlineare Optimierungsprobleme)}
 \begin{align}
-       \min\ & f(x) \label{eq:opt_prob_mit_nichtlin_restr} \\
+       \min\ & f(x) \tag{PN}\label{prob:opt_prob_mit_nichtlin_restr} \\
          \nb & g(x) \leq 0 \notag \\
              & h(x) = 0 \notag
 \end{align}

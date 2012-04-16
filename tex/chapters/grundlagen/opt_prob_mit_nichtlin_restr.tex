@@ -1,10 +1,10 @@
 Wir kommen nun zu unserem allgemeinen nichtlinearen Optimierungsproblem.
-Wir schreiben nochmal das Problem~\eqref{eq:opt_prob_mit_nichtlin_restr}.
-\begin{align}
-       \min\ & f(x) \notag \\
-         \nb & g(x) \leq 0 \notag \\
-             & h(x) = 0 \notag
-\end{align}
+Wir schreiben nochmal das Problem~\eqref{prob:opt_prob_mit_nichtlin_restr}.
+\begin{align*}
+       \min\ & f(x) \\
+         \nb & g(x) \leq 0 \\
+             & h(x) = 0
+\end{align*}
 
 % TODO h und g seien diffbar
 
@@ -24,7 +24,7 @@ sind und ein Vektor $d \in \R^n$ existiert mit
 
 \begin{theorem}
 Sei $\xopt$ eine lokale Lösung des
-Problems~\eqref{eq:opt_prob_mit_nichtlin_restr} und $x$ erfülle die
+Problems~\eqref{prob:opt_prob_mit_nichtlin_restr} und $x$ erfülle die
 Mangasarian-Fromowitz-Regularitätsbedingung.
 Dann existieren die Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$,
 so dass

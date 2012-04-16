@@ -1,7 +1,8 @@
 \begin{definition}
-\emph{Optimierungsproblem mit linearen Ungleichungsnebenbedingungen}
+\emph{(Optimierungsproblem mit linearen Ungleichungsnebenbedingungen)}
 \begin{align}
-  \min_{x \in \R^n}\ & f(x) \label{eq:opmlugnb} \\
+  \min_{x \in \R^n}\ & f(x)
+    \tag{PLN} \label{prob:opt_prob_mit_lin_ungl_nebenbed} \\
                  \nb & Ax = b \notag \\
                      & Gx \leq r \notag
 \end{align}
@@ -9,14 +10,11 @@ $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 $G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
 \end{definition}
 
-D.h. die Menge $\F$ sieht hier so aus:
-\begin{equation}
-  \F := \{ x \in \R^n | A x = b, G x \leq r \}.
-\end{equation}
+D.h. die Menge $\F$ sieht hier so aus: %FIXME
+$\F := \{ x \in \R^n\ |\ A x = b,\ G x \leq r \}$.
 
-Wir bezeichnen mit $g_j \in \R^n, j = 1,\ldots,p$, die Zeilenvektoren in der
-Matrix $G$.
-D.h.,
+Seien $g_j \in \R^n, j = 1,\ldots,p$, die Vektoren in der
+Matrix $G$, so dass
 \begin{equation}
   G =
   \left(
@@ -30,7 +28,7 @@ D.h.,
 
 \begin{theorem} \label{satz:kkt}
 \emph{(Karush-Kuhn-Tucker-Satz)}
-Sei $\xopt$ lokale Lösung des Problems~\eqref{eq:opmlugnb} und
+Sei $\xopt$ lokale Lösung des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed} und
 $f$ sei in~$\xopt$ differenzierbar.
 Dann existieren die Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$
 zu~$\xopt$ mit
@@ -52,7 +50,7 @@ die Indexmenge der in $x$ aktiven Ungleichungsrestriktionen.
 
 \begin{theorem}
 \emph{(Hinreichende Optimalitätsbedingungen)}
-$f$ sei in $\xopt \in \F$ zweimal stetig differenzierbar. Die notwendige
+Sei $f$ in $\xopt \in \F$ zweimal stetig differenzierbar. Die notwendige
 Bedingung von Satz~\ref{satz:kkt} sei erfüllt und es gelte mit $\alpha > 0$
 \begin{equation}
 d^T f''(\xopt) d \geq \alpha ||d||^2 \quad
@@ -65,16 +63,16 @@ d^T f''(\xopt) d \geq \alpha ||d||^2 \quad
       & \text{für } j \in J(\xopt) \text{ mit } \mu_j > 0.
   \end{cases}
 \end{equation}
-Dann ist $\xopt$ eine strikte lokale Lösung des Problems~\eqref{eq:opmlugnb}
+Dann ist $\xopt$ eine strikte lokale Lösung des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
 \end{theorem}
 
-Spezialfall des Problems~\eqref{eq:opmlugnb} ist das Optimierungsproblem mit
+Spezialfall des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed} ist das Optimierungsproblem mit
 unteren und oberen Schranken für die Variablen.
 
 \begin{definition}
 \emph{(Optimierungsproblem mit Variablenbeschränkungen)}
 \begin{align}
-  \min_{x \in \R^n}\ & f(x) \label{eq:opmlugnb} \\
+  \min_{x \in \R^n}\ & f(x) \tag{PVB} \label{prob:opt_prob_mit_var_beschr} \\
                  \nb & a \leq x \leq b \notag
 \end{align}
 $a, b \in \R^n$ mit $a \leq b$.
