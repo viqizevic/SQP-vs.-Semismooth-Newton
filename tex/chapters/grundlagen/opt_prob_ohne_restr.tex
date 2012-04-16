@@ -104,7 +104,7 @@ welches die negative Gradienten als Abstiegsrichtungen verwendet.
 \begin{enumerate}
   \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
         Setze $k := 0$.
-  \item Ist $||\nabla f(x^k)|| < \epsilon$ \label{list:stop_criteria_GV}
+  \item Ist $||\nabla f(x^k)|| < \epsilon$ \label{list:stop_criteria_grad_verf}
         $\Rightarrow$ STOP.
   \item Setze $d^k := - \nabla f(x^k)$.
   \item Bestimme $\sigma_k$ so, dass
@@ -113,7 +113,7 @@ welches die negative Gradienten als Abstiegsrichtungen verwendet.
             \qquad \forall \sigma \geq 0.
         \end{equation}
   \item Setze $x^{k+1} := x^k + \sigma_k d^k$ und $k := k+1$ $\Rightarrow$
-        Gehe zu Schritt~\ref{list:stop_criteria_GV}.
+        Gehe zu Schritt~\ref{list:stop_criteria_grad_verf}.
 \end{enumerate}
 \end{algorithm}
 
@@ -127,7 +127,7 @@ um die Lösung der Gleichung~\eqref{eq:grad_zero} zu finden.
 \begin{enumerate}
   \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
         Setze $k := 0$.
-  \item Ist $||\nabla f(x^k)|| < \epsilon$ \label{list:stop_criteria_NV}
+  \item Ist $||\nabla f(x^k)|| < \epsilon$ \label{list:stop_criteria_newt_verf}
         $\Rightarrow$ STOP.
   \item Berechne die Lösung $d$ des linearen Gleichungssystems
         \begin{equation}
@@ -135,9 +135,28 @@ um die Lösung der Gleichung~\eqref{eq:grad_zero} zu finden.
         \end{equation}
         Setze $d^k := d$.
   \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$ $\Rightarrow$
-        Gehe zu Schritt~\ref{list:stop_criteria_NV}.
+        Gehe zu Schritt~\ref{list:stop_criteria_newt_verf}.
 \end{enumerate}
 \end{algorithm}
+
+Der Punkt $x^{k+1}$ ist eigentlich die Lösung des Minimierungsproblems, welches
+durch die quadratische Approximation von $f$ in Punkt $x^k$ definiert ist.
+In der Umgebung von $x^k$ können wir die Funktion $f$ wie folgt approximieren:
+\begin{equation}
+  f(x) \approx f(x^k) + \nabla f(x^k)^T (x-x^k)
+                 + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k).
+\end{equation}
+Die Ableitung der rechten Seite ist
+\begin{equation}
+  f''(x^k) x + \nabla f(x^k) - f''(x^k) x^k.
+\end{equation}
+Setzen wir diese gleich null, dann bekommen wir
+\begin{align}
+  f''(x^k) (x-x^k) & = - \nabla f(x^k) \\
+            x-x^k  & = - [f''(x^k)]^{-1} \nabla f(x^k) \\
+            x      & = x^k - [f''(x^k)]^{-1} \nabla f(x^k).
+\end{align}
+Das ist genau unser Punkt $x^{k+1}$.
 
 Man kann auch noch eine Scrittweitensteuerung durchführen, dann bekommt man ein
 Abstiegsverfahren, welches man als das gedämpfte Newton-Verfahren bezeichnet.
