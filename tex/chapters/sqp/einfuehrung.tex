@@ -1,6 +1,9 @@
-Das SQP-Verfahren ist ein wichtiges Verfahren, um restringierte
-nichlineare Probleme zu lösen. SQP ist eine Abkürzung für Sequentielle
-Quadratische Optimierung.
+Das SQP-Verfahren ist ein wichtiges Verfahren,
+um restringierte nichlineare Probleme zu lösen.
+SQP ist eine Abkürzung für sequentielle quadratische Programmierung
+(auf Englisch: Sequential Quadratic Programming).
+Die Idee ist nämlich, dass Teilprobleme in Form quadratischer
+Optimierungsprobleme iterativ formuliert und gelöst werden.
 
 %Erstes: Wilson im Jahr 1963
 % [120] Wilson R. B.: A simplical algorithm for concave programming. PhD Thesis.
@@ -8,7 +11,21 @@ Quadratische Optimierung.
 % [92] Han und Powell: Algorithms 
 % [41]
 
-Die Idee: Iterativ werden durch das Lösen von quadratischen Problemen KKT-Punkte
-gefunden, also Kandidaten für lokale Minimalstellen.
+\begin{align}
+  \min_{d \in \R^n}\ & \frac{1}{2} d^T f''(x^k) d + \nabla f(x^k)^T d
+    \label{prob:qp_lin} \\
+                 \nb & A d = 0, \notag \\
+                    & G x^k + G d \leq r \notag
+\end{align}
 
-Und zum Lösen des quadratischen Problems ist ein effizientes Verfahren bekannt.
+\begin{algorithm}
+\emph{(SQP-Verfahren)}
+\begin{enumerate}
+  \item Berechne einen zulässigen Startpunkt $x^0$ und setze $k:=0$.
+  \item Berechne die Lösung $d$ des Problems~\eqref{prob:qp_lin}.
+        \label{list:quad_prog} Setze $d^k := d$.
+  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$.
+        $\Rightarrow$ Gehe zu Schritt~\ref{list:quad_prog}
+\end{enumerate}
+\end{algorithm}
+
