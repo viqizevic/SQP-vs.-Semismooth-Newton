@@ -1,0 +1,5 @@
+# ignore all files in the tmp/ directory
+tmp/
+
+# no .synctex.gz file
+*.synctex.gz
