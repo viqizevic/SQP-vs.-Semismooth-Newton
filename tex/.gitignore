@@ -1,3 +1,6 @@
+# no .project file (created by teXlipse)
+.project
+
 # ignore all files in the tmp/ directory
 tmp/
 
