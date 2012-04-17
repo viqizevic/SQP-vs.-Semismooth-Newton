@@ -8,9 +8,30 @@ Wir werden jetzt aufklären, wie wir diese Probleme lösen werden.
 \emph{(Quadratische Optimierungsprobleme mit linearen Restriktionen)}
 \begin{align}
   \min_{x \in \R^n}\ &
-    \frac{1}{2} \langle Qx,x \rangle + \langle q,x \rangle \\
+    \frac{1}{2} \langle Qx,x \rangle + \langle q,x \rangle 
+    \tag{QLG} \label{prob:quad_prog_mit_lin_restr} \\
   \nb & Ax = b \notag \\
       & Gx \leq r \notag
 \end{align}
+Dabei sei $Q$ eine symmetrische $(n \times n)$-Matrix und $q \in \R^n$.
+$A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
+$G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
 \end{definition}
 
+Sei $J(x)$ die Indexmenge der aktiven Ungleichungsrestriktionen.
+$B_k := \left(\begin{array}{c} A \\ G(x) \end{array}\right)$
+
+\begin{align}
+  \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
+                       + \langle Qx^k+q,d\rangle
+                         \label{prob:teil_prob_in_akt_me_verf} \\
+                 \nb & B_k d = 0 \notag
+\end{align}
+
+\begin{algorithm}
+\emph{(Aktive-Mengen-Methode für~\eqref{prob:quad_prog_mit_lin_restr})}
+\begin{enumerate}
+  \item Wähle einen Startpunkt $x^0$. Setze $k:=0$.
+  \item Löse das Problem~\eqref{prob:teil_prob_in_akt_me_verf}
+\end{enumerate}
+\end{algorithm}
