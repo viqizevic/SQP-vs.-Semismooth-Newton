@@ -121,6 +121,8 @@ welches die negative Gradienten als Abstiegsrichtungen verwendet.
 
 Eine andere Möglichkeit ist, dass man das Newton-Verfahren verwendet,
 um die Lösung der Gleichung~\eqref{eq:grad_zero} zu finden.
+Man muss dabei voraussetzen, dass die Funktion $f$ zweimal differenzierbar
+sei.
 
 \begin{algorithm}
 \emph{(Newton-Verfahren)}
@@ -139,8 +141,8 @@ um die Lösung der Gleichung~\eqref{eq:grad_zero} zu finden.
 \end{enumerate}
 \end{algorithm}
 
-Der Punkt $x^{k+1}$ ist eigentlich die Lösung des Minimierungsproblems, welches
-durch die quadratische Approximation von $f$ in Punkt $x^k$ definiert ist.
+Der Punkt $x^{k+1}$ in jedem Iterationschritt ist eigentlich die Lösung des
+Minimierungsproblems, welches durch die quadratische Approximation von $f$ in Punkt $x^k$ definiert ist.
 In der Umgebung von $x^k$ können wir die Funktion $f$ wie folgt approximieren:
 \begin{equation}
   f(x) \approx f(x^k) + \nabla f(x^k)^T (x-x^k)
@@ -157,11 +159,15 @@ Setzen wir diese gleich null, dann bekommen wir
             x      & = x^k - [f''(x^k)]^{-1} \nabla f(x^k).
 \end{align}
 Das ist genau unser Punkt $x^{k+1}$.
+D.h., wir lösen in jedem Iterationschritt eigentlich das Problem
+\begin{equation}
+  \min_{x \in \R^n}\ f(x^k) + \nabla f(x^k)^T (x-x^k)
+                 + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k).
+\end{equation}
+Diese Idee wird auch bei dem SQP-Verfahren benutzt.
 
-Man kann auch noch eine Scrittweitensteuerung durchführen, dann bekommt man ein
-Abstiegsverfahren, welches man als das gedämpfte Newton-Verfahren bezeichnet.
-Man ersetzt dazu den Schritt 4 in dem Newton-Verfahren mit den Schritten 4 und 5
-in dem Gradientenverfahren.
+Man kann außerdem auch Scrittweitensteuerung durchführen, dann bekommt
+man ein Abstiegsverfahren, welches man als das gedämpfte Newton-Verfahren bezeichnet.
 
 % TODO Quasi-Newton-Verfahren bzw. BFGS-Verfahren erwähnen.
 
