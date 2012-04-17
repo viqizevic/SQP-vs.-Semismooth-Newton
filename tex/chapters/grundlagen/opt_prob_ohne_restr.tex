@@ -96,6 +96,8 @@ $x^{k+1} := x^k + \sigma_k d^k$
 \end{equation}
 gilt.
 
+\subsection{Gradientenverfahren}
+
 Das Gradientenverfahren ist ein einfaches Abstiegsverfahren,
 welches die negative Gradienten als Abstiegsrichtungen verwendet.
 
@@ -117,10 +119,17 @@ welches die negative Gradienten als Abstiegsrichtungen verwendet.
 \end{enumerate}
 \end{algorithm}
 
-% TODO Armijo-Verfahren über die Schrittweite erwähnen.
+Um die Schrittweite $\sigma_k$ zu bestimmen, kann man das Armijo-Verfahren
+oder das Powell-Verfahren verwenden. %TODO Siehe ..
 
-Eine andere Möglichkeit ist, dass man das Newton-Verfahren verwendet,
-um die Lösung der Gleichung~\eqref{eq:grad_zero} zu finden.
+\subsection{Newton-Verfahren} \label{sec:newton_verfahren}
+
+Ein bekanntes Verfahren, um nichtlineare Gleichungssysteme zu lösen,
+ist das Newton-Verfahren.
+Für unsere unrestringierte Optimierungsprobleme können wir das Newton-Verfahren
+verwenden, um die Lösung des nichtlinearen
+Gleichungssystems~\eqref{eq:grad_zero},
+also $\nabla f(x) = 0$, zu finden.
 Man muss dabei voraussetzen, dass die Funktion $f$ zweimal differenzierbar
 sei.
 
@@ -162,9 +171,12 @@ Das ist genau unser Punkt $x^{k+1}$.
 D.h., wir lösen in jedem Iterationschritt eigentlich das Problem
 \begin{equation}
   \min_{x \in \R^n}\ f(x^k) + \nabla f(x^k)^T (x-x^k)
-                 + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k).
+                 + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k),
 \end{equation}
-Diese Idee wird auch bei dem SQP-Verfahren benutzt.
+wobei die Konstante $f(x^k)$ weggelassen werden kann.
+
+Wir werden später sehen, dass das SQP-Verfahren diese Idee auch
+gebrauchen wird.
 
 Man kann außerdem auch Scrittweitensteuerung durchführen, dann bekommt
 man ein Abstiegsverfahren, welches man als das gedämpfte Newton-Verfahren bezeichnet.
