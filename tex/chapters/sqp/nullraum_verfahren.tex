@@ -5,13 +5,46 @@
 Gleichungsnebenbedingungen)}
 \begin{align}
   \min_{x \in \R^n}\ &
-    \frac{1}{2} \langle Qx,x \rangle + \langle q,x \rangle 
-    \tag{QLG} \label{prob:quad_prog_mit_lin_restr} \\
+    \frac{1}{2} \langle Qx,x \rangle + \langle q,x \rangle \\
   \nb & Ax = b \notag
 \end{align}
 Dabei sei $Q$ eine symmetrische $(n \times n)$-Matrix und $q \in \R^n$.
 $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 \end{definition}
 
-QR-Zerlegung
-$Q := \left(\begin{array}{c} A \\ G(x) \end{array}\right)$
+\begin{algorithm}
+\emph{(Nullraum-Matrix-Verfahren)}
+\begin{enumerate}
+  \item Finde unitäre $(n \times n)$-Matrix $H$
+  und obere $(m \times m)$-Dreiecksmatrix $R$ mit
+  \begin{equation}
+    H A^T = \left(\begin{array}{c} R \\ 0 \end{array}\right)
+  \end{equation}
+  \item Berechne die Vektoren $h_1 \in \R^m$ und $h_2 \in \R^{n-m}$
+  \begin{equation}
+    \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right) := -Hq
+  \end{equation}
+  \item Berechne die $(n \times n)$-Matrix $B$
+  \begin{equation}
+    B := H Q H^T
+       = \left(\begin{array}{cc} B_{11} & B_{12} \\ B_{21} & B_{22}
+         \end{array}\right)
+  \end{equation}
+  \item Berechne den Vektor $u_1$ als Lösung der Gleichung
+  \begin{equation}
+    R^T u_1 = b
+  \end{equation}
+  \item Berechne den Vektor $u_2$ als Lösung der Gleichung
+  \begin{equation}
+    B_{22} u_2 = h_2 - B_{21} u_1
+  \end{equation}
+  \item Berechne $\xopt$
+  \begin{equation}
+    \xopt := H^T \left(\begin{array}{c} u_1 \\ u_2 \end{array}\right)
+  \end{equation}
+  \item Der Multiplikator $\lambda^*$ ist die Lösung der Gleichung
+  \begin{equation}
+    R \lambda^* = h_1 - B_{11} u_1 - B_{12} u_2
+  \end{equation}
+\end{enumerate}
+\end{algorithm}

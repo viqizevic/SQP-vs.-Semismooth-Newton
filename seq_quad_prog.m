@@ -42,7 +42,7 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 	%   A sei eine mxn-Matrix, m <= n, b aus R^m.
 	%   G sei eine pxn-Matrix, r aus R^p.
 	%   x0 sei der Startpunkt, wobei x0 die Nebenbedingungen erfuellt.
-	%   tol sei die Toleranz f�r das Abbruchskriterium.
+	%   tol sei die Toleranz fuer das Abbruchskriterium.
 	%   itmax sei die maximale Anzahl von Iterationen.
 	k = 0;
 	x_k = x0;
@@ -179,6 +179,7 @@ end
 %   Und es gilt: d'*Q*d >= alpha*||d||^2 fuer alle d aus kern(A)
 %   Dann hat das Problem (QLG) eine eindeutig bestimmte Loesung.
 %   (Siehe Satz 5.4.13, Walter Alt: Nichtlineare Optimierung, Vieweg, 2002)
+%
 function [x,lambda] = nullraum_verfahren(Q,q,A,b)
 	if ( isempty(A) || isempty(b) )
 		x = -Q\q;
@@ -188,20 +189,20 @@ function [x,lambda] = nullraum_verfahren(Q,q,A,b)
 	[m,n] = size(A);
 	% Berechne die QR-Zerlegung von A'
 	%
-	[P, S] = qr(A'); % Die Funktion qr gibt P und S zur�ck, wobei A' = P*S
-	H = P';          % Diese H erf�llt H*A' = S
-	R = S(1:m,1:m);  % Diese R erf�llt H*A = [R; 0]
+	[P, S] = qr(A'); % Die Funktion qr gibt P und S zurueck, wobei A' = P*S
+	H = P';          % Diese H erfuellt H*A' = S
+	R = S(1:m,1:m);  % Diese R erfuellt H*A = [R; 0]
 	% Berechne h := -H*q und [h1; h2] := h, wobei h1 aus R^m
 	%
 	h = -H*q;
 	h1 = h(1:m,1);
 	h2 = h(m+1:n,1);
 	% Berechne B := H*Q*H' und
-	% [          ]
-	% [ B11  B12 ]
-	% [          ] := B, wobei B11 eine mxm-Matrix
-	% [ B21  B22 ]
-	% [          ]
+	% [            ]
+	% [  B11  B12  ]
+	% [            ] := B, wobei B11 eine mxm-Matrix
+	% [  B21  B22  ]
+	% [            ]
 	%
 	B = H * Q * H';
 	B11 = B(1:m,1:m);
