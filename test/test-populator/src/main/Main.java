@@ -29,24 +29,29 @@ import org.xml.sax.SAXException;
  * and then calls the file creator.
  * 
  * Directories tree:
- * |
- * |-- Eclipse-Workspace
- * |     |-- Matlab-Test-Files-Creator
- * |
- * |-- SQP-vs.-Semismooth-Newton
- *       |-- tex
- *       |-- test
- *             |-- 1st_test_problem_func
- *             |-- ...
- *             |-- n-th_test_problem_func
- *             |-- test-populator
- *                   |-- src
- *                         |-- data
- *                         |-- main
+ *  |
+ *  |-- Eclipse-Workspace
+ *  |     |-- Matlab-Test-Files-Creator
+ *  |
+ *  |-- SQP-vs.-Semismooth-Newton
+ *        |-- tex
+ *        |-- test
+ *              |-- 1st_test_problem_func
+ *              |-- ...
+ *              |-- n-th_test_problem_func
+ *              |-- test-populator
+ *                    |-- src
+ *                          |-- data
+ *                          |-- main
  * 
  * @author Vicky H. Tanzil
  */
 public class Main {
+	/*
+	 * TODO use .ini file
+	 * TODO try not to use feval
+	 * TODO get ready if the lambda variable should be removed
+	 */
 	
 	/**
 	 * A hash map containing all test functions as values

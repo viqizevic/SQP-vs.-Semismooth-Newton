@@ -9,30 +9,64 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+/**
+ * MFileCreator ables to create the needed Matlab files
+ * for the test problem.
+ * @author Vicky H. Tanzil
+ */
 public class MFileCreator {
 	
+	/**
+	 * The extension for the Matlab files.
+	 */
 	private static final String extension = ".m";
 
 	private static final String withFmincon = "_with_fmincon";
 	
 	private static final String withFminconToo = "_with_fmincon_too";
-
+	
 	private final String v0 = "_v0";
 	
+	/**
+	 * The test problem.
+	 */
 	private TestProblem testProblem;
-	
+
+	/**
+	 * The test function f in the test problem.
+	 */
 	private TestFunction f;
-	
+
+	/**
+	 * The name of the file defining the function definition.
+	 */
 	private String defFileName;
 	
+	/**
+	 * The name of the file defining the function gradient.
+	 */
 	private String gradFileName;
 	
+	/**
+	 * The name of the file defining the function hessian matrix.
+	 */
 	private String hessFileName;
 	
+	/**
+	 * The name of the file calling the algorithms.
+	 */
 	private String testFileName;
-	
+
+	/**
+	 * The path to the directory where all created files should be placed.
+	 */
 	private String directoryPath;
 	
+	/**
+	 * Create MFileCreator for the given test problem.
+	 * @param testProblem The test problem.
+	 * @param directoryPath The directory where the created files should be placed. 
+	 */
 	public MFileCreator(TestProblem testProblem, String directoryPath) {
 		this.testProblem = testProblem;
 		f = testProblem.getTestFunction();
@@ -54,6 +88,7 @@ public class MFileCreator {
 	
 	private void createFunctionDefinitionFile() {
 		String fileName = defFileName;
+		// create the definition file for function f
 		String content = "function y = " + fileName + "(" + f.getVar() + ")\n";
 		if (f.getConstants().size() != 0) {
 			for (String s : f.getConstants().keySet()) {
@@ -63,6 +98,7 @@ public class MFileCreator {
 		content += "\t" + f.getDefinition() + "\n";
 		content += "end";
 		createFile(fileName+extension, content);
+		// create the definition file for the complete function in the problem
 		content = "function y = " + fileName + v0 + "(" + f.getVar() + ")\n";
 		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
 		content += "\ty = " + fileName + "(" + f.getVar() + ") + " + f.extraDefinition() + ";\n";
@@ -72,6 +108,7 @@ public class MFileCreator {
 	
 	private void createFunctionGradientFile() {
 		String fileName = gradFileName;
+		// create the file for the gradient of function f
 		String content = "function g = " + fileName + "(" + f.getVar() + ")\n";
 		if (f.getConstants().size() != 0) {
 			for (String s : f.getConstants().keySet()) {
@@ -81,6 +118,7 @@ public class MFileCreator {
 		content += "\t" + f.getGradient() + "\n";
 		content += "end";
 		createFile(fileName+extension, content);
+		// create the file for the gradient of the complete function in the problem 
 		content = "function g = " + fileName + v0 + "(" + f.getVar() + ")\n";
 		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
 		content += "\tg = " + fileName + "(" + f.getVar() + ") + " + f.extraGradient() + ";\n";
@@ -90,6 +128,7 @@ public class MFileCreator {
 
 	private void createFunctionHessianFile() {
 		String fileName = hessFileName;
+		// create the file for the hessian matrix of function f
 		String content = "function H = " + fileName + "(" + f.getVar() + ")\n";
 		if (f.getConstants().size() != 0) {
 			for (String s : f.getConstants().keySet()) {
@@ -99,6 +138,7 @@ public class MFileCreator {
 		content += "\t" + f.getHessianMatrix() + "\n";
 		content += "end";
 		createFile(fileName+extension, content);
+		// create the file for the hessian matrix of the complete function in the problem 
 		content = "function H = " + fileName + v0 + "(" + f.getVar() + ")\n";
 		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
 		content += "\tH = " + fileName + "(" + f.getVar() + ") + " + f.extraHessian() + ";\n";
@@ -118,6 +158,7 @@ public class MFileCreator {
 		createFile(fileName+extension, content);
 	}
 
+	// FIXME use template file
 	private void createTestProblemFileWithFminconToo() {
 		String fileName = testFileName + withFminconToo;
 		String content = "function " + fileName + "()\n";
@@ -163,7 +204,15 @@ public class MFileCreator {
 		createFile(fileName+extension, content);
 	}
 	
+	/**
+	 * Get the content of the test file.
+	 * @param templateFilePath The template file defining the test.
+	 * The variables placed within this file should be
+	 * started with '{var_' and ended with '}'.
+	 * @return The content of the test file.
+	 */
 	private String getTestFileContentUsingTemplate(String templateFilePath) {
+		// define the variables to be replaced in the template file
 		HashMap<String, String> vars = new HashMap<String, String>();
 		vars.put("{var_function_name}", defFileName);
 		vars.put("{var_grad_function_name}", gradFileName);
@@ -179,6 +228,7 @@ public class MFileCreator {
 		vars.put("{var_grad_function_name_v0}", gradFileName+v0);
 		vars.put("{var_hess_function_name_v0}", hessFileName+v0);
 		
+		// get the content of the template file
 		String content = "";
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(templateFilePath));
@@ -191,6 +241,8 @@ public class MFileCreator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		// replace the variables in the templates content
 		for (String s : vars.keySet()) {
 			while (content.contains(s)) {
 				content = content.replace(s, vars.get(s));
@@ -199,6 +251,11 @@ public class MFileCreator {
 		return content;
 	}
 	
+	/**
+	 * Write a file.
+	 * @param fileName The file name.
+	 * @param fileContens The content of the file.
+	 */
 	private void createFile(String fileName, String fileContens) {
 		if (!directoryPath.equals("")) {
 			fileName = directoryPath + "/" + fileName;
@@ -214,6 +271,12 @@ public class MFileCreator {
 		}
 	}
 	
+	/**
+	 * Create all files for the test problem given.
+	 * @param testProblem The test problem.
+	 * @param directoryPath The directory to place the files for the test problem.
+	 * @param testTemplates
+	 */
 	public static void create(TestProblem testProblem, String directoryPath, LinkedList<String> testTemplates) {
 		MFileCreator mFileCreator = new MFileCreator(testProblem, directoryPath);
 		mFileCreator.createFunctionDefinitionFile();
