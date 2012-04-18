@@ -2,24 +2,72 @@ package main;
 
 import java.util.HashMap;
 
+/**
+ * TestFunction represents a scalar function
+ * f : R^n -> R
+ * This function will be written at the end in a Matlab file.
+ * That's why all components of this function are from the type String
+ * and will be written using Matlab syntax.
+ * @author Vicky H. Tanzil
+ */
 public class TestFunction {
 	
+	/**
+	 * The name of the test function.
+	 */
 	private String name;
-	
+
+	/**
+	 * The variable of the function.
+	 */
 	private String var;
-	
+
+	/**
+	 * A hash map containing all constants needed by the function.
+	 */
 	private HashMap<String, String> constants;
-	
+
+	/**
+	 * The function definition.
+	 * It should be a Matlab code defining a variable 'y'.
+	 * That means it should start with 'y = '
+	 * and end with a semicolon ';'.
+	 */
 	private String definition;
-	
+
+	/**
+	 * The gradient of the function.
+	 * It should be a Matlab code defining a variable 'g'.
+	 * That means it should start with 'g = '
+	 * and end with a semicolon ';'.
+	 */
 	private String gradient;
 	
+	/**
+	 * The hessian matrix of the function.
+	 * It should be a Matlab code defining a variable 'H'.
+	 * That means it should start with 'H = '
+	 * and end with a semicolon ';'.
+	 */
 	private String hessianMatrix;
 	
+	/**
+	 * A boolean telling if the function provided a gradient and hessian matrix
+	 * or not.
+	 */
 	private boolean usingApproximationDifferentiation;
 	
+	/**
+	 * The variable needed by the approximation of the gradient
+	 * and the hessian matrix.
+	 */
 	private String eps;
 
+	/**
+	 * Create a test function with the name given.
+	 * The components of this function are at first empty.
+	 * @param name The function name.
+	 */
 	public TestFunction(String name) {
 		this.name = name;
 		constants = new HashMap<String, String>();
@@ -119,6 +167,7 @@ public class TestFunction {
 		f.setDefinition(definition);
 		f.setGradient(gradient);
 		f.setHessianMatrix(hessianMatrix);
+		f.setUsingApproximationDifferentiation(usingApproximationDifferentiation);
 		if (constants.size() != 0) {
 			for (String s : constants.keySet()) {
 				f.putConstant(s, constants.get(s));

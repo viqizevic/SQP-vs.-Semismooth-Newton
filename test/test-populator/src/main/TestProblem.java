@@ -1,29 +1,63 @@
 package main;
 
 /**
- * Our test problem is in the form:
+ * TestProblem represents test problem in the form:
  *  min ( f(x) + (lambda/2)*|x|^2 )
  *   x
  *      s.t.  a <= x <= b
+ * 
+ * This problem will be written at the end in a Matlab file.
+ * That's why all components of this problem are from the type String
+ * and will be written using Matlab syntax.
  */
 public class TestProblem {
 	
+	/**
+	 * The name of the problem.
+	 */
 	private String testProblemName;
-	
+
+	/**
+	 * The test function f.
+	 */
 	private TestFunction f;
 
+	/**
+	 * The variable lambda.
+	 */
 	private String lambda;
 
+	/**
+	 * The vector a defining the lower bound.
+	 */
 	private String a;
-	
+
+	/**
+	 * The vector b defining the upper bound.
+	 */
 	private String b;
-	
+
+	/**
+	 * The point x0 as the starting point for the algorithms.
+	 * x0 should be a feasible point.
+	 */
 	private String x0;
-	
+
+	/**
+	 * The tolerance for the stop criteria in the algorithms
+	 */
 	private String tolerance;
-	
+
+	/**
+	 * The maximum number of iterations the algorithms can have.
+	 */
 	private String maxIteration;
 
+	/**
+	 * Create an initial test problem.
+	 * @param testProblemName The name of the problem.
+	 * @param testFunction The function f.
+	 */
 	public TestProblem(String testProblemName, TestFunction testFunction) {
 		this.testProblemName = testProblemName;
 		f = testFunction.clone();

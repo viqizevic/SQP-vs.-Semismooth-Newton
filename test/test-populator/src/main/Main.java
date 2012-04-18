@@ -17,7 +17,7 @@ import org.xml.sax.SAXException;
 
 /**
  * This is a project for a bachelor thesis using Matlab
- * comparing two methods of the nonlinear optimization:
+ * to make a comparison of two methods of the nonlinear optimization:
  * SQP and Semismooth-Newton.
  * 
  * This Java project should create the needed Matlab test files.
@@ -105,7 +105,30 @@ public class Main {
 		System.out.println("Finish!");
 	}
 
+	/**
+	 * Read a .xml file defining all available test functions
+	 * @param fileName The name of the .xml file
+	 */
 	public static void parseFunctionsFromXMLFile(String fileName) {
+		/*
+		This is a simple example how the file should be:
+		<functions>
+			<function>
+				<name>quad_func</name>
+				<var>x</var>
+				<constant>
+					<constant_name>xd</constant_name>
+					<constant_value>3</constant_value>
+				</constant>
+				<def>y = norm(x-xd)^2;</def>
+				<grad>g = 2*(x-xd);</grad>
+				<hess>H = 2*eye(length(x));</hess>
+			</function>
+		</functions>
+		Every function should be defined in a <function> tag.
+		The tags name, var, def, grad and hess are required.
+		The tag constant is optional.
+		*/
 		File file = new File(fileName);
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder;
@@ -131,6 +154,11 @@ public class Main {
 		}
 	}
 
+	/**
+	 * Return a test function defined by the xml element.
+	 * @param element The xml element defining the test function.
+	 * @return The test function.
+	 */
 	private static TestFunction parseTestFunction(Element element) {
 		String name = getTagValue("name", element);
 		TestFunction function = new TestFunction(name);
@@ -157,6 +185,12 @@ public class Main {
 		return function;
 	}
 	
+	/**
+	 * Get tag value of an xml.
+	 * @param tag The searched tag in the xml.
+	 * @param e The xml element.
+	 * @return The value inside this tag.
+	 */
 	private static String getTagValue(String tag, Element e) {
 		NodeList nodeList = e.getElementsByTagName(tag).item(0).getChildNodes();
 		Node node = nodeList.item(0);
@@ -166,8 +200,32 @@ public class Main {
 		return node.getNodeValue().trim();
 	}
 
-	
+	/**
+	 * Read a .xml file defining all test problems.
+	 * @param fileName The name of the .xml file.
+	 */
 	private static void parseProblemsFromXMLFile(String fileName) {
+		/*
+		This is a simple example how the file should be:
+		<problems>
+			<problem>
+				<function_name>quad_func</function_name>
+				<constant>
+					<constant_name>xd</constant_name>
+					<constant_value>4</constant_value>
+				</constant>
+				<lambda>4</lambda>
+				<a>3</a>
+				<b>10</b>
+				<x0>8</x0>
+				<tolerance>0.001</tolerance>
+				<max_iteration>100</max_iteration>
+			</problem>
+		</problems>
+		Every problem should be defined in a <problem> tag.
+		The tags function_name, lambda, a, b, x0, tolerance and max_iteration are required.
+		The tag constant is optional.
+		*/
 		File file = new File(fileName);
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder;
@@ -197,6 +255,11 @@ public class Main {
 		}
 	}
 
+	/**
+	 * Return a test problem defined in the xml file.
+	 * @param element The xml element containing the test problem.
+	 * @return
+	 */
 	private static TestProblem parseTestProblem(Element element) {
 		String functionName = getTagValue("function_name", element);
 		String problemName = functionName;
