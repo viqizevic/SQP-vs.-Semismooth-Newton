@@ -19,12 +19,13 @@ Matrix $G$, so dass
   G =
   \left(
     \begin{array}{c}
-      (g_1)^T \\
+      g_1^T \\
       \vdots \\
-      (g_p)^T
+      g_p^T
     \end{array}
   \right).
 \end{equation}
+% TODO das Problem ausführlicher schreiben
 
 \begin{theorem} \label{satz:kkt}
 \emph{(Karush-Kuhn-Tucker-Satz)}
@@ -34,7 +35,7 @@ Dann existieren die Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$
 zu~$\xopt$ mit
 \begin{align}
   \nabla f(\xopt) + A^T \lambda + G^T \mu & = 0 \\
-  \mu \geq 0, \quad \mu_j (\langle g^j,\xopt \rangle - r_j ) & = 0,
+  \mu \geq 0, \quad \mu_j (\langle g_j,\xopt \rangle - r_j ) & = 0,
     \quad j = 1,\ldots,p.
 \end{align}
 $\lambda$ und $\mu$ heißen Lagrange-Multiplikatoren zu $\xopt$.

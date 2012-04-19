@@ -4,7 +4,7 @@
 \begin{document}
 
 % Römische Nummerierung für Sonderseiten, wie Verzeichnisse und Anhang
-\pagenumbering{Roman}
+\pagenumbering{roman}
 
 % ----- TITELBLATT
 %\input{extras/titelseite}
@@ -21,7 +21,7 @@
 
 \newpage
 % Merke mir die römische Seitenzahl in 'roemisch'
-\newcounter{roemisch} %FIXME use small roman
+\newcounter{roemisch}
 \setcounter{roemisch}{\value{page}}
 % Setzte Nummerierung auf arabisch für die eigentlichen Kapitel
 \pagenumbering{arabic}
@@ -40,7 +40,7 @@
 
 \newpage
 % Setze Numerierung wieder auf römisch zurück
-\pagenumbering{Roman} 
+\pagenumbering{roman} 
 % Setze von oben fort
 \setcounter{page}{\value{roemisch}} 
 % Wert ist demnach der von 'roemisch'
