@@ -18,20 +18,47 @@ $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 $G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
 \end{definition}
 
-Sei $J(x)$ die Indexmenge der aktiven Ungleichungsrestriktionen.
-$B_k := \left(\begin{array}{c} A \\ G(x) \end{array}\right)$
+Sei $x^k \in \R^n$ ein Punkt in dem Iterationschritt.
+Seien $J(x^k)$ die Indexmenge der aktiven Ungleichungsrestriktionen zu $x^k$
+und $p_k := |J(x^k)|$. Seien
+\begin{equation}
+G_k :=
+\left(\begin{array}{c}
+g_{j_1}^T \\ \vdots \\ g_{j_{p_k}}^T
+\end{array}\right) \text{ mit }
+j_1, \ldots, j_{p_k} \in J(x^k)
+\qquad \text{und} \qquad
+B_k := \left(\begin{array}{c} A \\ G_k \end{array}\right)
+\end{equation}
 
 \begin{align}
   \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
                        + \langle Qx^k+q,d\rangle
-                         \label{prob:teil_prob_in_akt_me_verf} \\
+                         \tag{$Q_k$} \label{prob:teil_prob_in_akt_me_verf} \\
                  \nb & B_k d = 0 \notag
 \end{align}
 
 \begin{algorithm}
 \emph{(Aktive-Mengen-Methode für~\eqref{prob:quad_prog_mit_lin_restr})}
-\begin{enumerate}
+\begin{compactenum}[1.]
   \item Wähle einen Startpunkt $x^0$. Setze $k:=0$.
   \item Löse das Problem~\eqref{prob:teil_prob_in_akt_me_verf}
-\end{enumerate}
+        $\Rightarrow d^k, \lambda^k, \mu^k$.
+  \item Falls $d^k = 0$
+    \begin{compactenum}[3a.]
+      \item Falls $\mu^k \geq 0 \Rightarrow$ STOP.
+      \item Falls $\mu^k \ngeq 0$
+        \begin{compactenum}[i.]
+          \item Bestimme $j \in J(x^k)$, so dass
+                $\mu_j^k = \min\{ \mu_i^k \ |\ i \in J(x^k) \}$.
+          \item $J(x^k) := J(x^k)\backslash\{j\}$ 
+          \item Streiche in $G_k$ die $j$-te Zeile.
+          \item Löse wieder das Problem~\eqref{prob:teil_prob_in_akt_me_verf}
+                $\Rightarrow d^k \neq 0$
+        \end{compactenum}
+    \end{compactenum}
+  \item Berechne Schrittweite $\sigma_k$
+  \item Setze $x^{k+1} := x^k + \sigma_k d^k$ und $k := k+1$.
+        $\Rightarrow $ Gehe zu Schritt 2. %FIMXE use label
+\end{compactenum}
 \end{algorithm}
