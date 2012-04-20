@@ -4,8 +4,8 @@
 	oneside,%             Einseitig
 	bibliography=totoc,%  Literaturverzeichnis einfügen bibtotocnumbered: nummeriert
 	listof=totoc,%		  Verzeichnisse einbinden in toc
-	index=totoc,%            Index ins Verzeichnis einfügen
-	parskip=half,%         Europäischer Satz mit abstand zwischen Absätzen
+	index=totoc,%         Index ins Verzeichnis einfügen
+	parskip=half,%        Europäischer Satz mit abstand zwischen Absätzen
 	chapterprefix,%       Kapitel anschreiben als Kapitel
 	headsepline,%         Linie nach Kopfzeile
 	%footsepline,%        Linie vor Fusszeile
@@ -24,6 +24,17 @@
 %
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
+
+%
+% Paket um Latin Modern Font zu benutzen
+%
+\usepackage{lmodern}
+\renewcommand*\familydefault{\sfdefault} % Verwende die Sans Version
+\DeclareMathVersion{sansmath}
+\SetSymbolFont{letters}{sansmath}{OML}{cmbr}{m}{it}
+\SetSymbolFont{operators}{sansmath}{OT1}{lmss}{m}{n}
+\SetSymbolFont{symbols}{sansmath}{OMS}{cmbr}{m}{n}
+\mathversion{sansmath} % Mach die Mathe Font auch zu sans
 
 %
 % Paket für Quotes
