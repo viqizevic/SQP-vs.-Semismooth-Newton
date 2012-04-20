@@ -4,8 +4,8 @@
 	oneside,%             Einseitig
 	bibliography=totoc,%  Literaturverzeichnis einfügen bibtotocnumbered: nummeriert
 	listof=totoc,%		  Verzeichnisse einbinden in toc
-	index=totoc,%            Index ins Verzeichnis einfügen
-	parskip=half,%         Europäischer Satz mit abstand zwischen Absätzen
+	index=totoc,%         Index ins Verzeichnis einfügen
+	parskip=half,%        Europäischer Satz mit abstand zwischen Absätzen
 	chapterprefix,%       Kapitel anschreiben als Kapitel
 	headsepline,%         Linie nach Kopfzeile
 	%footsepline,%        Linie vor Fusszeile
@@ -26,6 +26,17 @@
 \usepackage[T1]{fontenc}
 
 %
+% Paket um Latin Modern Font zu benutzen
+%
+\usepackage{lmodern}
+\renewcommand*\familydefault{\sfdefault} % Verwende die Sans Version
+\DeclareMathVersion{sansmath}
+\SetSymbolFont{letters}{sansmath}{OML}{cmbr}{m}{it}
+\SetSymbolFont{operators}{sansmath}{OT1}{lmss}{m}{n}
+\SetSymbolFont{symbols}{sansmath}{OMS}{cmbr}{m}{n}
+\mathversion{sansmath} % Mach die Mathe Font auch zu sans
+
+%
 % Paket für Quotes
 %
 \usepackage[babel,german=swiss]{csquotes}
@@ -41,17 +52,24 @@
 \usepackage{booktabs}
 
 %
+% Paket für schönere Listen
+%
+\usepackage{paralist}
+\setlength{\pltopsep}{1.5ex}% Abstand zwischen Text und Listenpunkt
+\setlength{\plitemsep}{1.5ex}% Abstand zwischen Items
+
+%
 % Paket um Grafiken einbetten zu können
 %
 \usepackage{graphicx}
 
-%
+%TODO anpassen
 % Spezielle Schrift im Koma-Script setzen.
 %
-\setkomafont{sectioning}{\normalfont\bfseries}
-\setkomafont{captionlabel}{\normalfont\bfseries} 
-\setkomafont{pagehead}{\normalfont\bfseries} % Kopfzeilenschrift
-\setkomafont{descriptionlabel}{\normalfont\bfseries}
+%\setkomafont{sectioning}{\normalfont\bfseries}
+%\setkomafont{captionlabel}{\normalfont\bfseries} 
+%\setkomafont{pagehead}{\normalfont\bfseries} % Kopfzeilenschrift
+%\setkomafont{descriptionlabel}{\normalfont\bfseries}
 
 %
 % Zeilenumbruch bei Bildbeschreibungen.

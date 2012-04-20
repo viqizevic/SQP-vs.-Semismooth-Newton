@@ -1,0 +1,51 @@
+Wir betrachen erstmal das Optimierungsproblem mit linearen
+Gleichungs- und
+Ungleichungsnebenbedingungen~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}.
+\begin{align*}
+  \min_{x \in \R^n}\ & f(x) \\
+                 \nb & Ax = b \\
+                     & Gx \leq r
+\end{align*}
+
+Das Teilproblem ist also
+\begin{align}
+  \min_{x \in \R^n}\ & \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k)
+                         + \nabla f(x^k)^T (x-x^k) \\
+                 \nb & A x = b \notag \\
+                     & G x \leq r \notag
+\end{align}%TODO erwähnen dass f(x^k) weggelassen wurde?
+
+Definieren wir $d := x - x^k$.
+Dann haben wir $x = x^k + d$ und als Teilproblem
+\begin{align}
+  \min_{x \in \R^n}\ & \frac{1}{2} d^T f''(x^k) d
+                         + \nabla f(x^k)^T d \\
+                 \nb & A x^k + A d = b \label{eq:teilprob_lin_gl_nebenbed} \\
+                     & G x^k + G d \leq r
+\end{align}
+
+Das ist ein quadratisches Optimierungsproblem mit linearen Restriktionen,
+welches wir gleich näher betrachten werden.
+Weil wir voraussetzen werden, dass $x^k \in \F$ ist,
+d.\,h., es gilt \mbox{$A x^k = b$}, können wir als Gleichungsnebenbedingung an
+der Stelle~\eqref{eq:teilprob_lin_gl_nebenbed} die Gleichung $Ad = 0$ schreiben.
+Nun sind wir bereit, das SQP-Verfahren zu formulieren.
+
+\begin{algorithm}
+\emph{(SQP-Verfahren)}
+\begin{enumerate}
+  \item Wähle einen zulässigen Startpunkt $x^0$
+        und ein Abbruchkriterium $\epsilon > 0$. Setze $k:=0$.
+  \item Berechne die Lösung $d$ des Problems \label{list:quad_opt_prob}
+  \begin{align}
+    \min_{x \in \R^n}\ & \frac{1}{2} d^T f''(x^k) d
+                       + \nabla f(x^k)^T d \label{prob:quad_opt_prob_in_sqp}\\
+                   \nb & A d = 0 \notag \\
+                       & G x^k + G d \leq r. \notag
+  \end{align}
+        Setze $d^k := d$.
+  \item Ist $||d^k|| < \epsilon \Rightarrow$ STOP.
+  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$.
+        $\Rightarrow$ Gehe zu Schritt~\ref{list:quad_opt_prob}.
+\end{enumerate}
+\end{algorithm}

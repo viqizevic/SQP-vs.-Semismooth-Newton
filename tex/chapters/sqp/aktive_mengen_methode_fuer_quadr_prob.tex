@@ -2,7 +2,8 @@
 Wir haben gesehen, dass das SQP-Verfahren
 quadratische Optimierungsprobleme mit linearen Restriktionen
 als Teilprobleme hat.
-Wir werden jetzt aufklären, wie wir diese Probleme lösen werden.
+Wir werden jetzt aufklären, wie wir diese Probleme
+mit dem Aktive-Mengen-Verfahren lösen können.
 
 \begin{definition}
 \emph{(Quadratische Optimierungsprobleme mit linearen Restriktionen)}
@@ -18,20 +19,90 @@ $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 $G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
 \end{definition}
 
-Sei $J(x)$ die Indexmenge der aktiven Ungleichungsrestriktionen.
-$B_k := \left(\begin{array}{c} A \\ G(x) \end{array}\right)$
+Die Idee des Aktive-Mengen-Verfahren ist, iterativ das Problem
+unter den Gleichungsnebenbedingungen zu optimieren.
+%TODO noch unklar
 
+Sei $x^k \in \R^n$ ein zulässiger Punkt.
+Angenommen, wir können eine Suchrichtung $d$ finden,
+sodass der Punkt $x^{k+1} := x^k + d$ ein besserer zulässiger Punkt ist.
+Diesen Vektor $d$ können wir finden, indem wir das Problem
+\begin{align}
+  \min_{d \in \R^n}\ &
+    \frac{1}{2} \langle Q(x^k+d),(x^k+d) \rangle + \langle q,(x^k+d) \rangle 
+      \\
+  \nb & A(x^k+d) = b \notag \\
+      & G(x^k+d) \leq r \notag
+\end{align}
+lösen.
+Dies ist eigentlich das Problem~\eqref{prob:quad_prog_mit_lin_restr},
+wobei die Variable $x$ mit $x^k + d$ ersetzt wurde und das Problem über
+die Variable $d$ minimiert wurde.
+
+Lassen wir die Konstanten in der Zielfunktion weg, dann bekommen wir
+als Zielfunktion
+\begin{displaymath}
+  \frac{1}{2} \langle Qd,d \rangle + \langle Qx^k+q,d\rangle.
+\end{displaymath}
+Weil $x^k$ zulässig ist, d.\,h., es gilt $Ax^k = b$, können wir wieder als
+Gleichungsnebenbedingung $Ad = 0$ schreiben.
+
+Seien $J(x^k)$ die Indexmenge der aktiven Ungleichungsrestriktionen zu $x^k$.
+Sei $j \in J(x^k)$,
+d.\,h., es gilt $\langle g_j,x^k \rangle = r_j$.
+Setzen wir voraus, dass
+$\langle g_j,d \rangle = 0$, dann gilt immer noch
+$\langle g_j,(x^k+d) \rangle \leq r_j$.
+
+Seien $p_k := |J(x^k)|$,
+\begin{equation}
+G_k :=
+\left(\begin{array}{c}
+g_{j_1}^T \\ \vdots \\ g_{j_{p_k}}^T
+\end{array}\right) \text{ mit }
+j_1, \ldots, j_{p_k} \in J(x^k)
+\quad \text{und} \quad
+B_k := \left(\begin{array}{c} A \\ G_k \end{array}\right)
+\end{equation}
+
+Wir haben dann ein Teilproblem mit linearen Gleichungsnebenbedingungen
 \begin{align}
   \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
                        + \langle Qx^k+q,d\rangle
-                         \label{prob:teil_prob_in_akt_me_verf} \\
-                 \nb & B_k d = 0 \notag
+                         \tag{$Q_k$} \label{prob:teil_prob_in_akt_me_verf} \\
+                 \nb & B_k d = 0. \notag
 \end{align}
+
+Dieses Problem werden wir mit dem Nullraum-Verfahren lösen,
+von dem wir auch den Lagrange-Multiplikator $\vartheta$
+bekommen werden.
+$\vartheta$ können wir in $\lambda \in \R^m$ und $\mu \in \R^{p_k}$ zerlegen,
+sodass
+$\vartheta = \left(\begin{array}{c} \lambda \\ \mu \end{array}\right)$.
 
 \begin{algorithm}
 \emph{(Aktive-Mengen-Methode für~\eqref{prob:quad_prog_mit_lin_restr})}
-\begin{enumerate}
+\begin{compactenum}[1.]
   \item Wähle einen Startpunkt $x^0$. Setze $k:=0$.
   \item Löse das Problem~\eqref{prob:teil_prob_in_akt_me_verf}
-\end{enumerate}
+        $\Rightarrow d^k, \lambda^k, \mu^k$.
+  \item Falls $d^k = 0$
+    \begin{compactenum}[3a.]
+      \item Falls $\mu^k \geq 0 \Rightarrow$ STOP.
+      \item Falls $\mu^k \ngeq 0$
+        \begin{compactenum}[i.]
+          \item Bestimme $j \in J(x^k)$, so dass
+                $\mu_j^k = \min\{ \mu_i^k \ |\ i \in J(x^k) \}$.
+          \item $J(x^k) := J(x^k)\backslash\{j\}$ 
+          \item Streiche in $G_k$ die $j$-te Zeile.
+          \item Löse wieder das Problem~\eqref{prob:teil_prob_in_akt_me_verf}
+                $\Rightarrow d^k \neq 0$
+        \end{compactenum}
+    \end{compactenum}
+  \item Berechne Schrittweite $\sigma_k$.
+  \item Setze $x^{k+1} := x^k + \sigma_k d^k$ und $k := k+1$.
+        $\Rightarrow $ Gehe zu Schritt 2. %FIMXE use label
+\end{compactenum}
 \end{algorithm}
+
+%TODO Schrittweite erklären
