@@ -1,4 +1,4 @@
-function test_mccormick_func_with_fmincon_too()
+function test_mccormick_func_with_fmincon()
     lambda = 0.00001;
     a = [-1.5; -3];
     b = [4; 3];

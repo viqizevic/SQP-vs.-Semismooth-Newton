@@ -94,6 +94,7 @@ public class Main {
 		LinkedList<String> testTemplates = new LinkedList<String>();
 		testTemplates.add(dataPath+"test.tpl");
 		testTemplates.add(dataPath+"testWithFmincon.tpl");
+		testTemplates.add(dataPath+"testWithFminconToo.tpl");
 		
 		boolean usingApproxDiff = true;
 		// set this to false to use given gradient and hessian definitions

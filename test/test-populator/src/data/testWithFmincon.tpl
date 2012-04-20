@@ -1,4 +1,4 @@
-function test_{var_function_name}_with_fmincon_too()
+function test_{var_function_name}_with_fmincon()
     lambda = {var_lambda};
     a = {var_a};
     b = {var_b};

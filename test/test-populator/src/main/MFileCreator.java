@@ -158,8 +158,14 @@ public class MFileCreator {
 		createFile(fileName+extension, content);
 	}
 
-	// FIXME use template file
-	private void createTestProblemFileWithFminconToo() {
+	// TODO check if this method ok is
+	private void createTestProblemFileWithFminconToo(String templateFilePath) {
+		String fileName = testFileName + withFminconToo;
+		String content = getTestFileContentUsingTemplate(templateFilePath);
+		createFile(fileName+extension, content);
+	}
+
+	private void createTestProblemFileWithFminconToo2() {
 		String fileName = testFileName + withFminconToo;
 		String content = "function " + fileName + "()\n";
 		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
@@ -284,7 +290,7 @@ public class MFileCreator {
 		mFileCreator.createFunctionHessianFile();
 		mFileCreator.createTestProblemFile(testTemplates.getFirst());
 		mFileCreator.createTestProblemFileWithFmincon(testTemplates.get(1));
-		mFileCreator.createTestProblemFileWithFminconToo();
+		mFileCreator.createTestProblemFileWithFminconToo(testTemplates.get(2));
 	}
 	
 	public static void createMainTestFile(LinkedList<TestProblem> list, String fileName, String directoryPath) {

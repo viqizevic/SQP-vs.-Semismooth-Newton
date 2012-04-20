@@ -1,4 +1,4 @@
-function test_asaadi_func_with_fmincon_too()
+function test_asaadi_func_with_fmincon()
     lambda = 0.0001;
     a = [1; 0];
     b = [20; 20];

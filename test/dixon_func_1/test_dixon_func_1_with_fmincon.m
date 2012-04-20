@@ -1,4 +1,4 @@
-function test_dixon_func_1_with_fmincon_too()
+function test_dixon_func_1_with_fmincon()
     lambda = 0.001;
     a = [2; -10; -10; -10; -10; -10; -10; -10; -10; -10];
     b = [10; 10; 10; 10; 10; 10; 10; 10; 10; 10];

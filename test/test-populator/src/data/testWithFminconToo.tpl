@@ -1,13 +1,13 @@
-function test_quad_func_2_with_fmincon_too()
-	lambda = 1;
-	a = [3; 6];
-	b = [10; 20];
-	x0 = [8; 17];
-	tol = 0.001;
-	itmax = 100;
+function test_{var_function_name}_with_fmincon_too()
+	lambda = {var_lambda};
+	a = {var_a};
+	b = {var_b};
+	x0 = {var_x0};
+	tol = {var_tol};
+	itmax = {var_itmax};
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_func_2','grad_quad_func_2','hess_quad_func_2',lambda,a,b,x0,m0,itmax,tol);
-	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func_2','grad_quad_func_2','hess_quad_func_2',lambda,a,b,x0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',lambda,a,b,x0,m0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
@@ -16,7 +16,7 @@ function test_quad_func_2_with_fmincon_too()
 	A = [ -eye(length(a)); eye(length(b)) ];
 	c = [ -a; b ];
 	tic;
-	[x_sqp,fval_sqp,it_sqp] = seq_quad_prog('quad_func_2_v0','grad_quad_func_2_v0','hess_quad_func_2_v0',A,c,x0,itmax,tol);
+	[x_sqp,fval_sqp,it_sqp] = seq_quad_prog('{var_function_name_v0}','{var_grad_function_name_v0}','{var_hess_function_name_v0}',A,c,x0,itmax,tol);
 	t_sqp = toc;
 	x2 = sprintf('%.3f ',x_sqp);
 	f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
@@ -24,7 +24,7 @@ function test_quad_func_2_with_fmincon_too()
 	str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
 	options = optimset('Algorithm','active-set','Display','off');
 	tic;
-	[x_fmc,fval_fmc,exitflag,output] = fmincon('quad_func_2_v0',x0,[],[],[],[],a,b,[],options);
+	[x_fmc,fval_fmc,exitflag,output] = fmincon('{var_function_name_v0}',x0,[],[],[],[],a,b,[],options);
 	t_fmc = toc;
 	x3 = sprintf('%.3f ',x_fmc);
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);

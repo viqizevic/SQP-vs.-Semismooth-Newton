@@ -1,4 +1,4 @@
-function test_exp_func_1_with_fmincon_too()
+function test_exp_func_1_with_fmincon()
     lambda = 1;
     a = [1; 0.5; 1];
     b = [10; 20; 4];

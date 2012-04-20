@@ -1,4 +1,4 @@
-function test_betts_func_with_fmincon_too()
+function test_betts_func_with_fmincon()
     lambda = 0.001;
     a = [0.25; 0.25];
     b = [1; 2];

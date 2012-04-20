@@ -1,4 +1,4 @@
-function test_quad_func_with_fmincon_too()
+function test_quad_func_with_fmincon()
     lambda = 4;
     a = 3;
     b = 10;

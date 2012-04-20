@@ -1,4 +1,4 @@
-function test_paviani_func_1_with_fmincon_too()
+function test_paviani_func_1_with_fmincon()
     lambda = 0.001;
     a = [3; 3];
     b = [9; 9];

@@ -1,4 +1,4 @@
-function test_himmelblau_func_with_fmincon_too()
+function test_himmelblau_func_with_fmincon()
     lambda = 0.001;
     a = [-20; -20];
     b = [20; 20];

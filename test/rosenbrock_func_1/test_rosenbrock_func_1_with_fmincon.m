@@ -1,4 +1,4 @@
-function test_rosenbrock_func_1_with_fmincon_too()
+function test_rosenbrock_func_1_with_fmincon()
     lambda = 0.001;
     a = [-10; 1.5];
     b = [10; 10];

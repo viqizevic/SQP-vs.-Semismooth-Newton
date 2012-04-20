@@ -1,4 +1,4 @@
-function test_schuldt_func_with_fmincon_too()
+function test_schuldt_func_with_fmincon()
     lambda = 0.0001;
     a = [-20; 0];
     b = [20; 20];

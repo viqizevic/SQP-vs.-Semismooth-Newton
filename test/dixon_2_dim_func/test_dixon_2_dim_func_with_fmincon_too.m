@@ -6,7 +6,8 @@ function test_dixon_2_dim_func_with_fmincon_too()
 	tol = 0.001;
 	itmax = 500;
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_2_dim_func','grad_dixon_2_dim_func','hess_dixon_2_dim_func',lambda,a,b,x0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_2_dim_func','grad_dixon_2_dim_func','hess_dixon_2_dim_func',lambda,a,b,x0,m0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_2_dim_func','grad_dixon_2_dim_func','hess_dixon_2_dim_func',lambda,a,b,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
@@ -15,7 +16,7 @@ function test_dixon_2_dim_func_with_fmincon_too()
 	A = [ -eye(length(a)); eye(length(b)) ];
 	c = [ -a; b ];
 	tic;
-	[x_sqp,fval_sqp,it_sqp] = sqp('dixon_2_dim_func_v0','grad_dixon_2_dim_func_v0','hess_dixon_2_dim_func_v0',A,c,x0,itmax,tol);
+	[x_sqp,fval_sqp,it_sqp] = seq_quad_prog('dixon_2_dim_func_v0','grad_dixon_2_dim_func_v0','hess_dixon_2_dim_func_v0',A,c,x0,itmax,tol);
 	t_sqp = toc;
 	x2 = sprintf('%.3f ',x_sqp);
 	f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
