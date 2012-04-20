@@ -69,12 +69,14 @@ Wir haben also das Teilproblem
 Nun sind wir bereit, das SQP-Verfahren zu formulieren.
 
 \begin{algorithm}
-\emph{(SQP-Verfahren)} %FIXME stop criteria
+\emph{(SQP-Verfahren)}
 \begin{enumerate}
-  \item Berechne einen zulässigen Startpunkt $x^0$ und setze $k:=0$.
+  \item Wähle einen zulässigen Startpunkt $x^0$
+        und ein Abbruchkriterium $\epsilon > 0$. Setze $k:=0$.
   \item Berechne die Lösung $d$ des Problems~\eqref{prob:quad_opt_prob_in_sqp}.
         \label{list:quad_opt_prob} Setze $d^k := d$.
+  \item Ist $||d^k|| < \epsilon \Rightarrow$ STOP.
   \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$.
-        $\Rightarrow$ Gehe zu Schritt~\ref{list:quad_opt_prob}
+        $\Rightarrow$ Gehe zu Schritt~\ref{list:quad_opt_prob}.
 \end{enumerate}
 \end{algorithm}
