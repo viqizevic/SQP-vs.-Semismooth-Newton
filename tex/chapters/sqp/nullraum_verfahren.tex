@@ -1,40 +1,43 @@
 
-
 \begin{definition}
 \emph{(Quadratische Optimierungsprobleme mit linearen
 Gleichungsnebenbedingungen)}
 \begin{align}
-  \min_{x \in \R^n}\ &
-    \frac{1}{2} \langle Qx,x \rangle + \langle q,x \rangle \\
+  \min_{x \in \R^n}\ & \frac{1}{2} \langle Qx,x \rangle + \langle q,x \rangle
+    \tag{QLG} \label{prob:quad_opt_prob_mit_lin_gl_nebenbed} \\
   \nb & Ax = b \notag
 \end{align}
 Dabei sei $Q$ eine symmetrische $(n \times n)$-Matrix und $q \in \R^n$.
 $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 \end{definition}
 
+Das Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed} werden wir auf ein
+unrestringiertes Verfahren reduzieren mit Hilfe einer Nullraum-Matrix von~$A$.
+Daher kommt der Name \emph{Nullraum-Verfahren}.
+
 \begin{algorithm}
-\emph{(Nullraum-Matrix-Verfahren)}
-\begin{enumerate}
-  \item Finde unitäre $(n \times n)$-Matrix $H$
-  und obere $(m \times m)$-Dreiecksmatrix $R$ mit
+\emph{(Nullraum-Verfahren)}
+\begin{enumerate}%TODO 'mithilfe' oder 'mit Hilfe'
+  \item Finde mit Hilfe der QR-Zerlegung
+  unitäre $(n \times n)$-Matrix~$H$
+  und obere $(m \times m)$-Dreiecksmatrix~$R$ mit
   \begin{equation}
-    H A^T = \left(\begin{array}{c} R \\ 0 \end{array}\right)
+    H A^T = \left(\begin{array}{c} R \\ 0 \end{array}\right).
   \end{equation}
-  \item Berechne die Vektoren $h_1 \in \R^m$ und $h_2 \in \R^{n-m}$
+  \item Berechne
   \begin{equation}
     \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right) := -Hq
-  \end{equation}
-  \item Berechne die $(n \times n)$-Matrix $B$
-  \begin{equation}
+    \quad \text{und} \quad
     B := H Q H^T
        = \left(\begin{array}{cc} B_{11} & B_{12} \\ B_{21} & B_{22}
-         \end{array}\right)
+         \end{array}\right),
   \end{equation}
+  wobei $h_1 \in \R^m$ und $B_{11} \in \R^{m,m}$
   \item Berechne den Vektor $u_1$ als Lösung der Gleichung
   \begin{equation}
     R^T u_1 = b
   \end{equation}
-  \item Berechne den Vektor $u_2$ als Lösung der Gleichung
+  und den Vektor $u_2$ als Lösung der Gleichung
   \begin{equation}
     B_{22} u_2 = h_2 - B_{21} u_1
   \end{equation}
