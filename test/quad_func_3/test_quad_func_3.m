@@ -1,4 +1,4 @@
-function test_quad_func_3()
+function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_quad_func_3(show)
     lambda = 1;
     a = [3; 6; 2];
     b = [10; 20; 9];
@@ -23,11 +23,13 @@ function test_quad_func_3()
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
     t2 = sprintf('solved in %.2f ms.',t_sqp*1000);
     str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
-    a = sprintf('%.3f ',a);
-    b = sprintf('%.3f ',b);
-    x0 = sprintf('%.3f ',x0);
-    str0 = ['a = [ ', a, '], b = [ ', b, '], x0 = [ ', x0, ']'];
-    disp(str0);
-    disp(str1);
-    disp(str2);
+    if ( show == 1 )
+        a = sprintf('%.3f ',a);
+        b = sprintf('%.3f ',b);
+        x0 = sprintf('%.3f ',x0);
+        str0 = ['a = [ ', a, '], b = [ ', b, '], x0 = [ ', x0, ']'];
+        disp(str0);
+        disp(str1);
+        disp(str2);
+    end
 end

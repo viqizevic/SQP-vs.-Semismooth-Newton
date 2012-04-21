@@ -25,6 +25,8 @@ public class MFileCreator {
 	
 	private static final String withFminconToo = "_with_fmincon_too";
 	
+	private static final String oneHundredTimes = "_100_times";
+	
 	private final String v0 = "_v0";
 	
 	/**
@@ -148,6 +150,12 @@ public class MFileCreator {
 	
 	private void createTestProblemFile(String templateFilePath) {
 		String fileName = testFileName;
+		String content = getTestFileContentUsingTemplate(templateFilePath);
+		createFile(fileName+extension, content);
+	}
+	
+	private void createTestProblem100TimesFile(String templateFilePath) {
+		String fileName = testFileName + oneHundredTimes;
 		String content = getTestFileContentUsingTemplate(templateFilePath);
 		createFile(fileName+extension, content);
 	}
@@ -289,8 +297,9 @@ public class MFileCreator {
 		mFileCreator.createFunctionGradientFile();
 		mFileCreator.createFunctionHessianFile();
 		mFileCreator.createTestProblemFile(testTemplates.getFirst());
-		mFileCreator.createTestProblemFileWithFmincon(testTemplates.get(1));
-		mFileCreator.createTestProblemFileWithFminconToo(testTemplates.get(2));
+		mFileCreator.createTestProblem100TimesFile(testTemplates.get(1));
+		mFileCreator.createTestProblemFileWithFmincon(testTemplates.get(2));
+		mFileCreator.createTestProblemFileWithFminconToo(testTemplates.get(3));
 	}
 	
 	public static void createMainTestFile(LinkedList<TestProblem> list, String fileName, String directoryPath) {
@@ -302,25 +311,35 @@ public class MFileCreator {
 		String content1 = "function " + fileName + "()\n";
 		String content2 = "function " + fileName + withFminconToo + "()\n";
 		String content3 = "function " + fileName + withFmincon + "()\n";
+		String content4 = "function " + fileName + oneHundredTimes + "()\n";
+		
 		for (TestProblem p : list) {
 			content1 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
 			content2 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
 			content3 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
-			content1 += "\ttest_" + p.getTestProblemName() + "();\n";
+			content4 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
+			
+			content1 += "\ttest_" + p.getTestProblemName() + "(1);\n";
+			content4 += "\ttest_" + p.getTestProblemName() + oneHundredTimes + "(1);\n";
 			if (!p.getTestProblemName().startsWith("exp_func")) {
 				content2 += "\ttest_" + p.getTestProblemName() + withFminconToo + "();\n";
 				content3 += "\ttest_" + p.getTestProblemName() + withFmincon + "();\n";
 			} else {
 				content2 += "\ttest_" + p.getTestProblemName() + "();\n";
 			}
+			
 			content1 += "\tdisp(sprintf('\\n'));\n";
 			content2 += "\tdisp(sprintf('\\n'));\n";
 			content3 += "\tdisp(sprintf('\\n'));\n";
+			content4 += "\tdisp(sprintf('\\n'));\n";
 		}
+		
 		content1 += "end";
 		content2 += "end";
 		content3 += "end";
+		content4 += "end";
 		mFileCreator.createFile(fileName+extension, content1);
+		mFileCreator.createFile(fileName+oneHundredTimes+extension, content4);
 		mFileCreator.createFile(fileName+withFminconToo+extension, content2);
 		mFileCreator.createFile(fileName+withFmincon+extension, content3);
 	}
