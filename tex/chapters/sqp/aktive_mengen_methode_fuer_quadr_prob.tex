@@ -106,3 +106,20 @@ $\vartheta = \left(\begin{array}{c} \lambda \\ \mu \end{array}\right)$.
 \end{algorithm}
 
 %TODO Schrittweite erklären
+\begin{equation}
+  I_k := \{ 1, \ldots, n \} \backslash J_k
+\end{equation}
+\begin{equation}
+  \tau_k :=
+  \begin{cases}
+    \min\left\{ \frac{r_j - g_j^T x^k}{g_j^T d^k}\ | \ j \in I_k \right\},
+      & \text{falls } I_k \neq \emptyset \\
+    \infty,
+      & \text{sonst}.
+  \end{cases}
+\end{equation}
+\begin{equation}
+  \sigma_k := \min \{ 1, \tau_k\}
+\end{equation}
+
+Die Schrittweite brauchen wir, damit $x^{k+1}$ ein zulässiger Punkt bleibt.
