@@ -11,6 +11,9 @@ function test_all_with_fmincon()
 	disp('test_quad_func_3');
 	test_quad_func_3_with_fmincon();
 	disp(sprintf('\n'));
+	disp('test_linear_func');
+	test_linear_func_with_fmincon();
+	disp(sprintf('\n'));
 	disp('test_exp_func');
 	disp(sprintf('\n'));
 	disp('test_exp_func_1');

@@ -1,11 +1,11 @@
-function test_exp_func_100_times(show)
+function test_linear_func_100_times(show)
     t1_total = 0;
     t2_total = 0;
     it1_total = 0;
     it2_total = 0;
     total = 100;
     for k=1:total
-        [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_exp_func(0);
+        [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_linear_func(0);
         if (norm(x_ssn-x_sqp) > 0.1)
             break;
         end

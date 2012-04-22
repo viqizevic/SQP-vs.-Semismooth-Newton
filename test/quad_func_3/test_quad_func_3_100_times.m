@@ -9,7 +9,7 @@ function test_quad_func_3_100_times(show)
         if (norm(x_ssn-x_sqp) > 0.1)
             break;
         end
-        if (t_ssn > 0.5 || t_sqp > 0.5)
+        if (t_ssn > 0.75 || t_sqp > 0.75)
             break;
         end
         t1_total = t1_total + t_ssn;

@@ -11,6 +11,9 @@ function test_all()
 	disp('test_quad_func_3');
 	test_quad_func_3(1);
 	disp(sprintf('\n'));
+	disp('test_linear_func');
+	test_linear_func(1);
+	disp(sprintf('\n'));
 	disp('test_exp_func');
 	test_exp_func(1);
 	disp(sprintf('\n'));

@@ -11,6 +11,18 @@
 		<grad>g = 2*(x-xd);</grad>
 		<hess>H = 2*eye(length(x));</hess>
 	</function>
+
+	<function>
+		<name>linear_func</name>
+		<var>x</var>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>[1;1]</constant_value>
+		</constant>
+		<def>y = c'*x;</def>
+		<grad>g = c;</grad>
+		<hess>H = zeros(length(c));</hess>
+	</function>
 	
 	<function>
 		<name>exp_func</name>

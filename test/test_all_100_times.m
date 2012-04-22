@@ -11,6 +11,9 @@ function test_all_100_times()
 	disp('test_quad_func_3');
 	test_quad_func_3_100_times(1);
 	disp(sprintf('\n'));
+	disp('test_linear_func');
+	test_linear_func_100_times(1);
+	disp(sprintf('\n'));
 	disp('test_exp_func');
 	test_exp_func_100_times(1);
 	disp(sprintf('\n'));

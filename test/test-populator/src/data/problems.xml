@@ -56,6 +56,20 @@
         <max_iteration>100</max_iteration>
     </problem>
 
+	<problem>
+		<function_name>linear_func</function_name>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>[1; -1; 1; -1]</constant_value>
+		</constant>
+		<lambda>0.0001</lambda>
+		<a>[0; 0; 0; 0]</a>
+		<b>[10; 10; 10; 10]</b>
+		<x0>[5; 5; 5; 5]</x0>
+		<tolerance>0.01</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+
     <problem>
         <function_name>exp_func</function_name>
         <lambda>1</lambda>

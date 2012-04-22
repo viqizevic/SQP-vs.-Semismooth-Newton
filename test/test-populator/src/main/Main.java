@@ -51,6 +51,7 @@ public class Main {
 	 * TODO use .ini file
 	 * TODO try not to use feval
 	 * TODO get ready if the lambda variable should be removed
+	 * TODO suppress warning message from octave
 	 */
 	
 	/**
@@ -97,7 +98,7 @@ public class Main {
 		testTemplates.add(dataPath+"testWithFmincon.tpl");
 		testTemplates.add(dataPath+"testWithFminconToo.tpl");
 		
-		boolean usingApproxDiff = true;
+		boolean usingApproxDiff = false;
 		// set this to false to use given gradient and hessian definitions
 		// set to true to approximate all gradient and hessian
 		
