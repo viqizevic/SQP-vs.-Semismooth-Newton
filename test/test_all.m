@@ -80,4 +80,13 @@ function test_all()
 	disp('test_paviani_func_1');
 	test_paviani_func_1(1);
 	disp(sprintf('\n'));
+	disp('test_lin_regression_func');
+	test_lin_regression_func(1);
+	disp(sprintf('\n'));
+	disp('test_quad_regression_func');
+	test_quad_regression_func(1);
+	disp(sprintf('\n'));
+	disp('test_nichtlin_regression_func');
+	test_nichtlin_regression_func(1);
+	disp(sprintf('\n'));
 end
