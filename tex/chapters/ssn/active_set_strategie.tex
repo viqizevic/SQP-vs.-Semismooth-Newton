@@ -1,0 +1,28 @@
+
+\begin{algorithm}
+\emph{(Active-Set-Strategie)}
+\begin{enumerate}
+  \item $k := 0, x^k := x^0$
+  \item Bestimme
+        \begin{align}
+          \A_+^k & := \{ i\,|\,x_i^k > b_i \} \\
+          \A_-^k & := \{ i\,|\,x_i^k < a_i \} \\
+          \I^k   & := \{ i\,|\,a_i \leq x_i^k \leq b_i \}
+        \end{align}
+  \item Löse das Problem
+        \begin{align}
+          \nabla f(x^{k+1}) + \lambda x^{k+1} + \mu^{k+1} & = 0 \\
+          x_i^{k+1} & = b_i \quad \text{ für } i \in \A_+^k \\
+          x_i^{k+1} & = a_i \quad \text{ für } i \in \A_-^k \\
+          \mu^{k+1} & = 0   \quad \text{ für } i \in \I^k
+        \end{align}
+  \item Falls
+        \begin{align}
+          0 & = \nabla f(x^{k+1}) + \lambda x^{k+1} + \mu^{k+1} \\
+          \mu^{k+1} & = \max(0,\mu^{k+1}+\lambda(x^{k+1}-b)) +
+                         \min(0,\mu^{k+1}+\lambda(x^{k+1}-a))
+        \end{align}
+        $\Rightarrow$ STOP
+  \item $x^k := x^{k+1}, k := k+1$ $\Rightarrow$ 2. %TODO use reference, not 2.
+\end{enumerate}
+\end{algorithm}
