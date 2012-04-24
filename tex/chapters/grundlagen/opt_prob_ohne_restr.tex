@@ -106,7 +106,7 @@ welches die negative Gradienten als Abstiegsrichtungen verwendet.
 \begin{enumerate}
   \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
         Setze $k := 0$.
-  \item Ist $||\nabla f(x^k)|| < \epsilon$ \label{list:stop_criteria_grad_verf}
+  \item Ist $\|\nabla f(x^k)\| < \epsilon$ \label{list:stop_criteria_grad_verf}
         $\Rightarrow$ STOP.
   \item Setze $d^k := - \nabla f(x^k)$.
   \item Bestimme $\sigma_k$ so, dass
@@ -137,7 +137,7 @@ Wir setzen dabei voraus, dass die Funktion $f$ zweimal differenzierbar sei.
 \begin{enumerate}
   \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
         Setze $k := 0$.
-  \item Ist $||\nabla f(x^k)|| < \epsilon$ \label{list:stop_criteria_newt_verf}
+  \item Ist $\|\nabla f(x^k)\| < \epsilon$ \label{list:stop_criteria_newt_verf}
         $\Rightarrow$ STOP.
   \item Berechne die Lösung $d$ des linearen Gleichungssystems
         \begin{equation}
