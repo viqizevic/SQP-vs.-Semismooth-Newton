@@ -1,0 +1,64 @@
+Seien $X, Z$ reelle Banachräume und sei $D \subset X$ offen.
+
+\begin{definition}
+Eine Funktion $F : D \subset X \rightarrow Z$ heißt
+Newton-differenzierbar in Punkt $x \in D$,
+falls es eine Umgebung $U(x) \subset D$ von $x$
+und eine Abbildung $G : U(x) \rightarrow L(X,Z)$ gibt,
+so dass
+\begin{equation}
+  \lim_{|h| \rightarrow 0} \frac{|F(x+h)-F(x)-G(x+h)h|_Z}{|h|_X} = 0
+\end{equation}
+Die Familie
+\begin{equation}
+  \{ G(u)\,|\, u \in U(x) \}
+\end{equation}
+heißt N-Ableitung von $F$ in $x$.
+\end{definition}
+
+\begin{definition}
+Eine Funktion $F : D \subset X \rightarrow Z$ heißt
+halbglatt\footnote{englisch: semismooth} in $x \in D$,
+falls $F$ Newton-differenzierbar in $x$ ist und
+\begin{equation}
+  \lim_{t \rightarrow 0^+} G(x+th)h
+\end{equation}
+einheitlich in $|h| = 1$ existiert.
+\end{definition}
+
+\begin{definition}
+Sei $F : \R^m \rightarrow \R^n$ lokal Lipschitz-stetig.
+Sei $D_F$ die Menge aller Punkte, wo $F$ differenzierbar ist.
+Für $x \in \R^m$ definieren wir
+\begin{equation}
+  \partial_B F(x) := \left\{ J\, |\,
+    J = \lim_{x_i \rightarrow x, x_i \in D_F} \nabla F(x_i) \right\}
+\end{equation}
+und die allgemeine Ableitung in $x$
+\begin{equation}
+  \partial F(x) := \co \partial_B F(x),
+\end{equation}
+wobei $\co$ für die konvexe Hülle steht.
+\end{definition}
+
+\begin{definition}
+$F : \R^m \rightarrow \R^n$ heißt halbglatt in $x \in \R^m$,
+falls $F$ lokal Lipschitz-stetig in $x$ ist und
+\begin{equation}
+  \lim_{V \in \partial F(x+th'), h' \rightarrow h, t \rightarrow 0^+} Vh'
+\end{equation}
+für alle $h \in \R^m$ existiert.
+\end{definition}
+
+\begin{theorem}
+Sei $\xopt$ eine Lösung des Problems $F(x) = 0$
+und $F$ sei Newton-differenzierbar in $\xopt$ mit N-Ableitung $G$.
+Falls $G$ nichtsingulär für alle $x \in U(\xopt)$ ist
+und $\{ \|G(x)^{-1}\|\, | \, x \in U(\xopt) \}$ beschränkt ist,
+dann konvergiert die Newton-Iteration
+\begin{equation}
+  x^{k+1} := x^k - G(x^k)^{-1} F(x^k)
+\end{equation}
+superlinear gegen $\xopt$
+unter der Bedingung, dass $|x^0 - \xopt|$ genügend klein ist.
+\end{theorem}
