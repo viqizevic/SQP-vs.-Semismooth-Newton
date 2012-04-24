@@ -29,31 +29,31 @@ $\min f(x) := -g(x)$ äquivalent ist.
 \begin{definition}
 \emph{(Globale und lokale Lösung)}
 Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
-globales Minimum von $f$, wenn
+globales Minimum, wenn
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in \F
 \end{equation}
 gilt.
 Ein Punkt $\xopt \in \F$ heißt strikte globale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
-striktes globales Minimum von $f$, wenn
+striktes globales Minimum, wenn
 \begin{equation}
   f(\xopt) < f(x) \qquad \forall x \in \F\backslash\{\xopt\}
 \end{equation}
 gilt.
 Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
-lokales Minimum von~$f$, wenn für eine Umgebung $U(\xopt)$ von $\xopt$
+lokales Minimum, wenn für eine Umgebung $U(\xopt)$ von $\xopt$
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in U(\xopt) \cap \F
 \end{equation}
 gilt.
 Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~\eqref{prob:allg_opt_prob}
-oder striktes lokales Minimum von~$f$, wenn für eine Umgebung $U(\xopt)$ von
+oder striktes lokales Minimum, wenn für eine Umgebung $U(\xopt)$ von
 $\xopt$
 \begin{equation}
   f(\xopt) < f(x) \qquad \forall x \in U(\xopt) \cap \F\backslash\{\xopt\}
 \end{equation}
 gilt.
-Eine Umgebung $U(\xopt)$ von $\xopt$ ist einfach eine offene Menge, die $\xopt$
+Eine Umgebung $U(\xopt)$ von $\xopt$ ist eine offene Menge, die $\xopt$
 beinhaltet.
 \end{definition}
 
@@ -68,9 +68,9 @@ spezifischer wie folgt definieren:
 \begin{definition}
 \emph{(Nichtlineare Optimierungsprobleme)}
 \begin{align}
-       \min\ & f(x) \tag{PN}\label{prob:opt_prob_mit_nichtlin_restr} \\
-         \nb & g(x) \leq 0 \notag \\
-             & h(x) = 0 \notag
+  \min_{x \in D}\ & f(x) \tag{PN}\label{prob:opt_prob_mit_nichtlin_restr} \\
+              \nb & g(x) \leq 0 \notag \\
+                  & h(x) = 0 \notag
 \end{align}
 Die Zielfunktion ist wieder die Funktion $f:D \subseteq \R^n \rightarrow \R$.
 Die Nebenbedingungen sind von den Funktionen
@@ -83,8 +83,9 @@ D.\,h., die Menge $\F$ sieht hier so aus:
 $\F = \{ x \in \R^n \,|\, g(x) \leq 0, \, h(x) = 0  \}$.
 
 Man kann dieses Problem ausführlicher schreiben, indem man die Funktionen
-$g$ und $h$ in mehreren skalaren Funktionen $g_1, \ldots, g_p : \R^n \rightarrow \R$
+$g$ und $h$ in skalare Funktionen $g_1, \ldots, g_p : \R^n \rightarrow \R$
 und $h_1, \ldots, h_m: \R^n \rightarrow \R$ zerlegen, so dass
+% TODO 'sodass' oder 'so dass'?
 \begin{equation*}
   g(x) =
     \left(
@@ -107,9 +108,9 @@ und $h_1, \ldots, h_m: \R^n \rightarrow \R$ zerlegen, so dass
 
 Man bekommt dann das Problem
 \begin{align*}
-       \min\ & f(x) \\
-         \nb & g_i(x) \leq 0 \text{ für } i = 1,\ldots,p \\
-             & h_j(x) = 0 \text{ für } j = 1,\ldots,m
+  \min_{x \in D}\ & f(x) \\
+              \nb & g_i(x) \leq 0 \text{ für } i = 1,\ldots,p \\
+                  & h_j(x) = 0 \text{ für } j = 1,\ldots,m
 \end{align*}
 
 Man kann hierbei den Unterschied zwischen der linearen Optimierung und

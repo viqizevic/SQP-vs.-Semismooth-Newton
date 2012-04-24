@@ -1,0 +1,19 @@
+
+\begin{algorithm}
+\emph{(Lagrange-Newton-Verfahren)}
+\begin{enumerate}
+  \item Wähle einen Startpunkt $z^0 := (x^0, \lambda^0, \mu^0)$
+        und $\epsilon > 0$.
+        Setze $k := 0$.
+  \item Berechne die Suchrichtung $d^k$ durch Lösung des Problems
+    \begin{align}
+      \min_{d \in \R^n}\ &
+        \frac{1}{2} d^T L_{xx}(x^k,\lambda^k,\mu^k) d + \nabla f(x^k)^T d \\
+      \nb & h(x^k) + h'(x^k) d = 0 \\
+          & g(x^k) + g'(x^k) d \leq 0
+    \end{align}
+  \item Ist $||d^k|| < \epsilon \Rightarrow$ STOP.
+  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$.
+        $\Rightarrow$ Gehe zu Schritt 2.
+\end{enumerate}
+\end{algorithm}
