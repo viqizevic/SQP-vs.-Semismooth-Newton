@@ -1,9 +1,9 @@
 Das SQP-Verfahren ist ein wichtiges Verfahren,
 um restringierte nichlineare Optimierungsprobleme zu lösen.
-SQP ist eine Abkürzung für sequentielle quadratische Programmierung
-\footnote{englisch: Sequential Quadratic Programming}.
-Die Hauptidee von SQP ist nämlich, dass Teilprobleme in Form quadratischer
-Optimierungsprobleme iterativ formuliert und gelöst werden.
+SQP ist eine Abkürzung für sequentielle quadratische
+Programmierung\footnote{englisch: Sequential Quadratic Programming}.
+Die Hauptidee von SQP ist nämlich, iterativ Teilprobleme in Form quadratischer
+Optimierungsprobleme zu formulieren und zu lösen.
 
 % TODO Erstes: Wilson im Jahr 1963
 % [120] Wilson R. B.: A simplical algorithm for concave programming. PhD Thesis.
@@ -18,13 +18,11 @@ unrestringiertes quadratisches Problem
   \min_{x \in \R^n}\ \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k)
                      + \nabla f(x^k)^T (x-x^k)
 \end{equation}
-löst. Wir werden hier auch nochmal voraussetzen, dass $f$ zweimal
-differenzierbar ist.
-
+löst.
 Diese Idee wird bei SQP auch verwendet. Aber es wird nicht mehr ein
 unrestringiertes Problem sein, weil die Nebenbedingungen auch
 berücksichtigt werden, d.\,h.
-\begin{equation}
+\begin{equation} \label{prob:teilprob_von_sqp_allg}
   \min_{x \in \F}\ \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k)
                      + \nabla f(x^k)^T (x-x^k).
 \end{equation}
