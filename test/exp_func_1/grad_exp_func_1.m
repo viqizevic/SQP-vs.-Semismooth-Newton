@@ -1,3 +1,3 @@
 function g = grad_exp_func_1(x)
-	g = approx_gradient('exp_func_1',x,0.001);
+	g = 2*exp_func(x)*x;
 end

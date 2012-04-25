@@ -1,4 +1,4 @@
-function test_{var_function_name}()
+function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_{var_function_name}(show)
     lambda = {var_lambda};
     a = {var_a};
     b = {var_b};
@@ -23,11 +23,13 @@ function test_{var_function_name}()
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
     t2 = sprintf('solved in %.2f ms.',t_sqp*1000);
     str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
-    a = sprintf('%.3f ',a);
-    b = sprintf('%.3f ',b);
-    x0 = sprintf('%.3f ',x0);
-    str0 = ['a = [ ', a, '], b = [ ', b, '], x0 = [ ', x0, ']'];
-    disp(str0);
-    disp(str1);
-    disp(str2);
+    if ( show == 1 )
+        a = sprintf('%.3f ',a);
+        b = sprintf('%.3f ',b);
+        x0 = sprintf('%.3f ',x0);
+        str0 = ['a = [ ', a, '], b = [ ', b, '], x0 = [ ', x0, ']'];
+        disp(str0);
+        disp(str1);
+        disp(str2);
+    end
 end

@@ -11,6 +11,9 @@ function test_all_with_fmincon_too()
 	disp('test_quad_func_3');
 	test_quad_func_3_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_linear_func');
+	test_linear_func_with_fmincon_too();
+	disp(sprintf('\n'));
 	disp('test_exp_func');
 	test_exp_func();
 	disp(sprintf('\n'));
@@ -76,5 +79,14 @@ function test_all_with_fmincon_too()
 	disp(sprintf('\n'));
 	disp('test_paviani_func_1');
 	test_paviani_func_1_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_lin_regression_func');
+	test_lin_regression_func_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_quad_regression_func');
+	test_quad_regression_func_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_nichtlin_regression_func');
+	test_nichtlin_regression_func_with_fmincon_too();
 	disp(sprintf('\n'));
 end

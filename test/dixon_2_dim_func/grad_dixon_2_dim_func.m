@@ -1,3 +1,4 @@
 function g = grad_dixon_2_dim_func(x)
-	g = approx_gradient('dixon_2_dim_func',x,0.001);
+	g = [ -2*(1-x(1)) + 4*x(1)*(x(1)^2-x(2));
+	         -2*(x(1)^2-x(2)) - 2*(1-x(2)) ];
 end
