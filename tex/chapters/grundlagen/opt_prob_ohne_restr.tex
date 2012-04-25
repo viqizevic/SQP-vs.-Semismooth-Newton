@@ -31,6 +31,8 @@ stationärer Punkt von $f$, wenn $\xopt$ die notwendige Bedingung~(\ref{eq:grad_z
 Viele Optimierungsverfahren suchen in der Regel nach einem stationärem Punkt
 von~$f$.
 Aber ein stationärer Punkt muss nicht ein globales oder lokales Minimum sein.
+Durch folgende notwendige Bedingung kann man zwischen einem lokalen Minimum und
+einem lokalen Maximum unterscheiden.
 
 \begin{theorem}
 \emph{(Notwendige Bedingung zweiter Ordnung)}
@@ -42,9 +44,6 @@ dann gilt~(\ref{eq:grad_zero}) und
 \end{equation}
 $f''(\xopt)$ ist also positiv semidefinit.
 \end{theorem}
-
-Durch diese notwendige Bedingung kann man zwischen einem lokalen Minimum und
-einem lokalen Maximum unterscheiden.
 
 \begin{theorem}
 \emph{(Hinreichende Bedingung zweiter Ordnung)}
@@ -89,7 +88,7 @@ Anfangspunkt $x^0$ an und versuchen dann weitere Punkte ($x^1, x^2, \ldots , x^k
 , \ldots$) zu finden, die besser als die vorherige sind.
 Viele iterative Verfahren zur Bestimmung eine lokale Lösung sind häufig
 Abstiegsverfahren. In der $k$-ten Iteration bestimmen sie zu einem Punkt~$x^k$
-eine Abstiegsrichtung~$d^k$ und eine Schrittweite $\sigma_k$, sodass für
+eine Abstiegsrichtung~$d^k$ und eine Schrittweite $\sigma_k$ so, dass für
 $x^{k+1} := x^k + \sigma_k d^k$
 \begin{equation}
   f(x^{k+1}) < f(x^k)
@@ -129,8 +128,9 @@ Gleichungssystem zu lösen, ist das Newton-Verfahren.
 Für unsere unrestringierte Optimierungsprobleme können wir das Newton-Verfahren
 verwenden, um die Lösung des nichtlinearen
 Gleichungssystems~\eqref{eq:grad_zero},
-also $\nabla f(x) = 0$, zu finden.
-Wir setzen dabei voraus, dass die Funktion $f$ zweimal differenzierbar sei.
+$\nabla f(x) = 0$, zu finden.
+Wir müssen dabei voraussetzen,
+dass die Funktion $f$ zweimal differenzierbar sei.
 
 \begin{algorithm}
 \emph{(Newton-Verfahren)}
