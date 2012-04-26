@@ -1,10 +1,10 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_betts_func(show)
-    lambda = 0.001;
+    lambda = 0.01;
     a = [0.25; 0.25];
-    b = [1; 2];
-    x0 = [0.5; 1.5];
+    b = [2; 2];
+    x0 = [1; 1.5];
     m0 = zeros(2,1);
-    tol = 0.0001;
+    tol = 0.001;
     itmax = 100;
     tic;
     [x_ssn,fval_ssn,it_ssn] = active_set_strategy('betts_func','grad_betts_func','hess_betts_func',lambda,a,b,x0,m0,itmax,tol);

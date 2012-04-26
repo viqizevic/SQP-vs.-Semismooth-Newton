@@ -1,3 +1,4 @@
 function g = grad_betts_func(x)
-	g = approx_gradient('betts_func',x,0.001);
+	g = [ -0.5*x(2);
+	      -0.5*x(1) ];
 end

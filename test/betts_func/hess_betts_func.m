@@ -1,3 +1,4 @@
 function H = hess_betts_func(x)
-	H = approx_hessian('betts_func',x,0.001);
+	H = [   0   -0.5;
+		  -0.5    0 ];
 end

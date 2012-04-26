@@ -1,9 +1,9 @@
 function test_betts_func_with_fmincon()
-    lambda = 0.001;
+    lambda = 0.01;
     a = [0.25; 0.25];
-    b = [1; 2];
-    x0 = [0.5; 1.5];
-    tol = 0.0001;
+    b = [2; 2];
+    x0 = [1; 1.5];
+    tol = 0.001;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
