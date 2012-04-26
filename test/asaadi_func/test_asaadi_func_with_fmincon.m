@@ -1,9 +1,9 @@
 function test_asaadi_func_with_fmincon()
-    lambda = 0.0001;
+    lambda = 0.001;
     a = [1; 0];
     b = [20; 20];
-    x0 = [1.125; 0.125];
-    tol = 0.0001;
+    x0 = [7; 5];
+    tol = 0.001;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];

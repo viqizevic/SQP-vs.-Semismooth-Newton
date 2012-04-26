@@ -1,10 +1,10 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_asaadi_func(show)
-    lambda = 0.0001;
+    lambda = 0.001;
     a = [1; 0];
     b = [20; 20];
-    x0 = [1.125; 0.125];
+    x0 = [7; 5];
     m0 = zeros(2,1);
-    tol = 0.0001;
+    tol = 0.001;
     itmax = 100;
     tic;
     [x_ssn,fval_ssn,it_ssn] = active_set_strategy('asaadi_func','grad_asaadi_func','hess_asaadi_func',lambda,a,b,x0,m0,itmax,tol);

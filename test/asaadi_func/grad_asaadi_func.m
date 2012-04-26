@@ -1,3 +1,4 @@
 function g = grad_asaadi_func(x)
-	g = approx_gradient('asaadi_func',x,0.001);
+	g = [ (x(1)+1)^2;
+	           1  ];
 end

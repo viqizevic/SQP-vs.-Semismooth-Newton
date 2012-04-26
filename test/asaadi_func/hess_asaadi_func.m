@@ -1,3 +1,4 @@
 function H = hess_asaadi_func(x)
-	H = approx_hessian('asaadi_func',x,0.001);
+	H = [ 2*(x(1)+1)  0;
+               0      0 ];
 end

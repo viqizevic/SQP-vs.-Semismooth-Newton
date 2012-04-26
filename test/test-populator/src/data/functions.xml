@@ -92,8 +92,14 @@
 		<name>asaadi_func</name>
 		<var>x</var>
 		<def>y = x(2)+(1/3)*(x(1)+1)^3;</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
+		<grad>
+	g = [ (x(1)+1)^2;
+	           1  ];
+		</grad>
+		<hess>
+	H = [ 2*(x(1)+1)  0;
+               0      0 ];
+		</hess>
 	</function>
 
 	<function>
