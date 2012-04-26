@@ -16,11 +16,10 @@ function [x,fval,it] = semismooth_newton(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
     
 	while( ~stop )
 		it = it + 1;
-		A = (1/lambda) * grad_projection((-1/lambda)*feval(gradf,x),a,b) * feval(hessf,x) + eye(n);
-		c = projection((-1/lambda)*feval(gradf,x),a,b) - x;
+		A = -(1/lambda) * grad_projection((-1/lambda)*feval(gradf,x),a,b) * feval(hessf,x) - eye(n);
+		c = - projection((-1/lambda)*feval(gradf,x),a,b) + x;
 		d = A\c;
-		sigma = armijo_increment(f,gradf,lambda,x,d,0.75,4,0.5);
-		x = projection(x+sigma*d,a,b);
+		x = x+d;
 		% Check the stop criteria
 		if (norm(x-projection((-1/lambda)*feval(gradf,x),a,b)) < tol)
 			stop = true;
@@ -43,7 +42,7 @@ function w = projection(v,a,b)
 		if (a(k) > b(k))
 			error ('It should be a <= b.');
 		end
-    end
+	end
 	w = max(a,min(v,b));
 end
 
@@ -65,21 +64,6 @@ function W = grad_projection(v,a,b)
 	W = diag(w);
 end
 
-function sigma = armijo_increment(f,gradf,lambda,x,d,delta,gamma,beta)
-	sigma = -(gamma/(norm(d)^2))*complete_gradf(gradf,lambda,x)'*d;
-	while( true )
-		if( complete_f(f,lambda,x+sigma*d) <= complete_f(f,lambda,x)+delta*sigma*complete_gradf(gradf,lambda,x)'*d )
-			break; % fertig
-		end
-		% verkleinere sigma
-		sigma = beta * sigma;
-	end
-end
-
 function y = complete_f(f,lambda,x)
 	y = feval(f,x) + (lambda/2)*norm(x)^2;
-end
-
-function g = complete_gradf(gradf,lambda,x)
-	g = feval(gradf,x) + lambda*x;
 end

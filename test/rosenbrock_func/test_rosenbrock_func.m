@@ -23,6 +23,9 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_rosenbrock_func(show)
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
     t2 = sprintf('solved in %.2f ms.',t_sqp*1000);
     str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
+    if ( nargin == 0 )
+        show = 1;
+    end
     if ( show == 1 )
         a = sprintf('%.3f ',a);
         b = sprintf('%.3f ',b);

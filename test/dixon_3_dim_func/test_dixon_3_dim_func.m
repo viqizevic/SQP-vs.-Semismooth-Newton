@@ -7,8 +7,8 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_dixon_3_dim_func(show)
     tol = 0.001;
     itmax = 500;
     tic;
-    [x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',lambda,a,b,x0,m0,itmax,tol);
-    %[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',lambda,a,b,x0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',lambda,a,b,x0,m0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',lambda,a,b,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
@@ -23,6 +23,9 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_dixon_3_dim_func(show)
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
     t2 = sprintf('solved in %.2f ms.',t_sqp*1000);
     str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
+    if ( nargin == 0 )
+        show = 1;
+    end
     if ( show == 1 )
         a = sprintf('%.3f ',a);
         b = sprintf('%.3f ',b);

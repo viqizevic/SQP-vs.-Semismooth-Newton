@@ -21,6 +21,9 @@ function test_dixon_func_2_100_times(show)
     t2_total = t2_total/total;
     it1_total = it1_total/total;
     it2_total = it2_total/total;
+    if ( nargin == 0 )
+        show = 1;
+    end
     if ( show == 1 )
         x1 = sprintf('%.3f ',x_ssn);
         t1 = sprintf('solved in %.2f ms.',t1_total*1000);
