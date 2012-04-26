@@ -62,3 +62,24 @@ dann konvergiert die Newton-Iteration
 superlinear gegen $\xopt$
 unter der Bedingung, dass $|x^0 - \xopt|$ genügend klein ist.
 \end{theorem}
+
+\begin{algorithm}
+\emph{(Das halbglatte Newton-Verfahren)}
+\begin{enumerate}
+  \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
+        Setze $k := 0$.
+  \item Ist $\|\nabla f(x^k)\| < \epsilon$ \label{list:stop_criteria_ssn}
+        $\Rightarrow$ STOP.
+  \item Wähle $V_k \in \partial \nabla f (x^k)$
+  \item Berechne die Lösung $d$ des linearen Gleichungssystems
+        \begin{equation}
+          V_k d = - \nabla f(x^k).
+        \end{equation}
+        Setze $d^k := d$.
+  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$ $\Rightarrow$
+        Gehe zu Schritt~\ref{list:stop_criteria_ssn}.
+\end{enumerate}
+\end{algorithm}
+
+Das Aktive-Menge-Verfahren kann
+als das halbglatte Newton-Verfahren interpretiert werden.

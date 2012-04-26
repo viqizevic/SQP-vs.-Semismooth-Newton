@@ -1,6 +1,30 @@
 
+Sei $x^k$ ein zulässiger Punkt des Problems.
+Wir approximieren die Funktion $f$ in der Umgebung von $x^k$.
+\begin{equation}
+  f(x) \approx f(x^k) + \nabla f(x^k)^T (x-x^k)
+                 + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k).
+\end{equation}
+Der Gradient von $f$ ist
+\begin{equation}
+  \nabla f(x) \approx \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k.
+\end{equation}
+
+Die notwendige Bedingung für $x^{k+1}$ wäre
+\begin{equation}
+  \nabla f(x^{k+1}) + \lambda x^{k+1} + \mu^{k+1} = 0
+\end{equation}
+Ersetzen wir $\nabla f(x^{k+1})$ mit seiner Approximation,
+bekommen wir die Gleichung
+\begin{align}
+  \nabla f(x^k) + f''(x^k) x^{k+1} - f''(x^k) x^k + \lambda x^{k+1} + \mu^{k+1}
+    &= 0 \\
+  f''(x^k) x^{k+1} + \lambda x^{k+1} + \mu^{k+1}
+    &= f''(x^k) x^k - \nabla f(x^k)
+\end{align}
+
 \begin{algorithm}
-\emph{(Active-Set-Strategie)}
+\emph{(Aktive-Menge-Strategie)}
 \begin{enumerate}
   \item $k := 0, x^k := x^0$
   \item Bestimme
@@ -11,7 +35,8 @@
         \end{align}
   \item Löse das Problem
         \begin{align}
-          \nabla f(x^{k+1}) + \lambda x^{k+1} + \mu^{k+1} & = 0 \\
+          f''(x^k) x^{k+1} + \lambda x^{k+1} + \mu^{k+1}
+                    &= f''(x^k) x^k - \nabla f(x^k) \\
           x_i^{k+1} & = b_i \quad \text{ für } i \in \A_+^k \\
           x_i^{k+1} & = a_i \quad \text{ für } i \in \A_-^k \\
           \mu^{k+1} & = 0   \quad \text{ für } i \in \I^k
