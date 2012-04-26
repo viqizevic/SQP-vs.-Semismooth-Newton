@@ -84,8 +84,14 @@
 		<name>schuldt_func</name>
 		<var>x</var>
 		<def>y = x(2)+(1/100000)*(x(2)-x(1)^2)^2;</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
+		<grad>
+	g = [ -(4/100000)*x(1)*(x(2)-x(1)^2);
+	      1 + (2/100000)*(x(2)-x(1)^2) ];
+		</grad>
+		<hess>
+	H = [ -(4/100000)*x(2)+(12/100000)*x(1)^2  -(4/100000)*x(1);
+               -(4/10000)*x(1)                   (2/100000) ];
+		</hess>
 	</function>
 
 	<function>

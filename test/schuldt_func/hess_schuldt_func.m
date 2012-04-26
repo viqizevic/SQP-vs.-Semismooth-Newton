@@ -1,3 +1,4 @@
 function H = hess_schuldt_func(x)
-	H = approx_hessian('schuldt_func',x,0.001);
+	H = [ -(4/100000)*x(2)+(12/100000)*x(1)^2  -(4/100000)*x(1);
+               -(4/10000)*x(1)                   (2/100000) ];
 end

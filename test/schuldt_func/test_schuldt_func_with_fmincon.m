@@ -1,9 +1,9 @@
 function test_schuldt_func_with_fmincon()
-    lambda = 0.0001;
+    lambda = 0.03;
     a = [-20; 0];
     b = [20; 20];
-    x0 = [10; 1];
-    tol = 0.0001;
+    x0 = [15;15];
+    tol = 0.01;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];

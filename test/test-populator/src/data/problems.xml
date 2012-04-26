@@ -142,11 +142,11 @@
 	
 	<problem>
 		<function_name>schuldt_func</function_name>
-		<lambda>0.0001</lambda>
+		<lambda>0.03</lambda>
 		<a>[-20; 0]</a>
 		<b>[20; 20]</b>
-		<x0>[10; 1]</x0>
-		<tolerance>0.0001</tolerance>
+		<x0>[15;15]</x0>
+		<tolerance>0.01</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
 	

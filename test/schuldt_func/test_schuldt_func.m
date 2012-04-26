@@ -1,10 +1,10 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_schuldt_func(show)
-    lambda = 0.0001;
+    lambda = 0.03;
     a = [-20; 0];
     b = [20; 20];
-    x0 = [10; 1];
+    x0 = [15;15];
     m0 = zeros(2,1);
-    tol = 0.0001;
+    tol = 0.01;
     itmax = 100;
     tic;
     [x_ssn,fval_ssn,it_ssn] = active_set_strategy('schuldt_func','grad_schuldt_func','hess_schuldt_func',lambda,a,b,x0,m0,itmax,tol);
