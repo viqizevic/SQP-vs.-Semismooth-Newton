@@ -7,8 +7,9 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_{var_function_name}(show
     tol = {var_tol};
     itmax = {var_itmax};
     tic;
-    [x_ssn,fval_ssn,it_ssn] = active_set_strategy('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',lambda,a,b,x0,m0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',lambda,a,b,x0,m0,itmax,tol);
     %[x_ssn,fval_ssn,it_ssn] = semismooth_newton('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',lambda,a,b,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = ssn('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',lambda,a,b,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
