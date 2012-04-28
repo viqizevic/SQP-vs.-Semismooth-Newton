@@ -96,17 +96,17 @@
 		<a>[-10; -10]</a>
 		<b>[10; 10]</b>
 		<x0>[-1; 2]</x0>
-		<tolerance>0.0000001</tolerance>
+		<tolerance>0.00001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<lambda>0.001</lambda>
+		<lambda>0.01</lambda>
 		<a>[-10; 1.5]</a>
 		<b>[10; 10]</b>
-		<x0>[-1; 2]</x0>
-		<tolerance>0.000001</tolerance>
+		<x0>[1; 2]</x0>
+		<tolerance>0.02</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
 
@@ -210,7 +210,7 @@
 		<max_iteration>500</max_iteration>
 	</problem>
 
-	<problem>
+	<!--problem>
 		<function_name>dixon_func</function_name>
 		<lambda>0.0001</lambda>
 		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
@@ -262,7 +262,7 @@
 		<x0>[4; -1; 5; 4; 7]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
-	</problem>
+	</problem-->
 
 	<!--problem>
 		<function_name>dixon_func</function_name>
