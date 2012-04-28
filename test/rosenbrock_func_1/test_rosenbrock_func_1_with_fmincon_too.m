@@ -1,9 +1,9 @@
 function test_rosenbrock_func_1_with_fmincon_too()
-	lambda = 0.001;
+	lambda = 0.01;
 	a = [-10; 1.5];
 	b = [10; 10];
-	x0 = [-1; 2];
-	tol = 0.000001;
+	x0 = [1; 2];
+	tol = 0.02;
 	itmax = 100;
 	tic;
 	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('rosenbrock_func_1','grad_rosenbrock_func_1','hess_rosenbrock_func_1',lambda,a,b,x0,m0,itmax,tol);

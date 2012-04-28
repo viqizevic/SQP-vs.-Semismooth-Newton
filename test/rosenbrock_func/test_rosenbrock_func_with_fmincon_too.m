@@ -3,7 +3,7 @@ function test_rosenbrock_func_with_fmincon_too()
 	a = [-10; -10];
 	b = [10; 10];
 	x0 = [-1; 2];
-	tol = 0.0000001;
+	tol = 0.00001;
 	itmax = 100;
 	tic;
 	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('rosenbrock_func','grad_rosenbrock_func','hess_rosenbrock_func',lambda,a,b,x0,m0,itmax,tol);

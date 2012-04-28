@@ -3,7 +3,7 @@ function test_rosenbrock_func_with_fmincon()
     a = [-10; -10];
     b = [10; 10];
     x0 = [-1; 2];
-    tol = 0.0000001;
+    tol = 0.00001;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];

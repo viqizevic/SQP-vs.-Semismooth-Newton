@@ -1,39 +1,33 @@
-function [x,fval,it] = ssn(f,gradf,hessf,lambda,a,b,x0,itmax,tol)
+function [x,fval,it] = ssn(f,gradf,hessf,lambda,G,r,x0,itmax,tol)
 	x = x0;
-	n = length(x);
+	%n = length(x);
+	[p,n] = size(G);
 	it = 0;
 	stop = false;
-	y = zeros(n,1);
+	mu = zeros(p,1);
 	zero = zeros(n,1);
-	c = lambda
+	c = lambda;
 	
 	while( ~stop )
 		it = it + 1;
-		y1 = y+c*(x-b)
-		y2 = y+c*(x-a)
-		h = [ feval(gradf,x)+y; y-max(zero,y1)-min(zero,y2) ]
-		H = [ feval(hessf,x)+lambda*eye(n,n) eye(n,n);
-				zeros(n,n)    eye(n,n)];
-		for k=1:n
-			if (x(k)>b(k))
-				H(n+k,k) = c;
+		h = -[ feval(gradf,x)+lambda*x+G'*mu;
+						min(mu,r-G*x) ];
+		H = [ feval(hessf,x)+lambda*eye(n,n)  G';
+						zeros(p,n+p) ];
+		for k=1:p
+			gk = G(k,1:n);
+			if (r(k)-gk*x < mu(k))
+				H(n+k,1:n) = -gk;
 		  else
-				H(n+k,n+k) = H(n+k,n+k) - 1;
-		  end
-			if (x(k)<a(k))
-				H(n+k,k) = H(n+k,k) + c;
-		  else
-				H(n+k,n+k) = H(n+k,n+k) - 1;
+				H(n+k,n+k) = 1;
 		  end
 	  end
-		H
-		q = H\h
+		q = H\h;
 		d = q(1:n);
-		y = q(n+1:2*n);
-		x = x+d
-		y = min(zero,y+(x-b))+min(zero,y+(x-a))
+		mu = q(n+1:n+p);
+		x = x+d;
 		% Check the stop criteria
-		if (norm(feval(gradf,x)) < tol)
+		if (norm(d) < tol)
 			stop = true;
 		end
 		% If there are too many iterations
