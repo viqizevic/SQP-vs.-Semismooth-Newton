@@ -10,8 +10,7 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_dixon_3_dim_func(show)
     c = [ -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',lambda,a,b,x0,m0,itmax,tol);
-    %[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',lambda,a,b,x0,itmax,tol);
-    [x_ssn,fval_ssn,it_ssn] = ssn('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',lambda,A,c,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',lambda,A,c,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
