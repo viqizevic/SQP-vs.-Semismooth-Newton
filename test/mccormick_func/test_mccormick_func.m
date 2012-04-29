@@ -3,13 +3,12 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_mccormick_func(show)
     a = [-1.5; -3];
     b = [4; 3];
     x0 = [0; -0.75];
-    m0 = zeros(2,1);
     tol = 0.0001;
     itmax = 200;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('mccormick_func','grad_mccormick_func','hess_mccormick_func',lambda,A,c,x0,m0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('mccormick_func','grad_mccormick_func','hess_mccormick_func',lambda,A,c,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('mccormick_func','grad_mccormick_func','hess_mccormick_func',lambda,A,c,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);

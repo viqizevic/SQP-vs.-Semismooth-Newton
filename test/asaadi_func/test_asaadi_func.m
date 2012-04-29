@@ -3,13 +3,12 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_asaadi_func(show)
     a = [1; 0];
     b = [20; 20];
     x0 = [7; 5];
-    m0 = zeros(2,1);
     tol = 0.001;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('asaadi_func','grad_asaadi_func','hess_asaadi_func',lambda,A,c,x0,m0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('asaadi_func','grad_asaadi_func','hess_asaadi_func',lambda,A,c,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('asaadi_func','grad_asaadi_func','hess_asaadi_func',lambda,A,c,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);

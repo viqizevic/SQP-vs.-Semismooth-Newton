@@ -3,13 +3,12 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_quad_regression_func(sho
     a = [-10; -10; -10];
     b = [20; 20; 20];
     x0 = [0.5; 2; -7];
-    m0 = zeros(3,1);
     tol = 0.001;
     itmax = 100;
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_regression_func','grad_quad_regression_func','hess_quad_regression_func',lambda,A,c,x0,m0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_regression_func','grad_quad_regression_func','hess_quad_regression_func',lambda,A,c,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_regression_func','grad_quad_regression_func','hess_quad_regression_func',lambda,A,c,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
