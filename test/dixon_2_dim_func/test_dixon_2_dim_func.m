@@ -9,7 +9,7 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_dixon_2_dim_func(show)
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_2_dim_func','grad_dixon_2_dim_func','hess_dixon_2_dim_func',lambda,a,b,x0,m0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_2_dim_func','grad_dixon_2_dim_func','hess_dixon_2_dim_func',lambda,A,c,x0,m0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_2_dim_func','grad_dixon_2_dim_func','hess_dixon_2_dim_func',lambda,A,c,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);

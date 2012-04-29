@@ -9,7 +9,7 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_himmelblau_func_1(show)
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',lambda,a,b,x0,m0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',lambda,A,c,x0,m0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',lambda,A,c,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);

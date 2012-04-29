@@ -14,12 +14,6 @@ function test_all()
 	disp('test_linear_func');
 	test_linear_func(1);
 	disp(sprintf('\n'));
-	disp('test_exp_func');
-	test_exp_func(1);
-	disp(sprintf('\n'));
-	disp('test_exp_func_1');
-	test_exp_func_1(1);
-	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func(1);
 	disp(sprintf('\n'));

@@ -9,7 +9,7 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_bazaraa_shetty_func(show
     A = [ -eye(length(a)); eye(length(b)) ];
     c = [ -a; b ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('bazaraa_shetty_func','grad_bazaraa_shetty_func','hess_bazaraa_shetty_func',lambda,a,b,x0,m0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('bazaraa_shetty_func','grad_bazaraa_shetty_func','hess_bazaraa_shetty_func',lambda,A,c,x0,m0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('bazaraa_shetty_func','grad_bazaraa_shetty_func','hess_bazaraa_shetty_func',lambda,A,c,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);

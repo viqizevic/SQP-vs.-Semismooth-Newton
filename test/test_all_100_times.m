@@ -14,12 +14,6 @@ function test_all_100_times()
 	disp('test_linear_func');
 	test_linear_func_100_times(1);
 	disp(sprintf('\n'));
-	disp('test_exp_func');
-	test_exp_func_100_times(1);
-	disp(sprintf('\n'));
-	disp('test_exp_func_1');
-	test_exp_func_1_100_times(1);
-	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func_100_times(1);
 	disp(sprintf('\n'));

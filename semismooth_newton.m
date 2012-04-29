@@ -1,4 +1,4 @@
-function [x,fval,it] = ssn(f,gradf,hessf,lambda,G,r,x0,itmax,tol)
+function [x,fval,it] = semismooth_newton(f,gradf,hessf,lambda,G,r,x0,itmax,tol)
 	x = x0;
 	%n = length(x);
 	[p,n] = size(G);
@@ -12,7 +12,7 @@ function [x,fval,it] = ssn(f,gradf,hessf,lambda,G,r,x0,itmax,tol)
 		it = it + 1;
 		h = -[ feval(gradf,x)+lambda*x+G'*mu;
 						min(mu,r-G*x) ];
-		H = [ feval(hessf,x)+lambda*eye(n,n)  G';
+		H = [ feval(hessf,x)+lambda*eye(n)  G';
 						zeros(p,n+p) ];
 		for k=1:p
 			gk = G(k,1:n);
