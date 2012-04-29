@@ -20,8 +20,6 @@ public class MFileCreator {
 	 * The extension for the Matlab files.
 	 */
 	private static final String extension = ".m";
-
-	private static final String withFmincon = "_with_fmincon";
 	
 	private static final String withFminconToo = "_with_fmincon_too";
 	
@@ -160,12 +158,6 @@ public class MFileCreator {
 		createFile(fileName+extension, content);
 	}
 
-	private void createTestProblemFileWithFmincon(String templateFilePath) {
-		String fileName = testFileName + withFmincon;
-		String content = getTestFileContentUsingTemplate(templateFilePath);
-		createFile(fileName+extension, content);
-	}
-
 	// TODO check if this method ok is
 	private void createTestProblemFileWithFminconToo(String templateFilePath) {
 		String fileName = testFileName + withFminconToo;
@@ -298,8 +290,7 @@ public class MFileCreator {
 		mFileCreator.createFunctionHessianFile();
 		mFileCreator.createTestProblemFile(testTemplates.getFirst());
 		mFileCreator.createTestProblem100TimesFile(testTemplates.get(1));
-		mFileCreator.createTestProblemFileWithFmincon(testTemplates.get(2));
-		mFileCreator.createTestProblemFileWithFminconToo(testTemplates.get(3));
+		mFileCreator.createTestProblemFileWithFminconToo(testTemplates.get(2));
 	}
 	
 	public static void createMainTestFile(LinkedList<TestProblem> list, String fileName, String directoryPath) {
@@ -310,20 +301,17 @@ public class MFileCreator {
 		// create a dummy MFileCreator object, to be able to use the createFile() method
 		String content1 = "function " + fileName + "()\n";
 		String content2 = "function " + fileName + withFminconToo + "()\n";
-		String content3 = "function " + fileName + withFmincon + "()\n";
-		String content4 = "function " + fileName + oneHundredTimes + "()\n";
+		String content3 = "function " + fileName + oneHundredTimes + "()\n";
 		
 		for (TestProblem p : list) {
 			content1 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
 			content2 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
 			content3 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
-			content4 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
 			
 			content1 += "\ttest_" + p.getTestProblemName() + "(1);\n";
-			content4 += "\ttest_" + p.getTestProblemName() + oneHundredTimes + "(1);\n";
+			content3 += "\ttest_" + p.getTestProblemName() + oneHundredTimes + "(1);\n";
 			if (!p.getTestProblemName().startsWith("exp_func")) {
 				content2 += "\ttest_" + p.getTestProblemName() + withFminconToo + "();\n";
-				content3 += "\ttest_" + p.getTestProblemName() + withFmincon + "();\n";
 			} else {
 				content2 += "\ttest_" + p.getTestProblemName() + "();\n";
 			}
@@ -331,17 +319,14 @@ public class MFileCreator {
 			content1 += "\tdisp(sprintf('\\n'));\n";
 			content2 += "\tdisp(sprintf('\\n'));\n";
 			content3 += "\tdisp(sprintf('\\n'));\n";
-			content4 += "\tdisp(sprintf('\\n'));\n";
 		}
 		
 		content1 += "end";
 		content2 += "end";
 		content3 += "end";
-		content4 += "end";
 		mFileCreator.createFile(fileName+extension, content1);
-		mFileCreator.createFile(fileName+oneHundredTimes+extension, content4);
+		mFileCreator.createFile(fileName+oneHundredTimes+extension, content3);
 		mFileCreator.createFile(fileName+withFminconToo+extension, content2);
-		mFileCreator.createFile(fileName+withFmincon+extension, content3);
 	}
 
 }
