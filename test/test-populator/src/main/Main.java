@@ -47,11 +47,12 @@ import org.xml.sax.SAXException;
  *                          |-- data
  *                          |-- main
  * 
+ * The source of this project is linked from the folder in test-populator.
+ * 
  * @author Vicky H. Tanzil
  */
 public class Main {
 	/*
-	 * TODO use .ini file
 	 * TODO try not to use feval
 	 * TODO get ready if the lambda variable should be removed
 	 * TODO suppress warning message from octave
@@ -91,15 +92,24 @@ public class Main {
 		String functionsXMLFile = pathToDataDir + configs.get("functions_xml_file");
 		String problemsXMLFile = pathToDataDir + configs.get("problems_xml_file");
 		boolean useApproxDiff = Boolean.parseBoolean(configs.get("use_approx_diff"));
-		boolean useOctave = Boolean.parseBoolean(configs.get("use_octave"));
+		//boolean useOctave = Boolean.parseBoolean(configs.get("use_octave"));
+		int k = 0;
+		HashMap<String, String> testTemplates = new HashMap<String, String>();
+		boolean keepReadingTemplateFileName = true;
+		while (keepReadingTemplateFileName) {
+			String var = "test_template_file_name_" + k;
+			if (!configs.containsKey(var)) {
+				keepReadingTemplateFileName = false;
+			} else {
+				String name = configs.get(var);
+				testTemplates.put(name, pathToDataDir+name+".tpl");
+				k++;
+			}
+		}
+		String prefixForMainTestFile = configs.get("prefix_for_main_test_file");
 		
 		parseFunctionsFromXMLFile(functionsXMLFile);
 		parseProblemsFromXMLFile(problemsXMLFile);
-		
-		LinkedList<String> testTemplates = new LinkedList<String>();
-		testTemplates.add(pathToDataDir+"test.tpl");
-		testTemplates.add(pathToDataDir+"test100Times.tpl");
-		testTemplates.add(pathToDataDir+"testWithFminconToo.tpl");
 		
 		for (TestProblem p : testProblems) {
 			if (useApproxDiff) {
@@ -108,14 +118,15 @@ public class Main {
 			MFileCreator.create(p, pathToTestDir+p.getTestProblemName(), testTemplates);
 		}
 		
-		MFileCreator.createMainTestFile(testProblems, "test_all", pathToTestDir);
+		MFileCreator.createMainTestFile(testProblems,
+				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
 		System.out.println("Finish!");
 	}
 
 	private static HashMap<String, String> readConfigFile() {
 		String testDirPath = "../../SQP-vs.-Semismooth-Newton/test/test-populator/src/main/";
 		String testDirPath2 = "../../minimix/SQP-vs.-Semismooth-Newton/test/test-populator/src/main/";
-		// See directories tree in the comment of this class.
+		// See directories tree in the comment of this class to understand these paths.
 		File dir = new File(testDirPath);
 		if (!dir.exists()) {
 			dir = new File(testDirPath2);
@@ -126,10 +137,10 @@ public class Main {
 				testDirPath = testDirPath2;
 			}
 		}
-		String filename = testDirPath + "Source.config";
+		String filename = "Source.config";
 		HashMap<String, String> configs = new HashMap<String, String>();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(filename));
+			BufferedReader br = new BufferedReader(new FileReader(testDirPath+filename));
 			String line = "";
 			while ( (line=br.readLine()) != null ) {
 				if (!line.equals("") && !line.startsWith("#")) {

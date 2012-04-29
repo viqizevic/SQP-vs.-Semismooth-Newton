@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Set;
 
 /**
  * MFileCreator ables to create the needed Matlab files
@@ -20,10 +21,6 @@ public class MFileCreator {
 	 * The extension for the Matlab files.
 	 */
 	private static final String extension = ".m";
-	
-	private static final String withFminconToo = "_with_fmincon_too";
-	
-	private static final String oneHundredTimes = "_100_times";
 	
 	private final String v0 = "_v0";
 	
@@ -51,11 +48,6 @@ public class MFileCreator {
 	 * The name of the file defining the function hessian matrix.
 	 */
 	private String hessFileName;
-	
-	/**
-	 * The name of the file calling the algorithms.
-	 */
-	private String testFileName;
 
 	/**
 	 * The path to the directory where all created files should be placed.
@@ -73,7 +65,6 @@ public class MFileCreator {
 		defFileName = f.getName();
 		gradFileName = "grad_" + defFileName;
 		hessFileName = "hess_" + defFileName;
-		testFileName = "test_" + defFileName;
 		if (directoryPath.endsWith("/")) {
 			directoryPath = directoryPath.substring(0, directoryPath.length()-1);
 		}
@@ -146,67 +137,15 @@ public class MFileCreator {
 		createFile(fileName+v0+extension, content);
 	}
 	
-	private void createTestProblemFile(String templateFilePath) {
-		String fileName = testFileName;
+	/**
+	 * Create test file for this problems
+	 * @param fileNamePattern The name pattern of the test file.
+	 * The word "problem" will be replaced with the problem name.
+	 * @param templateFilePath The template for the test file
+	 */
+	private void createTestFile(String fileNamePattern, String templateFilePath) {
+		String fileName = fileNamePattern.replace("problem", testProblem.getTestProblemName());
 		String content = getTestFileContentUsingTemplate(templateFilePath);
-		createFile(fileName+extension, content);
-	}
-	
-	private void createTestProblem100TimesFile(String templateFilePath) {
-		String fileName = testFileName + oneHundredTimes;
-		String content = getTestFileContentUsingTemplate(templateFilePath);
-		createFile(fileName+extension, content);
-	}
-
-	// TODO check if this method ok is
-	private void createTestProblemFileWithFminconToo(String templateFilePath) {
-		String fileName = testFileName + withFminconToo;
-		String content = getTestFileContentUsingTemplate(templateFilePath);
-		createFile(fileName+extension, content);
-	}
-
-	private void createTestProblemFileWithFminconToo2() {
-		String fileName = testFileName + withFminconToo;
-		String content = "function " + fileName + "()\n";
-		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
-		content += "\ta = " + testProblem.get_a() + ";\n";
-		content += "\tb = " + testProblem.get_b() + ";\n";
-		content += "\tx0 = " + testProblem.get_x0() + ";\n";
-		content += "\ttol = " + testProblem.getTolerance() + ";\n";
-		content += "\titmax = " + testProblem.getMaxIteration() + ";\n";
-		content += "\ttic;\n";
-		content += "\t[x_ssn,fval_ssn,it_ssn] = semismooth_newton('" + defFileName + "','" + gradFileName + "','" + hessFileName + "',lambda,a,b,x0,itmax,tol);\n";
-		content += "\tt_ssn = toc;\n";
-		content += "\tx1 = sprintf('%.3f ',x_ssn);\n";
-		content += "\tf1 = sprintf('f(x_ssn) = %.3f',fval_ssn);\n";
-		content += "\tt1 = sprintf('solved in %.2f ms.',t_ssn*1000);\n";
-		content += "\tstr1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];\n";
-		content += "\tA = [ -eye(length(a)); eye(length(b)) ];\n";
-		content += "\tc = [ -a; b ];\n";
-		content += "\ttic;\n";
-		content += "\t[x_sqp,fval_sqp,it_sqp] = sqp('" + defFileName+v0 + "','" + gradFileName+v0 + "','" + hessFileName+v0 + "',A,c,x0,itmax,tol);\n";
-		content += "\tt_sqp = toc;\n";
-		content += "\tx2 = sprintf('%.3f ',x_sqp);\n";
-		content += "\tf2 = sprintf('f(x_sqp) = %.3f',fval_sqp);\n";
-		content += "\tt2 = sprintf('solved in %.2f ms.',t_sqp*1000);\n";
-		content += "\tstr2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];\n";
-		content += "\toptions = optimset('Algorithm','active-set','Display','off');\n";
-		content += "\ttic;\n";
-		content += "\t[x_fmc,fval_fmc,exitflag,output] = fmincon('" + defFileName+v0 + "',x0,[],[],[],[],a,b,[],options);\n";
-		content += "\tt_fmc = toc;\n";
-		content += "\tx3 = sprintf('%.3f ',x_fmc);\n";
-		content += "\tf3 = sprintf('f(x_fmc) = %.3f',fval_fmc);\n";
-		content += "\tt3 = sprintf('solved in %.2f ms.',t_fmc*1000);\n";
-		content += "\tstr3 = ['x_fmc = [ ', x3, '], ', f3, ', ', t3];\n";
-		content += "\ta = sprintf('%.3f ',a);\n";
-		content += "\tb = sprintf('%.3f ',b);\n";
-		content += "\tx0 = sprintf('%.3f ',x0);\n";
-		content += "\tstr0 = ['a = [ ', a, '], b = [ ', b, '], x0 = [ ', x0, ']'];\n";
-		content += "\tdisp(str0);\n";
-		content += "\tdisp(str1);\n";
-		content += "\tdisp(str2);\n";
-		content += "\tdisp(str3);\n";
-		content += "end";
 		createFile(fileName+extension, content);
 	}
 	
@@ -278,55 +217,57 @@ public class MFileCreator {
 	}
 	
 	/**
-	 * Create all files for the test problem given.
+	 * Create all files needed for the given test problem.
 	 * @param testProblem The test problem.
 	 * @param directoryPath The directory to place the files for the test problem.
-	 * @param testTemplates
+	 * @param testTemplates A hash map with test template name pattern as key
+	 * and path to template file as value.
 	 */
-	public static void create(TestProblem testProblem, String directoryPath, LinkedList<String> testTemplates) {
+	public static void create(TestProblem testProblem,
+			String directoryPath, HashMap<String,String> testTemplates) {
 		MFileCreator mFileCreator = new MFileCreator(testProblem, directoryPath);
 		mFileCreator.createFunctionDefinitionFile();
 		mFileCreator.createFunctionGradientFile();
 		mFileCreator.createFunctionHessianFile();
-		mFileCreator.createTestProblemFile(testTemplates.getFirst());
-		mFileCreator.createTestProblem100TimesFile(testTemplates.get(1));
-		mFileCreator.createTestProblemFileWithFminconToo(testTemplates.get(2));
+		for (String s : testTemplates.keySet()) {
+			mFileCreator.createTestFile(s, testTemplates.get(s));
+		}
 	}
 	
-	public static void createMainTestFile(LinkedList<TestProblem> list, String fileName, String directoryPath) {
-		if (list.isEmpty()) {
+	/**
+	 * Create a test file which called each test file of each problem.
+	 * @param problemsList A linked list containing all test problems.
+	 * @param filePrefix The prefix for this test file.
+	 * @param directoryPath The directory to place this file.
+	 * @param testNamePattern The name pattern of the tests available.
+	 */
+	public static void createMainTestFile(LinkedList<TestProblem> problemsList,
+			String filePrefix, String directoryPath, Set<String> testNamePattern) {
+		if (problemsList.isEmpty()) {
 			return;
 		}
-		MFileCreator mFileCreator = new MFileCreator(list.getFirst(), directoryPath);
-		// create a dummy MFileCreator object, to be able to use the createFile() method
-		String content1 = "function " + fileName + "()\n";
-		String content2 = "function " + fileName + withFminconToo + "()\n";
-		String content3 = "function " + fileName + oneHundredTimes + "()\n";
-		
-		for (TestProblem p : list) {
-			content1 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
-			content2 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
-			content3 += "\tdisp('test_" + p.getTestProblemName() + "');\n";
-			
-			content1 += "\ttest_" + p.getTestProblemName() + "(1);\n";
-			content3 += "\ttest_" + p.getTestProblemName() + oneHundredTimes + "(1);\n";
-			if (!p.getTestProblemName().startsWith("exp_func")) {
-				content2 += "\ttest_" + p.getTestProblemName() + withFminconToo + "();\n";
-			} else {
-				content2 += "\ttest_" + p.getTestProblemName() + "();\n";
+		for (String namePattern : testNamePattern) {
+			String fileName = namePattern.replace("test_problem", filePrefix);
+			String content = "function " + fileName + "()\n";
+			for (TestProblem p : problemsList) {
+				String problemTestFunction = namePattern.replace("problem", p.getTestProblemName());
+				content += "\tdisp('test_" + p.getTestProblemName() + "');\n";
+				if (!namePattern.contains("with_fmincon")) {
+					content += "\t" + problemTestFunction + "(1);\n";
+				} else {
+					if (!p.getTestProblemName().startsWith("exp_func")) {
+						content += "\t" + problemTestFunction + "();\n";
+					} else {
+						content += "\ttest_" + p.getTestProblemName() + "();\n";
+					}
+				}
+				content += "\tdisp(sprintf('\\n'));\n";
 			}
-			
-			content1 += "\tdisp(sprintf('\\n'));\n";
-			content2 += "\tdisp(sprintf('\\n'));\n";
-			content3 += "\tdisp(sprintf('\\n'));\n";
+			content += "end";
+			// create a dummy MFileCreator object, to be able to use the createFile() method
+			MFileCreator mFileCreator = new MFileCreator(problemsList.getFirst(), directoryPath);
+			mFileCreator.createFile(fileName+extension, content);
 		}
-		
-		content1 += "end";
-		content2 += "end";
-		content3 += "end";
-		mFileCreator.createFile(fileName+extension, content1);
-		mFileCreator.createFile(fileName+oneHundredTimes+extension, content3);
-		mFileCreator.createFile(fileName+withFminconToo+extension, content2);
 	}
 
 }
