@@ -15,10 +15,10 @@ function test_all_with_fmincon_too()
 	test_linear_func_with_fmincon_too();
 	disp(sprintf('\n'));
 	disp('test_exp_func');
-	test_exp_func();
+	test_exp_func_with_fmincon_too();
 	disp(sprintf('\n'));
 	disp('test_exp_func_1');
-	test_exp_func_1();
+	test_exp_func_1_with_fmincon_too();
 	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func_with_fmincon_too();

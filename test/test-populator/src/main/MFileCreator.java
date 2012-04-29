@@ -255,11 +255,7 @@ public class MFileCreator {
 				if (!namePattern.contains("with_fmincon")) {
 					content += "\t" + problemTestFunction + "(1);\n";
 				} else {
-					if (!p.getTestProblemName().startsWith("exp_func")) {
-						content += "\t" + problemTestFunction + "();\n";
-					} else {
-						content += "\ttest_" + p.getTestProblemName() + "();\n";
-					}
+					content += "\t" + problemTestFunction + "();\n";
 				}
 				content += "\tdisp(sprintf('\\n'));\n";
 			}
