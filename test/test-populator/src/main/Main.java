@@ -1,6 +1,9 @@
 package main;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -73,50 +76,82 @@ public class Main {
 	private static LinkedList<TestProblem> testProblems = new LinkedList<TestProblem>();
 	
 	/**
-	 * The path to the test directory.
-	 * All the new test files created will be saved here.
-	 * See directories tree in the comment of this class.
-	 */
-	private static String testDirPath = "../../SQP-vs.-Semismooth-Newton/test/";
-	//private static String testDirPath = "../../minimix/SQP-vs.-Semismooth-Newton/test/";
-	// The last line over this line is to be used in grafix.math.tu-berlin.de (another directories tree)
-	
-	/**
 	 * The main function.
 	 * Reads the xml files containing the test functions and the test problems
 	 * and then calls the file creator.
 	 */
 	public static void main(String[] args) {
-		String dataPath = testDirPath+"test-populator/src/data/";
+		HashMap<String, String> configs = readConfigFile();
+		if (configs == null) {
+			return;
+		}
+
+		String pathToTestDir = configs.get("path_to_test_dir");
+		String pathToDataDir = pathToTestDir + configs.get("path_to_data_dir");
+		String functionsXMLFile = pathToDataDir + configs.get("functions_xml_file");
+		String problemsXMLFile = pathToDataDir + configs.get("problems_xml_file");
+		boolean useApproxDiff = Boolean.parseBoolean(configs.get("use_approx_diff"));
+		boolean useOctave = Boolean.parseBoolean(configs.get("use_octave"));
 		
-		parseFunctionsFromXMLFile(dataPath+"functions.xml");
-		parseProblemsFromXMLFile(dataPath+"problems.xml");
+		parseFunctionsFromXMLFile(functionsXMLFile);
+		parseProblemsFromXMLFile(problemsXMLFile);
 		
 		LinkedList<String> testTemplates = new LinkedList<String>();
-		testTemplates.add(dataPath+"test.tpl");
-		testTemplates.add(dataPath+"test100Times.tpl");
-		testTemplates.add(dataPath+"testWithFminconToo.tpl");
-		
-		boolean usingApproxDiff = false;
-		// set this to false to use given gradient and hessian definitions
-		// set to true to approximate all gradient and hessian
+		testTemplates.add(pathToDataDir+"test.tpl");
+		testTemplates.add(pathToDataDir+"test100Times.tpl");
+		testTemplates.add(pathToDataDir+"testWithFminconToo.tpl");
 		
 		for (TestProblem p : testProblems) {
-			if (usingApproxDiff) {
-				p.getTestFunction().setUsingApproximationDifferentiation(usingApproxDiff);
+			if (useApproxDiff) {
+				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
 			}
-			MFileCreator.create(p, testDirPath+p.getTestProblemName(), testTemplates);
+			MFileCreator.create(p, pathToTestDir+p.getTestProblemName(), testTemplates);
 		}
 		
-		MFileCreator.createMainTestFile(testProblems, "test_all", testDirPath);
+		MFileCreator.createMainTestFile(testProblems, "test_all", pathToTestDir);
 		System.out.println("Finish!");
+	}
+
+	private static HashMap<String, String> readConfigFile() {
+		String testDirPath = "../../SQP-vs.-Semismooth-Newton/test/test-populator/src/main/";
+		String testDirPath2 = "../../minimix/SQP-vs.-Semismooth-Newton/test/test-populator/src/main/";
+		// See directories tree in the comment of this class.
+		File dir = new File(testDirPath);
+		if (!dir.exists()) {
+			dir = new File(testDirPath2);
+			if (!dir.exists()) {
+				System.err.println("Cannot find the config file in " + testDirPath + ".");
+				return null;
+			} else {
+				testDirPath = testDirPath2;
+			}
+		}
+		String filename = testDirPath + "Source.config";
+		HashMap<String, String> configs = new HashMap<String, String>();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			String line = "";
+			while ( (line=br.readLine()) != null ) {
+				if (!line.equals("") && !line.startsWith("#")) {
+					String[] str = line.split("=");
+					String var = str[0].trim();
+					String value = str[1].trim();
+					configs.put(var, value);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return configs;
 	}
 
 	/**
 	 * Read a .xml file defining all available test functions
 	 * @param fileName The name of the .xml file
 	 */
-	public static void parseFunctionsFromXMLFile(String fileName) {
+	private static void parseFunctionsFromXMLFile(String fileName) {
 		/*
 		This is a simple example how the file should be:
 		<functions>
