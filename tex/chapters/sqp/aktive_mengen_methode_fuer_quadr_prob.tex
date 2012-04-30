@@ -10,78 +10,97 @@ mit dem Aktive-Mengen-Verfahren lösen können.
 \begin{align}
   \min_{x \in \R^n}\ &
     \frac{1}{2} \langle Qx,x \rangle + \langle q,x \rangle 
-    \tag{QLU} \label{prob:quad_prog_mit_lin_restr} \\
-  \nb & Ax = b \notag \\
-      & Gx \leq r \notag
+    \tag{QLU} \label{prob:quad_opt_prob_mit_lin_ungl_nebenbed} \\
+  \nb & \langle a_i, x \rangle = b_i \text{ für } i = 1,\ldots,m \notag \\
+      & \langle g_j, x \rangle \leq r_j \text{ für } j = 1,\ldots,p \notag
 \end{align}
 Dabei sei $Q$ eine symmetrische $(n \times n)$-Matrix und $q \in \R^n$.
-$A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
-$G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
+$a_i \in \R^n$ und $b_i \in \R$ für $i = 1,\ldots,m$.
+$g_j \in \R^n$ und $r_j \in \R$ für $j =1,\ldots,p$.
 \end{definition}
 
-Die Idee des Aktive-Mengen-Verfahren ist, iterativ das Problem
-unter den Gleichungsnebenbedingungen zu optimieren.
-%TODO noch unklar
+Die Idee des Aktive-Mengen-Verfahrens ist, iterativ Probleme
+mit nur Gleichungsnebenbedingungen zu optimieren.
 
-Sei $x^k \in \R^n$ ein zulässiger Punkt.
-Angenommen, wir können eine Suchrichtung $d$ finden,
-sodass der Punkt $x^{k+1} := x^k + d$ ein besserer zulässiger Punkt ist.
+Sei $x^k \in \R^n$ ein zulässiger Punkt des Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}.
+Angenommen, wir können eine Suchrichtung $d \in \R^n$ finden,
+so dass der Punkt $x^{k+1} := x^k + d$ ein besserer zulässiger Punkt ist.
 Diesen Vektor $d$ können wir finden, indem wir das Problem
 \begin{align}
   \min_{d \in \R^n}\ &
-    \frac{1}{2} \langle Q(x^k+d),(x^k+d) \rangle + \langle q,(x^k+d) \rangle 
+    \frac{1}{2} \langle Q(x^k+d), x^k+d \rangle + \langle q, x^k+d \rangle 
       \\
-  \nb & A(x^k+d) = b \notag \\
-      & G(x^k+d) \leq r \notag
+  \nb & \langle a_i, x^k+d \rangle = b_i \text{ für } i = 1,\ldots,m \notag \\
+      & \langle g_j, x^k+d \rangle \leq r_j \text{ für } j = 1,\ldots,p \notag
 \end{align}
 lösen.
-Dies ist eigentlich das Problem~\eqref{prob:quad_prog_mit_lin_restr},
+Dies ist eigentlich das Problem~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed},
 wobei die Variable $x$ mit $x^k + d$ ersetzt wurde und das Problem über
-die Variable $d$ minimiert wurde.
+die Variable $d$ minimiert werden soll.
 
 Lassen wir die Konstanten in der Zielfunktion weg, dann bekommen wir
 als Zielfunktion
 \begin{displaymath}
   \frac{1}{2} \langle Qd,d \rangle + \langle Qx^k+q,d\rangle.
 \end{displaymath}
-Weil $x^k$ zulässig ist, d.\,h., es gilt $Ax^k = b$, können wir wieder als
-Gleichungsnebenbedingung $Ad = 0$ schreiben.
+Weil $x^k$ zulässig ist, d.\,h., es gilt $\langle a_i, x^k \rangle = b_i$
+für $i = 1,\ldots,m$,
+können wir dann als Gleichungsnebenbedingungen
+$\langle a_i, d \rangle = 0$ für $i = 1,\ldots,m$ schreiben.
 
-Seien $J(x^k)$ die Indexmenge der aktiven Ungleichungsrestriktionen zu $x^k$.
+Sei $J(x^k)$ die Indexmenge der aktiven Ungleichungsrestriktionen zu $x^k$.
 Sei $j \in J(x^k)$,
 d.\,h., es gilt $\langle g_j,x^k \rangle = r_j$.
-Setzen wir voraus, dass
-$\langle g_j,d \rangle = 0$, dann gilt immer noch
-$\langle g_j,(x^k+d) \rangle \leq r_j$.
+Dann folgt aus
+$\langle g_j,d \rangle = 0$
+immer noch
+$\langle g_j, x^k+d \rangle \leq r_j$.
 
-Seien $p_k := |J(x^k)|$,
-\begin{equation}
-G_k :=
-\left(\begin{array}{c}
-g_{j_1}^T \\ \vdots \\ g_{j_{p_k}}^T
-\end{array}\right) \text{ mit }
-j_1, \ldots, j_{p_k} \in J(x^k)
-\quad \text{und} \quad
-B_k := \left(\begin{array}{c} A \\ G_k \end{array}\right)
-\end{equation}
-
-Wir haben dann ein Teilproblem mit linearen Gleichungsnebenbedingungen
+Seien $J_k := J(x^k)$, $p_k := |J_k|$ und $j_1, \ldots, j_{p_k} \in J_k$
+Wir definieren dann folgendes Teilproblem mit nur
+linearen Gleichungsnebenbedingungen:
 \begin{align}
   \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
                        + \langle Qx^k+q,d\rangle
                          \tag{$Q_k$} \label{prob:teil_prob_in_akt_me_verf} \\
-                 \nb & B_k d = 0. \notag
+  \nb & \langle a_i, d \rangle = b_i \text{ für } i = 1,\ldots,m \notag \\
+      & \langle g_j, d \rangle = r_j
+          \text{ für } j = j_1,\ldots,j_{p_k} \in J_k \notag
 \end{align}
 
 Dieses Problem werden wir mit dem Nullraum-Verfahren lösen,
-von dem wir auch den Lagrange-Multiplikator $\vartheta$
+von dem wir auch den Lagrange-Multiplikator $\tilde{\lambda}$
 bekommen werden.
-$\vartheta$ können wir in $\lambda \in \R^m$ und $\mu \in \R^{p_k}$ zerlegen,
-sodass
-$\vartheta = \left(\begin{array}{c} \lambda \\ \mu \end{array}\right)$.
+$\tilde{\lambda}$ können wir in $\lambda \in \R^m$ und $\mu \in \R^{p_k}$ zerlegen,
+so dass
+$\tilde{\lambda} = \left(\begin{array}{c} \lambda \\ \mu \end{array}\right)$.
+% TODO: Dieses Matrix ist nicht schön. 
+Besonders nachher für die Abbruchbedingung des Verfahrens zu betrachten,
+ist der Vektor $\mu$.
+
+Da wir nur $j \in J_k$ betrachten,
+kann es sein,
+dass die Ungleichung $\langle g_i, x^k+d \rangle \leq r_i$
+für $i \in I_k := \{ 1, \ldots, p \} \backslash J_k$ verletzt wurde.
+Definieren Schrittweite durch
+\begin{equation}
+  \tau_k :=
+  \begin{cases}
+    \min\left\{ \frac{r_j - g_j^T x^k}{g_j^T d^k}\ | \ j \in I_k \right\},
+      & \text{falls } I_k \neq \emptyset \\
+    \infty,
+      & \text{sonst}.
+  \end{cases}
+\end{equation}
+und
+\begin{equation}
+  \sigma_k := \min \{ 1, \tau_k\}.
+\end{equation}
+
+Diese Schrittweite brauchen wir, damit $x^{k+1}$ ein zulässiger Punkt bleibt.
 
 \begin{algorithm}
-\emph{(Aktive-Mengen-Methode für~\eqref{prob:quad_prog_mit_lin_restr})}
+\emph{(Aktive-Mengen-Methode für~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed})}
 \begin{compactenum}[1.]
   \item Wähle einen Startpunkt $x^0$. Setze $k:=0$.
   \item Löse das Problem~\eqref{prob:teil_prob_in_akt_me_verf}
@@ -104,22 +123,3 @@ $\vartheta = \left(\begin{array}{c} \lambda \\ \mu \end{array}\right)$.
         $\Rightarrow $ Gehe zu Schritt 2. %FIMXE use label
 \end{compactenum}
 \end{algorithm}
-
-%TODO Schrittweite erklären
-\begin{equation}
-  I_k := \{ 1, \ldots, n \} \backslash J_k
-\end{equation}
-\begin{equation}
-  \tau_k :=
-  \begin{cases}
-    \min\left\{ \frac{r_j - g_j^T x^k}{g_j^T d^k}\ | \ j \in I_k \right\},
-      & \text{falls } I_k \neq \emptyset \\
-    \infty,
-      & \text{sonst}.
-  \end{cases}
-\end{equation}
-\begin{equation}
-  \sigma_k := \min \{ 1, \tau_k\}
-\end{equation}
-
-Die Schrittweite brauchen wir, damit $x^{k+1}$ ein zulässiger Punkt bleibt.

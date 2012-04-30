@@ -1,5 +1,5 @@
 \begin{definition}
-\emph{(Optimierungsproblem mit linearen Gleichungsnebenbedingungen)}
+\emph{(Optimierungsprobleme mit linearen Gleichungsnebenbedingungen)}
 \begin{align}
   \min_{x \in \R^n}\ & f(x) \tag{PLG}\label{prob:opt_prob_mit_lin_gl_nebenbed}\\
               \nb & Ax = b \notag
@@ -9,11 +9,11 @@ $A$ sei eine $(m \times n)$-Matrix und $b$ sei ein Vektor mit $m$ Elementen.
 
 D.\,h., die Menge $\F$ sieht hier so aus:  $\F = \{ x \in \R^n\ |\ A x = b \}$.
 
-\begin{theorem}
-\emph{(Notwendige Bedingung erster Ordnung)}
+\begin{theorem} \label{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed}
+\emph{(Notwendige Bedingung)}
 Sei $\xopt$ eine lokale Lösung des
 Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
-und $f$ sein in $\xopt$ differenzierbar.
+und $f$ sei in $\xopt$ differenzierbar.
 Dann gibt es ein $\lambda \in \R^m$ mit
 \begin{equation}
   \nabla f(\xopt) + A^T \lambda = 0.
@@ -25,16 +25,20 @@ Diese Bedingung heißt die Multiplikatoren Regel von Lagrange. Man bezeichnet
 $\lambda$ als die Lagrange-Multiplikator.
 
 \begin{theorem}
-\emph{(Hinreichende Bedingung zweiter Ordnung)}
+\emph{(Hinreichende Bedingung)}\\
 Sei $f$ in $\xopt$ zweimal stetig differenzierbar. Die notwendige Bedingung
-erster Ordnung sei erfüllt. Es gäbe eine Konstante $\alpha > 0$ mit
+in Satz~\ref{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed} sei erfüllt. Es gäbe
+eine Konstante $\alpha > 0$ mit
 \begin{equation}
-  d^T f''(x) d \geq \alpha ||d||^2 \qquad \forall d \in \kr A.
+  d^T f''(x) d \geq \alpha \|d\|^2 \qquad \forall d \in \kr A.
 \end{equation}
 Dann ist $\xopt$ eine strikte Lösung des linearen restringierten Problems.
 \end{theorem}
 
-\begin{definition}%TODO Einleitung schreiben ..
+Eine wichtige Grundlage zum Lösen des Pröblems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
+ist die Definition der Nullraum-Matrix.
+
+\begin{definition}
 \emph{(Nullraum-Matrix)}
 Eine $(n \times l)$-Matrix $Z$ heißt Nullraum-Matrix von~$A$, wenn für $d \in
 \R^n$ gilt
@@ -44,17 +48,20 @@ d \in \kr A \quad \Leftrightarrow \quad d = Z z \text{ für ein } z \in \R^l.
 D.\,h. $\im Z = \kr A$.
 \end{definition}
 
-Sei $w$ eine Lösung von der Gleichung $Ax=b$. Man kann nun für $\F$ so
-schreiben:
+Sei $w$ eine Lösung von der Gleichung $Ax=b$.
+Man kann nun für die Menge $\F$ des Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
+so schreiben:
 \begin{equation}
   \F = w + \kr A = w + \im Z = w + \{ Z z | z \in \R^l \}.
 \end{equation}
 
+D.\,h., Jedes Element $x \in \F$ ist mit $w + Zz$, $z \in \R^l$, zu ersetzen.
 Das Problem~\eqref{prob:opt_prob_mit_lin_gl_nebenbed} ist dann äquivalent zu
 \begin{equation}
   \min_{z \in \R^l} F(z) := f(w + Zz).
 \end{equation}
+
 Dieses Problem hat keine Nebenbedingung mehr, also unrestringiert.
-Man kann also die Verfahren für unrestringierte Probleme anwenden.
-Wir werden aber nachher sehen, wie man dieses Problem effektiv lösen kann,
+Man kann also Verfahren für unrestringierte Probleme anwenden.
+Wir werden aber nachher auch sehen, wie man dieses Problem effektiv lösen kann,
 wenn die Zeilfunktion quadratisch ist.

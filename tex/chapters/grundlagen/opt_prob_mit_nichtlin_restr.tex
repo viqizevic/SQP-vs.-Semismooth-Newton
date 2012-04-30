@@ -1,18 +1,19 @@
 Wir kommen nun zu unserem allgemeinen nichtlinearen Optimierungsproblem.
 Wir schreiben nochmal das Problem~\eqref{prob:opt_prob_mit_nichtlin_restr}.
 \begin{align*}
-       \min\ & f(x) \\
-         \nb & g(x) \leq 0 \\
-             & h(x) = 0
+  \min_{x \in \R^n}\ & f(x) \\
+              \nb & g_i(x) \leq 0 \text{ für } i = 1,\ldots,p \\
+                  & h_j(x) = 0 \text{ für } j = 1,\ldots,m
 \end{align*}
 
-% TODO h und g seien diffbar
-
 \begin{definition}
+\emph{(Mangasarian-Fromowitz-Regularitätsbedingung)}\\
 Sei $x \in \F$. Mit
-$\I(x) := \{ i \in \{1,\ldots,p\} \ | \ g_i(x) = 0 \}$
+$\,\I(x) := \{ i \in \{1,\ldots,p\} \ | \ g_i(x) = 0 \}$
 wird die Indexmenge der in $x$ aktiven Ungleichungsrestriktionen bezeichnet.
-$x$ erfüllt die Mangasarian-Fromowitz-Regularitätsbedingung,
+Seien $g_i$ und $h_j$ differenzierbar in~$x$
+für $i=1,\ldots,p$ und $j=1,\ldots,m$.
+Der Punkt $x$ erfüllt die Mangasarian-Fromowitz-Regularitätsbedingung,
 wenn die Gradienten \mbox{$\nabla h_j(x),\ j = 1,\ldots,m,$} linear unabhängig
 sind und ein Vektor $d \in \R^n$ existiert mit
 \begin{equation}
@@ -23,10 +24,12 @@ sind und ein Vektor $d \in \R^n$ existiert mit
 \end{definition}
 
 \begin{theorem}
+\emph{(Notwendige Bedingung)}
 Sei $\xopt$ eine lokale Lösung des
-Problems~\eqref{prob:opt_prob_mit_nichtlin_restr} und $x$ erfülle die
+Problems~\eqref{prob:opt_prob_mit_nichtlin_restr} und $\xopt$ erfülle die
 Mangasarian-Fromowitz-Regularitätsbedingung.
-Dann existieren die Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$,
+Sei $f$ in $\xopt$ differenzierbar.
+Dann existieren Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$,
 so dass
 \begin{align}
   \nabla f(\xopt) + \sum_{i=1}^{m} \lambda_i \nabla h_i(\xopt)

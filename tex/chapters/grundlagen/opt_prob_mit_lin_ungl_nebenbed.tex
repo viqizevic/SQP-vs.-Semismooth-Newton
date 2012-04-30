@@ -1,8 +1,8 @@
 \begin{definition}
-\emph{(Optimierungsproblem mit linearen Ungleichungsnebenbedingungen)}
+\emph{(Optimierungsprobleme mit linearen Ungleichungsnebenbedingungen)}
 \begin{align}
   \min_{x \in \R^n}\ & f(x)
-    \tag{PLN} \label{prob:opt_prob_mit_lin_ungl_nebenbed} \\
+    \tag{PLU} \label{prob:opt_prob_mit_lin_ungl_nebenbed} \\
                  \nb & Ax = b \notag \\
                      & Gx \leq r \notag
 \end{align}
@@ -13,9 +13,18 @@ $G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
 D.\,h., die Menge $\F$ sieht hier so aus:
 $\F = \{ x \in \R^n\ |\ A x = b,\ G x \leq r \}$.
 
-Seien $g_j \in \R^n, j = 1,\ldots,p$, die Vektoren in der
-Matrix $G$, so dass
+Seien $a_k \in \R^n$, $k = 1,\ldots,m$, bzw. $g_j \in \R^n$, $j = 1,\ldots,p$,
+Vektoren in der Matrix $A$ bzw. $G$, so dass
 \begin{equation}
+  A =
+  \left(
+    \begin{array}{c}
+      a_1^T \\
+      \vdots \\
+      a_m^T
+    \end{array}
+  \right)
+\quad \text{und} \quad
   G =
   \left(
     \begin{array}{c}
@@ -25,36 +34,48 @@ Matrix $G$, so dass
     \end{array}
   \right).
 \end{equation}
-% TODO das Problem ausführlicher schreiben
 
-\begin{theorem} \label{satz:kkt}
+Seien $b_k \in \R$, $k = 1,\ldots,m$, bzw. $r_j \in \R$, $j = 1,\ldots,p$,
+die Elemente von $b$ bzw. $r$.
+Dann können wir das Problem~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
+ausführlicher schreiben.
+\begin{align*}
+  \min_{x \in \R^n}\ & f(x) \\
+     \nb & \langle a_k, x \rangle = b_k \text{ für } k = 1,\ldots,m \\
+         & \langle g_j, x \rangle \leq r_j \text{ für } j = 1,\ldots,p
+\end{align*}
+
+Die Notwendige Bedingung für eine lokale Lösung
+des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
+ergibt sich aus dem folgenden Satz.
+
+\begin{theorem} \label{satz:karush_kuhn_tucker}
 \emph{(Karush-Kuhn-Tucker-Satz)}
 Sei $\xopt$ lokale Lösung des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed} und
 $f$ sei in~$\xopt$ differenzierbar.
 Dann existieren die Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$
 zu~$\xopt$ mit
 \begin{align}
-  \nabla f(\xopt) + A^T \lambda + G^T \mu & = 0 \\
-  \mu \geq 0, \quad \mu_j (\langle g_j,\xopt \rangle - r_j ) & = 0,
-    \quad j = 1,\ldots,p.
+   \nabla f(\xopt) + A^T \lambda + G^T \mu & = 0 \\
+  \mu_j (\langle g_j,\xopt \rangle - r_j ) & = 0 \quad \forall j = 1,\ldots,p \\
+                                       \mu & \geq 0
 \end{align}
 $\lambda$ und $\mu$ heißen Lagrange-Multiplikatoren zu $\xopt$.
 \end{theorem}
 
-\begin{definition}
 Sei $x \in \F$. Wir bezeichnen mit
 \begin{equation}
   J(x) := \{ 1 \leq j \leq p \ | \ \langle g_j,x \rangle = r_j \}
 \end{equation}
 die Indexmenge der in $x$ aktiven Ungleichungsrestriktionen.
-\end{definition}
 
 \begin{theorem}
-\emph{(Hinreichende Optimalitätsbedingungen)}
+\emph{(Hinreichende Optimalitätsbedingung)}
 Sei $f$ in $\xopt \in \F$ zweimal stetig differenzierbar. Die notwendige
-Bedingung von Satz~\ref{satz:kkt} sei erfüllt und es gelte mit $\alpha > 0$
+Bedingung von Satz~\ref{satz:karush_kuhn_tucker} sei erfüllt
+und es gelte mit $\alpha > 0$
 \begin{equation}
-d^T f''(\xopt) d \geq \alpha ||d||^2 \quad
+d^T f''(\xopt) d \geq \alpha \|d\|^2 \quad
   \forall d \in \R^n :
   \begin{cases}
     Ad = 0, & \\
@@ -71,7 +92,7 @@ Spezialfall des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed} ist das Opt
 unteren und oberen Schranken für die Variablen.
 
 \begin{definition}
-\emph{(Optimierungsproblem mit Variablenbeschränkungen)}
+\emph{(Optimierungsprobleme mit Variablenbeschränkungen)}
 \begin{align}
   \min_{x \in \R^n}\ & f(x) \tag{PVB} \label{prob:opt_prob_mit_var_beschr} \\
                  \nb & a \leq x \leq b \notag
@@ -79,9 +100,11 @@ unteren und oberen Schranken für die Variablen.
 $a, b \in \R^n$ mit $a \leq b$.
 \end{definition}
 
-Mit
+Die Nebenbedingung ist
+äquivalent zu
+$G x \leq r$
+mit
 $G := \left( \begin{array}{c} -I \\ I \end{array} \right)$ und
-$r := \left( \begin{array}{c} -v \\ w \end{array} \right)$ hat $\F$ die Form
-$\F := \{ x \in \R^n \ | \ G x \leq r \}$.
+$r := \left( \begin{array}{c} -a \\ b \end{array} \right)$.
 
 % TODO: sufficient condition?

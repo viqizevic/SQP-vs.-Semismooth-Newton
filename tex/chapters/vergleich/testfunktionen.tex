@@ -1,13 +1,18 @@
 
+\begin{testfunction}
 Quadratische Funktion
 \[
-| x - x_d |^2
+  f(x) := \| x - x_d \|^2
 \]
+\end{testfunction}
 
+\begin{testfunction}
 Exponentielle Funktion
 \[
-e^{|x|^2}
+  f(x) := e^{\|x\|^2}
 \]
+\end{testfunction}
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.75\textwidth]{exp-func}
@@ -15,10 +20,13 @@ e^{|x|^2}
   \label{fig:exp_func}
 \end{figure}
 
+\begin{testfunction}
 Rosenbrock Funktion
 \[
-100(x_2-x_1^2)^2+(1-x_1)^2
+  f(x) := 100(x_2-x_1^2)^2+(1-x_1)^2
 \]
+\end{testfunction}
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.75\textwidth]{rosenbrock}
@@ -26,10 +34,13 @@ Rosenbrock Funktion
   \label{fig:rosenbrock}
 \end{figure}
 
+\begin{testfunction}
 Himmelblau Funktion
 \[
 (x_1^2+x_2-11)^2 + (x_1+x_2^2-7)^2
 \]
+\end{testfunction}
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.75\textwidth]{himmelblau}
@@ -37,10 +48,13 @@ Himmelblau Funktion
   \label{fig:himmelblau}
 \end{figure}
 
+\begin{testfunction}
 Bazaraa-Shetty Funktion
 \[
-(x_1-2)^4+(x_1-2x_2)^2
+  f(x) := (x_1-2)^4+(x_1-2x_2)^2
 \]
+\end{testfunction}
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.75\textwidth]{bazaraa-shetty}
@@ -48,39 +62,53 @@ Bazaraa-Shetty Funktion
   \label{fig:bazaraa_shetty}
 \end{figure}
 
+\begin{testfunction}
 Schuldt Funktion
 \[
 x_2+10^{-5}(x_2-x_1^2)^2
 \]
+\end{testfunction}
 
+\begin{testfunction}
 Asaadi Funktion
 \[
 x_2+\frac{1}{3}(x_1+1)^3
 \]
+\end{testfunction}
 
+\begin{testfunction}
 McCormick Funktion
 \[
 \sin(x_1+x_2) + (x_1-x_2)^2 - 1.5x_1 + 2.5x_2 + 1
 \]
+\end{testfunction}
 
+\begin{testfunction}
 Dixon Funktion
 \[
 (1-x_1)^2 + \sum_{k=1}^{9} (x_k^2-x_{k+1})^2 + (1-x_{10})^2
 \]
+\end{testfunction}
 
+\begin{testfunction}
 Colville Funktion
-\[
-100(x_2-x_1^2)^2 + (1-x_1)^2 + 90(x_4-x_3^2)^2 + (1-x_3)^2
-+ 10.1((x_2-1)^2 + (x_4-1)^2) + 19.8(x_2-1)(x_4-1)
-\]
+\begin{multline}
+  f(x) := 100(x_2-x_1^2)^2 + (1-x_1)^2 + 90(x_4-x_3^2)^2 + (1-x_3)^2 \\
+    + 10.1((x_2-1)^2 + (x_4-1)^2) + 19.8(x_2-1)(x_4-1) \notag
+\end{multline}
+\end{testfunction}
 
+\begin{testfunction}
 Betts Funktion
 \[
 2 - \frac{1}{2}x_1x_2
 \]
+\end{testfunction}
 
+\begin{testfunction}
 Paviani Funktion
 \[
-- (\ln(x_1-2))^2 - (\ln(10-x_1))^2
-- (\ln(x_2-2))^2 - (\ln(10-x_2))^2
+  f(x) := - (\ln(x_1-2))^2 - (\ln(10-x_1))^2
+            - (\ln(x_2-2))^2 - (\ln(10-x_2))^2
 \]
+\end{testfunction}
