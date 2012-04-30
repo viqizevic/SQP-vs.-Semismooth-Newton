@@ -2,9 +2,9 @@ package main;
 
 /**
  * TestProblem represents test problem in the form:
- *  min ( f(x) + (lambda/2)*|x|^2 )
- *   x
- *      s.t.  a <= x <= b
+ *    min  f(x)
+ *     x
+ *   s.t.  a <= x <= b
  * 
  * This problem will be written at the end in a Matlab file.
  * That's why all components of this problem are from the type String
@@ -21,11 +21,6 @@ public class TestProblem {
 	 * The test function f.
 	 */
 	private TestFunction f;
-
-	/**
-	 * The variable lambda.
-	 */
-	private String lambda;
 
 	/**
 	 * The vector a defining the lower bound.
@@ -69,14 +64,6 @@ public class TestProblem {
 
 	public TestFunction getTestFunction() {
 		return f;
-	}
-
-	public String get_lambda() {
-		return lambda;
-	}
-
-	public void set_lambda(String lambda) {
-		this.lambda = lambda;
 	}
 
 	public String get_a() {

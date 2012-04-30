@@ -54,7 +54,6 @@ import org.xml.sax.SAXException;
 public class Main {
 	/*
 	 * TODO try not to use feval
-	 * TODO get ready if the lambda variable should be removed
 	 * TODO suppress warning message from octave
 	 */
 	
@@ -267,7 +266,6 @@ public class Main {
 					<constant_name>xd</constant_name>
 					<constant_value>4</constant_value>
 				</constant>
-				<lambda>4</lambda>
 				<a>3</a>
 				<b>10</b>
 				<x0>8</x0>
@@ -276,7 +274,7 @@ public class Main {
 			</problem>
 		</problems>
 		Every problem should be defined in a <problem> tag.
-		The tags function_name, lambda, a, b, x0, tolerance and max_iteration are required.
+		The tags function_name, a, b, x0, tolerance and max_iteration are required.
 		The tag constant is optional.
 		*/
 		File file = new File(fileName);
@@ -342,13 +340,11 @@ public class Main {
 		}
 		TestProblem problem = new TestProblem(problemName, function);
 		problem.getTestFunction().setName(problemName);
-		String lambda = getTagValue("lambda", element);
 		String a = getTagValue("a", element);
 		String b = getTagValue("b", element);
 		String x0 = getTagValue("x0", element);
 		String tolerance = getTagValue("tolerance", element);
 		String maxIteration = getTagValue("max_iteration", element);
-		problem.set_lambda(lambda);
 		problem.set_a(a);
 		problem.set_b(b);
 		problem.set_x0(x0);
