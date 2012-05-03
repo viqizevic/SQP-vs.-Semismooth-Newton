@@ -94,16 +94,17 @@ public class Main {
 		String problemsXMLFile = pathToDataDir + configs.get("problems_xml_file");
 		boolean useApproxDiff = Boolean.parseBoolean(configs.get("use_approx_diff"));
 		//boolean useOctave = Boolean.parseBoolean(configs.get("use_octave"));
+		String templateFileExtension = configs.get("template_file_extension");
 		int k = 0;
 		HashMap<String, String> testTemplates = new HashMap<String, String>();
-		boolean keepReadingTemplateFileName = true;
-		while (keepReadingTemplateFileName) {
+		boolean keepReadingTemplateFileNames = true;
+		while (keepReadingTemplateFileNames) {
 			String var = "test_template_file_name_" + k;
 			if (!configs.containsKey(var)) {
-				keepReadingTemplateFileName = false;
+				keepReadingTemplateFileNames = false;
 			} else {
 				String name = configs.get(var);
-				testTemplates.put(name, pathToDataDir+name+".tpl");
+				testTemplates.put(name, pathToDataDir+name+templateFileExtension);
 				k++;
 			}
 		}
