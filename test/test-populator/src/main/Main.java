@@ -32,22 +32,22 @@ import org.xml.sax.SAXException;
  * and then calls the file creator.
  * 
  * Directories tree:
- *  |
- *  |-- Eclipse-Workspace
- *  |     |-- Matlab-Test-Files-Creator
- *  |
- *  |-- SQP-vs.-Semismooth-Newton
- *        |-- tex
- *        |-- test
+ * |
+ * |-- Eclipse-Workspace
+ *    |-- SQP-vs.-SSN
+ *       |-- SQP-vs.-Semismooth-Newton
+ *           |-- tex
+ *           |-- test
  *              |-- 1st_test_problem_func
  *              |-- ...
  *              |-- n-th_test_problem_func
  *              |-- test-populator
- *                    |-- src
- *                          |-- data
- *                          |-- main
+ *                  |-- src
+ *                       |-- data
+ *                       |-- main
  * 
  * The source of this project is linked from the folder in test-populator.
+ * Read readme.markdown in the folder test-populator for more informations.
  * 
  * @author Vicky H. Tanzil
  */
@@ -56,6 +56,8 @@ public class Main {
 	 * TODO try not to use feval
 	 * TODO suppress warning message from octave
 	 */
+	
+	private static String configFile = "SQP-vs.-Semismooth-Newton/test.config";
 	
 	/**
 	 * A hash map containing all test functions as values
@@ -123,23 +125,9 @@ public class Main {
 	}
 
 	private static HashMap<String, String> readConfigFile() {
-		String testDirPath = "../../SQP-vs.-Semismooth-Newton/test/test-populator/src/main/";
-		String testDirPath2 = "../../minimix/SQP-vs.-Semismooth-Newton/test/test-populator/src/main/";
-		// See directories tree in the comment of this class to understand these paths.
-		File dir = new File(testDirPath);
-		if (!dir.exists()) {
-			dir = new File(testDirPath2);
-			if (!dir.exists()) {
-				System.err.println("Cannot find the config file in " + testDirPath + ".");
-				return null;
-			} else {
-				testDirPath = testDirPath2;
-			}
-		}
-		String filename = "Source.config";
 		HashMap<String, String> configs = new HashMap<String, String>();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(testDirPath+filename));
+			BufferedReader br = new BufferedReader(new FileReader(configFile));
 			String line = "";
 			while ( (line=br.readLine()) != null ) {
 				if (!line.equals("") && !line.startsWith("#")) {
