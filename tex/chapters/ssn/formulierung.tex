@@ -1,0 +1,24 @@
+
+Gegeben seien $x_1, x_2 \in \R$.
+Es gilt
+\begin{equation}
+  \begin{array}{c}
+    x_1, x_2 \geq 0 \\
+    x_1 x_2 = 0
+  \end{array}
+  \qquad \Leftrightarrow \qquad
+  \min(x_1,x_2) = 0
+\end{equation}
+
+Wenn wir also die Bedingungen
+\begin{equation}
+  \mu \geq 0, \quad Gx \leq r \quad \text{und} \quad \mu^T(Gx-r) = 0
+\end{equation}
+haben, können wir sie als
+\begin{equation}
+  \min( \mu, r-Gx ) = 0
+\end{equation}
+schreiben.
+
+Das Aktive-Menge-Verfahren kann
+als das halbglatte Newton-Verfahren interpretiert werden.

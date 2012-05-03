@@ -1,66 +1,81 @@
+Wir betrachten hier einige Testfunktionen, die als Zielfunktion
+von verschiedenen restringierten Optimierungsaufgaben benutzt werden können.
 
 \begin{testfunction}
-Quadratische Funktion
+Quadratische Funktion in $\R^n$
 \[
-  f(x) := \| x - x_d \|^2
+  f(x) := \| x - d \|^2 = \sum_{k=1}^{n} (x_k - d_k)^2
 \]
 \end{testfunction}
+Die erste Testfunktion ist eine einfache mehrdimensionale Parabel
+mit Minimalstelle im Punkt~$d$ und Optimalwert~0.
 
 \begin{testfunction}
 Exponentielle Funktion
 \[
-  f(x) := e^{\|x\|^2}
+  f(x) := e^{\|x\|^2} = e^{\sum_{k=1}^{n} x_k^2}
 \]
 \end{testfunction}
-
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{exp-func}
   \caption{Exponentielle Funktion}
   \label{fig:exp_func}
 \end{figure}
+Die zweite Testfunktion ist eine exponentielle Funktion
+mit Minimalstelle im Ursprung und Optimalwert~1.
+Diese Funktion ist herausfordend, weil ihre Funktionswerte sehr schnell
+groß werden können.
 
 \begin{testfunction}
-Rosenbrock Funktion
+Rosenbrock-Funktion
 \[
   f(x) := 100(x_2-x_1^2)^2+(1-x_1)^2
 \]
 \end{testfunction}
-
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{rosenbrock}
-  \caption{Rosenbrock Funktion}
+  \caption{Rosenbrock-Funktion}
   \label{fig:rosenbrock}
 \end{figure}
+Die Rosenbrock-Funktion hat ein einziges Minimum
+an der Stelle $\xopt = (1,1)^T$ mit $f(\xopt) = 0$.
+Diese Funktion ist nicht einfach zu lösen, da
+das Minimum in einem schmalen "`bananenförmig"' gekrümmten Tal liegt.
+Als Anfangspunkt wird normalerweise den Punkt $x^0 = (-1,1)^T$ genommen.
 
 \begin{testfunction}
-Himmelblau Funktion
+Himmelblau-Funktion
 \[
 (x_1^2+x_2-11)^2 + (x_1+x_2^2-7)^2
 \]
 \end{testfunction}
-
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{himmelblau}
-  \caption{Himmelblau Funktion}
+  \caption{Himmelblau-Funktion}
   \label{fig:himmelblau}
 \end{figure}
+Die Himmelblau-Funktion ist ein Polynom 4.~Grades
+mit vier globale Minimalstellen.
+Der Optimalwert ist 0.
 
 \begin{testfunction}
-Bazaraa-Shetty Funktion
+Bazaraa-Shetty-Funktion
 \[
   f(x) := (x_1-2)^4+(x_1-2x_2)^2
 \]
 \end{testfunction}
-
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{bazaraa-shetty}
-  \caption{Bazaraa-Shetty Funktion}
+  \caption{Bazaraa-Shetty-Funktion}
   \label{fig:bazaraa_shetty}
 \end{figure}
+Die Bazaraa-Shetty Funktion ist ein Polynom 4.~Grades
+mit einem globalen Minimum in $\xopt = (2,1)^T$
+und Optimalwert 0.
 
 \begin{testfunction}
 Schuldt Funktion
