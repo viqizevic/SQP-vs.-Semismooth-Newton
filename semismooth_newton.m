@@ -1,18 +1,16 @@
-function [x,fval,it] = semismooth_newton(f,gradf,hessf,lambda,G,r,x0,itmax,tol)
-	x = x0;
-	%n = length(x);
-	[p,n] = size(G);
+function [x,fval,it] = semismooth_newton(f,gradf,hessf,G,r,x0,itmax,tol)
 	it = 0;
-	stop = false;
+	[p,n] = size(G);
+	x = x0;
 	mu = zeros(p,1);
 	zero = zeros(n,1);
-	c = lambda;
 	
+	stop = false;
 	while( ~stop )
 		it = it + 1;
-		h = -[ feval(gradf,x)+lambda*x+G'*mu;
+		h = -[ feval(gradf,x)+G'*mu;
 						min(mu,r-G*x) ];
-		H = [ feval(hessf,x)+lambda*eye(n)  G';
+		H = [ feval(hessf,x)  G';
 						zeros(p,n+p) ];
 		for k=1:p
 			gk = G(k,1:n);
@@ -35,9 +33,5 @@ function [x,fval,it] = semismooth_newton(f,gradf,hessf,lambda,G,r,x0,itmax,tol)
 			stop = true;
 		end
 	end
-	fval = complete_f(f,lambda,x);
-end
-
-function y = complete_f(f,lambda,x)
-	y = feval(f,x) + (lambda/2)*norm(x)^2;
+	fval = feval(f,x);
 end

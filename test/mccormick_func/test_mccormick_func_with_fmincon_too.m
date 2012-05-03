@@ -1,22 +1,21 @@
 function test_mccormick_func_with_fmincon_too()
-	lambda = 0.00001;
 	a = [-1.5; -3];
 	b = [4; 3];
 	x0 = [0; -0.75];
 	tol = 0.0001;
 	itmax = 200;
+	G = [ -eye(length(a)); eye(length(b)) ];
+	r = [ -a; b ];
 	tic;
-	[x_ssn,fval_ssn,it_ssn] = active_set_strategy('mccormick_func','grad_mccormick_func','hess_mccormick_func',lambda,a,b,x0,m0,itmax,tol);
-	%[x_ssn,fval_ssn,it_ssn] = semismooth_newton('mccormick_func','grad_mccormick_func','hess_mccormick_func',lambda,a,b,x0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('mccormick_func','grad_mccormick_func','hess_mccormick_func',G,r,x0,m0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('mccormick_func','grad_mccormick_func','hess_mccormick_func',G,r,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
 	t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
 	str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
-	A = [ -eye(length(a)); eye(length(b)) ];
-	c = [ -a; b ];
 	tic;
-	[x_sqp,fval_sqp,it_sqp] = seq_quad_prog('mccormick_func_v0','grad_mccormick_func_v0','hess_mccormick_func_v0',A,c,x0,itmax,tol);
+	[x_sqp,fval_sqp,it_sqp] = seq_quad_prog('mccormick_func','grad_mccormick_func','hess_mccormick_func',G,r,x0,itmax,tol);
 	t_sqp = toc;
 	x2 = sprintf('%.3f ',x_sqp);
 	f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
@@ -24,7 +23,7 @@ function test_mccormick_func_with_fmincon_too()
 	str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
 	options = optimset('Algorithm','active-set','Display','off');
 	tic;
-	[x_fmc,fval_fmc,exitflag,output] = fmincon('mccormick_func_v0',x0,[],[],[],[],a,b,[],options);
+	[x_fmc,fval_fmc,exitflag,output] = fmincon('mccormick_func',x0,[],[],[],[],a,b,[],options);
 	t_fmc = toc;
 	x3 = sprintf('%.3f ',x_fmc);
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);

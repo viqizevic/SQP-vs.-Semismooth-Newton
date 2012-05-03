@@ -6,7 +6,6 @@
 			<constant_name>xd</constant_name>
 			<constant_value>4</constant_value>
 		</constant>
-		<lambda>4</lambda>
 		<a>3</a>
 		<b>10</b>
 		<x0>8</x0>
@@ -20,7 +19,6 @@
             <constant_name>xd</constant_name>
             <constant_value>[4; 7]</constant_value>
         </constant>
-        <lambda>1</lambda>
         <a>[-3; -6]</a>
         <b>[10; 20]</b>
         <x0>[8; 17]</x0>
@@ -34,7 +32,6 @@
 			<constant_name>xd</constant_name>
 			<constant_value>[4; 7]</constant_value>
 		</constant>
-		<lambda>1</lambda>
 		<a>[3; 6]</a>
 		<b>[10; 20]</b>
 		<x0>[8; 17]</x0>
@@ -48,7 +45,6 @@
             <constant_name>xd</constant_name>
             <constant_value>[4; 7; 10]</constant_value>
         </constant>
-        <lambda>1</lambda>
         <a>[3; 6; 2]</a>
         <b>[10; 20; 9]</b>
         <x0>[8; 17; 4]</x0>
@@ -62,7 +58,6 @@
 			<constant_name>c</constant_name>
 			<constant_value>[1; -1; 1; -1]</constant_value>
 		</constant>
-		<lambda>0.0001</lambda>
 		<a>[0; 0; 0; 0]</a>
 		<b>[10; 10; 10; 10]</b>
 		<x0>[5; 5; 5; 5]</x0>
@@ -72,7 +67,6 @@
 
     <!--problem>
         <function_name>exp_func</function_name>
-        <lambda>1</lambda>
         <a>[-10; -2; -4]</a>
         <b>[10; 20; 4]</b>
         <x0>[5; 2; 4]</x0>
@@ -82,7 +76,6 @@
 
     <problem>
         <function_name>exp_func</function_name>
-        <lambda>1</lambda>
         <a>[1; 0.5; 1]</a>
         <b>[10; 20; 4]</b>
         <x0>[5; 2; 4]</x0>
@@ -92,7 +85,6 @@
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[-10; -10]</a>
 		<b>[10; 10]</b>
 		<x0>[-1; 2]</x0>
@@ -102,7 +94,6 @@
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<lambda>0.01</lambda>
 		<a>[-10; 1.5]</a>
 		<b>[10; 10]</b>
 		<x0>[1; 2]</x0>
@@ -112,7 +103,6 @@
 
 	<problem>
 		<function_name>himmelblau_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[-20; -20]</a>
 		<b>[20; 20]</b>
 		<x0>[5; 5]</x0>
@@ -122,7 +112,6 @@
 
     <problem>
         <function_name>himmelblau_func</function_name>
-        <lambda>0.01</lambda>
         <a>[5; 5]</a>
         <b>[20; 20]</b>
         <x0>[15; 15]</x0>
@@ -132,7 +121,6 @@
 	
 	<problem>
 		<function_name>bazaraa_shetty_func</function_name>
-		<lambda>0.0001</lambda>
 		<a>[-20; -20]</a>
 		<b>[20; 20]</b>
 		<x0>[5; 5]</x0>
@@ -142,7 +130,6 @@
 	
 	<problem>
 		<function_name>schuldt_func</function_name>
-		<lambda>0.03</lambda>
 		<a>[-20; 0]</a>
 		<b>[20; 20]</b>
 		<x0>[15;15]</x0>
@@ -152,7 +139,6 @@
 	
 	<problem>
 		<function_name>asaadi_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[1; 0]</a>
 		<b>[20; 20]</b>
 		<x0>[7; 5]</x0>
@@ -162,7 +148,6 @@
 	
 	<problem>
 		<function_name>mccormick_func</function_name>
-		<lambda>0.00001</lambda>
 		<a>[-1.5; -3]</a>
 		<b>[4; 3]</b>
 		<x0>[0; -0.75]</x0>
@@ -172,7 +157,6 @@
 	
 	<!--problem>
 		<function_name>holzmann_func</function_name>
-		<lambda>0.00001</lambda>
 		<a>[0.1; 0; 0]</a>
 		<b>[100; 25.6; 5]</b>
 		<x0>[100; 12.5; 3]</x0>
@@ -182,7 +166,6 @@
 
 	<problem>
 		<function_name>dixon_2_dim_func</function_name>
-		<lambda>0.0001</lambda>
 		<a>[-10; -10]</a>
 		<b>[10; 10]</b>
 		<x0>[1.5; 1.5]</x0>
@@ -192,7 +175,6 @@
 	
 	<problem>
 		<function_name>dixon_2_dim_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[-10; -10]</a>
 		<b>[2; -5]</b>
 		<x0>[-6; -7]</x0>
@@ -202,7 +184,6 @@
 
 	<problem>
 		<function_name>dixon_3_dim_func</function_name>
-		<lambda>0.0001</lambda>
 		<a>[-10; -10; -10]</a>
 		<b>[10; 10; 10]</b>
 		<x0>[1.5; 1.5; 1.5]</x0>
@@ -212,7 +193,6 @@
 
 	<!--problem>
 		<function_name>dixon_func</function_name>
-		<lambda>0.0001</lambda>
 		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
@@ -222,7 +202,6 @@
 
 	<problem>
 		<function_name>dixon_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[2; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
@@ -232,7 +211,6 @@
 	
 	<problem>
 		<function_name>dixon_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[3; 3; 3; 3; 3; 2; 2; 2; 2; 2]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
@@ -242,7 +220,6 @@
 
 	<problem>
 		<function_name>dixon_func</function_name>
-		<lambda>0.01</lambda>
 		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
 		<b>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5]</b>
 		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
@@ -256,7 +233,6 @@
             <constant_name>n</constant_name>
             <constant_value>5</constant_value>
         </constant>
-		<lambda>0.001</lambda>
 		<a>[3; -3; 5; 3; 2]</a>
 		<b>[7; 0; 5; 10; 14]</b>
 		<x0>[4; -1; 5; 4; 7]</x0>
@@ -270,7 +246,6 @@
             <constant_name>n</constant_name>
             <constant_value>20</constant_value>
         </constant>
-		<lambda>0.001</lambda>
 		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
@@ -284,7 +259,6 @@
             <constant_name>n</constant_name>
             <constant_value>20</constant_value>
         </constant>
-		<lambda>0.001</lambda>
 		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
 		<b>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5 ]</b>
 		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
@@ -298,7 +272,6 @@
             <constant_name>n</constant_name>
             <constant_value>40</constant_value>
         </constant>
-		<lambda>0.001</lambda>
 		<a>[2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2]</a>
 		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
@@ -308,7 +281,6 @@
 	
 	<problem>
 		<function_name>colville_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[-10; -10; -10; -10]</a>
 		<b>[10; 10; 10; 10]</b>
 		<x0>[3; -1; -3; -1]</x0>
@@ -318,7 +290,6 @@
 	
 	<problem>
 		<function_name>betts_func</function_name>
-		<lambda>0.01</lambda>
 		<a>[0.25; 0.25]</a>
 		<b>[2; 2]</b>
 		<x0>[1; 1.5]</x0>
@@ -328,7 +299,6 @@
 	
 	<problem>
 		<function_name>paviani_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[3; 3]</a>
 		<b>[9; 9]</b>
 		<x0>[4; 5]</x0>
@@ -338,7 +308,6 @@
 	
 	<problem>
 		<function_name>paviani_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[3; 3]</a>
 		<b>[9; 9]</b>
 		<x0>[6; 6]</x0>
@@ -348,7 +317,6 @@
 	
 	<problem>
 		<function_name>lin_regression_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[-20; -20]</a>
 		<b>[20; 20]</b>
 		<x0>[1; 1]</x0>
@@ -358,7 +326,6 @@
 
 	<problem>
 		<function_name>quad_regression_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[-10; -10; -10]</a>
 		<b>[20; 20; 20]</b>
 		<x0>[0.5; 2; -7]</x0>
@@ -368,7 +335,6 @@
 	
 	<problem>
 		<function_name>nichtlin_regression_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[-2; -2]</a>
 		<b>[10; 10]</b>
 		<x0>[0.2; 0.5]</x0>
@@ -378,7 +344,6 @@
 	
 	<!--problem>
 		<function_name>nichtlin_regression_3_vars_func</function_name>
-		<lambda>0.001</lambda>
 		<a>[-2; -2; -2]</a>
 		<b>[10; 10; 10]</b>
 		<x0>[0.29; 0.29; 0.6]</x0>

@@ -32,31 +32,32 @@ import org.xml.sax.SAXException;
  * and then calls the file creator.
  * 
  * Directories tree:
- *  |
- *  |-- Eclipse-Workspace
- *  |     |-- Matlab-Test-Files-Creator
- *  |
- *  |-- SQP-vs.-Semismooth-Newton
- *        |-- tex
- *        |-- test
+ * |
+ * |-- Eclipse-Workspace
+ *    |-- SQP-vs.-SSN
+ *       |-- SQP-vs.-Semismooth-Newton
+ *           |-- tex
+ *           |-- test
  *              |-- 1st_test_problem_func
  *              |-- ...
  *              |-- n-th_test_problem_func
  *              |-- test-populator
- *                    |-- src
- *                          |-- data
- *                          |-- main
+ *                  |-- src
+ *                       |-- data
+ *                       |-- main
  * 
  * The source of this project is linked from the folder in test-populator.
+ * Read readme.markdown in the folder test-populator for more informations.
  * 
  * @author Vicky H. Tanzil
  */
 public class Main {
 	/*
 	 * TODO try not to use feval
-	 * TODO get ready if the lambda variable should be removed
 	 * TODO suppress warning message from octave
 	 */
+	
+	private static String configFile = "SQP-vs.-Semismooth-Newton/test.config";
 	
 	/**
 	 * A hash map containing all test functions as values
@@ -93,16 +94,17 @@ public class Main {
 		String problemsXMLFile = pathToDataDir + configs.get("problems_xml_file");
 		boolean useApproxDiff = Boolean.parseBoolean(configs.get("use_approx_diff"));
 		//boolean useOctave = Boolean.parseBoolean(configs.get("use_octave"));
+		String templateFileExtension = configs.get("template_file_extension");
 		int k = 0;
 		HashMap<String, String> testTemplates = new HashMap<String, String>();
-		boolean keepReadingTemplateFileName = true;
-		while (keepReadingTemplateFileName) {
+		boolean keepReadingTemplateFileNames = true;
+		while (keepReadingTemplateFileNames) {
 			String var = "test_template_file_name_" + k;
 			if (!configs.containsKey(var)) {
-				keepReadingTemplateFileName = false;
+				keepReadingTemplateFileNames = false;
 			} else {
 				String name = configs.get(var);
-				testTemplates.put(name, pathToDataDir+name+".tpl");
+				testTemplates.put(name, pathToDataDir+name+templateFileExtension);
 				k++;
 			}
 		}
@@ -124,23 +126,9 @@ public class Main {
 	}
 
 	private static HashMap<String, String> readConfigFile() {
-		String testDirPath = "../../SQP-vs.-Semismooth-Newton/test/test-populator/src/main/";
-		String testDirPath2 = "../../minimix/SQP-vs.-Semismooth-Newton/test/test-populator/src/main/";
-		// See directories tree in the comment of this class to understand these paths.
-		File dir = new File(testDirPath);
-		if (!dir.exists()) {
-			dir = new File(testDirPath2);
-			if (!dir.exists()) {
-				System.err.println("Cannot find the config file in " + testDirPath + ".");
-				return null;
-			} else {
-				testDirPath = testDirPath2;
-			}
-		}
-		String filename = "Source.config";
 		HashMap<String, String> configs = new HashMap<String, String>();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(testDirPath+filename));
+			BufferedReader br = new BufferedReader(new FileReader(configFile));
 			String line = "";
 			while ( (line=br.readLine()) != null ) {
 				if (!line.equals("") && !line.startsWith("#")) {
@@ -267,7 +255,6 @@ public class Main {
 					<constant_name>xd</constant_name>
 					<constant_value>4</constant_value>
 				</constant>
-				<lambda>4</lambda>
 				<a>3</a>
 				<b>10</b>
 				<x0>8</x0>
@@ -276,7 +263,7 @@ public class Main {
 			</problem>
 		</problems>
 		Every problem should be defined in a <problem> tag.
-		The tags function_name, lambda, a, b, x0, tolerance and max_iteration are required.
+		The tags function_name, a, b, x0, tolerance and max_iteration are required.
 		The tag constant is optional.
 		*/
 		File file = new File(fileName);
@@ -342,13 +329,11 @@ public class Main {
 		}
 		TestProblem problem = new TestProblem(problemName, function);
 		problem.getTestFunction().setName(problemName);
-		String lambda = getTagValue("lambda", element);
 		String a = getTagValue("a", element);
 		String b = getTagValue("b", element);
 		String x0 = getTagValue("x0", element);
 		String tolerance = getTagValue("tolerance", element);
 		String maxIteration = getTagValue("max_iteration", element);
-		problem.set_lambda(lambda);
 		problem.set_a(a);
 		problem.set_b(b);
 		problem.set_x0(x0);

@@ -22,8 +22,6 @@ public class MFileCreator {
 	 */
 	private static final String extension = ".m";
 	
-	private final String v0 = "_v0";
-	
 	/**
 	 * The test problem.
 	 */
@@ -89,12 +87,6 @@ public class MFileCreator {
 		content += "\t" + f.getDefinition() + "\n";
 		content += "end";
 		createFile(fileName+extension, content);
-		// create the definition file for the complete function in the problem
-		content = "function y = " + fileName + v0 + "(" + f.getVar() + ")\n";
-		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
-		content += "\ty = " + fileName + "(" + f.getVar() + ") + " + f.extraDefinition() + ";\n";
-		content += "end";
-		createFile(fileName+v0+extension, content);
 	}
 	
 	private void createFunctionGradientFile() {
@@ -109,12 +101,6 @@ public class MFileCreator {
 		content += "\t" + f.getGradient() + "\n";
 		content += "end";
 		createFile(fileName+extension, content);
-		// create the file for the gradient of the complete function in the problem 
-		content = "function g = " + fileName + v0 + "(" + f.getVar() + ")\n";
-		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
-		content += "\tg = " + fileName + "(" + f.getVar() + ") + " + f.extraGradient() + ";\n";
-		content += "end";
-		createFile(fileName+v0+extension, content);
 	}
 
 	private void createFunctionHessianFile() {
@@ -129,12 +115,6 @@ public class MFileCreator {
 		content += "\t" + f.getHessianMatrix() + "\n";
 		content += "end";
 		createFile(fileName+extension, content);
-		// create the file for the hessian matrix of the complete function in the problem 
-		content = "function H = " + fileName + v0 + "(" + f.getVar() + ")\n";
-		content += "\tlambda = " + testProblem.get_lambda() + ";\n";
-		content += "\tH = " + fileName + "(" + f.getVar() + ") + " + f.extraHessian() + ";\n";
-		content += "end";
-		createFile(fileName+v0+extension, content);
 	}
 	
 	/**
@@ -162,16 +142,12 @@ public class MFileCreator {
 		vars.put("{var_function_name}", defFileName);
 		vars.put("{var_grad_function_name}", gradFileName);
 		vars.put("{var_hess_function_name}", hessFileName);
-		vars.put("{var_lambda}", testProblem.get_lambda());
 		vars.put("{var_a}", testProblem.get_a());
 		vars.put("{var_b}", testProblem.get_b());
 		vars.put("{var_x0}", testProblem.get_x0());
 		vars.put("{var_n}", testProblem.getDimension()+"");
 		vars.put("{var_tol}", testProblem.getTolerance());
 		vars.put("{var_itmax}", testProblem.getMaxIteration());
-		vars.put("{var_function_name_v0}", defFileName+v0);
-		vars.put("{var_grad_function_name_v0}", gradFileName+v0);
-		vars.put("{var_hess_function_name_v0}", hessFileName+v0);
 		
 		// get the content of the template file
 		String content = "";

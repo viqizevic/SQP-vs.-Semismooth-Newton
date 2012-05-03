@@ -137,18 +137,6 @@ public class TestFunction {
 		this.hessianMatrix = hessianMatrix;
 	}
 	
-	public String extraDefinition() {
-		return "(lambda/2)*norm(x)^2";
-	}
-	
-	public String extraGradient() {
-		return "lambda*x";
-	}
-	
-	public String extraHessian() {
-		return "lambda*eye(length(x))";
-	}
-	
 	public String toString() {
 		String str = "Name : " + name + "\n";
 		str += "Var  : " + var + "\n";

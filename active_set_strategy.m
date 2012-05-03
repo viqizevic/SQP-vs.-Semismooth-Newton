@@ -1,28 +1,29 @@
-% Function: [x,fval,it] = active_set_strategy(f,gradf,hessf,lamda,a,b,x0,itmax,tol)
+% Function: [x,fval,it] = active_set_strategy(f,gradf,hessf,G,r,x0,itmax,tol)
 %
 %  Active Set Strategy solves the problem
-%        min ( f(x) + (lambda/2)*|x|^2 )
+%        min f(x)
 %         x
-%        s.t. a <= x <= b
+%        s.t. G*x <= r
 %
-%  Let f : R^n -> R
-%  lambda a real number
-%  a and b in R^n
-function [x,fval,it] = active_set_strategy(f,gradf,hessf,lambda,G,r,x0,itmax,tol)
-	x = x0;
-	%n = length(x);
-	[p,n] = size(G);
-	mu = zeros(p,1);
+%  Let f be the name of a scalar function f : R^n -> R
+%  gradf the name of the function that returns the gradient of f
+%  hessf the name of the function that returns the hessian matrix of f
+%  G a matrix with dimension p x n
+%  r a vector with p elements
+%
+function [x,fval,it] = active_set_strategy(f,gradf,hessf,G,r,x0,itmax,tol)
 	it = 0;
-	stop = false;
+	[p,n] = size(G);
+	x = x0;
+	mu = zeros(p,1);
 	
+	stop = false;
 	while( ~stop )
 		it = it + 1;
-		
 		H = feval(hessf,x);
-		A = [H+lambda*eye(n) G';
-						zeros(p,n+p) ];
-		y = [H*x-feval(gradf,x);
+		A = [ H   G';
+			zeros(p,n+p) ];
+		y = [ H*x-feval(gradf,x);
 						zeros(p,1)];
 		for k=1:p
 			gk = G(k,1:n);
@@ -38,7 +39,7 @@ function [x,fval,it] = active_set_strategy(f,gradf,hessf,lambda,G,r,x0,itmax,tol
 		mu = w(n+1:n+p);
 		
 		% Check the stop criteria
-		d = feval(gradf,x)+lambda*x+G'*mu;
+		d = feval(gradf,x)+G'*mu;
 		if (norm(d) < tol)
 			w = min(mu,r-G*x);
 			if (norm(w) < tol)
@@ -50,5 +51,5 @@ function [x,fval,it] = active_set_strategy(f,gradf,hessf,lambda,G,r,x0,itmax,tol
 			stop = true;
 		end
 	end
-	fval = feval(f,x) + (lambda/2)*norm(x)^2;
+	fval = feval(f,x);
 end
