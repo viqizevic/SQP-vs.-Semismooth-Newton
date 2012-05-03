@@ -71,6 +71,9 @@ public class TestProblem {
 	}
 
 	public void set_a(String a) {
+		if (a == null) {
+			a = "[]";
+		}
 		this.a = a;
 	}
 
@@ -79,6 +82,9 @@ public class TestProblem {
 	}
 
 	public void set_b(String b) {
+		if (b == null) {
+			b = "[]";
+		}
 		this.b = b;
 	}
 

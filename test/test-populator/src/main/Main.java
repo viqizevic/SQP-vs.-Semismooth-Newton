@@ -329,8 +329,8 @@ public class Main {
 		}
 		TestProblem problem = new TestProblem(problemName, function);
 		problem.getTestFunction().setName(problemName);
-		String a = getTagValue("a", element);
-		String b = getTagValue("b", element);
+		String a = getTagValueIfExists("a", element);
+		String b = getTagValueIfExists("b", element);
 		String x0 = getTagValue("x0", element);
 		String tolerance = getTagValue("tolerance", element);
 		String maxIteration = getTagValue("max_iteration", element);
@@ -342,4 +342,12 @@ public class Main {
 		return problem;
 	}
 	
+	private static String getTagValueIfExists(String tag, Element element) {
+		NodeList nList = element.getElementsByTagName(tag);
+		if (nList.getLength() != 0) {
+			return getTagValue(tag, element);
+		} else {
+			return null;
+		}
+	}
 }
