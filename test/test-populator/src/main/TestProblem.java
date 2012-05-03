@@ -4,7 +4,8 @@ package main;
  * TestProblem represents test problem in the form:
  *    min  f(x)
  *     x
- *   s.t.  a <= x <= b
+ *   s.t.  G*x <= r
+ *        a <= x <= b
  * 
  * This problem will be written at the end in a Matlab file.
  * That's why all components of this problem are from the type String
@@ -21,6 +22,16 @@ public class TestProblem {
 	 * The test function f.
 	 */
 	private TestFunction f;
+
+	/**
+	 * The matrix G defining the left hand side of the inequality constraints.
+	 */
+	private String G;
+
+	/**
+	 * The vector r defining the right hand side of the inequality constraints.
+	 */
+	private String r;
 
 	/**
 	 * The vector a defining the lower bound.
@@ -64,6 +75,28 @@ public class TestProblem {
 
 	public TestFunction getTestFunction() {
 		return f;
+	}
+
+	public String get_G() {
+		return G;
+	}
+
+	public void set_G(String G) {
+		if (G == null) {
+			G = "[]";
+		}
+		this.G = G;
+	}
+
+	public String get_r() {
+		return r;
+	}
+
+	public void set_r(String r) {
+		if (r == null) {
+			r = "[]";
+		}
+		this.r = r;
 	}
 
 	public String get_a() {

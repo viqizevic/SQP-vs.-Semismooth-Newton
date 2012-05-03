@@ -329,11 +329,15 @@ public class Main {
 		}
 		TestProblem problem = new TestProblem(problemName, function);
 		problem.getTestFunction().setName(problemName);
+		String G = getTagValueIfExists("G", element);
+		String r = getTagValueIfExists("r", element);
 		String a = getTagValueIfExists("a", element);
 		String b = getTagValueIfExists("b", element);
 		String x0 = getTagValue("x0", element);
 		String tolerance = getTagValue("tolerance", element);
 		String maxIteration = getTagValue("max_iteration", element);
+		problem.set_G(G);
+		problem.set_r(r);
 		problem.set_a(a);
 		problem.set_b(b);
 		problem.set_x0(x0);
