@@ -5,12 +5,6 @@ Programmierung\footnote{englisch: Sequential Quadratic Programming}.
 Die Hauptidee von SQP ist nämlich, iterativ Teilprobleme in Form quadratischer
 Optimierungsprobleme zu formulieren und zu lösen.
 
-% TODO Erstes: Wilson im Jahr 1963
-% [120] Wilson R. B.: A simplical algorithm for concave programming. PhD Thesis.
-% Harvard university, Boston 1963.
-% [92] Han und Powell: Algorithms 
-% [41]
-
 Wir haben im Unterkapitel~\ref{sec:newton_verfahren} über das Newton-Verfahren
 gesehen, dass dieses Verfahren in jedem Iterationschritt eigentlich ein
 unrestringiertes quadratisches Problem
@@ -26,3 +20,5 @@ berücksichtigt werden, d.\,h.
   \min_{x \in \F}\ \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k)
                      + \nabla f(x^k)^T (x-x^k).
 \end{equation}
+
+Die folgende Beschreibung folgt der Herleitung in \ldots;
