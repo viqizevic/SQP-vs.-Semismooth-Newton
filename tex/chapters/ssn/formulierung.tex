@@ -1,4 +1,8 @@
 
+Wir werden jetzt das halbglatte Newton-Verfahren formulieren,
+um nichtlineare Optimierungsprobleme mit linearen Restriktionen
+zu lösen.
+
 Gegeben seien $x_1, x_2 \in \R$.
 Es gilt
 \begin{equation}
@@ -18,7 +22,47 @@ haben, können wir sie als
 \begin{equation}
   \min( \mu, r-Gx ) = 0
 \end{equation}
-schreiben.
+schreiben. Hier arbeitet der Operator $\min$ elementenweise.
 
-Das Aktive-Menge-Verfahren kann
-als das halbglatte Newton-Verfahren interpretiert werden.
+Wir betrachten nun das Problem
+\begin{align}
+  \min_{x \in \R^n}\ & f(x)
+    \tag{PLU} \label{prob:opt_prob} \\
+  \nb & G x \leq r \notag
+\end{align}
+
+Die Optimalitätsbedingungen für dieses Problem ist
+\begin{align}
+  \nabla f(x) + G^T \mu & = 0 \\
+  \mu \geq 0, \quad Gx \leq r, \quad \mu^T(Gx-r) & = 0
+\end{align}
+
+Diese können wir nach unserer vorherigen Überlegung schreiben als
+\begin{align}
+  \nabla f(x) + G^T \mu & = 0 \\
+  \min( \mu, r-Gx ) & = 0
+\end{align}
+
+Wir definieren nun die Funktion
+\begin{equation}
+  F(x,\mu) =
+  \left(\begin{array}{c}
+    \nabla f(x) + G^T \mu \\
+    \min( \mu, r-Gx )
+  \end{array}\right)
+\end{equation}
+
+Wir müssen nur noch die Ableitung von $F$ bestimmen.
+Dann können wir das Verfahren formulieren.
+
+Die Ableitung ist in der Form:
+\begin{equation}
+  F'(x,\mu) =
+  \left(\begin{array}{c}
+    f''(x) \quad G^T \mu \\
+    W
+  \end{array}\right)
+\end{equation}
+
+Die Matrix $W$ ist von dem Ergebnis von $\min( \mu, r-Gx )$ abhängig.
+

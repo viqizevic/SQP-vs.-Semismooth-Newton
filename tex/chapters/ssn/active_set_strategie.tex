@@ -1,3 +1,14 @@
+Wir betrachten in diesem Unterkapitel
+die Aktive-Menge-Strategie.
+Dieses Verfahren ist für uns interessant,
+weil sie als das halbglatte Newton-Verfahren interpretiert werden kann.
+
+Wir betrachten wieder das Problem
+\begin{align}
+  \min_{x \in \R^n}\ & f(x)
+    \tag{PLU} \label{} \\
+  \nb & G x \leq r \notag
+\end{align}
 
 Sei $x^k$ ein zulässiger Punkt des Problems.
 Wir approximieren die Funktion $f$ in der Umgebung von $x^k$.
@@ -10,44 +21,43 @@ Der Gradient von $f$ ist
   \nabla f(x) \approx \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k.
 \end{equation}
 
-Die notwendige Bedingung für $x^{k+1}$ wäre
+Eine der Optimalitätsbedingungen für dieses Problem ist
 \begin{equation}
-  \nabla f(x^{k+1}) + \lambda x^{k+1} + \mu^{k+1} = 0
+  \nabla f(x) + G^T \mu = 0
 \end{equation}
-Ersetzen wir $\nabla f(x^{k+1})$ mit seiner Approximation,
-bekommen wir die Gleichung
+
+Ersetzen wir $\nabla f(x)$ mit seiner Approximation,
+dann bekommen wir die Gleichung
 \begin{align}
-  \nabla f(x^k) + f''(x^k) x^{k+1} - f''(x^k) x^k + \lambda x^{k+1} + \mu^{k+1}
+  \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k + G^T \mu
     &= 0 \\
-  f''(x^k) x^{k+1} + \lambda x^{k+1} + \mu^{k+1}
+  f''(x^k) x + G^T \mu
     &= f''(x^k) x^k - \nabla f(x^k)
 \end{align}
 
 \begin{algorithm}
 \emph{(Aktive-Menge-Strategie)}
 \begin{enumerate}
-  \item $k := 0, x^k := x^0$
+  \item Wähle $x^0$ und setze $k := 0$. 
   \item Bestimme
         \begin{align}
-          \A_+^k & := \{ i\,|\,x_i^k > b_i \} \\
-          \A_-^k & := \{ i\,|\,x_i^k < a_i \} \\
-          \I^k   & := \{ i\,|\,a_i \leq x_i^k \leq b_i \}
+          \A^k & := \{ i\,|\,\langle g_i, x^k\rangle > r_i \} \\
+          \I^k & := \{ i\,|\,\langle g_i, x^k\rangle \leq r_i \}
         \end{align}
   \item Löse das Problem
         \begin{align}
-          f''(x^k) x^{k+1} + \lambda x^{k+1} + \mu^{k+1}
+          f''(x^k) x + G^T \mu^{k+1}
                       &= f''(x^k) x^k - \nabla f(x^k) \\
-            x_i^{k+1} & = b_i \quad \text{ für } i \in \A_+^k \\
-            x_i^{k+1} & = a_i \quad \text{ für } i \in \A_-^k \\
-          \mu_i^{k+1} & = 0   \quad \text{ für } i \in \I^k
+          \langle g_i, x \rangle &= r_i \quad \text{ für } i \in \A^k \\
+          \mu_i & = 0   \quad \text{ für } i \in \I^k
         \end{align}
   \item Falls
         \begin{align}
-          0 & = \nabla f(x^{k+1}) + \lambda x^{k+1} + \mu^{k+1} \\
-          \mu^{k+1} & = \max\left(0,\mu^{k+1}+\lambda(x^{k+1}-b)\right) +
-                         \min\left(0,\mu^{k+1}+\lambda(x^{k+1}-a)\right)
+          \nabla f(x^{k+1}) + \mu & = 0\\
+          \max(\mu^{k+1}, G x^{k+1} - r) & = 0
         \end{align}
         $\Rightarrow$ STOP
   \item $x^k := x^{k+1}, k := k+1$ $\Rightarrow$ 2. %TODO use reference, not 2.
 \end{enumerate}
 \end{algorithm}
+

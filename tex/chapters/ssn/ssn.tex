@@ -6,23 +6,5 @@
 \section{Formulierung}
 \input{chapters/ssn/formulierung}
 
-\section{Active-Set-Strategie}
-
-Wir betrachten in diesem Unterkapitel das Problem
-\begin{definition}
-\begin{align}
-  \min_{x \in \R^n}\ & f(x) + \frac{\lambda}{2} |x|^2
-    \tag{PS} \label{prob:opt_prob_mit_lambda} \\
-  \nb & a \leq x \leq b \notag
-\end{align}
-\end{definition}
-
-Sei $\xopt$ eine lokale Lösung des Problems~\eqref{prob:opt_prob_mit_lambda}
-Es gilt
-\begin{equation}
-  \xopt = \Proj_{[a,b]}\left( - \tfrac{1}{\lambda} \nabla f(\xopt) \right).
-\end{equation}
-
-
-
+\section{Aktive-Menge-Strategie}
 \input{chapters/ssn/active_set_strategie}
