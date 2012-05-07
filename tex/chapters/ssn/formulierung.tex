@@ -1,4 +1,8 @@
 
+Wir werden jetzt das halbglatte Newton-Verfahren formulieren,
+um nichtlineare Optimierungsprobleme mit linearen Restriktionen
+zu lösen.
+
 Gegeben seien $x_1, x_2 \in \R$.
 Es gilt
 \begin{equation}
@@ -18,7 +22,91 @@ haben, können wir sie als
 \begin{equation}
   \min( \mu, r-Gx ) = 0
 \end{equation}
-schreiben.
+schreiben. Hier arbeitet der Operator $\min$ elementenweise.
 
-Das Aktive-Menge-Verfahren kann
-als das halbglatte Newton-Verfahren interpretiert werden.
+Wir betrachten nun das Problem
+\begin{align}
+  \min_{x \in \R^n}\ & f(x)
+    \tag{PLU} \label{prob:opt_prob} \\
+  \nb & G x \leq r \notag
+\end{align}
+
+Die Optimalitätsbedingungen für dieses Problem ist
+\begin{align}
+  \nabla f(x) + G^T \mu & = 0 \\
+  \mu \geq 0, \quad Gx \leq r, \quad \mu^T(Gx-r) & = 0
+\end{align}
+
+Diese können wir nach unserer vorherigen Überlegung schreiben als
+\begin{align}
+  \nabla f(x) + G^T \mu & = 0 \\
+  \min( \mu, r-Gx ) & = 0
+\end{align}
+
+Wir definieren nun die Funktion
+\begin{equation}
+  F(x,\mu) =
+  \left(\begin{array}{c}
+    \nabla f(x) + G^T \mu \\
+    \min( \mu, r-Gx )
+  \end{array}\right)
+\end{equation}
+
+Wir müssen nur noch die Ableitung von $F$ bestimmen.
+Dann können wir das Verfahren formulieren.
+
+Wir definieren:
+\begin{align}
+  \A & := \{\ j \in \{1,\ldots,p\}\ |\ r_j - g_j^T x < \mu_j\ \}, \\
+  \I & := \{\ j \in \{1,\ldots,p\}\ |\ r_j - g_j^T x \geq \mu_j\ \} =
+    \{1,\ldots,p\} \backslash \A
+\end{align}
+\begin{equation}
+  \chi_M(m) :=
+    \begin{cases}
+      1 & \text{für } m \in M, \\
+      0 & \text{sonst}.
+    \end{cases}
+\end{equation}
+
+D. h. es gilt
+\begin{equation}
+  \min( \mu, r-Gx ) =
+  \left(\begin{array}{c}
+    \chi_\I(1) \mu_1 + \chi_\A(1) (r_1 - g_1^T x) \\
+      \vdots \\
+    \chi_\I(p) \mu_p + \chi_\A(p) (r_p - g_p^T x)
+  \end{array}\right)
+\end{equation}
+
+Die Ableitung ist dann in der Form:
+\begin{equation}
+  F'(x,\mu) =
+  \left(\begin{array}{cc}
+         f''(x)         &       G^T \\
+    - \chi_\A(1) g_1^T  &  \chi_\I(1) e_1^T \\
+        \vdots          &      \vdots \\
+    - \chi_\A(p) g_p^T  &  \chi_\I(p) e_p^T
+  \end{array}\right)
+\end{equation}
+
+\begin{algorithm}
+\emph{(Das halbglatte Newton-Verfahren)}
+\begin{enumerate}
+  \item Wähle $x^0$, $\mu^0$
+        und ein Abbruchkriterium $\epsilon > 0$.
+        Setze $k := 0$.
+  \item Berechne die Lösung \label{list:equation_ssn}
+        $d = \left(\begin{array}{c} d_x \\ d_\mu \end{array}\right)$
+        des linearen Gleichungssystems
+        \begin{equation}
+          F'(x^k,\mu^k) d = - F(x^k,\mu^k).
+        \end{equation}
+        Setze $d^k_x := d_x$ und $d^k_\mu := d_\mu$.
+  \item Ist $\|d^k_x\| < \epsilon$
+        $\Rightarrow$ STOP.
+  \item Setze $x^{k+1} := x^k + d^k_x$, $\mu^{k+1} := \mu^k + d^k_\mu$
+        und $k := k+1$
+        $\Rightarrow$ Gehe zu Schritt~\ref{list:equation_ssn}.
+\end{enumerate}
+\end{algorithm}

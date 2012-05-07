@@ -1,6 +1,8 @@
-Seien $X, Z$ reelle Banachräume und sei $D \subset X$ offen.
+Wir betrachten erst mal die allgemeine Definition
+einer halbglatten\footnote{englisch: semismooth} Funktion.
 
 \begin{definition}
+Seien $X, Z$ reelle Banachräume und sei $D \subset X$ offen.
 Eine Funktion $F : D \subset X \rightarrow Z$ heißt
 Newton-differenzierbar in Punkt $x \in D$,
 falls es eine Umgebung $U(x) \subset D$ von $x$
@@ -17,14 +19,17 @@ heißt N-Ableitung von $F$ in $x$.
 \end{definition}
 
 \begin{definition}
+Seien $X, Z$ reelle Banachräume und sei $D \subset X$ offen.
 Eine Funktion $F : D \subset X \rightarrow Z$ heißt
-halbglatt\footnote{englisch: semismooth} in $x \in D$,
+halbglatt in $x \in D$,
 falls $F$ Newton-differenzierbar in $x$ ist und
 \begin{equation}
   \lim_{t \rightarrow 0^+} G(x+th)h
 \end{equation}
 einheitlich in $|h| = 1$ existiert.
 \end{definition}
+
+Nun kommt die Definition in endlichdimensionalen Räumen.
 
 \begin{definition}
 Sei $F : \R^m \rightarrow \R^n$ lokal Lipschitz-stetig.
@@ -80,3 +85,9 @@ unter der Bedingung, dass $|x^0 - \xopt|$ genügend klein ist.
         Gehe zu Schritt~\ref{list:stop_criteria_ssn}.
 \end{enumerate}
 \end{algorithm}
+
+Das halbglatte Newton-Verfahren hat also das gleiche Ziel
+wie bei dem Newton-Verfahren,
+nämlich ein nichtlineares Gleichungssystem zu lösen. 
+Der Unterschied liegt darin, dass hier die Funktion nicht
+unbedingt so glatt ist.
