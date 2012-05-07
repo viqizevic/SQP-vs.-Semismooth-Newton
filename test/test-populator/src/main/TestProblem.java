@@ -154,4 +154,29 @@ public class TestProblem {
 			return 0;
 		}
 	}
+	
+	public String toLaTeX() {
+		String result = "";
+		result += "a = " + getVectorInLaTeX(a) + "\n";
+		result += "b = " + getVectorInLaTeX(b) + "\n";
+		result += "x^0 = " + getVectorInLaTeX(x0) + "\n";
+		return result;
+	}
+	
+	private String getVectorInLaTeX(String vec) {
+		String[] s = vec.replace("[", "").replace("]", "").split(";");
+		for (int i=0; i<s.length; i++) {
+			s[i] = s[i].trim();
+		}
+		String v = "\\left(\\begin{array}{c} ";
+		for (int i=0; i<s.length; i++) {
+			if (i < s.length-1) {
+				v += s[i] + " \\\\ ";
+			} else {
+				v += s[i];
+			}
+		}
+		v += " \\end{array}\\right)";
+		return v;
+	}
 }

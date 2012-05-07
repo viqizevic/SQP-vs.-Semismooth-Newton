@@ -123,6 +123,10 @@ public class Main {
 		MFileCreator.createMainTestFile(testProblems,
 				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
 		System.out.println("Finish!");
+		
+		for (TestProblem p : testProblems) {
+			System.out.println(p.toLaTeX());
+		}
 	}
 
 	private static HashMap<String, String> readConfigFile() {
