@@ -1,3 +1,16 @@
+% Function: [x,fval,it] = semismooth_newton(f,gradf,hessf,G,r,x0,itmax,tol)
+%
+%  Semismooth Newton solves the problem
+%        min f(x)
+%         x
+%        s.t. G*x <= r
+%
+%  Let f be the name of a scalar function f : R^n -> R
+%  gradf the name of the function that returns the gradient of f
+%  hessf the name of the function that returns the hessian matrix of f
+%  G a matrix with dimension p x n
+%  r a vector with p elements
+%
 function [x,fval,it] = semismooth_newton(f,gradf,hessf,G,r,x0,itmax,tol)
 	it = 0;
 	[p,n] = size(G);
@@ -20,12 +33,13 @@ function [x,fval,it] = semismooth_newton(f,gradf,hessf,G,r,x0,itmax,tol)
 				H(n+k,n+k) = 1;
 		  end
 	  end
-		q = H\h;
-		d = q(1:n);
-		mu = q(n+1:n+p);
-		x = x+d;
+		d = H\h;
+		dx = d(1:n);
+		dmu = d(n+1:n+p);
+		x = x + dx;
+		mu = mu + dmu;
 		% Check the stop criteria
-		if (norm(d) < tol)
+		if (norm(dx) < tol)
 			stop = true;
 		end
 		% If there are too many iterations
