@@ -41,8 +41,8 @@ Rosenbrock-Funktion
 \end{figure}
 Die Rosenbrock-Funktion hat ein einziges Minimum
 an der Stelle $\xopt = (1,1)^T$ mit $f(\xopt) = 0$.
-Diese Funktion ist nicht einfach zu lösen, da
-das Minimum in einem schmalen "`bananenförmig"' gekrümmten Tal liegt.
+Diese Funktion kann für manche Verfahren Schwierigkeiten anbieten,
+da ihr Minimum in einem schmalen "`bananenförmig"' gekrümmten Tal liegt.
 Als Anfangspunkt wird normalerweise den Punkt $x^0 = (-1,1)^T$ genommen.
 
 \begin{testfunction}
@@ -59,6 +59,7 @@ Himmelblau-Funktion
 \end{figure}
 Die Himmelblau-Funktion ist ein Polynom 4.~Grades
 mit vier globale Minimalstellen.
+Ein Minimum ist an der Stelle $\xopt = (3,2)^T$
 Der Optimalwert ist 0.
 
 \begin{testfunction}
@@ -78,52 +79,21 @@ mit einem globalen Minimum in $\xopt = (2,1)^T$
 und Optimalwert 0.
 
 \begin{testfunction}
-Schuldt Funktion
-\[
-x_2+10^{-5}(x_2-x_1^2)^2
-\]
-\end{testfunction}
-
-\begin{testfunction}
-Asaadi Funktion
-\[
-x_2+\frac{1}{3}(x_1+1)^3
-\]
-\end{testfunction}
-
-\begin{testfunction}
-McCormick Funktion
-\[
-\sin(x_1+x_2) + (x_1-x_2)^2 - 1.5x_1 + 2.5x_2 + 1
-\]
-\end{testfunction}
-
-\begin{testfunction}
-Dixon Funktion
+Dixon-Funktion
 \[
 (1-x_1)^2 + \sum_{k=1}^{9} (x_k^2-x_{k+1})^2 + (1-x_{10})^2
 \]
 \end{testfunction}
+Die Dixon-Funktion ist ein Polynom 4.~Grades mit 10 Variablen.
+Das globale Minimum ist an der Stelle $\xopt = (1,\ldots,1)^T$
+und Optimalwert 0.
 
 \begin{testfunction}
-Colville Funktion
+Colville-Funktion
 \begin{multline}
   f(x) := 100(x_2-x_1^2)^2 + (1-x_1)^2 + 90(x_4-x_3^2)^2 + (1-x_3)^2 \\
     + 10.1((x_2-1)^2 + (x_4-1)^2) + 19.8(x_2-1)(x_4-1) \notag
 \end{multline}
 \end{testfunction}
-
-\begin{testfunction}
-Betts Funktion
-\[
-2 - \frac{1}{2}x_1x_2
-\]
-\end{testfunction}
-
-\begin{testfunction}
-Paviani Funktion
-\[
-  f(x) := - (\ln(x_1-2))^2 - (\ln(10-x_1))^2
-            - (\ln(x_2-2))^2 - (\ln(10-x_2))^2
-\]
-\end{testfunction}
+Die Colville-Funktion ist ein Polynom 4.~Grades mit vier Variablen.
+Das globale Minimum ist in $\xopt = (1,1,1,1)^T$ und Optimalwert 0.
