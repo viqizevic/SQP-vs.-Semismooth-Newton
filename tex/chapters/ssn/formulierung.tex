@@ -55,14 +55,57 @@ Wir definieren nun die Funktion
 Wir müssen nur noch die Ableitung von $F$ bestimmen.
 Dann können wir das Verfahren formulieren.
 
-Die Ableitung ist in der Form:
+Wir definieren:
+\begin{align}
+  \A & := \{\ j \in \{1,\ldots,p\}\ |\ r_j - g_j^T x < \mu_j\ \}, \\
+  \I & := \{\ j \in \{1,\ldots,p\}\ |\ r_j - g_j^T x \geq \mu_j\ \} =
+    \{1,\ldots,p\} \backslash \A
+\end{align}
 \begin{equation}
-  F'(x,\mu) =
+  \chi_M(m) :=
+    \begin{cases}
+      1 & \text{für } m \in M, \\
+      0 & \text{sonst}.
+    \end{cases}
+\end{equation}
+
+D. h. es gilt
+\begin{equation}
+  \min( \mu, r-Gx ) =
   \left(\begin{array}{c}
-    f''(x) \quad G^T \mu \\
-    W
+    \chi_\I(1) \mu_1 + \chi_\A(1) (r_1 - g_1^T x) \\
+      \vdots \\
+    \chi_\I(p) \mu_p + \chi_\A(p) (r_p - g_p^T x)
   \end{array}\right)
 \end{equation}
 
-Die Matrix $W$ ist von dem Ergebnis von $\min( \mu, r-Gx )$ abhängig.
+Die Ableitung ist dann in der Form:
+\begin{equation}
+  F'(x,\mu) =
+  \left(\begin{array}{cc}
+         f''(x)         &       G^T \\
+    - \chi_\A(1) g_1^T  &  \chi_\I(1) e_1^T \\
+        \vdots          &      \vdots \\
+    - \chi_\A(p) g_p^T  &  \chi_\I(p) e_p^T
+  \end{array}\right)
+\end{equation}
 
+\begin{algorithm}
+\emph{(Das halbglatte Newton-Verfahren)}
+\begin{enumerate}
+  \item Wähle $x^0$, $\mu^0$
+        und ein Abbruchkriterium $\epsilon > 0$.
+        Setze $k := 0$.
+  \item Berechne die Lösung \label{list:equation_ssn}
+        $d = \left(\begin{array}{c} d_x \\ \mu \end{array}\right)$
+        des linearen Gleichungssystems
+        \begin{equation}
+          F'(x^k,\mu^k) d = - \nabla F(x^k,\mu^k).
+        \end{equation}
+        Setze $d^k := d_x$ und $\mu^{k+1} := \mu$.
+  \item Ist $\|\nabla d^k\| < \epsilon$
+        $\Rightarrow$ STOP.
+  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$ $\Rightarrow$
+        Gehe zu Schritt~\ref{list:equation_ssn}.
+\end{enumerate}
+\end{algorithm}
