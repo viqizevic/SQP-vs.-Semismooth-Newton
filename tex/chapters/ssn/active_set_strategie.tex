@@ -10,24 +10,27 @@ Wir betrachten wieder das Problem
   \nb & G x \leq r \notag
 \end{align}
 
+Eine der Optimalitätsbedingungen dieses Problems ist:
+\begin{equation}
+  \nabla f(x) + G^T \mu = 0.
+\end{equation}
+Das ist ein nichtlineares Gleichungssystem, wenn $f$ nichtlinear ist.
+
+Wir versuchen nun, eine linearisierte Version zu bekommen.
+
 Sei $x^k$ ein zulässiger Punkt des Problems.
-Wir approximieren die Funktion $f$ in der Umgebung von $x^k$.
+Approximieren wir die Funktion $f$ in der Umgebung von $x^k$:
 \begin{equation}
   f(x) \approx f(x^k) + \nabla f(x^k)^T (x-x^k)
                  + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k).
 \end{equation}
-Der Gradient von $f$ ist
+Der Gradient von $f$ ist dann
 \begin{equation}
   \nabla f(x) \approx \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k.
 \end{equation}
 
-Eine der Optimalitätsbedingungen für dieses Problem ist
-\begin{equation}
-  \nabla f(x) + G^T \mu = 0
-\end{equation}
-
-Ersetzen wir $\nabla f(x)$ mit seiner Approximation,
-dann bekommen wir die Gleichung
+Ersetzen wir nun $\nabla f(x)$ in der Optimalitätsbedingung mit seiner
+Approximation, dann bekommen wir die Gleichung
 \begin{align}
   \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k + G^T \mu
     &= 0 \\
@@ -35,29 +38,32 @@ dann bekommen wir die Gleichung
     &= f''(x^k) x^k - \nabla f(x^k)
 \end{align}
 
+Das ist nun ein lineares Gleichungssystem.
+Dieses werden wir in unserer Aktive-Mengen-Strategie verwenden.
+
 \begin{algorithm}
 \emph{(Aktive-Menge-Strategie)}
 \begin{enumerate}
   \item Wähle $x^0$ und setze $k := 0$. 
   \item Bestimme
         \begin{align}
-          \A^k & := \{ i\,|\,\langle g_i, x^k\rangle > r_i \} \\
-          \I^k & := \{ i\,|\,\langle g_i, x^k\rangle \leq r_i \}
+        \A^k & := \{i \in \{1,\ldots,p\}\ |\ r_i - g_i^T x^k < \mu_i \}, \\
+        \I^k & := \{i \in \{1,\ldots,p\}\ |\ r_i - g_i^T x^k \geq \mu_i \}
         \end{align}
   \item Löse das Problem
         \begin{align}
           f''(x^k) x + G^T \mu^{k+1}
                       &= f''(x^k) x^k - \nabla f(x^k) \\
-          \langle g_i, x \rangle &= r_i \quad \text{ für } i \in \A^k \\
+          g_i^T x &= r_i \quad \text{ für } i \in \A^k \\
           \mu_i & = 0   \quad \text{ für } i \in \I^k
         \end{align}
   \item Falls
         \begin{align}
           \nabla f(x^{k+1}) + \mu & = 0\\
-          \max(\mu^{k+1}, G x^{k+1} - r) & = 0
+          \min(\mu^{k+1}, r - G x^{k+1}) & = 0
         \end{align}
         $\Rightarrow$ STOP
-  \item $x^k := x^{k+1}, k := k+1$ $\Rightarrow$ 2. %TODO use reference, not 2.
+  \item $x^k := x^{k+1}, k := k+1$ $\Rightarrow$ Gehe zu Schritt 2. %TODO ref
 \end{enumerate}
 \end{algorithm}
 
