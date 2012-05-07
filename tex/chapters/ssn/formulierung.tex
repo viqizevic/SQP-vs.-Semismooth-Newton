@@ -97,15 +97,16 @@ Die Ableitung ist dann in der Form:
         und ein Abbruchkriterium $\epsilon > 0$.
         Setze $k := 0$.
   \item Berechne die Lösung \label{list:equation_ssn}
-        $d = \left(\begin{array}{c} d_x \\ \mu \end{array}\right)$
+        $d = \left(\begin{array}{c} d_x \\ d_\mu \end{array}\right)$
         des linearen Gleichungssystems
         \begin{equation}
-          F'(x^k,\mu^k) d = - \nabla F(x^k,\mu^k).
+          F'(x^k,\mu^k) d = - F(x^k,\mu^k).
         \end{equation}
-        Setze $d^k := d_x$ und $\mu^{k+1} := \mu$.
-  \item Ist $\|\nabla d^k\| < \epsilon$
+        Setze $d^k_x := d_x$ und $d^k_\mu := d_\mu$.
+  \item Ist $\|d^k_x\| < \epsilon$
         $\Rightarrow$ STOP.
-  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$ $\Rightarrow$
-        Gehe zu Schritt~\ref{list:equation_ssn}.
+  \item Setze $x^{k+1} := x^k + d^k_x$, $\mu^{k+1} := \mu^k + d^k_\mu$
+        und $k := k+1$
+        $\Rightarrow$ Gehe zu Schritt~\ref{list:equation_ssn}.
 \end{enumerate}
 \end{algorithm}

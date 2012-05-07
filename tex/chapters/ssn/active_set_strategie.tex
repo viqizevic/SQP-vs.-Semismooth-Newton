@@ -47,23 +47,96 @@ Dieses werden wir in unserer Aktive-Mengen-Strategie verwenden.
   \item Wähle $x^0$ und setze $k := 0$. 
   \item Bestimme
         \begin{align}
-        \A^k & := \{i \in \{1,\ldots,p\}\ |\ r_i - g_i^T x^k < \mu_i \}, \\
-        \I^k & := \{i \in \{1,\ldots,p\}\ |\ r_i - g_i^T x^k \geq \mu_i \}
+        \A_k & := \{i \in \{1,\ldots,p\}\ |\ r_i - g_i^T x^k < \mu_i \}, \\
+        \I_k & := \{i \in \{1,\ldots,p\}\ |\ r_i - g_i^T x^k \geq \mu_i \}
         \end{align}
   \item Löse das Problem
         \begin{align}
-          f''(x^k) x + G^T \mu^{k+1}
-                      &= f''(x^k) x^k - \nabla f(x^k) \\
-          g_i^T x &= r_i \quad \text{ für } i \in \A^k \\
-          \mu_i & = 0   \quad \text{ für } i \in \I^k
+          f''(x^k) x + G^T \mu
+            &= f''(x^k) x^k - \nabla f(x^k) \label{eq:eq1_in_ass} \\
+          g_i^T x &= r_i \quad \text{ für } i \in \A_k
+            \label{eq:eq2_in_ass} \\
+          \mu_i & = 0   \quad \text{ für } i \in \I_k
+            \label{eq:eq3_in_ass}
         \end{align}
   \item Falls
         \begin{align}
-          \nabla f(x^{k+1}) + \mu & = 0\\
-          \min(\mu^{k+1}, r - G x^{k+1}) & = 0
+          \nabla f(x) + \mu & = 0\\
+          \min(\mu, r - G x) & = 0
         \end{align}
         $\Rightarrow$ STOP
-  \item $x^k := x^{k+1}, k := k+1$ $\Rightarrow$ Gehe zu Schritt 2. %TODO ref
+  \item $x^{k+1} := x, \mu^{k+1} = \mu, k := k+1$
+        $\Rightarrow$ Gehe zu Schritt 2. %TODO ref
 \end{enumerate}
 \end{algorithm}
 
+Wir werden nun das Verfahren genauer betrachten und zeigen,
+warum es als das halbglatte Newton-Verfahren interpretiert werden kann.
+
+Sei $k$ irgendeiner Iterationsschritt in den beiden Verfahren.
+Bei dem halbglatten Newton-Verfahren müssen wir dann
+folgendes Gleichungssystem lösen:
+\begin{equation}
+  \left(\begin{array}{cc}
+         f''(x^k)         &       G^T \\
+    - \chi_{\A_k}(1) g_1^T  &  \chi_{\I_k}(1) e_1^T \\
+        \vdots          &      \vdots \\
+    - \chi_{\A_k}(p) g_p^T  &  \chi_{\I_k}(p) e_p^T
+  \end{array}\right)
+  \left(\begin{array}{c} d_x \\ d_\mu \end{array}\right)
+  = -
+  \left(\begin{array}{c}
+    \nabla f(x^k) + G^T \mu^k \\
+    \chi_{\I_k}(1) \mu_1 + \chi_{\A_k}(1) (r_1 - g_1^T x^k) \\
+      \vdots \\
+    \chi_{\I_k}(p) \mu_p + \chi_{\A_k}(p) (r_p - g_p^T x^k)
+  \end{array}\right)
+\end{equation}
+
+D.\,h.
+\begin{align}
+  f''(x^k) d_x + G^T d_\mu & = -\nabla f(x^k) - G^T \mu^k \\
+  - \chi_{\A_k}(j) g_j^T d_x + \chi_{\I_k}(j) e_j^T d_\mu
+    & = -\chi_{\I_k}(j) \mu_j - \chi_{\A_k}(j) (r_j - g_j^T x^k)
+    \quad \text{für } j = 1,\ldots,p \label{eq:eq2in_ssn}
+\end{align}
+
+Die Indexmengen $\A_k$ und $\I_k$ sind dabei genau wie
+in der Aktive-Mengen-Strategie.
+
+Bei dem halbglatten Newton-Verfahren setzen wir dann
+$x^{k+1} := x^k + d_x$ und $\mu^{k+1} := \mu^k + d_\mu$.
+Es gilt also $d_x = x^{k+1} - x^k$ und $d_\mu = \mu^{k+1} - \mu^k$.
+D.\,h.
+\begin{align}
+  f''(x^k) (x^{k+1} - x^k) + G^T (\mu^{k+1} - \mu^k)
+    & = -\nabla f(x^k) - G^T \mu^k \\
+  \Rightarrow \qquad f''(x^k) x^{k+1} + G^T \mu^{k+1} & =
+    f''(x^k) x^k - \nabla f(x^k)
+\end{align}
+Das ist genau die Gleichung~\eqref{eq:eq1_in_ass}
+in der Aktive-Mengen-Strategie.
+
+Sei $j \in \A_k$.
+Die Gleichung~\eqref{eq:eq2in_ssn} ist dann gleich
+\begin{align}
+  - g_j^T d_x & = - (r_j - g_j^T x^k) \\
+  \Rightarrow - g_j^T (x^{k+1} - x^k) & = - (r_j - g_j^T x^k) \\
+  \Rightarrow   g_j^T x^{k+1} & = r_j
+\end{align}
+Das ist genau die Gleichung~\eqref{eq:eq2_in_ass}
+in der Aktive-Mengen-Strategie.
+
+Sei nun $j \in \I_k$.
+Die Gleichung~\eqref{eq:eq2in_ssn} ist dann gleich
+\begin{align}
+  e_j^T d_\mu & = - \mu_j \\
+  \Rightarrow e_j^T (\mu^{k+1} - \mu^k) & = - \mu_j \\
+  \Rightarrow \mu^{k+1}_j - \mu^k_j & = - \mu_j \\
+  \Rightarrow \mu^{k+1}_j & = 0
+\end{align}
+Das ist genau die Gleichung~\eqref{eq:eq3_in_ass}
+in der Aktive-Mengen-Strategie.
+
+Somit sind die Iterationsschritte in den beiden Verfahren gleich.
+Und deswegen sind die beiden Verfahren äquivalent.
