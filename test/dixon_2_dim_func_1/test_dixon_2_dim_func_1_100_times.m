@@ -1,7 +1,7 @@
 function test_dixon_2_dim_func_1_100_times(show)
     t1_total = 0;
     t2_total = 0;
-    t_max = 0.75;
+    t_max = 0.95;
     t1_min = t_max;
     t2_min = t_max;
     t1_max = 0;
@@ -9,7 +9,10 @@ function test_dixon_2_dim_func_1_100_times(show)
     it1_total = 0;
     it2_total = 0;
     total = 100;
-    for k=1:total
+    k = 1;
+    k_total = 0;
+    while k<=total
+        k_total = k_total+1;
         [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_dixon_2_dim_func_1(0);
         if (norm(x_ssn-x_sqp) > 0.1)
             break;
@@ -17,6 +20,10 @@ function test_dixon_2_dim_func_1_100_times(show)
         if (t_ssn > t_max || t_sqp > t_max)
             break;
         end
+        if (t_ssn == 0 || t_sqp == 0)
+            continue;
+        end
+        k = k+1;
         t1_total = t1_total + t_ssn;
         t2_total = t2_total + t_sqp;
         if (t1_min > t_ssn)
@@ -41,7 +48,7 @@ function test_dixon_2_dim_func_1_100_times(show)
     if ( nargin == 0 )
         show = 1;
     end
-    if ( show == 1 )
+    if ( (show == 1) && (k == total+1) )
         x1 = sprintf('%.3f ',x_ssn);
         t1 = sprintf('solved in %.2f ms.',t1_total*1000);
         t1min = sprintf(' (%.2f -',t1_min*1000);
@@ -54,5 +61,6 @@ function test_dixon_2_dim_func_1_100_times(show)
         str2 = ['x_sqp = [ ', x2, '], it = ', num2str(it2_total), ', ', t2, t2min, t2max];
         disp(str1);
         disp(str2);
+        disp(['[', num2str(k_total), ']']);
     end
 end
