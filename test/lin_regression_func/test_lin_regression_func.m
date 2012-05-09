@@ -1,7 +1,7 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_lin_regression_func(show)
     a = [-20; -20];
     b = [20; 20];
-    x0 = [1; 1];
+    x0 = [-20; 20];
     tol = 0.001;
     itmax = 100;
     G = [ -eye(length(a)); eye(length(b)) ];

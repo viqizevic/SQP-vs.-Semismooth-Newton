@@ -315,20 +315,46 @@
 		<max_iteration>100</max_iteration>
 	</problem>
 	
-	<problem>
+	<!--problem>
 		<function_name>lin_regression_func</function_name>
 		<a>[-20; -20]</a>
 		<b>[20; 20]</b>
 		<x0>[1; 1]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
-	</problem>
+	</problem-->
 
 	<problem>
+		<function_name>lin_regression_func</function_name>
+		<constant>
+			<constant_name>eta</constant_name>
+			<constant_value>[-0.5; -2; -3; -3; -2.5; -2; -1; 1; 3; 5.5]</constant_value>
+		</constant>
+		<a>[-20; -20]</a>
+		<b>[20; 20]</b>
+		<x0>[-20; 20]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+
+	<!--problem>
 		<function_name>quad_regression_func</function_name>
 		<a>[-10; -10; -10]</a>
 		<b>[20; 20; 20]</b>
 		<x0>[0.5; 2; -7]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem-->
+
+	<problem>
+		<function_name>quad_regression_func</function_name>
+		<constant>
+			<constant_name>eta</constant_name>
+			<constant_value>[-0.5; -2; -3; -3; -2.5; -2; -1; 1; 3; 5.5]</constant_value>
+		</constant>
+		<a>[-10; -10; -10]</a>
+		<b>[20; 20; 20]</b>
+		<x0>[1; 3; -4]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>

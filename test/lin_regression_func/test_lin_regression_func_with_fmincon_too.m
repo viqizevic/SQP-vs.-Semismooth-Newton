@@ -1,7 +1,7 @@
 function test_lin_regression_func_with_fmincon_too()
 	a = [-20; -20];
 	b = [20; 20];
-	x0 = [1; 1];
+	x0 = [-20; 20];
 	tol = 0.001;
 	itmax = 100;
 	G = [ -eye(length(a)); eye(length(b)) ];

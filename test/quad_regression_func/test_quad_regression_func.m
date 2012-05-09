@@ -1,7 +1,7 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_quad_regression_func(show)
     a = [-10; -10; -10];
     b = [20; 20; 20];
-    x0 = [0.5; 2; -7];
+    x0 = [1; 3; -4];
     tol = 0.001;
     itmax = 100;
     G = [ -eye(length(a)); eye(length(b)) ];
