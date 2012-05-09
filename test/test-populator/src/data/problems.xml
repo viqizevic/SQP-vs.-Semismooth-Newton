@@ -52,7 +52,7 @@
         <max_iteration>100</max_iteration>
     </problem>
 
-	<problem>
+	<!--problem>
 		<function_name>linear_func</function_name>
 		<constant>
 			<constant_name>c</constant_name>
@@ -63,7 +63,7 @@
 		<x0>[5; 5; 5; 5]</x0>
 		<tolerance>0.01</tolerance>
 		<max_iteration>100</max_iteration>
-	</problem>
+	</problem-->
 
     <!--problem>
         <function_name>exp_func</function_name>
@@ -137,14 +137,14 @@
 		<max_iteration>100</max_iteration>
 	</problem>
 	
-	<problem>
+	<!--problem>
 		<function_name>asaadi_func</function_name>
 		<a>[1; 0]</a>
 		<b>[20; 20]</b>
 		<x0>[7; 5]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
-	</problem>
+	</problem-->
 	
 	<problem>
 		<function_name>mccormick_func</function_name>

@@ -11,9 +11,6 @@ function test_all_with_fmincon_too()
 	disp('test_quad_func_3');
 	test_quad_func_3_with_fmincon_too();
 	disp(sprintf('\n'));
-	disp('test_linear_func');
-	test_linear_func_with_fmincon_too();
-	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func_with_fmincon_too();
 	disp(sprintf('\n'));
@@ -31,9 +28,6 @@ function test_all_with_fmincon_too()
 	disp(sprintf('\n'));
 	disp('test_schuldt_func');
 	test_schuldt_func_with_fmincon_too();
-	disp(sprintf('\n'));
-	disp('test_asaadi_func');
-	test_asaadi_func_with_fmincon_too();
 	disp(sprintf('\n'));
 	disp('test_mccormick_func');
 	test_mccormick_func_with_fmincon_too();
