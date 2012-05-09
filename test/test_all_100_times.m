@@ -11,9 +11,6 @@ function test_all_100_times()
 	disp('test_quad_func_3');
 	test_quad_func_3_100_times(1);
 	disp(sprintf('\n'));
-	disp('test_linear_func');
-	test_linear_func_100_times(1);
-	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func_100_times(1);
 	disp(sprintf('\n'));
@@ -31,9 +28,6 @@ function test_all_100_times()
 	disp(sprintf('\n'));
 	disp('test_schuldt_func');
 	test_schuldt_func_100_times(1);
-	disp(sprintf('\n'));
-	disp('test_asaadi_func');
-	test_asaadi_func_100_times(1);
 	disp(sprintf('\n'));
 	disp('test_mccormick_func');
 	test_mccormick_func_100_times(1);

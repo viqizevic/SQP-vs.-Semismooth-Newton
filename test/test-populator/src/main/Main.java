@@ -33,9 +33,9 @@ import org.xml.sax.SAXException;
  * 
  * Directories tree:
  * |
- * |-- Eclipse-Workspace
- *    |-- SQP-vs.-SSN
- *       |-- SQP-vs.-Semismooth-Newton
+ * |-- workspace (Eclipse workspace)
+ *    |-- SQP-vs.-SSN (Project name)
+ *       |-- SQP-vs.-Semismooth-Newton (The Git repository)
  *           |-- tex
  *           |-- test
  *              |-- 1st_test_problem_func
