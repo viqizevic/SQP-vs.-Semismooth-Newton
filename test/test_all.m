@@ -26,6 +26,9 @@ function test_all()
 	disp('test_bazaraa_shetty_func');
 	test_bazaraa_shetty_func(1);
 	disp(sprintf('\n'));
+	disp('test_beale_func');
+	test_beale_func(1);
+	disp(sprintf('\n'));
 	disp('test_mccormick_func');
 	test_mccormick_func(1);
 	disp(sprintf('\n'));

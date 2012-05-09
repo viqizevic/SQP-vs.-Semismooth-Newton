@@ -34,5 +34,19 @@ under the repository **SQP-vs.-Semismooth-Newton**.
 If you want to change this, you should change the property *configFile*
 in this class.
 
+---
+
+## How to add a new test problem?
+
+Add the objective function of the problem
+in the file **functions.xml** in folder **data**.
+Add the problem in the file **problems.xml** in **data**.
+Run the main class in **Main.java** to populate the test files.
+You can find a folder under **test** with the name of the new function.
+To find the test files under [Matlab][] you have
+tell it to add the new folder into the it's search paths.
+Configure this under **File** -> **Set Paths**.
+
+
 [matlab]: http://de.wikipedia.org/wiki/MATLAB "MATLAB"
 [eclipse]: http://eclipse.org "Eclipse"

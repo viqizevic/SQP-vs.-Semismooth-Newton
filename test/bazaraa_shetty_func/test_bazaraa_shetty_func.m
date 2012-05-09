@@ -3,7 +3,7 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_bazaraa_shetty_func(show
     b = [20; 20];
     x0 = [5; 5];
     tol = 0.0001;
-    itmax = 200;
+    itmax = 100;
     G = [ -eye(length(a)); eye(length(b)) ];
     r = [ -a; b ];
     tic;

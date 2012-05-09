@@ -26,6 +26,9 @@ function test_all_with_sqp_octave_too()
 	disp('test_bazaraa_shetty_func');
 	test_bazaraa_shetty_func_with_sqp_octave_too(1);
 	disp(sprintf('\n'));
+	disp('test_beale_func');
+	test_beale_func_with_sqp_octave_too(1);
+	disp(sprintf('\n'));
 	disp('test_mccormick_func');
 	test_mccormick_func_with_sqp_octave_too(1);
 	disp(sprintf('\n'));

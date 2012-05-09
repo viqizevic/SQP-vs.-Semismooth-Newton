@@ -81,6 +81,24 @@
 	</function>
 
 	<function>
+		<name>beale_func</name>
+		<var>x</var>
+		<def>
+	y = (1.5-x(1)*(1-x(2)))^2+(2.25-x(1)*(1-x(2)^2))^2+(2.625-x(1)*(1-x(2)^3))^2;
+		</def>
+		<grad>not available</grad>
+		<hess>not available</hess>
+	</function>
+
+	<function>
+		<name>spellucci_func</name>
+		<var>x</var>
+		<def>y = 2*x(1)^3 + x(2)^2 + x(1)^2*x(2)^2 + 4*x(1)*x(2) + 3;</def>
+		<grad>not available</grad>
+		<hess>not available</hess>
+	</function>
+
+	<function>
 		<name>schuldt_func</name>
 		<var>x</var>
 		<def>y = x(2)+(1/100000)*(x(2)-x(1)^2)^2;</def>

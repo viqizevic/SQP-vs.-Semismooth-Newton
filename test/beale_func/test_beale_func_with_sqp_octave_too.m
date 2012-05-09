@@ -1,21 +1,21 @@
-function test_bazaraa_shetty_func_with_sqp_octave_too(show)
+function test_beale_func_with_sqp_octave_too(show)
     a = [-20; -20];
     b = [20; 20];
-    x0 = [5; 5];
+    x0 = [5; 0];
     tol = 0.0001;
     itmax = 100;
     G = [ -eye(length(a)); eye(length(b)) ];
     r = [ -a; b ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('bazaraa_shetty_func','grad_bazaraa_shetty_func','hess_bazaraa_shetty_func',G,r,x0,itmax,tol);
-    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('bazaraa_shetty_func','grad_bazaraa_shetty_func','hess_bazaraa_shetty_func',G,r,x0,itmax,tol);
+    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('beale_func','grad_beale_func','hess_beale_func',G,r,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('beale_func','grad_beale_func','hess_beale_func',G,r,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
     t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
     str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('bazaraa_shetty_func','grad_bazaraa_shetty_func','hess_bazaraa_shetty_func',G,r,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('beale_func','grad_beale_func','hess_beale_func',G,r,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
@@ -44,5 +44,5 @@ function test_bazaraa_shetty_func_with_sqp_octave_too(show)
 end
 
 function obj = phi(x)
-    obj = bazaraa_shetty_func(x);
+    obj = beale_func(x);
 end

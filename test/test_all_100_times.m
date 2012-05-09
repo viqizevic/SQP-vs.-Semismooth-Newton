@@ -26,6 +26,9 @@ function test_all_100_times()
 	disp('test_bazaraa_shetty_func');
 	test_bazaraa_shetty_func_100_times(1);
 	disp(sprintf('\n'));
+	disp('test_beale_func');
+	test_beale_func_100_times(1);
+	disp(sprintf('\n'));
 	disp('test_mccormick_func');
 	test_mccormick_func_100_times(1);
 	disp(sprintf('\n'));

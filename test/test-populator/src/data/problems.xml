@@ -125,8 +125,26 @@
 		<b>[20; 20]</b>
 		<x0>[5; 5]</x0>
 		<tolerance>0.0001</tolerance>
-		<max_iteration>200</max_iteration>
+		<max_iteration>100</max_iteration>
 	</problem>
+
+	<problem>
+		<function_name>beale_func</function_name>
+		<a>[-20; -20]</a>
+		<b>[20; 20]</b>
+		<x0>[5; 0]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+
+	<!--problem>
+		<function_name>spellucci_func</function_name>
+		<a>[-20; -20]</a>
+		<b>[20; 20]</b>
+		<x0>[-5; -5]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem-->
 	
 	<!--problem>
 		<function_name>schuldt_func</function_name>
