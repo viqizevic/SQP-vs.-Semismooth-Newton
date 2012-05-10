@@ -4,8 +4,10 @@ function test_colville_func_with_sqp_octave_too(show)
     x0 = [3; -1; -3; -1];
     tol = 0.001;
     itmax = 100;
-    G = [ -eye(length(a)); eye(length(b)) ];
-    r = [ -a; b ];
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('colville_func','grad_colville_func','hess_colville_func',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('colville_func','grad_colville_func','hess_colville_func',G,r,x0,itmax,tol);

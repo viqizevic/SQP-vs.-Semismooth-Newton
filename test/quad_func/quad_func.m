@@ -1,4 +1,5 @@
 function y = quad_func(x)
-	xd = 4;
-	y = norm(x-xd)^2;
+	Q = 2*eye(2);
+	q = -2*[4; 7];
+	y = 0.5*x'*Q*x + q'*x;
 end

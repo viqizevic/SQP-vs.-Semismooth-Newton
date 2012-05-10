@@ -4,8 +4,10 @@ function test_dixon_2_dim_func_1_with_sqp_octave_too(show)
     x0 = [-6; -7];
     tol = 0.001;
     itmax = 500;
-    G = [ -eye(length(a)); eye(length(b)) ];
-    r = [ -a; b ];
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_2_dim_func_1','grad_dixon_2_dim_func_1','hess_dixon_2_dim_func_1',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_2_dim_func_1','grad_dixon_2_dim_func_1','hess_dixon_2_dim_func_1',G,r,x0,itmax,tol);

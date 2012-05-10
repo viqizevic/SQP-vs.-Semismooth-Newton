@@ -1,11 +1,13 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_quad_func(show)
-    a = 3;
-    b = 10;
-    x0 = 8;
+    a = [3; 6];
+    b = [10; 20];
+    x0 = [8; 17];
     tol = 0.001;
     itmax = 100;
-    G = [ -eye(length(a)); eye(length(b)) ];
-    r = [ -a; b ];
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_func','grad_quad_func','hess_quad_func',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func','grad_quad_func','hess_quad_func',G,r,x0,itmax,tol);

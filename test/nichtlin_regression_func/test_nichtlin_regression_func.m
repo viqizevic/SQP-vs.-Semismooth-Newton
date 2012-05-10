@@ -4,8 +4,10 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_nichtlin_regression_func
     x0 = [0.2; 0.5];
     tol = 0.001;
     itmax = 100;
-    G = [ -eye(length(a)); eye(length(b)) ];
-    r = [ -a; b ];
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('nichtlin_regression_func','grad_nichtlin_regression_func','hess_nichtlin_regression_func',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('nichtlin_regression_func','grad_nichtlin_regression_func','hess_nichtlin_regression_func',G,r,x0,itmax,tol);

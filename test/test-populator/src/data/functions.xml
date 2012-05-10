@@ -4,6 +4,22 @@
 		<name>quad_func</name>
 		<var>x</var>
 		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>[1 0; 0 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[1; 1]</constant_value>
+		</constant>
+		<def>y = 0.5*x'*Q*x + q'*x;</def>
+		<grad>g = Q*x + q;</grad>
+		<hess>H = Q;</hess>
+	</function>
+
+	<function>
+		<name>norm_func</name>
+		<var>x</var>
+		<constant>
 			<constant_name>xd</constant_name>
 			<constant_value>3</constant_value>
 		</constant>

@@ -4,8 +4,10 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_mccormick_func(show)
     x0 = [0; -0.75];
     tol = 0.0001;
     itmax = 200;
-    G = [ -eye(length(a)); eye(length(b)) ];
-    r = [ -a; b ];
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('mccormick_func','grad_mccormick_func','hess_mccormick_func',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('mccormick_func','grad_mccormick_func','hess_mccormick_func',G,r,x0,itmax,tol);

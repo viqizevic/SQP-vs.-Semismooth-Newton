@@ -4,8 +4,10 @@ function test_{var_function_name}_with_fmincon_too()
 	x0 = {var_x0};
 	tol = {var_tol};
 	itmax = {var_itmax};
-	G = [ -eye(length(a)); eye(length(b)) ];
-	r = [ -a; b ];
+    G = {var_G};
+    r = {var_r};
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
 	tic;
 	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',G,r,x0,m0,itmax,tol);
 	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',G,r,x0,itmax,tol);

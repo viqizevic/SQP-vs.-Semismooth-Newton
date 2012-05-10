@@ -8,8 +8,11 @@ function test_all_100_times()
 	disp('test_quad_func_2');
 	test_quad_func_2_100_times(1);
 	disp(sprintf('\n'));
-	disp('test_quad_func_3');
-	test_quad_func_3_100_times(1);
+	disp('test_norm_func');
+	test_norm_func_100_times(1);
+	disp(sprintf('\n'));
+	disp('test_norm_func_1');
+	test_norm_func_1_100_times(1);
 	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func_100_times(1);
