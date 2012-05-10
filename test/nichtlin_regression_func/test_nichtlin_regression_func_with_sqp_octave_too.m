@@ -24,7 +24,7 @@ function test_nichtlin_regression_func_with_sqp_octave_too(show)
     t2 = sprintf('solved in %.2f ms.',t_sqp*1000);
     str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
     tic;
-    [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,[],[],a,b);
+    [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,[],@g);
     t_oct = toc;
     x3 = sprintf('%.3f ',x_oct);
     f3 = sprintf('f(x_oct) = %.3f',fval_oct);
@@ -47,4 +47,17 @@ end
 
 function obj = phi(x)
     obj = nichtlin_regression_func(x);
+end
+
+function s = g(x)
+    a = [-2; -2];
+    b = [10; 10];
+    x0 = [0.2; 0.5];
+    tol = 0.001;
+    itmax = 100;
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
+    s = r - G*x;
 end
