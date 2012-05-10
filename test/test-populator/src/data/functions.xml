@@ -102,16 +102,12 @@
 		<def>
 	y = (1.5-x(1)*(1-x(2)))^2+(2.25-x(1)*(1-x(2)^2))^2+(2.625-x(1)*(1-x(2)^3))^2;
 		</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
 	</function>
 
 	<function>
 		<name>spellucci_func</name>
 		<var>x</var>
 		<def>y = 2*x(1)^3 + x(2)^2 + x(1)^2*x(2)^2 + 4*x(1)*x(2) + 3;</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
 	</function>
 
 	<function>
@@ -146,8 +142,6 @@
 		<name>mccormick_func</name>
 		<var>x</var>
 		<def>y = sin(x(1)+x(2)) + (x(1)-x(2))^2 - 1.5*x(1) + 2.5*x(2) + 1;</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
 	</function>
 
 	<!--function>
@@ -160,8 +154,6 @@
 		y = y + ( -0.1*k + exp( -(1/x(1)) * ( u - x(2) )^x(3) ) )^2;
 	end
 		</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
 	</function-->
 
 	<function>
@@ -239,8 +231,6 @@
 		<var>x</var>
 		<def>y = 100*(x(2)-x(1)^2)^2 + (1-x(1))^2 + 90*(x(4)-x(3)^2)^2 + (1-x(3))^2 ...
 				 + 10.1*((x(2)-1)^2 + (x(4)-1)^2) + 19.8*(x(2)-1)*(x(4)-1);</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
 	</function>
 
 	<function>
@@ -266,8 +256,6 @@
 		y = y - ( (log(x(k)-2))^2 + (log(10-x(k)))^2 );
 	end
 		</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
 	</function>
 
 	<function>
@@ -288,8 +276,6 @@
 		y = y + ( x(1)*xi(k) + x(2) - eta(k) )^2;
 	end
 		</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
 	</function>
 
 	<function>
@@ -310,8 +296,6 @@
 		y = y + ( x(1)*(xi(k) - x(2))^2 + x(3) - eta(k) )^2;
 	end
 		</def>
-		<grad>not available</grad>
-		<hess>not available</hess>
 	</function>
 
 	<function>
