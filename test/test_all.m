@@ -8,11 +8,17 @@ function test_all()
 	disp('test_quad_func_2');
 	test_quad_func_2(1);
 	disp(sprintf('\n'));
+	disp('test_quad_func_3');
+	test_quad_func_3(1);
+	disp(sprintf('\n'));
 	disp('test_norm_func');
 	test_norm_func(1);
 	disp(sprintf('\n'));
 	disp('test_norm_func_1');
 	test_norm_func_1(1);
+	disp(sprintf('\n'));
+	disp('test_norm_func_2');
+	test_norm_func_2(1);
 	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func(1);
