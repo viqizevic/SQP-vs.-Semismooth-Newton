@@ -62,6 +62,34 @@ und die zugehörigen Punkte $r^* \in R$ und $s^* \in S$, die
 diesen kürzesten Abstand bilden.
 \end{testproblem}
 
+Seien $r = (x_1, x_2)^T \in R$ und $s = (x_3, x_4)^T \in S$.
+Der Abstand zwischen $r$ und $s$ ist durch
+\begin{equation}
+  \| r - s \|^2 = (x_1 - x_3)^2 + (x_2 - x_4)^2 = x^T H x
+\end{equation}
+gegeben, wobei
+\begin{equation}
+  H :=
+  \left(\begin{array}{cccc}
+     1 &  0 & -1 &  0 \\
+     0 &  1 &  0 & -1 \\
+    -1 &  0 &  1 &  0 \\
+     0 & -1 &  0 &  1
+  \end{array}\right).
+\end{equation}
+
+Die Bedingungen $r \in R$ und $s \in S$ sind durch
+\begin{align}
+    x_1, x_2 & \geq 0 \\
+  x_1 + 2x_2 & \leq 2 \\
+         x_4 & \geq 2 \\
+   x_3 + x_4 & \geq 3 \\
+  x_3 + 2x_4 & \leq 6
+\end{align}
+gegeben.
+D.\,h. das Problem kann als ein Optimierungsproblem mit einer quadratischen
+Zielfunktion und linearen Ungleichungsnebenbedingungen dargestellt werden.
+
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[scale=2.5]
@@ -98,13 +126,24 @@ diesen kürzesten Abstand bilden.
 \label{fig:abstand_zw_dreiecken}
 \end{figure}
 
+\begin{testproblem}
+Löse folgendes, einfaches, 2-dimensionales Problem.
+\begin{align}
+  \min_{x \in \R^2}\ (x_1 - 1)^2 + (x_2 &- 2.5)^2 \\
+  \nb -x_1 + 2x_2 & \leq 2 \\
+       x_1 + 2x_2 & \leq 6 \\
+       x_1 - 2x_2 & \leq 6 \\
+                0 & \leq x_1, x_2
+\end{align}
+\end{testproblem}
+
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}[scale=2.5]
   
   % Die zulässige Menge
   \draw[fill=blue!10] (0,0) -- (0,1) -- (2,2) -- (4,1) -- (2,0) -- cycle;
-  \draw (1.7,1) node {$F$};
+  \draw (1.7,1) node {$\F$};
   
   % Die Niveaulinie
   \draw[dashed,color=red] (1,2.5) circle (0.25);
