@@ -9,7 +9,7 @@ Zielfunktion.
 $D$ sei der Definitionsbereich von $f$.
 $\F$ sei eine nichtleere Teilmenge von $D$, die man als Lösungsmenge bezeichnet.
 Alle Elemente von $\F$ werden als zulässige Punkte bezeichnet.
-$\F$ wird durch die sogennanten Nebenbedingungen definiert.
+$\F$ wird durch die sogennanten Nebenbedingungen oder Restriktionen definiert.
 \end{definition}
 
 Ein einfaches Beispiel ist das Problem
@@ -19,7 +19,7 @@ Ein einfaches Beispiel ist das Problem
 
 Falls $\F = D$ gilt,
 dann bezeichnet man das Optimierungsproblem als unrestringiert.
-Es besitzt also keine Nebenbedingungen.
+Es besitzt also keine Restriktionen.
 Ansonsten heißt es ein restringiertes Optimierungsproblem.
 
 Man definiert in der Regel Optimierungsproblem als ein Minimierungsproblem,
@@ -27,7 +27,7 @@ weil ein Maximierungsproblem $\max g(x)$ zu dem Minimierungsproblem
 $\min f(x) := -g(x)$ äquivalent ist.
 
 \begin{definition}
-\emph{(Globale und lokale Lösung)}
+\emph{(Globale und lokale Lösung, vgl. Definition 1.1.4 in \cite[S.~2f]{alt})}
 Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
 globales Minimum, wenn
 \begin{equation}
@@ -81,6 +81,8 @@ abhängig.
 
 D.\,h., die Menge $\F$ sieht hier so aus:
 $\F = \{ x \in \R^n \,|\, g(x) \leq 0, \, h(x) = 0  \}$.
+Die Bezeichnung ``Nb.'' steht hier als Abkürzung für
+``unter der Nebenbedingung'' oder ``unter den Nebenbedingungen''.
 
 Man kann dieses Problem ausführlicher schreiben, indem man die Funktionen
 $g$ und $h$ in skalare Funktionen $g_1, \ldots, g_p : \R^n \rightarrow \R$
