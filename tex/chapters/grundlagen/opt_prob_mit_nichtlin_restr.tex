@@ -6,37 +6,56 @@ Wir schreiben nochmal das Problem~\eqref{prob:opt_prob_mit_nichtlin_restr}.
                   & h_j(x) = 0 \text{ für } j = 1,\ldots,m
 \end{align*}
 
+Um die Optimalitätsbedingung des Problems~\eqref{prob:opt_prob_mit_nichtlin_restr}
+zu bekommen, definiert man die sogennante Regularitätsbedingung
+(vgl. Definition 7.2.14 in \cite[S.~261]{alt}),
+die wir hier nicht näher betrachtet werden.
+Die folgende Definition ist eine spezielle Bedingung,
+aus der diese Regularitätsbedingung folgt.
+Diese Regularitätsbedingung kann aber
+noch von anderen Bedingungen hergeleitet werden.
+
+
 \begin{definition}
-\emph{(Mangasarian-Fromowitz-Regularitätsbedingung)}\\
+\emph{(Mangasarian-Fromowitz-Regularitätsbedingung, vgl. Satz 7.2.24 in
+\cite[S.~270]{alt})}
 Sei $x \in \F$. Mit
 $\,\I(x) := \{ i \in \{1,\ldots,p\} \ | \ g_i(x) = 0 \}$
 wird die Indexmenge der in $x$ aktiven Ungleichungsrestriktionen bezeichnet.
 Seien $g_i$ und $h_j$ differenzierbar in~$x$
 für $i=1,\ldots,p$ und $j=1,\ldots,m$.
 Der Punkt $x$ erfüllt die Mangasarian-Fromowitz-Regularitätsbedingung,
-wenn die Gradienten \mbox{$\nabla h_j(x),\ j = 1,\ldots,m,$} linear unabhängig
-sind und ein Vektor $d \in \R^n$ existiert mit
+wenn die Gradienten
+\begin{equation}
+ \nabla h_j(x),\ j = 1,\ldots,m, \text{ linear unabhängig}
+\end{equation}
+sind und ein Vektor $d \in \R^n$ mit
 \begin{equation}
   \nabla g_i(x)^T d < 0,\ i \in \I(x)
   \quad \text{und} \quad
-  \nabla h_j(x)^T d = 0,\ j = 1,\ldots,m.
+  \nabla h_j(x)^T d = 0,\ j = 1,\ldots,m
 \end{equation}
+existiert.
 \end{definition}
 
+Der folgende Satz gilt eigentlich mit der allgemeinen Regularitätsbedingung.
+Wir verwenden aber hier nur die Mangasarian-Fromowitz-Regularitätsbedingung.
+
 \begin{theorem}
-\emph{(Notwendige Bedingung)}
+\emph{(Notwendige Bedingung, vgl. Satz 7.2.11 in \cite[S.~260]{alt})}\\
 Sei $\xopt$ eine lokale Lösung des
 Problems~\eqref{prob:opt_prob_mit_nichtlin_restr} und $\xopt$ erfülle die
 Mangasarian-Fromowitz-Regularitätsbedingung.
 Sei $f$ in $\xopt$ differenzierbar.
 Dann existieren Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$,
 so dass
-\begin{align}
+\begin{gather}
   \nabla f(\xopt) + \sum_{i=1}^{m} \lambda_i \nabla h_i(\xopt)
-    + \sum_{j=1}^{p} \mu_i \nabla g_j(\xopt) & = 0 \\
-  h(\xopt) & = 0 \\
-  \mu \geq 0, \quad \mu^T g(\xopt) = 0, \quad g(\xopt) & \leq 0
-\end{align}
+    + \sum_{j=1}^{p} \mu_j \nabla g_j(\xopt) = 0 \\
+  \mu_j \geq 0, \quad \mu_j g_j(\xopt) = 0, \quad
+  j=1,\ldots,p
+\end{gather}
 \end{theorem}
 
-% TODO hinreichende Bedingung?
+Für die hinreichende Bedingung zweiter Ordnung verweisen wir auf Satz 7.3.1
+in \cite[S.~273]{alt}.
