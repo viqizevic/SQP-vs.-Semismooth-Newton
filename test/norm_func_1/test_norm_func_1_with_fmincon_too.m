@@ -1,23 +1,23 @@
-function test_himmelblau_func_with_fmincon_too()
-	a = [-20; -20];
-	b = [20; 20];
-	x0 = [5; 5];
-	tol = 0.0001;
-	itmax = 200;
+function test_norm_func_1_with_fmincon_too()
+	a = [3; 6; 2];
+	b = [10; 20; 5];
+	x0 = [8; 17; 4];
+	tol = 0.001;
+	itmax = 100;
 	G = [];
 	r = [];
 	G = [ G; -eye(length(a)); eye(length(b)) ];
 	r = [ r; -a; b ];
 	tic;
-	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('himmelblau_func','grad_himmelblau_func','hess_himmelblau_func',G,r,x0,m0,itmax,tol);
-	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('himmelblau_func','grad_himmelblau_func','hess_himmelblau_func',G,r,x0,itmax,tol);
+	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('norm_func_1','grad_norm_func_1','hess_norm_func_1',G,r,x0,m0,itmax,tol);
+	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('norm_func_1','grad_norm_func_1','hess_norm_func_1',G,r,x0,itmax,tol);
 	t_ssn = toc;
 	x1 = sprintf('%.3f ',x_ssn);
 	f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
 	t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
 	str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
 	tic;
-	[x_sqp,fval_sqp,it_sqp] = seq_quad_prog('himmelblau_func','grad_himmelblau_func','hess_himmelblau_func',G,r,x0,itmax,tol);
+	[x_sqp,fval_sqp,it_sqp] = seq_quad_prog('norm_func_1','grad_norm_func_1','hess_norm_func_1',G,r,x0,itmax,tol);
 	t_sqp = toc;
 	x2 = sprintf('%.3f ',x_sqp);
 	f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
@@ -25,7 +25,7 @@ function test_himmelblau_func_with_fmincon_too()
 	str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
 	options = optimset('Algorithm','active-set','Display','off');
 	tic;
-	[x_fmc,fval_fmc,exitflag,output] = fmincon('himmelblau_func',x0,G,r,[],[],[],[],[],options);
+	[x_fmc,fval_fmc,exitflag,output] = fmincon('norm_func_1',x0,G,r,[],[],[],[],[],options);
 	t_fmc = toc;
 	x3 = sprintf('%.3f ',x_fmc);
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);

@@ -2,10 +2,12 @@ function test_rosenbrock_func_with_fmincon_too()
 	a = [-10; -10];
 	b = [10; 10];
 	x0 = [-1; 2];
-	tol = 0.00001;
+	tol = 0.0001;
 	itmax = 100;
-	G = [ -eye(length(a)); eye(length(b)) ];
-	r = [ -a; b ];
+	G = [];
+	r = [];
+	G = [ G; -eye(length(a)); eye(length(b)) ];
+	r = [ r; -a; b ];
 	tic;
 	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('rosenbrock_func','grad_rosenbrock_func','hess_rosenbrock_func',G,r,x0,m0,itmax,tol);
 	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('rosenbrock_func','grad_rosenbrock_func','hess_rosenbrock_func',G,r,x0,itmax,tol);
@@ -23,7 +25,7 @@ function test_rosenbrock_func_with_fmincon_too()
 	str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
 	options = optimset('Algorithm','active-set','Display','off');
 	tic;
-	[x_fmc,fval_fmc,exitflag,output] = fmincon('rosenbrock_func',x0,[],[],[],[],a,b,[],options);
+	[x_fmc,fval_fmc,exitflag,output] = fmincon('rosenbrock_func',x0,G,r,[],[],[],[],[],options);
 	t_fmc = toc;
 	x3 = sprintf('%.3f ',x_fmc);
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);

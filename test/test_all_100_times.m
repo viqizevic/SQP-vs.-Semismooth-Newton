@@ -1,4 +1,5 @@
 function test_all_100_times()
+	warning('off','all')
 	disp('test_quad_func');
 	test_quad_func_100_times(1);
 	disp(sprintf('\n'));

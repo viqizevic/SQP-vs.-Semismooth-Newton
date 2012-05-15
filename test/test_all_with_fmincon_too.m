@@ -1,4 +1,5 @@
 function test_all_with_fmincon_too()
+	warning('off','all')
 	disp('test_quad_func');
 	test_quad_func_with_fmincon_too();
 	disp(sprintf('\n'));
@@ -10,6 +11,15 @@ function test_all_with_fmincon_too()
 	disp(sprintf('\n'));
 	disp('test_quad_func_3');
 	test_quad_func_3_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_norm_func');
+	test_norm_func_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_norm_func_1');
+	test_norm_func_1_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_norm_func_2');
+	test_norm_func_2_with_fmincon_too();
 	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func_with_fmincon_too();
@@ -26,8 +36,8 @@ function test_all_with_fmincon_too()
 	disp('test_bazaraa_shetty_func');
 	test_bazaraa_shetty_func_with_fmincon_too();
 	disp(sprintf('\n'));
-	disp('test_schuldt_func');
-	test_schuldt_func_with_fmincon_too();
+	disp('test_beale_func');
+	test_beale_func_with_fmincon_too();
 	disp(sprintf('\n'));
 	disp('test_mccormick_func');
 	test_mccormick_func_with_fmincon_too();

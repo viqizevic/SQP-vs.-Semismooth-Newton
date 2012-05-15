@@ -1,4 +1,5 @@
 function test_all()
+	warning('off','all')
 	disp('test_quad_func');
 	test_quad_func(1);
 	disp(sprintf('\n'));

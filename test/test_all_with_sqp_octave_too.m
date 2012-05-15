@@ -1,4 +1,5 @@
 function test_all_with_sqp_octave_too()
+	warning('off','all')
 	disp('test_quad_func');
 	test_quad_func_with_sqp_octave_too(1);
 	disp(sprintf('\n'));
