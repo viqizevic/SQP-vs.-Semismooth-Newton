@@ -1,0 +1,35 @@
+% Daten für die Funktion f(x) = (2*x-2)^2 * (3*x+3)^2 + 10*x.
+% Aber die Funktionswerte wurden mit 0.1 multipliziert.
+% Die Werte bekommt man, in dem man folgende in Matlab schreibt.
+% > x = [-1.5:0.125:1.5]'
+% > A = [x, 0.1*example_func_1(x)]
+% Und das Ergebnis von A kopiert man in diese Datei.
+% Die Funktion **example_func_1** findet man
+% in der Datei **example_func_1.m** unter dem Ordner **extra**
+%
+%     x     0.1 * f(x)
+  -1.50000   4.12500
+  -1.37500   1.48057
+  -1.25000  -0.11094
+  -1.12500  -0.87100
+  -1.00000  -1.00000
+  -0.87500  -0.67725
+  -0.75000  -0.06094
+  -0.62500   0.71182
+  -0.50000   1.52500
+  -0.37500   2.28369
+  -0.25000   2.91406
+  -0.12500   3.36338
+   0.00000   3.60000
+   0.12500   3.61338
+   0.25000   3.41406
+   0.37500   3.03369
+   0.50000   2.52500
+   0.62500   1.96182
+   0.75000   1.43906
+   0.87500   1.07275
+   1.00000   1.00000
+   1.12500   1.37900
+   1.25000   2.38906
+   1.37500   4.23057
+   1.50000   7.12500

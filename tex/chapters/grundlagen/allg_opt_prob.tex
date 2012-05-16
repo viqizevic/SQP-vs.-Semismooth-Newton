@@ -12,11 +12,6 @@ Alle Elemente von $\F$ werden als zulässige Punkte bezeichnet.
 $\F$ wird durch die sogennanten Nebenbedingungen oder Restriktionen definiert.
 \end{definition}
 
-Ein einfaches Beispiel ist das Problem
-\[
-  \min_{x \in \R}\ (x-1)^2.
-\]
-
 Falls $\F = D$ gilt,
 dann bezeichnet man das Optimierungsproblem als unrestringiert.
 Es besitzt also keine Restriktionen.
@@ -62,11 +57,37 @@ Bei der globalen Optimierung versucht man, eine globale Lösung zu finden.
 Viele Verfahren versuchen nur lokale Lösungen zu bestimmen,
 weil Globale Lösungen nicht so einfach zu bestimmen sind.
 
-Die Aufgabenstellung bei der nichtlinearen Optimierung kann man
-spezifischer wie folgt definieren:
+\begin{example}\label{example:unrestr_opt_prob}
+\emph{(vgl. Beispiel 1.1.2 in \cite{alt})}\\
+Ein Beispiel eines unrestringierten Optimierungsproblems ist
+\begin{equation}
+  \min_{x \in \R}\ f(x) := (2x-2)^2 (3x+3)^2 + 10x.
+\end{equation}
+Das Problem hat eine strikte globale Lösung an der Stelle $\xopt = -1$
+und eine strikte lokale Lösung an der Stelle $x = 1$
+(siehe Abbildung~\ref{fig:beispiel_unrestr_opt_prob}).
+\end{example}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[yscale=0.7,xscale=2.5]
+  \draw[very thin,color=gray,ystep=2,xstep=0.5] (-1.47,-2.9) grid (1.47,7.4);
+  \draw[->] (-1.48,0) -- (1.48,0) node [above] {$x$};
+  \draw[->] (0,-3) -- (0,7.5) node [right] {$y$};
+  \foreach \x/\xtext in {-1,-0.5/-\frac{1}{2},0,0.5/\frac{1}{2},1}
+    \draw (\x,0.1) -- (\x,-0.1) node [below,fill=white] {$\xtext$};
+  \foreach \y/\ytext in {-2/-20,0,2/20,4/40,6/60}
+    \draw (0.03,\y) -- (-0.03,\y) node [left,fill=white] {$\ytext$};
+  \draw[color=blue] plot[smooth] file {images/beispiel-unrestr-opt-prob.table};
+\end{tikzpicture}
+\caption{Die Funktion von Beispiel \ref{example:unrestr_opt_prob}}
+\label{fig:beispiel_unrestr_opt_prob}
+\end{figure}
 
 \begin{definition}
 \emph{(Nichtlineare Optimierungsprobleme)}
+Die Aufgabenstellung bei der nichtlinearen Optimierung kann man
+spezifischer wie folgt definieren:
 \begin{align}
   \min_{x \in D}\ & f(x) \tag{PN}\label{prob:opt_prob_mit_nichtlin_restr} \\
               \nb & g(x) \leq 0 \notag \\
@@ -75,12 +96,11 @@ spezifischer wie folgt definieren:
 Die Zielfunktion ist wieder die Funktion $f:D \subseteq \R^n \rightarrow \R$.
 Die Nebenbedingungen sind von den Funktionen
 $g:D \subseteq \R^n \rightarrow \R^p$ und
-$h:D \subseteq \R^n \rightarrow \R^m$
-abhängig.
-\end{definition}
-
+$h:D \subseteq \R^n \rightarrow \R^m$ abhängig.
 D.\,h., die Menge $\F$ sieht hier so aus:
 $\F = \{ x \in \R^n \,|\, g(x) \leq 0, \, h(x) = 0  \}$.
+\end{definition}
+
 Die Bezeichnung ``Nb.'' steht hier als Abkürzung für
 ``unter der Nebenbedingung'' oder ``unter den Nebenbedingungen''.
 
