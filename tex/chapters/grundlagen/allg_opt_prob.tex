@@ -58,7 +58,7 @@ Viele Verfahren versuchen nur lokale Lösungen zu bestimmen,
 weil Globale Lösungen nicht so einfach zu bestimmen sind.
 
 \begin{example}\label{example:unrestr_opt_prob}
-\emph{(vgl. Beispiel 1.1.2 in \cite{alt})}\\
+\emph{(vgl. Beispiel 1.1.2 in \cite[S.~1]{alt})}\\
 Ein Beispiel eines unrestringierten Optimierungsproblems ist
 \begin{equation}
   \min_{x \in \R}\ f(x) := (2x-2)^2 (3x+3)^2 + 10x.
@@ -68,12 +68,12 @@ und eine strikte lokale Lösung an der Stelle $x = 1$
 (siehe Abbildung~\ref{fig:beispiel_unrestr_opt_prob}).
 \end{example}
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \begin{tikzpicture}[yscale=0.7,xscale=2.5]
   \draw[very thin,color=gray,ystep=2,xstep=0.5] (-1.47,-2.9) grid (1.47,7.4);
   \draw[->] (-1.48,0) -- (1.48,0) node [above] {$x$};
-  \draw[->] (0,-3) -- (0,7.5) node [right] {$y$};
+  \draw[->] (0,-3) -- (0,7.5) node [right] {$f(x)$};
   \foreach \x/\xtext in {-1,-0.5/-\frac{1}{2},0,0.5/\frac{1}{2},1}
     \draw (\x,0.1) -- (\x,-0.1) node [below,fill=white] {$\xtext$};
   \foreach \y/\ytext in {-2/-20,0,2/20,4/40,6/60}
