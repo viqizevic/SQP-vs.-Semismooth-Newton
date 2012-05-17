@@ -1,7 +1,16 @@
 Nun kommen wir zu den allgemeinen nichtlinearen Optimierungsproblemen.
 
+\begin{definition}
+Wir definieren die Lagrange-Funktion
+$\Lagrange : D \times \R^m \times \R^p \rightarrow \R$ durch
+\begin{equation}
+\Lagrange(x,\lambda,\mu) := f(x) + \lambda^T h(x) + \mu^T g(x).
+\end{equation}
+\end{definition}
+
 \begin{algorithm}
-\emph{(Lagrange-Newton-Verfahren)}
+\emph{(Lagrange-Newton-SQP-Verfahren, vgl. Verfahren 8.1.4 in
+\cite[S.~294]{alt})}
 \begin{enumerate}
   \item Wähle einen Startpunkt $z^0 := (x^0, \lambda^0, \mu^0)$
         und $\epsilon > 0$.
@@ -9,7 +18,8 @@ Nun kommen wir zu den allgemeinen nichtlinearen Optimierungsproblemen.
   \item Berechne die Suchrichtung $d^k$ durch Lösung des Problems
     \begin{align}
       \min_{d \in \R^n}\ &
-        \frac{1}{2} d^T L_{xx}(x^k,\lambda^k,\mu^k) d + \nabla f(x^k)^T d \\
+        \frac{1}{2} d^T \Lagrange_{xx}(x^k,\lambda^k,\mu^k) d
+          + \nabla f(x^k)^T d \\
       \nb & h(x^k) + h'(x^k) d = 0 \\
           & g(x^k) + g'(x^k) d \leq 0
     \end{align}
