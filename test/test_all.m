@@ -21,6 +21,9 @@ function test_all()
 	disp('test_norm_func_2');
 	test_norm_func_2(1);
 	disp(sprintf('\n'));
+	disp('test_norm_func_3');
+	test_norm_func_3(1);
+	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func(1);
 	disp(sprintf('\n'));

@@ -4,27 +4,36 @@ function test_{var_function_name}_with_sqp_octave_too(show)
     x0 = {var_x0};
     tol = {var_tol};
     itmax = {var_itmax};
+    A = {var_A};
+    b = {var_b};
     G = {var_G};
     r = {var_r};
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',G,r,x0,itmax,tol);
-    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',G,r,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',A,b,G,r,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
     t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
     str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',G,r,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',A,b,G,r,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
     t2 = sprintf('solved in %.2f ms.',t_sqp*1000);
     str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
     tic;
-    [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,[],@g);
+    if (length(b) == 0)
+        [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,[],@g);
+    end
+    if (length(r) == 0)
+        [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,@h,[]);
+    end
+    if (length(b) ~= 0 && length(r) ~= 0)
+        [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,@h,@g);
+    end
     t_oct = toc;
     x3 = sprintf('%.3f ',x_oct);
     f3 = sprintf('f(x_oct) = %.3f',fval_oct);
@@ -49,12 +58,15 @@ function obj = phi(x)
     obj = {var_function_name}(x);
 end
 
+function c = h(x)
+    A = {var_A};
+    b = {var_b};
+    c = b - A*x;
+end
+
 function s = g(x)
     u = {var_u};
     v = {var_v};
-    x0 = {var_x0};
-    tol = {var_tol};
-    itmax = {var_itmax};
     G = {var_G};
     r = {var_r};
     G = [ G; -eye(length(u)); eye(length(v)) ];

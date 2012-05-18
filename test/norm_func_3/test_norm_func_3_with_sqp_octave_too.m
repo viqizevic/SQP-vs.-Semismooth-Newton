@@ -1,24 +1,24 @@
-function test_himmelblau_func_1_with_sqp_octave_too(show)
-    u = [5; 5];
-    v = [20; 20];
-    x0 = [15; 15];
-    tol = 0.0001;
+function test_norm_func_3_with_sqp_octave_too(show)
+    u = [];
+    v = [];
+    x0 = [2; -1];
+    tol = 0.001;
     itmax = 100;
-    A = [];
-    b = [];
+    A = [1 1];
+    b = [1];
     G = [];
     r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     tic;
-    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',A,b,G,r,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('norm_func_3','grad_norm_func_3','hess_norm_func_3',A,b,G,r,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
     t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
     str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',A,b,G,r,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('norm_func_3','grad_norm_func_3','hess_norm_func_3',A,b,G,r,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
@@ -55,18 +55,18 @@ function test_himmelblau_func_1_with_sqp_octave_too(show)
 end
 
 function obj = phi(x)
-    obj = himmelblau_func_1(x);
+    obj = norm_func_3(x);
 end
 
 function c = h(x)
-    A = [];
-    b = [];
+    A = [1 1];
+    b = [1];
     c = b - A*x;
 end
 
 function s = g(x)
-    u = [5; 5];
-    v = [20; 20];
+    u = [];
+    v = [];
     G = [];
     r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];

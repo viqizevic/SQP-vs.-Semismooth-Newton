@@ -108,6 +108,19 @@
 		<max_iteration>100</max_iteration>
 	</problem>
 
+	<problem>
+		<function_name>norm_func</function_name>
+		<constant>
+			<constant_name>xd</constant_name>
+			<constant_value>[0; 0]</constant_value>
+		</constant>
+		<A>[1 1]</A>
+		<b>[1]</b>
+		<x0>[2; -1]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+
 	<!--problem>
 		<function_name>linear_func</function_name>
 		<constant>

@@ -21,6 +21,9 @@ function test_all_with_fmincon_too()
 	disp('test_norm_func_2');
 	test_norm_func_2_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_norm_func_3');
+	test_norm_func_3_with_fmincon_too();
+	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func_with_fmincon_too();
 	disp(sprintf('\n'));

@@ -21,6 +21,9 @@ function test_all_100_times()
 	disp('test_norm_func_2');
 	test_norm_func_2_100_times(1);
 	disp(sprintf('\n'));
+	disp('test_norm_func_3');
+	test_norm_func_3_100_times(1);
+	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func_100_times(1);
 	disp(sprintf('\n'));

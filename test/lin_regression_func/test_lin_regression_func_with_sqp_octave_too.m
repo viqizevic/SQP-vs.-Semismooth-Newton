@@ -4,27 +4,36 @@ function test_lin_regression_func_with_sqp_octave_too(show)
     x0 = [-20; 20];
     tol = 0.001;
     itmax = 100;
+    A = [];
+    b = [];
     G = [];
     r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('lin_regression_func','grad_lin_regression_func','hess_lin_regression_func',G,r,x0,itmax,tol);
-    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('lin_regression_func','grad_lin_regression_func','hess_lin_regression_func',G,r,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('lin_regression_func','grad_lin_regression_func','hess_lin_regression_func',A,b,G,r,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
     t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
     str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('lin_regression_func','grad_lin_regression_func','hess_lin_regression_func',G,r,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('lin_regression_func','grad_lin_regression_func','hess_lin_regression_func',A,b,G,r,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
     t2 = sprintf('solved in %.2f ms.',t_sqp*1000);
     str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
     tic;
-    [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,[],@g);
+    if (length(b) == 0)
+        [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,[],@g);
+    end
+    if (length(r) == 0)
+        [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,@h,[]);
+    end
+    if (length(b) ~= 0 && length(r) ~= 0)
+        [x_oct,fval_oct,info_oct,it_oct] = sqp(x0,@phi,@h,@g);
+    end
     t_oct = toc;
     x3 = sprintf('%.3f ',x_oct);
     f3 = sprintf('f(x_oct) = %.3f',fval_oct);
@@ -49,12 +58,15 @@ function obj = phi(x)
     obj = lin_regression_func(x);
 end
 
+function c = h(x)
+    A = [];
+    b = [];
+    c = b - A*x;
+end
+
 function s = g(x)
     u = [-20; -20];
     v = [20; 20];
-    x0 = [-20; 20];
-    tol = 0.001;
-    itmax = 100;
     G = [];
     r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];

@@ -1,21 +1,48 @@
-%SQP Sequential Quadratic Programming
+%  Function: [x, fval, it] = seq_quad_prog (f, gradf, hessf,
+%                                    A, b, G, r, x0, itmax, tol)
 %
-%   [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,x0,itmax,tol) attempts to solve the problem:
+%  Attempt to solve the problem
 %
-%   min f(x) subject to: A*x <= b
-%    x
-function [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,x0,itmax,tol)
+%        min f(x)
+%         x
+%
+%  subject to
+%
+%        A*x  = b
+%        G*x <= r
+%
+%  using the sequential quadratic programming method.
+%
+%  f     : The name of the objective function f : R^n -> R.
+%  gradf : The name of the function that returns the gradient of f.
+%  hessf : The name of the function that returns the hessian matrix of f.
+%  A     : A matrix with dimension m x n for the linear equality contraints.
+%  b     : A vector with m elements for the linear equality contraints.
+%  G     : A matrix with dimension p x n for the linear inequality constraints.
+%  r     : A vector with p elements for the linear inequality constraints.
+%  x0    : The start point for the algorithm.
+%  itmax : The maximal number of iterations allowed.
+%  tol   : The bound needed for the stop criteria.
+%
+function [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 	it = 0;
+	[p,n] = size(G);
+	n = length(x0);
 	x = x0;
 	stop = false;
 	while( ~stop )
 		% solve the problem:
-		% min 0.5*d'*hessf(x)*d + gradf(x)'*d subject to: A*x + A*d <= b
+		% min 0.5*d'*hessf(x)*d + gradf(x)'*d
 		%  d
+		% subject to: G*x + G*d <= r
 		Q = feval(hessf,x);
 		q = feval(gradf,x);
-		z = zeros(length(x),1);
-		[d, it2] = aktive_mengen_methode(Q,q,[],[],A,b-A*x,z,tol,itmax);
+		rd = [];
+		if (p ~= 0)
+			rd = r-G*x;
+		end
+		z = zeros(n,1);
+		[d, it2] = aktive_mengen_methode(Q,q,A,b,G,rd,z,tol,itmax);
 		it = it + it2;
 		if( norm(d) < tol )
 			stop = true; % => x is the solution
