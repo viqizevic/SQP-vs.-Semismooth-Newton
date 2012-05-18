@@ -70,7 +70,7 @@ die Definition der Abstiegsrichtung.
 
 \begin{definition}
 \emph{(Abstiegsrichtung, vgl. Definition 4.1.2 in \cite[S.~68]{alt})}\\
-Die Funktion $f:\R^n \rightarrow \R$ sei differenzierbar in $x$. Ein Vektor
+Die Funktion $f$ sei differenzierbar in $x$. Ein Vektor
 $d \in \R^n\backslash\{0\}$ heiﬂt Abstiegsrichtung von~$f$ in~$x$, wenn
 \begin{equation}
   \nabla f(x)^T d < 0
@@ -83,7 +83,7 @@ f(x)$ eine Abstiegsrichtung von~$f$ in~$x$.
 
 \begin{theorem}
 \emph{(vgl. Lemma 4.1.1 in \cite[S.~68]{alt})}\\
-Seien $x \in \R^n$, $f:\R^n \rightarrow \R$ differenzierbar in $x$ und $d$
+Seien $x \in \R^n$, $f$ differenzierbar in $x$ und $d$
 eine Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
 \begin{equation}
   f( x + \sigma d) < f(x) \qquad \forall \sigma \in \ ]0, \hat{\sigma}[.
@@ -93,7 +93,7 @@ eine Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
 Die meisten Optimierungsverfahren sind iterativ. Sie fangen also mit einem
 Anfangspunkt $x^0$ an und versuchen dann weitere Punkte ($x^1, x^2, \ldots , x^k
 , \ldots$) zu finden, die besser als die vorherige sind.
-Viele iterative Verfahren zur Bestimmung eine lokale Lˆsung sind h‰ufig
+Viele iterative Verfahren zur Bestimmung einer lokalen Lˆsung sind h‰ufig
 Abstiegsverfahren. In der $k$-ten Iteration bestimmen sie zu einem Punkt~$x^k$
 eine Abstiegsrichtung~$d^k$ und eine Schrittweite $\sigma_k$ so, dass f¸r
 $x^{k+1} := x^k + \sigma_k d^k$
@@ -105,14 +105,14 @@ gilt.
 \subsection{Gradientenverfahren}
 
 Das Gradientenverfahren ist ein einfaches Abstiegsverfahren,
-welches die negative Gradienten als Abstiegsrichtungen verwendet.
+welches die negativen Gradienten als Abstiegsrichtungen verwendet.
 
 \begin{algorithm}
 \emph{(Gradientenverfahren, vgl. Verfahren 4.2.39 in \cite[S.~98]{alt})}
 \begin{enumerate}
-  \item W‰hle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
+  \item W‰hle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
         Setze $k := 0$.
-  \item Ist $\|\nabla f(x^k)\| < \epsilon$ \label{list:stop_criteria_grad_verf}
+  \item Ist $\|\nabla f(x^k)\| < \varepsilon$ \label{list:stop_criteria_grad_verf}
         $\Rightarrow$ STOP.
   \item Setze $d^k := - \nabla f(x^k)$.
   \item Bestimme $\sigma_k$ so, dass
@@ -147,9 +147,9 @@ dass die Funktion $f$ zweimal differenzierbar sei.
 \begin{algorithm}
 \emph{(Newton-Verfahren, vgl. Verfahren 4.3.1 in \cite[S.~107]{alt})}
 \begin{enumerate}
-  \item W‰hle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
+  \item W‰hle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
         Setze $k := 0$.
-  \item Ist $\|\nabla f(x^k)\| < \epsilon$ \label{list:stop_criteria_newt_verf}
+  \item Ist $\|\nabla f(x^k)\| < \varepsilon$ \label{list:stop_criteria_newt_verf}
         $\Rightarrow$ STOP.
   \item Berechne die Lˆsung $d$ des linearen Gleichungssystems
         \begin{equation}
@@ -196,6 +196,3 @@ Dann bekommt man ein Abstiegsverfahren,
 welches man als das ged‰mpfte Newton-Verfahren bezeichnet.
 Wir verweisen auf das Unterkapitel 4.3.2 ¸ber das ged‰mpfte Newton-Verfahren in
 \cite[S.~111ff]{alt}.
-% TODO Quasi-Newton-Verfahren bzw. BFGS-Verfahren erw‰hnen.
-
-% TODO Das Konvergenzverhalten der Verfahren erw‰hnen?

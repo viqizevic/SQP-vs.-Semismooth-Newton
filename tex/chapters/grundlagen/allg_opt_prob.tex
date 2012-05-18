@@ -4,7 +4,7 @@ definiert:
 \begin{equation}
   \min_{x \in \F} f(x) \tag{P} \label{prob:allg_opt_prob}
 \end{equation}
-Die Funktion $f:D \subseteq \R^n \rightarrow \R$ ist die sogennante
+Die Funktion $f \colon D \subseteq \R^n \rightarrow \R$ ist die sogennante
 Zielfunktion.
 $D$ sei der Definitionsbereich von $f$.
 $\F$ sei eine nichtleere Teilmenge von $D$, die man als Lösungsmenge bezeichnet.
@@ -55,7 +55,7 @@ beinhaltet.
 Wegen dieser Definitionen kommt der Begriff \emph{globale Optimierung}.
 Bei der globalen Optimierung versucht man, eine globale Lösung zu finden.
 Viele Verfahren versuchen nur lokale Lösungen zu bestimmen,
-weil Globale Lösungen nicht so einfach zu bestimmen sind.
+weil globale Lösungen nicht so einfach zu bestimmen sind.
 
 \begin{example}\label{example:unrestr_opt_prob}
 \emph{(vgl. Beispiel 1.1.2 in \cite[S.~1]{alt})}\\
@@ -93,10 +93,11 @@ spezifischer wie folgt definieren:
               \nb & g(x) \leq 0 \notag \\
                   & h(x) = 0 \notag
 \end{align}
-Die Zielfunktion ist wieder die Funktion $f:D \subseteq \R^n \rightarrow \R$.
+Die Zielfunktion ist wieder die Funktion
+$f \colon D \subseteq \R^n \rightarrow \R$.
 Die Nebenbedingungen sind von den Funktionen
-$g:D \subseteq \R^n \rightarrow \R^p$ und
-$h:D \subseteq \R^n \rightarrow \R^m$ abhängig.
+$g \colon D \subseteq \R^n \rightarrow \R^p$ und
+$h \colon D \subseteq \R^n \rightarrow \R^m$ abhängig.
 D.\,h., die Menge $\F$ sieht hier so aus:
 $\F = \{ x \in \R^n \,|\, g(x) \leq 0, \, h(x) = 0  \}$.
 \end{definition}
@@ -105,8 +106,8 @@ Die Bezeichnung ``Nb.'' steht hier als Abkürzung für
 ``unter der Nebenbedingung'' oder ``unter den Nebenbedingungen''.
 
 Man kann dieses Problem ausführlicher schreiben, indem man die Funktionen
-$g$ und $h$ in skalare Funktionen $g_1, \ldots, g_p : \R^n \rightarrow \R$
-und $h_1, \ldots, h_m: \R^n \rightarrow \R$ zerlegen, so dass
+$g$ und $h$ in skalare Funktionen $g_1, \ldots, g_p \colon \R^n \rightarrow \R$
+und $h_1, \ldots, h_m \colon \R^n \rightarrow \R$ zerlegt, so dass
 \begin{equation*}
   g(x) =
     \left(
@@ -131,7 +132,7 @@ Man bekommt dann das Problem
 \begin{align*}
   \min_{x \in D}\ & f(x) \\
               \nb & g_i(x) \leq 0 \text{ für } i = 1,\ldots,p \\
-                  & h_j(x) = 0 \text{ für } j = 1,\ldots,m
+                  & h_j(x) = 0 \text{ für } j = 1,\ldots,m.
 \end{align*}
 
 Man kann hierbei den Unterschied zwischen der linearen Optimierung und
