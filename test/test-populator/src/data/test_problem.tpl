@@ -1,13 +1,13 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_{var_function_name}(show)
-    a = {var_a};
-    b = {var_b};
+    u = {var_u};
+    v = {var_v};
     x0 = {var_x0};
     tol = {var_tol};
     itmax = {var_itmax};
     G = {var_G};
     r = {var_r};
-    G = [ G; -eye(length(a)); eye(length(b)) ];
-    r = [ r; -a; b ];
+    G = [ G; -eye(length(u)); eye(length(v)) ];
+    r = [ r; -u; v ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',G,r,x0,itmax,tol);
@@ -27,10 +27,10 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_{var_function_name}(show
         show = 1;
     end
     if ( show == 1 )
-        a = sprintf('%.3f ',a);
-        b = sprintf('%.3f ',b);
+        u = sprintf('%.3f ',u);
+        v = sprintf('%.3f ',v);
         x0 = sprintf('%.3f ',x0);
-        str0 = ['a = [ ', a, '], b = [ ', b, '], x0 = [ ', x0, ']'];
+        str0 = ['u = [ ', u, '], v = [ ', v, '], x0 = [ ', x0, ']'];
         disp(str0);
         disp(str1);
         disp(str2);

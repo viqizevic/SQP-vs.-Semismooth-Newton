@@ -274,15 +274,15 @@ public class Main {
 					<constant_name>xd</constant_name>
 					<constant_value>4</constant_value>
 				</constant>
-				<a>3</a>
-				<b>10</b>
+				<u>3</u>
+				<v>10</v>
 				<x0>8</x0>
 				<tolerance>0.001</tolerance>
 				<max_iteration>100</max_iteration>
 			</problem>
 		</problems>
 		Every problem should be defined in a <problem> tag.
-		The tags function_name, a, b, x0, tolerance and max_iteration are required.
+		The tags function_name, x0, tolerance and max_iteration are required.
 		The tag constant is optional.
 		*/
 		File file = new File(fileName);
@@ -350,15 +350,15 @@ public class Main {
 		problem.getTestFunction().setName(problemName);
 		String G = getTagValueIfExists("G", element);
 		String r = getTagValueIfExists("r", element);
-		String a = getTagValueIfExists("a", element);
-		String b = getTagValueIfExists("b", element);
+		String u = getTagValueIfExists("u", element);
+		String v = getTagValueIfExists("v", element);
 		String x0 = getTagValue("x0", element);
 		String tolerance = getTagValue("tolerance", element);
 		String maxIteration = getTagValue("max_iteration", element);
 		problem.set_G(G);
 		problem.set_r(r);
-		problem.set_a(a);
-		problem.set_b(b);
+		problem.set_u(u);
+		problem.set_v(v);
 		problem.set_x0(x0);
 		problem.setTolerance(tolerance);
 		problem.setMaxIteration(maxIteration);

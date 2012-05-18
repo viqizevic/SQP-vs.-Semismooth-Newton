@@ -10,8 +10,8 @@
 			<constant_name>q</constant_name>
 			<constant_value>-2*[4; 7]</constant_value>
 		</constant>
-		<a>[3; 6]</a>
-		<b>[10; 20]</b>
+		<u>[3; 6]</u>
+		<v>[10; 20]</v>
 		<x0>[8; 17]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -27,8 +27,8 @@
 			<constant_name>q</constant_name>
 			<constant_value>[-4; -4]</constant_value>
 		</constant>
-		<a>[-1; -1]</a>
-		<b>[1; 2]</b>
+		<u>[-1; -1]</u>
+		<v>[1; 2]</v>
 		<x0>[-1; 0]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -74,8 +74,8 @@
 			<constant_name>xd</constant_name>
 			<constant_value>[4; 7]</constant_value>
 		</constant>
-		<a>[3; 6]</a>
-		<b>[10; 20]</b>
+		<u>[3; 6]</u>
+		<v>[10; 20]</v>
 		<x0>[8; 17]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -87,8 +87,8 @@
             <constant_name>xd</constant_name>
             <constant_value>[4; 7; 10]</constant_value>
         </constant>
-        <a>[3; 6; 2]</a>
-        <b>[10; 20; 5]</b>
+        <u>[3; 6; 2]</u>
+        <v>[10; 20; 5]</v>
         <x0>[8; 17; 4]</x0>
         <tolerance>0.001</tolerance>
         <max_iteration>100</max_iteration>
@@ -102,7 +102,7 @@
 		</constant>
 		<G>[-1 2; 1 2; 1 -2]</G>
 		<r>[2; 6; 2]</r>
-		<a>[0; 0]</a>
+		<u>[0; 0]</u>
 		<x0>[2; 0]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -114,8 +114,8 @@
 			<constant_name>c</constant_name>
 			<constant_value>[1; -1; 1; -1]</constant_value>
 		</constant>
-		<a>[0; 0; 0; 0]</a>
-		<b>[10; 10; 10; 10]</b>
+		<u>[0; 0; 0; 0]</u>
+		<v>[10; 10; 10; 10]</v>
 		<x0>[5; 5; 5; 5]</x0>
 		<tolerance>0.01</tolerance>
 		<max_iteration>100</max_iteration>
@@ -123,8 +123,8 @@
 
     <!--problem>
         <function_name>exp_func</function_name>
-        <a>[-10; -2; -4]</a>
-        <b>[10; 20; 4]</b>
+        <u>[-10; -2; -4]</u>
+        <v>[10; 20; 4]</v>
         <x0>[5; 2; 4]</x0>
         <tolerance>0.001</tolerance>
         <max_iteration>500</max_iteration>
@@ -132,8 +132,8 @@
 
     <problem>
         <function_name>exp_func</function_name>
-        <a>[1; 0.5; 1]</a>
-        <b>[10; 20; 4]</b>
+        <u>[1; 0.5; 1]</u>
+        <v>[10; 20; 4]</v>
         <x0>[5; 2; 4]</x0>
         <tolerance>0.001</tolerance>
         <max_iteration>500</max_iteration>
@@ -141,8 +141,8 @@
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<a>[-10; -10]</a>
-		<b>[10; 10]</b>
+		<u>[-10; -10]</u>
+		<v>[10; 10]</v>
 		<x0>[-1; 2]</x0>
 		<tolerance>0.0001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -150,8 +150,8 @@
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>
-		<a>[-10; 1.5]</a>
-		<b>[10; 10]</b>
+		<u>[-10; 1.5]</u>
+		<v>[10; 10]</v>
 		<x0>[1; 3]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -159,8 +159,8 @@
 
 	<problem>
 		<function_name>himmelblau_func</function_name>
-		<a>[-20; -20]</a>
-		<b>[20; 20]</b>
+		<u>[-20; -20]</u>
+		<v>[20; 20]</v>
 		<x0>[5; 5]</x0>
 		<tolerance>0.0001</tolerance>
 		<max_iteration>200</max_iteration>
@@ -168,8 +168,8 @@
 
     <problem>
         <function_name>himmelblau_func</function_name>
-        <a>[5; 5]</a>
-        <b>[20; 20]</b>
+        <u>[5; 5]</u>
+        <v>[20; 20]</v>
         <x0>[15; 15]</x0>
         <tolerance>0.0001</tolerance>
         <max_iteration>100</max_iteration>
@@ -177,8 +177,8 @@
 	
 	<problem>
 		<function_name>bazaraa_shetty_func</function_name>
-		<a>[-20; -20]</a>
-		<b>[20; 20]</b>
+		<u>[-20; -20]</u>
+		<v>[20; 20]</v>
 		<x0>[5; 5]</x0>
 		<tolerance>0.0001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -186,8 +186,8 @@
 
 	<problem>
 		<function_name>beale_func</function_name>
-		<a>[-20; -20]</a>
-		<b>[20; 20]</b>
+		<u>[-20; -20]</u>
+		<v>[20; 20]</v>
 		<x0>[5; 0]</x0>
 		<tolerance>0.0001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -195,8 +195,8 @@
 
 	<!--problem>
 		<function_name>spellucci_func</function_name>
-		<a>[-20; -20]</a>
-		<b>[20; 20]</b>
+		<u>[-20; -20]</u>
+		<v>[20; 20]</v>
 		<x0>[-5; -5]</x0>
 		<tolerance>0.0001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -204,8 +204,8 @@
 	
 	<!--problem>
 		<function_name>schuldt_func</function_name>
-		<a>[-10; 0]</a>
-		<b>[10; 10]</b>
+		<u>[-10; 0]</u>
+		<v>[10; 10]</v>
 		<x0>[0.7;0.5]</x0>
 		<tolerance>0.0001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -213,8 +213,8 @@
 	
 	<!--problem>
 		<function_name>asaadi_func</function_name>
-		<a>[1; 0]</a>
-		<b>[20; 20]</b>
+		<u>[1; 0]</u>
+		<v>[20; 20]</v>
 		<x0>[7; 5]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -222,8 +222,8 @@
 	
 	<problem>
 		<function_name>mccormick_func</function_name>
-		<a>[-1.5; -3]</a>
-		<b>[4; 3]</b>
+		<u>[-1.5; -3]</u>
+		<v>[4; 3]</v>
 		<x0>[0; -0.75]</x0>
 		<tolerance>0.0001</tolerance>
 		<max_iteration>200</max_iteration>
@@ -231,8 +231,8 @@
 	
 	<!--problem>
 		<function_name>holzmann_func</function_name>
-		<a>[0.1; 0; 0]</a>
-		<b>[100; 25.6; 5]</b>
+		<u>[0.1; 0; 0]</u>
+		<v>[100; 25.6; 5]</v>
 		<x0>[100; 12.5; 3]</x0>
 		<tolerance>0.0001</tolerance>
 		<max_iteration>200</max_iteration>
@@ -240,8 +240,8 @@
 
 	<problem>
 		<function_name>dixon_2_dim_func</function_name>
-		<a>[-10; -10]</a>
-		<b>[10; 10]</b>
+		<u>[-10; -10]</u>
+		<v>[10; 10]</v>
 		<x0>[1.5; 1.5]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -249,8 +249,8 @@
 	
 	<problem>
 		<function_name>dixon_2_dim_func</function_name>
-		<a>[-10; -10]</a>
-		<b>[2; -5]</b>
+		<u>[-10; -10]</u>
+		<v>[2; -5]</v>
 		<x0>[-6; -7]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -258,8 +258,8 @@
 
 	<problem>
 		<function_name>dixon_3_dim_func</function_name>
-		<a>[-10; -10; -10]</a>
-		<b>[10; 10; 10]</b>
+		<u>[-10; -10; -10]</u>
+		<v>[10; 10; 10]</v>
 		<x0>[1.5; 1.5; 1.5]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -267,8 +267,8 @@
 
 	<!--problem>
 		<function_name>dixon_func</function_name>
-		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
-		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -276,8 +276,8 @@
 
 	<problem>
 		<function_name>dixon_func</function_name>
-		<a>[2; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
-		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<u>[2; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -285,8 +285,8 @@
 	
 	<problem>
 		<function_name>dixon_func</function_name>
-		<a>[3; 3; 3; 3; 3; 2; 2; 2; 2; 2]</a>
-		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<u>[3; 3; 3; 3; 3; 2; 2; 2; 2; 2]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -294,8 +294,8 @@
 
 	<problem>
 		<function_name>dixon_func</function_name>
-		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
-		<b>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5]</b>
+		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5]</v>
 		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -307,8 +307,8 @@
             <constant_name>n</constant_name>
             <constant_value>5</constant_value>
         </constant>
-		<a>[3; -3; 5; 3; 2]</a>
-		<b>[7; 0; 5; 10; 14]</b>
+		<u>[3; -3; 5; 3; 2]</u>
+		<v>[7; 0; 5; 10; 14]</v>
 		<x0>[4; -1; 5; 4; 7]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -320,8 +320,8 @@
             <constant_name>n</constant_name>
             <constant_value>20</constant_value>
         </constant>
-		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
-		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -333,8 +333,8 @@
             <constant_name>n</constant_name>
             <constant_value>20</constant_value>
         </constant>
-		<a>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</a>
-		<b>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5 ]</b>
+		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5 ]</v>
 		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -346,8 +346,8 @@
             <constant_name>n</constant_name>
             <constant_value>40</constant_value>
         </constant>
-		<a>[2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2]</a>
-		<b>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</b>
+		<u>[2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
 		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>500</max_iteration>
@@ -355,8 +355,8 @@
 	
 	<problem>
 		<function_name>colville_func</function_name>
-		<a>[-10; -10; -10; -10]</a>
-		<b>[10; 10; 10; 10]</b>
+		<u>[-10; -10; -10; -10]</u>
+		<v>[10; 10; 10; 10]</v>
 		<x0>[3; -1; -3; -1]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -364,8 +364,8 @@
 	
 	<problem>
 		<function_name>betts_func</function_name>
-		<a>[0.25; 0.25]</a>
-		<b>[2; 2]</b>
+		<u>[0.25; 0.25]</u>
+		<v>[2; 2]</v>
 		<x0>[1; 1.5]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -373,8 +373,8 @@
 	
 	<problem>
 		<function_name>paviani_func</function_name>
-		<a>[3; 3]</a>
-		<b>[9; 9]</b>
+		<u>[3; 3]</u>
+		<v>[9; 9]</v>
 		<x0>[4; 5]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -382,8 +382,8 @@
 	
 	<problem>
 		<function_name>paviani_func</function_name>
-		<a>[3; 3]</a>
-		<b>[9; 9]</b>
+		<u>[3; 3]</u>
+		<v>[9; 9]</v>
 		<x0>[6; 6]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -391,8 +391,8 @@
 	
 	<!--problem>
 		<function_name>lin_regression_func</function_name>
-		<a>[-20; -20]</a>
-		<b>[20; 20]</b>
+		<u>[-20; -20]</u>
+		<v>[20; 20]</v>
 		<x0>[1; 1]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -404,8 +404,8 @@
 			<constant_name>eta</constant_name>
 			<constant_value>[-0.5; -2; -3; -3; -2.5; -2; -1; 1; 3; 5.5]</constant_value>
 		</constant>
-		<a>[-20; -20]</a>
-		<b>[20; 20]</b>
+		<u>[-20; -20]</u>
+		<v>[20; 20]</v>
 		<x0>[-20; 20]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -413,8 +413,8 @@
 
 	<!--problem>
 		<function_name>quad_regression_func</function_name>
-		<a>[-10; -10; -10]</a>
-		<b>[20; 20; 20]</b>
+		<u>[-10; -10; -10]</u>
+		<v>[20; 20; 20]</v>
 		<x0>[0.5; 2; -7]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -426,8 +426,8 @@
 			<constant_name>eta</constant_name>
 			<constant_value>[-0.5; -2; -3; -3; -2.5; -2; -1; 1; 3; 5.5]</constant_value>
 		</constant>
-		<a>[-10; -10; -10]</a>
-		<b>[20; 20; 20]</b>
+		<u>[-10; -10; -10]</u>
+		<v>[20; 20; 20]</v>
 		<x0>[1; 3; -4]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -435,8 +435,8 @@
 	
 	<problem>
 		<function_name>nichtlin_regression_func</function_name>
-		<a>[-2; -2]</a>
-		<b>[10; 10]</b>
+		<u>[-2; -2]</u>
+		<v>[10; 10]</v>
 		<x0>[0.2; 0.5]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
@@ -444,8 +444,8 @@
 	
 	<!--problem>
 		<function_name>nichtlin_regression_3_vars_func</function_name>
-		<a>[-2; -2; -2]</a>
-		<b>[10; 10; 10]</b>
+		<u>[-2; -2; -2]</u>
+		<v>[10; 10; 10]</v>
 		<x0>[0.29; 0.29; 0.6]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>

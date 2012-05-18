@@ -144,8 +144,8 @@ public class MFileCreator {
 		vars.put("{var_hess_function_name}", hessFileName);
 		vars.put("{var_G}", testProblem.get_G());
 		vars.put("{var_r}", testProblem.get_r());
-		vars.put("{var_a}", testProblem.get_a());
-		vars.put("{var_b}", testProblem.get_b());
+		vars.put("{var_u}", testProblem.get_u());
+		vars.put("{var_v}", testProblem.get_v());
 		vars.put("{var_x0}", testProblem.get_x0());
 		vars.put("{var_n}", testProblem.getDimension()+"");
 		vars.put("{var_tol}", testProblem.getTolerance());

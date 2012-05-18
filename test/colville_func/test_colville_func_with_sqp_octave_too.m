@@ -1,13 +1,13 @@
 function test_colville_func_with_sqp_octave_too(show)
-    a = [-10; -10; -10; -10];
-    b = [10; 10; 10; 10];
+    u = [-10; -10; -10; -10];
+    v = [10; 10; 10; 10];
     x0 = [3; -1; -3; -1];
     tol = 0.001;
     itmax = 100;
     G = [];
     r = [];
-    G = [ G; -eye(length(a)); eye(length(b)) ];
-    r = [ r; -a; b ];
+    G = [ G; -eye(length(u)); eye(length(v)) ];
+    r = [ r; -u; v ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('colville_func','grad_colville_func','hess_colville_func',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('colville_func','grad_colville_func','hess_colville_func',G,r,x0,itmax,tol);
@@ -34,10 +34,10 @@ function test_colville_func_with_sqp_octave_too(show)
         show = 1;
     end
     if ( show == 1 )
-        a = sprintf('%.3f ',a);
-        b = sprintf('%.3f ',b);
+        u = sprintf('%.3f ',u);
+        v = sprintf('%.3f ',v);
         x0 = sprintf('%.3f ',x0);
-        str0 = ['a = [ ', a, '], b = [ ', b, '], x0 = [ ', x0, ']'];
+        str0 = ['u = [ ', u, '], v = [ ', v, '], x0 = [ ', x0, ']'];
         disp(str0);
         disp(str1);
         disp(str2);
@@ -50,14 +50,14 @@ function obj = phi(x)
 end
 
 function s = g(x)
-    a = [-10; -10; -10; -10];
-    b = [10; 10; 10; 10];
+    u = [-10; -10; -10; -10];
+    v = [10; 10; 10; 10];
     x0 = [3; -1; -3; -1];
     tol = 0.001;
     itmax = 100;
     G = [];
     r = [];
-    G = [ G; -eye(length(a)); eye(length(b)) ];
-    r = [ r; -a; b ];
+    G = [ G; -eye(length(u)); eye(length(v)) ];
+    r = [ r; -u; v ];
     s = r - G*x;
 end

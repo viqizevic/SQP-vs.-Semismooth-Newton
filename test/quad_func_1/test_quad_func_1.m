@@ -1,13 +1,13 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_quad_func_1(show)
-    a = [-1; -1];
-    b = [1; 2];
+    u = [-1; -1];
+    v = [1; 2];
     x0 = [-1; 0];
     tol = 0.001;
     itmax = 100;
     G = [];
     r = [];
-    G = [ G; -eye(length(a)); eye(length(b)) ];
-    r = [ r; -a; b ];
+    G = [ G; -eye(length(u)); eye(length(v)) ];
+    r = [ r; -u; v ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_func_1','grad_quad_func_1','hess_quad_func_1',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func_1','grad_quad_func_1','hess_quad_func_1',G,r,x0,itmax,tol);
@@ -27,10 +27,10 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_quad_func_1(show)
         show = 1;
     end
     if ( show == 1 )
-        a = sprintf('%.3f ',a);
-        b = sprintf('%.3f ',b);
+        u = sprintf('%.3f ',u);
+        v = sprintf('%.3f ',v);
         x0 = sprintf('%.3f ',x0);
-        str0 = ['a = [ ', a, '], b = [ ', b, '], x0 = [ ', x0, ']'];
+        str0 = ['u = [ ', u, '], v = [ ', v, '], x0 = [ ', x0, ']'];
         disp(str0);
         disp(str1);
         disp(str2);
