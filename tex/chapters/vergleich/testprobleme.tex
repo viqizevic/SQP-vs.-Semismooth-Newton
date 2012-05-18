@@ -21,17 +21,63 @@ immer noch in dem zulässigen Bereich bleiben.
 \caption{Vergleich}
 \end{table}
 
+\begin{testproblem}
+\emph{(Lineare Regression, vgl. Beispiel 1.1.6 in \cite[S.~4f]{alt})}\\
+Gegeben seien m-Messwerte $(\xi_i,\eta_i), i = 1,\ldots,m$.
+Gesucht ist eine Gerade
+\begin{equation}
+  \eta(\xi) := x_1 \xi + x_2,
+\end{equation}
+die ``optimal'' zu den Messwerten passt.
+D.\,h. wir sollen den Parameter $x = (x_1,x_2)^T \in \R^2$
+so bestimmen, dass die Summe der Fehlerquadrate
+in den Messpunkten minimiert wird.
+Dazu definieren wir die Zielfunktion durch
+\begin{equation}
+  f(x) := \sum_{i=1}^{m} (\eta(\xi_i) - \eta_i)^2
+        = \sum_{i=1}^{m} (x_1 \xi_i + x_2 - \eta_i)^2.
+\end{equation}
+Es ist damit ein unrestringiertes Optimierungsproblem zu lösen.
+\end{testproblem}
+
+\begin{testproblem}
+\emph{(Nichtlineare Regression, vgl. Abschnitt 2.3.2 in \cite[S.~30f]{alt})}\\
+Neben linearen Regressionsaufgaben sind auch oft
+nichtlineare Regressionsaufgaben zu lösen.
+Gesucht sind den funktionalen Zusammenhang $\eta(\xi)$
+zwischen den $\xi$- und den $\eta$-Werten,
+beispielweise
+\begin{equation}
+  \eta(\xi) := x_1 e^{\xi x_2} + x_3.
+\end{equation}
+Dabei ist $x = (x_1,\ldots,x_n)^T \in \R^n$ ein Parametervektor, der optimal
+bestimmt werden soll.
+\end{testproblem}
+
 \begin{table}[h]
 \centering
 \begin{tabular*}{0.8\linewidth}{@{\extracolsep{\fill}}c|cccccccccc}
   %\toprule
-  $x_i$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+  $\xi_i$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
   \midrule
-  $y_i$ & $-\frac{1}{2}$ & $-2$ & $-3$ & $-3$ & $-\frac{5}{2}$
-    & $-2$ & $-1$ & 1 & 3 & $\frac{11}{2}$ \\
+  $\eta_i$ & 1 & 1.1 & 1.2 & 1.35 & 1.55
+    & 1.75 & 2.5 & 3 & 3.7 & 4.5 \\
   %\bottomrule
 \end{tabular*}
-\caption{Gegebene Punkte}
+\caption{Gegebene Messwerte}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular*}{0.8\linewidth}{@{\extracolsep{\fill}}c|cccccccccc}
+  %\toprule
+  $\xi_i$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+  \midrule
+  $\eta_i$ & $-\frac{1}{2}$ & $-2$ & $-3$ & $-3$ & $-2\frac{1}{2}$
+    & $-2$ & $-1$ & 1 & 3 & $5\frac{1}{2}$ \\
+  %\bottomrule
+\end{tabular*}
+\caption{Gegebene Messwerte}
 \end{table}
 
 \begin{figure}[ht]
