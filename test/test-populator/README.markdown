@@ -34,5 +34,48 @@ under the repository **SQP-vs.-Semismooth-Newton**.
 If you want to change this, you should change the property *configFile*
 in this class.
 
+---
+
+## How to add a new test problem?
+
+Add the objective function of the problem
+in the file **functions.xml** in folder **data**.
+Add the problem in the file **problems.xml** in **data**.
+Run the main class in **Main.java** to populate the test files.
+You can find a folder under **test** with the name of the new function.
+To find the test files under [Matlab][] you have
+tell it to add the new folder into the it's search paths.
+Configure this under **File** -> **Set Paths**.
+
+---
+
+## How to add a new test file?
+
+Add a template file for the test in folder **data**.
+The template file should have the extension **.tpl**.
+Add a new line in **test.config** like this:
+test_template_file_name_<n> = <test_file_name>
+
+<n> should be the next number available for the template file,
+that means if there are 3 template files already, then the number 0,1 and 2
+cannot be used anymore, thus <n> should be 3.
+<test_file_name> is the name of the template file without the extension.
+The name should contain the word **problem**, since the word problem will be replaced
+by the name of the function problem.
+It is recommended that the name begin with the string **test_problem**.
+
+The template test file can contain variables in it,
+which will be replaced depend on the information given in each test problem.
+The variable should be in the form: {var_<variable_name>},
+where <variable_name} is the name of the variable.
+It should always begin with the string '{var_' and end with the character '}'.
+Example: {var_x0} for the variable x0.
+
+The list of the variable can be found under the file **MFileCreator.java**,
+precisely under the function **getTestFileContentUsingTemplate**.
+You can add here a new variable, if you need one.
+
+
+
 [matlab]: http://de.wikipedia.org/wiki/MATLAB "MATLAB"
 [eclipse]: http://eclipse.org "Eclipse"

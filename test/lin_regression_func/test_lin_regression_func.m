@@ -4,8 +4,10 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_lin_regression_func(show
     x0 = [-20; 20];
     tol = 0.001;
     itmax = 100;
-    G = [ -eye(length(a)); eye(length(b)) ];
-    r = [ -a; b ];
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('lin_regression_func','grad_lin_regression_func','hess_lin_regression_func',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('lin_regression_func','grad_lin_regression_func','hess_lin_regression_func',G,r,x0,itmax,tol);

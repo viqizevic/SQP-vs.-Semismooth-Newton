@@ -1,8 +1,8 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_schuldt_func(show)
-    a = [-20; 0];
-    b = [20; 20];
-    x0 = [15;15];
-    tol = 0.01;
+    a = [-10; 0];
+    b = [10; 10];
+    x0 = [0.7;0.5];
+    tol = 0.0001;
     itmax = 100;
     G = [ -eye(length(a)); eye(length(b)) ];
     r = [ -a; b ];

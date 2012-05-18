@@ -4,8 +4,10 @@ function test_dixon_3_dim_func_with_fmincon_too()
 	x0 = [1.5; 1.5; 1.5];
 	tol = 0.001;
 	itmax = 500;
-	G = [ -eye(length(a)); eye(length(b)) ];
-	r = [ -a; b ];
+	G = [];
+	r = [];
+	G = [ G; -eye(length(a)); eye(length(b)) ];
+	r = [ r; -a; b ];
 	tic;
 	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',G,r,x0,m0,itmax,tol);
 	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('dixon_3_dim_func','grad_dixon_3_dim_func','hess_dixon_3_dim_func',G,r,x0,itmax,tol);
@@ -23,7 +25,7 @@ function test_dixon_3_dim_func_with_fmincon_too()
 	str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
 	options = optimset('Algorithm','active-set','Display','off');
 	tic;
-	[x_fmc,fval_fmc,exitflag,output] = fmincon('dixon_3_dim_func',x0,[],[],[],[],a,b,[],options);
+	[x_fmc,fval_fmc,exitflag,output] = fmincon('dixon_3_dim_func',x0,G,r,[],[],[],[],[],options);
 	t_fmc = toc;
 	x3 = sprintf('%.3f ',x_fmc);
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);

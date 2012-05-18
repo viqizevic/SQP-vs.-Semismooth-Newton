@@ -1,4 +1,5 @@
 function g = grad_quad_func_3(x)
-	xd = [4; 7; 10];
-	g = 2*(x-xd);
+	Q = 2*[1 0 -1 0; 0 1 0 -1; -1 0 1 0; 0 -1 0 1];
+	q = [0; 0; 0; 0];
+	g = Q*x + q;
 end

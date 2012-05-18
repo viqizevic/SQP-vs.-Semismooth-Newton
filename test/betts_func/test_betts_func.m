@@ -4,8 +4,10 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_betts_func(show)
     x0 = [1; 1.5];
     tol = 0.001;
     itmax = 100;
-    G = [ -eye(length(a)); eye(length(b)) ];
-    r = [ -a; b ];
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('betts_func','grad_betts_func','hess_betts_func',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('betts_func','grad_betts_func','hess_betts_func',G,r,x0,itmax,tol);

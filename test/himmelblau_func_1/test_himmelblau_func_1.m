@@ -4,8 +4,10 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_himmelblau_func_1(show)
     x0 = [15; 15];
     tol = 0.0001;
     itmax = 100;
-    G = [ -eye(length(a)); eye(length(b)) ];
-    r = [ -a; b ];
+    G = [];
+    r = [];
+    G = [ G; -eye(length(a)); eye(length(b)) ];
+    r = [ r; -a; b ];
     tic;
     %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',G,r,x0,itmax,tol);
     [x_ssn,fval_ssn,it_ssn] = semismooth_newton('himmelblau_func_1','grad_himmelblau_func_1','hess_himmelblau_func_1',G,r,x0,itmax,tol);

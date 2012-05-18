@@ -123,6 +123,9 @@ public class TestFunction {
 	}
 
 	public void setGradient(String gradient) {
+		if (gradient == null) {
+			gradient = "not available";
+		}
 		this.gradient = gradient;
 	}
 
@@ -134,6 +137,9 @@ public class TestFunction {
 	}
 
 	public void setHessianMatrix(String hessianMatrix) {
+		if (hessianMatrix == null) {
+			hessianMatrix = "not available";
+		}
 		this.hessianMatrix = hessianMatrix;
 	}
 	

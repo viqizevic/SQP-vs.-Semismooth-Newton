@@ -33,9 +33,9 @@ import org.xml.sax.SAXException;
  * 
  * Directories tree:
  * |
- * |-- Eclipse-Workspace
- *    |-- SQP-vs.-SSN
- *       |-- SQP-vs.-Semismooth-Newton
+ * |-- workspace (Eclipse workspace)
+ *    |-- SQP-vs.-SSN (Project name)
+ *       |-- SQP-vs.-Semismooth-Newton (The Git repository)
  *           |-- tex
  *           |-- test
  *              |-- 1st_test_problem_func
@@ -125,7 +125,7 @@ public class Main {
 		System.out.println("Finish!");
 		
 		for (TestProblem p : testProblems) {
-			System.out.println(p.toLaTeX());
+			//System.out.println(p.toLaTeX());
 		}
 	}
 
@@ -209,8 +209,8 @@ public class Main {
 		TestFunction function = new TestFunction(name);
 		String var = getTagValue("var", element);
 		String def = getTagValue("def", element);
-		String grad = getTagValue("grad", element);
-		String hess = getTagValue("hess", element);
+		String grad = getTagValueIfExists("grad", element);
+		String hess = getTagValueIfExists("hess", element);
 		function.setVar(var);
 		function.setDefinition(def);
 		function.setGradient(grad);
@@ -232,7 +232,7 @@ public class Main {
 	
 	/**
 	 * Get tag value of an xml.
-	 * @param tag The searched tag in the xml.
+	 * @param tag The searched tag in the xml element.
 	 * @param e The xml element.
 	 * @return The value inside this tag.
 	 */
@@ -243,6 +243,21 @@ public class Main {
 			return "";
 		}
 		return node.getNodeValue().trim();
+	}
+	
+	/**
+	 * Get tag value of an xml, if the tag exists in the element given.
+	 * @param tag The searched tag in the xml element.
+	 * @param element The xml element.
+	 * @return The value inside this tag, if it exists, otherwise return null.
+	 */
+	private static String getTagValueIfExists(String tag, Element element) {
+		NodeList nList = element.getElementsByTagName(tag);
+		if (nList.getLength() != 0) {
+			return getTagValue(tag, element);
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -348,14 +363,5 @@ public class Main {
 		problem.setTolerance(tolerance);
 		problem.setMaxIteration(maxIteration);
 		return problem;
-	}
-	
-	private static String getTagValueIfExists(String tag, Element element) {
-		NodeList nList = element.getElementsByTagName(tag);
-		if (nList.getLength() != 0) {
-			return getTagValue(tag, element);
-		} else {
-			return null;
-		}
 	}
 }

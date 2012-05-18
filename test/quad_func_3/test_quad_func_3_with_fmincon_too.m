@@ -1,11 +1,13 @@
 function test_quad_func_3_with_fmincon_too()
-	a = [3; 6; 2];
-	b = [10; 20; 9];
-	x0 = [8; 17; 4];
+	a = [];
+	b = [];
+	x0 = [0; 1; 2; 2];
 	tol = 0.001;
 	itmax = 100;
-	G = [ -eye(length(a)); eye(length(b)) ];
-	r = [ -a; b ];
+	G = [-1 0 0 0; 0 -1 0 0; 1 2 0 0; 0 0 0 -1; 0 0 -1 -1; 0 0 1 2];
+	r = [0; 0; 2; -2; -3; 6];
+	G = [ G; -eye(length(a)); eye(length(b)) ];
+	r = [ r; -a; b ];
 	tic;
 	%[x_ssn,fval_ssn,it_ssn] = active_set_strategy('quad_func_3','grad_quad_func_3','hess_quad_func_3',G,r,x0,m0,itmax,tol);
 	[x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func_3','grad_quad_func_3','hess_quad_func_3',G,r,x0,itmax,tol);
@@ -23,7 +25,7 @@ function test_quad_func_3_with_fmincon_too()
 	str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
 	options = optimset('Algorithm','active-set','Display','off');
 	tic;
-	[x_fmc,fval_fmc,exitflag,output] = fmincon('quad_func_3',x0,[],[],[],[],a,b,[],options);
+	[x_fmc,fval_fmc,exitflag,output] = fmincon('quad_func_3',x0,G,r,[],[],[],[],[],options);
 	t_fmc = toc;
 	x3 = sprintf('%.3f ',x_fmc);
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);

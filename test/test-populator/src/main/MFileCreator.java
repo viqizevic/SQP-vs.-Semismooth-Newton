@@ -227,6 +227,7 @@ public class MFileCreator {
 		for (String namePattern : testNamePattern) {
 			String fileName = namePattern.replace("test_problem", filePrefix);
 			String content = "function " + fileName + "()\n";
+			content += "\twarning('off','all')\n";
 			for (TestProblem p : problemsList) {
 				String problemTestFunction = namePattern.replace("problem", p.getTestProblemName());
 				content += "\tdisp('test_" + p.getTestProblemName() + "');\n";

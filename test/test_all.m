@@ -1,4 +1,5 @@
 function test_all()
+	warning('off','all')
 	disp('test_quad_func');
 	test_quad_func(1);
 	disp(sprintf('\n'));
@@ -11,8 +12,14 @@ function test_all()
 	disp('test_quad_func_3');
 	test_quad_func_3(1);
 	disp(sprintf('\n'));
-	disp('test_linear_func');
-	test_linear_func(1);
+	disp('test_norm_func');
+	test_norm_func(1);
+	disp(sprintf('\n'));
+	disp('test_norm_func_1');
+	test_norm_func_1(1);
+	disp(sprintf('\n'));
+	disp('test_norm_func_2');
+	test_norm_func_2(1);
 	disp(sprintf('\n'));
 	disp('test_rosenbrock_func');
 	test_rosenbrock_func(1);
@@ -29,11 +36,8 @@ function test_all()
 	disp('test_bazaraa_shetty_func');
 	test_bazaraa_shetty_func(1);
 	disp(sprintf('\n'));
-	disp('test_schuldt_func');
-	test_schuldt_func(1);
-	disp(sprintf('\n'));
-	disp('test_asaadi_func');
-	test_asaadi_func(1);
+	disp('test_beale_func');
+	test_beale_func(1);
 	disp(sprintf('\n'));
 	disp('test_mccormick_func');
 	test_mccormick_func(1);
