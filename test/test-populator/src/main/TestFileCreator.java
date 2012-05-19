@@ -15,7 +15,7 @@ import java.util.Set;
  * for the test problem.
  * @author Vicky H. Tanzil
  */
-public class MFileCreator {
+public class TestFileCreator {
 	
 	/**
 	 * The extension for the Matlab files.
@@ -57,7 +57,7 @@ public class MFileCreator {
 	 * @param testProblem The test problem.
 	 * @param directoryPath The directory where the created files should be placed. 
 	 */
-	public MFileCreator(TestProblem testProblem, String directoryPath) {
+	public TestFileCreator(TestProblem testProblem, String directoryPath) {
 		this.testProblem = testProblem;
 		f = testProblem.getTestFunction();
 		defFileName = f.getName();
@@ -205,12 +205,12 @@ public class MFileCreator {
 	 */
 	public static void create(TestProblem testProblem,
 			String directoryPath, HashMap<String,String> testTemplates) {
-		MFileCreator mFileCreator = new MFileCreator(testProblem, directoryPath);
-		mFileCreator.createFunctionDefinitionFile();
-		mFileCreator.createFunctionGradientFile();
-		mFileCreator.createFunctionHessianFile();
+		TestFileCreator testFileCreator = new TestFileCreator(testProblem, directoryPath);
+		testFileCreator.createFunctionDefinitionFile();
+		testFileCreator.createFunctionGradientFile();
+		testFileCreator.createFunctionHessianFile();
 		for (String s : testTemplates.keySet()) {
-			mFileCreator.createTestFile(s, testTemplates.get(s));
+			testFileCreator.createTestFile(s, testTemplates.get(s));
 		}
 	}
 	
@@ -242,8 +242,8 @@ public class MFileCreator {
 			}
 			content += "end";
 			// create a dummy MFileCreator object, to be able to use the createFile() method
-			MFileCreator mFileCreator = new MFileCreator(problemsList.getFirst(), directoryPath);
-			mFileCreator.createFile(fileName+extension, content);
+			TestFileCreator testFileCreator = new TestFileCreator(problemsList.getFirst(), directoryPath);
+			testFileCreator.createFile(fileName+extension, content);
 		}
 	}
 

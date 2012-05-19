@@ -118,15 +118,39 @@ public class Main {
 			if (useApproxDiff) {
 				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
 			}
-			MFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
+			TestFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
 		}
 		
-		MFileCreator.createMainTestFile(testProblems,
+		TestFileCreator.createMainTestFile(testProblems,
 				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
 		System.out.println("Finish!");
 		
+		System.out.println("\nTotal number of problems: " + testProblems.size());
+		
+		HashMap<String, Integer> classifications = new HashMap<String, Integer>();
 		for (TestProblem p : testProblems) {
-			//System.out.println(p.toLaTeX());
+			String cl = p.getClassification();
+			if (!classifications.containsKey(cl)) {
+				classifications.put(cl, 1);
+			} else {
+				classifications.put(cl, classifications.get(cl)+1);
+			}
+		}
+		System.out.println("\nClass\t#Problem");
+		for (String cl : classifications.keySet()) {
+			System.out.println(cl + "\t" + classifications.get(cl));
+		}
+		
+		System.out.println("\nn\t#Problem");
+		int[] dimensions = new int[25];
+		for (TestProblem p : testProblems) {
+			int n = p.getDimension();
+			dimensions[n]++;
+		}
+		for (int i=0; i<dimensions.length; i++) {
+			if (dimensions[i] > 0) {
+				System.out.println(i + "\t" + dimensions[i]);
+			}
 		}
 	}
 	
@@ -376,6 +400,17 @@ public class Main {
 		problem.set_x0(x0);
 		problem.setTolerance(tolerance);
 		problem.setMaxIteration(maxIteration);
+		String classification = "";
+		if (A != null) {
+			classification += "A";
+		}
+		if (G != null) {
+			classification += "G";
+		}
+		if (u != null || v != null) {
+			classification += "u";
+		}
+		problem.setClassification(classification);
 		return problem;
 	}
 }

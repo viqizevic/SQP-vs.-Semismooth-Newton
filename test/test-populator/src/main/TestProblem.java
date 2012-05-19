@@ -30,7 +30,12 @@ public class TestProblem {
 	 * Especially, from where the problem was taken.
 	 */
 	private String description;
-
+	
+	/**
+	 * The classification of the problem.
+	 */
+	private String classification;
+	
 	/**
 	 * The matrix defining the left hand side of the equality constraints.
 	 */
@@ -101,6 +106,14 @@ public class TestProblem {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getClassification() {
+		return classification;
+	}
+
+	public void setClassification(String classification) {
+		this.classification = classification;
 	}
 
 	public String get_A() {
