@@ -18,12 +18,18 @@ public class TestProblem {
 	/**
 	 * The name of the problem.
 	 */
-	private String testProblemName;
+	private String name;
 
 	/**
 	 * The objective function.
 	 */
 	private TestFunction f;
+	
+	/**
+	 * The description of the problem.
+	 * Especially, from where the problem was taken.
+	 */
+	private String description;
 
 	/**
 	 * The matrix defining the left hand side of the equality constraints.
@@ -77,16 +83,24 @@ public class TestProblem {
 	 * @param testFunction The objective function.
 	 */
 	public TestProblem(String testProblemName, TestFunction testFunction) {
-		this.testProblemName = testProblemName;
+		this.name = testProblemName;
 		f = testFunction.clone();
 	}
 
-	public String getTestProblemName() {
-		return testProblemName;
+	public String getName() {
+		return name;
 	}
 
 	public TestFunction getTestFunction() {
 		return f;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String get_A() {

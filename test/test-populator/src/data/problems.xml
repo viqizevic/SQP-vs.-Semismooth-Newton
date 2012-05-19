@@ -2,17 +2,18 @@
 
 	<problem>
 		<function_name>quad_func</function_name>
+		<description>See Example 16.2 in [NW06, p. 452]</description>
 		<constant>
 			<constant_name>Q</constant_name>
-			<constant_value>2*eye(2)</constant_value>
+			<constant_value>[6 2 1; 2 5 2; 1 2 4]</constant_value>
 		</constant>
 		<constant>
 			<constant_name>q</constant_name>
-			<constant_value>-2*[4; 7]</constant_value>
+			<constant_value>[-8; -3; -3]</constant_value>
 		</constant>
-		<u>[3; 6]</u>
-		<v>[10; 20]</v>
-		<x0>[8; 17]</x0>
+		<A>[1 0 1; 0 1 1]</A>
+		<b>[3; 0]</b>
+		<x0>[5; 2; -2]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
@@ -112,11 +113,11 @@
 		<function_name>norm_func</function_name>
 		<constant>
 			<constant_name>xd</constant_name>
-			<constant_value>[0; 0]</constant_value>
+			<constant_value>[0; 0; 0; 0; 0]</constant_value>
 		</constant>
-		<A>[1 1]</A>
+		<A>[1 1 1 1 1]</A>
 		<b>[1]</b>
-		<x0>[2; -1]</x0>
+		<x0>[5; -1; -1; -1; -1]</x0>
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
@@ -205,7 +206,16 @@
 		<tolerance>0.0001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem>
-
+	
+	<problem>
+		<function_name>huang_aggerwal_func</function_name>
+		<A>[1 1 1 1 1; 0 0 1 -2 -2]</A>
+		<b>[5; -3]</b>
+		<x0>[3; 5; -3; 2; -2]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+	
 	<!--problem>
 		<function_name>spellucci_func</function_name>
 		<u>[-20; -20]</u>

@@ -124,7 +124,7 @@ public class MFileCreator {
 	 * @param templateFilePath The template for the test file
 	 */
 	private void createTestFile(String fileNamePattern, String templateFilePath) {
-		String fileName = fileNamePattern.replace("problem", testProblem.getTestProblemName());
+		String fileName = fileNamePattern.replace("problem", testProblem.getName());
 		String content = getTestFileContentUsingTemplate(templateFilePath);
 		createFile(fileName+extension, content);
 	}
@@ -231,8 +231,8 @@ public class MFileCreator {
 			String content = "function " + fileName + "()\n";
 			content += "\twarning('off','all')\n";
 			for (TestProblem p : problemsList) {
-				String problemTestFunction = namePattern.replace("problem", p.getTestProblemName());
-				content += "\tdisp('test_" + p.getTestProblemName() + "');\n";
+				String problemTestFunction = namePattern.replace("problem", p.getName());
+				content += "\tdisp('test_" + p.getName() + "');\n";
 				if (!namePattern.contains("with_fmincon")) {
 					content += "\t" + problemTestFunction + "(1);\n";
 				} else {

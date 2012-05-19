@@ -259,6 +259,12 @@
 	</function>
 
 	<function>
+		<name>huang_aggerwal_func</name>
+		<var>x</var>
+		<def>y = (x(1)-1)^2 + (x(2)-x(3))^2 + (x(4)-x(5))^2;</def>
+	</function>
+
+	<function>
 		<name>lin_regression_func</name>
 		<var>x</var>
 		<constant>

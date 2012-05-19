@@ -1,11 +1,11 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_quad_func(show)
-    u = [3; 6];
-    v = [10; 20];
-    x0 = [8; 17];
+    u = [];
+    v = [];
+    x0 = [5; 2; -2];
     tol = 0.001;
     itmax = 100;
-    A = [];
-    b = [];
+    A = [1 0 1; 0 1 1];
+    b = [3; 0];
     G = [];
     r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];

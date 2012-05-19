@@ -52,11 +52,10 @@ import org.xml.sax.SAXException;
  * @author Vicky H. Tanzil
  */
 public class Main {
-	/*
-	 * TODO try not to use feval
-	 * TODO suppress warning message from octave
-	 */
 	
+	/**
+	 * The path to find the configuration file.
+	 */
 	private static String configFile = "SQP-vs.-Semismooth-Newton/test.config";
 	
 	/**
@@ -83,11 +82,13 @@ public class Main {
 	 * and then calls the file creator.
 	 */
 	public static void main(String[] args) {
-		HashMap<String, String> configs = readConfigFile();
+		
+		// Save the variables found in configuration file in a hash map.
+		HashMap<String, String> configs = readConfigFile(configFile);
 		if (configs == null) {
 			return;
 		}
-
+		// Get each variable.
 		String pathToTestDir = configs.get("path_to_test_dir");
 		String pathToDataDir = pathToTestDir + configs.get("path_to_data_dir");
 		String functionsXMLFile = pathToDataDir + configs.get("functions_xml_file");
@@ -117,7 +118,7 @@ public class Main {
 			if (useApproxDiff) {
 				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
 			}
-			MFileCreator.create(p, pathToTestDir+p.getTestProblemName(), testTemplates);
+			MFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
 		}
 		
 		MFileCreator.createMainTestFile(testProblems,
@@ -128,14 +129,22 @@ public class Main {
 			//System.out.println(p.toLaTeX());
 		}
 	}
-
-	private static HashMap<String, String> readConfigFile() {
+	
+	/**
+	 * Read the configuration file give.
+	 * @param fileName The path to the configuration file.
+	 * @return A hash map containing all variables in this file.
+	 */
+	private static HashMap<String, String> readConfigFile(String fileName) {
 		HashMap<String, String> configs = new HashMap<String, String>();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(configFile));
+			BufferedReader br = new BufferedReader(new FileReader(fileName));
 			String line = "";
 			while ( (line=br.readLine()) != null ) {
+				// Ignore lines started with '#'.
 				if (!line.equals("") && !line.startsWith("#")) {
+					// The configuration variable should be defined as followed.
+					// <variable_name> = <variable_value>
 					String[] str = line.split("=");
 					String var = str[0].trim();
 					String value = str[1].trim();
@@ -171,8 +180,8 @@ public class Main {
 			</function>
 		</functions>
 		Every function should be defined in a <function> tag.
-		The tags name, var, def, grad and hess are required.
-		The tag constant is optional.
+		The tags name, var, def are required.
+		The tags constant, grad and hess are optional.
 		*/
 		File file = new File(fileName);
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -283,7 +292,6 @@ public class Main {
 		</problems>
 		Every problem should be defined in a <problem> tag.
 		The tags function_name, x0, tolerance and max_iteration are required.
-		The tag constant is optional.
 		*/
 		File file = new File(fileName);
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -348,6 +356,7 @@ public class Main {
 		}
 		TestProblem problem = new TestProblem(problemName, function);
 		problem.getTestFunction().setName(problemName);
+		String description = getTagValueIfExists("description", element);
 		String A = getTagValueIfExists("A", element);
 		String b = getTagValueIfExists("b", element);
 		String G = getTagValueIfExists("G", element);
@@ -357,6 +366,7 @@ public class Main {
 		String x0 = getTagValue("x0", element);
 		String tolerance = getTagValue("tolerance", element);
 		String maxIteration = getTagValue("max_iteration", element);
+		problem.setDescription(description);
 		problem.set_A(A);
 		problem.set_b(b);
 		problem.set_G(G);

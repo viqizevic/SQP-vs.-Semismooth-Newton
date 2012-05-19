@@ -1,10 +1,10 @@
 function test_norm_func_3_with_fmincon_too()
 	u = [];
 	v = [];
-	x0 = [2; -1];
+	x0 = [5; -1; -1; -1; -1];
 	tol = 0.001;
 	itmax = 100;
-    A = [1 1];
+    A = [1 1 1 1 1];
     b = [1];
 	G = [];
 	r = [];
