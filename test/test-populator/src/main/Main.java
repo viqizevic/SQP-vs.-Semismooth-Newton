@@ -66,7 +66,7 @@ public class Main {
 
 	/**
 	 * A hash map with the functions names as keys
-	 * and the number of occurence of this function in the test problems.
+	 * and the number of occurrence of this function in the test problems.
 	 * Needed for naming the test file of the problems.
 	 */
 	private static HashMap<String, Integer> functionOccurences = new HashMap<String, Integer>();
@@ -88,31 +88,27 @@ public class Main {
 		if (configs == null) {
 			return;
 		}
+		
 		// Get each variable.
 		String pathToTestDir = configs.get("path_to_test_dir");
 		String pathToDataDir = pathToTestDir + configs.get("path_to_data_dir");
 		String functionsXMLFile = pathToDataDir + configs.get("functions_xml_file");
-		String problemsXMLFile = pathToDataDir + configs.get("problems_xml_file");
+		
+		LinkedList<String> problemsXMLFiles = getMultipleVars("problems_xml_file_", configs);
 		boolean useApproxDiff = Boolean.parseBoolean(configs.get("use_approx_diff"));
 		//boolean useOctave = Boolean.parseBoolean(configs.get("use_octave"));
+		
 		String templateFileExtension = configs.get("template_file_extension");
-		int k = 0;
 		HashMap<String, String> testTemplates = new HashMap<String, String>();
-		boolean keepReadingTemplateFileNames = true;
-		while (keepReadingTemplateFileNames) {
-			String var = "test_template_file_name_" + k;
-			if (!configs.containsKey(var)) {
-				keepReadingTemplateFileNames = false;
-			} else {
-				String name = configs.get(var);
-				testTemplates.put(name, pathToDataDir+name+templateFileExtension);
-				k++;
-			}
+		for (String templateName : getMultipleVars("test_template_file_name_", configs)) {
+			testTemplates.put(templateName, pathToDataDir+templateName+templateFileExtension);
 		}
 		String prefixForMainTestFile = configs.get("prefix_for_main_test_file");
 		
 		parseFunctionsFromXMLFile(functionsXMLFile);
-		parseProblemsFromXMLFile(problemsXMLFile);
+		for (String problemsXMLFile: problemsXMLFiles) {
+			parseProblemsFromXMLFile(pathToDataDir+problemsXMLFile);
+		}
 		
 		for (TestProblem p : testProblems) {
 			if (useApproxDiff) {
@@ -155,7 +151,7 @@ public class Main {
 	}
 	
 	/**
-	 * Read the configuration file give.
+	 * Read the configuration file given.
 	 * @param fileName The path to the configuration file.
 	 * @return A hash map containing all variables in this file.
 	 */
@@ -181,6 +177,24 @@ public class Main {
 			e.printStackTrace();
 		}
 		return configs;
+	}
+	
+	private static LinkedList<String> getMultipleVars(String prefix,
+			HashMap<String, String> configs) {
+		int k = 0;
+		LinkedList<String> vars = new LinkedList<String>();
+		boolean keepReadingVars = true;
+		while (keepReadingVars) {
+			String var = prefix + k;
+			if (!configs.containsKey(var)) {
+				keepReadingVars = false;
+			} else {
+				String name = configs.get(var);
+				vars.add(name);
+				k++;
+			}
+		}
+		return vars;
 	}
 
 	/**

@@ -105,12 +105,6 @@
 	</function>
 
 	<function>
-		<name>spellucci_func</name>
-		<var>x</var>
-		<def>y = 2*x(1)^3 + x(2)^2 + x(1)^2*x(2)^2 + 4*x(1)*x(2) + 3;</def>
-	</function>
-
-	<function>
 		<name>schuldt_func</name>
 		<var>x</var>
 		<def>y = x(2)+(1/100000)*(x(2)-x(1)^2)^2;</def>
@@ -143,18 +137,6 @@
 		<var>x</var>
 		<def>y = sin(x(1)+x(2)) + (x(1)-x(2))^2 - 1.5*x(1) + 2.5*x(2) + 1;</def>
 	</function>
-
-	<!--function>
-		<name>holzmann_func</name>
-		<var>x</var>
-		<def>
-	y = 0;
-	for k=1:99
-		u = 25 + (-50*log(0.01*k))^(2/3);
-		y = y + ( -0.1*k + exp( -(1/x(1)) * ( u - x(2) )^x(3) ) )^2;
-	end
-		</def>
-	</function-->
 
 	<function>
 		<name>dixon_2_dim_func</name>
