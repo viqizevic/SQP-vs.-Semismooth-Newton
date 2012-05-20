@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -72,9 +73,10 @@ public class Main {
 	private static HashMap<String, Integer> functionOccurences = new HashMap<String, Integer>();
 	
 	/**
-	 * A list containing all test problems.
+	 * A hash map containing all test problems as values
+	 * and the problem names as keys.
 	 */
-	private static LinkedList<TestProblem> testProblems = new LinkedList<TestProblem>();
+	private static HashMap<String, TestProblem> testProblems = new HashMap<String, TestProblem>();
 	
 	/**
 	 * The main function.
@@ -110,45 +112,70 @@ public class Main {
 			parseProblemsFromXMLFile(pathToDataDir+problemsXMLFile);
 		}
 		
-		for (TestProblem p : testProblems) {
+		Object[] problemNames = testProblems.keySet().toArray();
+		Arrays.sort(problemNames);
+		LinkedList<TestProblem> problems = new LinkedList<TestProblem>();
+		for (Object name : problemNames) {
+			TestProblem p = testProblems.get(name);
 			if (useApproxDiff) {
 				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
 			}
 			TestFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
+			problems.add(p);
 		}
 		
-		TestFileCreator.createMainTestFile(testProblems,
+		TestFileCreator.createMainTestFile(problems,
 				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
 		System.out.println("Finish!");
 		
-		if (!testProblems.isEmpty()) {
-			System.out.println("\nTotal number of problems: " + testProblems.size());
-			
-			HashMap<String, Integer> classifications = new HashMap<String, Integer>();
-			for (TestProblem p : testProblems) {
-				String cl = p.getClassification();
-				if (!classifications.containsKey(cl)) {
-					classifications.put(cl, 1);
-				} else {
-					classifications.put(cl, classifications.get(cl)+1);
-				}
+		if (testProblems.isEmpty()) {
+			System.out.println("No Problems found.");
+		} else {
+			printStatistic();
+		}
+	}
+	
+	private static void printStatistic() {
+		System.out.println("\nTotal number of problems: " + testProblems.size());
+		
+		HashMap<String, Integer> classifications = new HashMap<String, Integer>();
+		for (TestProblem p : testProblems.values()) {
+			String cl = p.getClassification();
+			if (!classifications.containsKey(cl)) {
+				classifications.put(cl, 1);
+			} else {
+				classifications.put(cl, classifications.get(cl)+1);
 			}
-			System.out.println("\nClass\t#Problem");
-			for (String cl : classifications.keySet()) {
-				System.out.println(cl + "\t" + classifications.get(cl));
+		}
+		System.out.println("\nClass\t#Problem");
+		for (String cl : classifications.keySet()) {
+			System.out.println(cl + "\t" + classifications.get(cl));
+		}
+		
+		System.out.println("\nn\t#Problem");
+		int[] dimensions = new int[25];
+		for (TestProblem p : testProblems.values()) {
+			int n = p.getDimension();
+			dimensions[n]++;
+		}
+		for (int i=0; i<dimensions.length; i++) {
+			if (dimensions[i] > 0) {
+				System.out.println(i + "\t" + dimensions[i]);
 			}
-			
-			System.out.println("\nn\t#Problem");
-			int[] dimensions = new int[25];
-			for (TestProblem p : testProblems) {
-				int n = p.getDimension();
-				dimensions[n]++;
-			}
-			for (int i=0; i<dimensions.length; i++) {
-				if (dimensions[i] > 0) {
-					System.out.println(i + "\t" + dimensions[i]);
-				}
-			}
+		}
+		
+		System.out.println("\nTest functions (" + testFunctions.size() + "):");
+		Object[] functions = testFunctions.keySet().toArray();
+		Arrays.sort(functions);
+		for (Object f : functions) {
+			System.out.println(f);
+		}
+		
+		System.out.println("\nTest problems (" + testProblems.size() + "):");
+		Object[] problems = testProblems.keySet().toArray();
+		Arrays.sort(problems);
+		for (Object p : problems) {
+			System.out.println(p);
 		}
 	}
 	
@@ -369,7 +396,7 @@ public class Main {
 					testProblems.clear();
 					return;
 				}
-				testProblems.add(problem);
+				testProblems.put(problem.getName(), problem);
 			}
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -386,30 +413,15 @@ public class Main {
 	 * @return
 	 */
 	private static TestProblem parseTestProblem(Element element) {
+		
+		// Get the objective function for the problem
 		String functionName = getTagValue("function_name", element);
-		String problemName = functionName;
-		if (!functionOccurences.containsKey(functionName)) {
-			functionOccurences.put(functionName, 1);
-		} else {
-			int nr = functionOccurences.get(functionName);
-			functionOccurences.put(functionName, nr+1);
-			problemName = functionName + "_" + nr;
-		}
 		if (!testFunctions.containsKey(functionName)) {
 			System.err.println("Cannot find function: " + functionName);
 			return null;
 		}
 		TestFunction function = testFunctions.get(functionName);
-		TestProblem problem = new TestProblem(problemName, function);
-		problem.getTestFunction().setName(problemName);
-		String description = getTagValueIfExists("description", element);
-		LinkedList<Element> listOfConstantElements =
-			getListOfElementsInParentElement(element, "constant");
-		for (Element constantElement: listOfConstantElements) {
-			String constantName = getTagValue("constant_name", constantElement);
-			String constantValue = getTagValue("constant_value", constantElement);
-			problem.getTestFunction().putConstant(constantName, constantValue);
-		}
+		
 		String A = getTagValueIfExists("A", element);
 		String b = getTagValueIfExists("b", element);
 		String G = getTagValueIfExists("G", element);
@@ -419,6 +431,43 @@ public class Main {
 		String x0 = getTagValue("x0", element);
 		String tolerance = getTagValueIfExists("tolerance", element);
 		String maxIteration = getTagValueIfExists("max_iteration", element);
+		String classification = "";
+		if (A != null) {
+			classification += "A";
+		}
+		if (G != null) {
+			classification += "G";
+		}
+		if (u != null || v != null) {
+			classification += "v";
+		}
+		if (classification.equals("")) {
+			classification = "0";
+		}
+
+		String problemName = getTagValue("name", element);
+		problemName = "problem" + "_" + classification + "_" + problemName;
+		
+		// Create a new test problem object
+		TestProblem problem = new TestProblem(problemName, function);
+		
+		// Set a new name for the function, if it's used by another problem too
+		if (!functionOccurences.containsKey(functionName)) {
+			functionOccurences.put(functionName, 1);
+		} else {
+			int nr = functionOccurences.get(functionName);
+			functionOccurences.put(functionName, nr+1);
+			problem.getTestFunction().setName(functionName+"_"+nr);
+		}
+		
+		String description = getTagValueIfExists("description", element);
+		LinkedList<Element> listOfConstantElements =
+			getListOfElementsInParentElement(element, "constant");
+		for (Element constantElement: listOfConstantElements) {
+			String constantName = getTagValue("constant_name", constantElement);
+			String constantValue = getTagValue("constant_value", constantElement);
+			problem.getTestFunction().putConstant(constantName, constantValue);
+		}
 		problem.setDescription(description);
 		problem.set_A(A);
 		problem.set_b(b);
@@ -429,16 +478,6 @@ public class Main {
 		problem.set_x0(x0);
 		problem.setTolerance(tolerance);
 		problem.setMaxIteration(maxIteration);
-		String classification = "";
-		if (A != null) {
-			classification += "A";
-		}
-		if (G != null) {
-			classification += "G";
-		}
-		if (u != null || v != null) {
-			classification += "u";
-		}
 		problem.setClassification(classification);
 		return problem;
 	}

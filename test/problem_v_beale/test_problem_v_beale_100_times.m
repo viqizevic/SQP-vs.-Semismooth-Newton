@@ -1,4 +1,4 @@
-function test_{var_problem_name}_100_times(show)
+function test_problem_v_beale_100_times(show)
     t1_total = 0;
     t2_total = 0;
     t_max = 0.95;
@@ -13,7 +13,7 @@ function test_{var_problem_name}_100_times(show)
     k_total = 0;
     while k<=total
         k_total = k_total+1;
-        [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_{var_problem_name}(0);
+        [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_v_beale(0);
         if (norm(x_ssn-x_sqp) > 0.1)
             break;
         end

@@ -11,7 +11,11 @@
 			<constant_name>q</constant_name>
 			<constant_value>[1; 1]</constant_value>
 		</constant>
-		<def>y = 0.5*x'*Q*x + q'*x;</def>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>0</constant_value>
+		</constant>
+		<def>y = 0.5*x'*Q*x + q'*x + c;</def>
 		<grad>g = Q*x + q;</grad>
 		<hess>H = Q;</hess>
 	</function>

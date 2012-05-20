@@ -1,0 +1,32 @@
+<problems>
+	
+	<problem>
+		<name>example_16_2_nocedal_wright</name>
+		<function_name>quad_func</function_name>
+		<description>See Example 16.2 in [NW06, p. 452]</description>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>[6 2 1; 2 5 2; 1 2 4]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[-8; -3; -3]</constant_value>
+		</constant>
+		<A>[1 0 1; 0 1 1]</A>
+		<b>[3; 0]</b>
+		<x0>[5; 2; -2]</x0>
+	</problem>
+
+	<problem>
+		<name>simple_example</name>
+		<function_name>norm_func</function_name>
+		<constant>
+			<constant_name>xd</constant_name>
+			<constant_value>[0; 0; 0; 0; 0]</constant_value>
+		</constant>
+		<A>[1 1 1 1 1]</A>
+		<b>[1]</b>
+		<x0>[5; -1; -1; -1; -1]</x0>
+	</problem>
+	
+</problems>

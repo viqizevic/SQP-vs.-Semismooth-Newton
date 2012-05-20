@@ -1,24 +1,24 @@
-function test_{var_problem_name}_with_sqp_octave_too(show)
-    u = {var_u};
-    v = {var_v};
-    x0 = {var_x0};
-    tol = {var_tol};
-    itmax = {var_itmax};
-    A = {var_A};
-    b = {var_b};
-    G = {var_G};
-    r = {var_r};
+function test_problem_A_simple_example_with_sqp_octave_too(show)
+    u = [];
+    v = [];
+    x0 = [5; -1; -1; -1; -1];
+    tol = 0.001;
+    itmax = 100;
+    A = [1 1 1 1 1];
+    b = [1];
+    G = [];
+    r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     tic;
-    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',A,b,G,r,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('norm_func_1','grad_norm_func_1','hess_norm_func_1',A,b,G,r,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
     t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
     str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('{var_function_name}','{var_grad_function_name}','{var_hess_function_name}',A,b,G,r,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('norm_func_1','grad_norm_func_1','hess_norm_func_1',A,b,G,r,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
@@ -55,20 +55,20 @@ function test_{var_problem_name}_with_sqp_octave_too(show)
 end
 
 function obj = phi(x)
-    obj = {var_function_name}(x);
+    obj = norm_func_1(x);
 end
 
 function c = h(x)
-    A = {var_A};
-    b = {var_b};
+    A = [1 1 1 1 1];
+    b = [1];
     c = b - A*x;
 end
 
 function s = g(x)
-    u = {var_u};
-    v = {var_v};
-    G = {var_G};
-    r = {var_r};
+    u = [];
+    v = [];
+    G = [];
+    r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     s = r - G*x;

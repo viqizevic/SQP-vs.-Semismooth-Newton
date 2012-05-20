@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Set;
@@ -139,6 +140,7 @@ public class TestFileCreator {
 	private String getTestFileContentUsingTemplate(String templateFilePath) {
 		// define the variables to be replaced in the template file
 		HashMap<String, String> vars = new HashMap<String, String>();
+		vars.put("{var_problem_name}", testProblem.getName());
 		vars.put("{var_function_name}", defFileName);
 		vars.put("{var_grad_function_name}", gradFileName);
 		vars.put("{var_hess_function_name}", hessFileName);
@@ -216,12 +218,12 @@ public class TestFileCreator {
 	
 	/**
 	 * Create a test file which called each test file of each problem.
-	 * @param problemsList A linked list containing all test problems.
+	 * @param problemsList A collection containing all test problems.
 	 * @param filePrefix The prefix for this test file.
 	 * @param directoryPath The directory to place this file.
 	 * @param testNamePattern The name pattern of the tests available.
 	 */
-	public static void createMainTestFile(LinkedList<TestProblem> problemsList,
+	public static void createMainTestFile(Collection<TestProblem> problemsList,
 			String filePrefix, String directoryPath, Set<String> testNamePattern) {
 		if (problemsList.isEmpty()) {
 			return;
@@ -230,6 +232,7 @@ public class TestFileCreator {
 			String fileName = namePattern.replace("test_problem", filePrefix);
 			String content = "function " + fileName + "()\n";
 			content += "\twarning('off','all')\n";
+			TestProblem dummy = null;
 			for (TestProblem p : problemsList) {
 				String problemTestFunction = namePattern.replace("problem", p.getName());
 				content += "\tdisp('test_" + p.getName() + "');\n";
@@ -239,10 +242,11 @@ public class TestFileCreator {
 					content += "\t" + problemTestFunction + "();\n";
 				}
 				content += "\tdisp(sprintf('\\n'));\n";
+				dummy = p;
 			}
 			content += "end";
 			// create a dummy MFileCreator object, to be able to use the createFile() method
-			TestFileCreator testFileCreator = new TestFileCreator(problemsList.getFirst(), directoryPath);
+			TestFileCreator testFileCreator = new TestFileCreator(dummy, directoryPath);
 			testFileCreator.createFile(fileName+extension, content);
 		}
 	}
