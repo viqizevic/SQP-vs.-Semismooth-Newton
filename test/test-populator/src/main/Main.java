@@ -230,8 +230,13 @@ public class Main {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document document = documentBuilder.parse(file);
 			document.getDocumentElement().normalize();
+			Element functions = (Element) document.getElementsByTagName("functions").item(0);
+			if (functions == null) {
+				System.err.println("Cannot find <functions> tag.");
+				return;
+			}
 			LinkedList<Element> listOfFunctionElements =
-				getListOfElementsInDocumentOrParentElement(document, null, "function"); 
+				getListOfElementsInParentElement(functions, "function"); 
 			for (Element element : listOfFunctionElements) {
 				TestFunction function = parseTestFunction(element);
 				testFunctions.put(function.getName(), function);
@@ -262,7 +267,7 @@ public class Main {
 		function.setGradient(grad);
 		function.setHessianMatrix(hess);
 		LinkedList<Element> listOfConstantElements =
-			getListOfElementsInDocumentOrParentElement(null, element, "constant");
+			getListOfElementsInParentElement(element, "constant");
 		for (Element constantElement: listOfConstantElements) {
 			String constantName = getTagValue("constant_name", constantElement);
 			String constantValue = getTagValue("constant_value", constantElement);
@@ -271,18 +276,14 @@ public class Main {
 		return function;
 	}
 	
-	private static LinkedList<Element> getListOfElementsInDocumentOrParentElement(
-			Document document, Element parentElement, String elementName) {
+	private static LinkedList<Element> getListOfElementsInParentElement(Element parentElement,
+			String elementName) {
 		LinkedList<Element> list = new LinkedList<Element>();
 		NodeList nodeList = null;
-		if (document != null) {
-			nodeList = document.getElementsByTagName(elementName);
+		if (parentElement != null) {
+			nodeList = parentElement.getElementsByTagName(elementName);
 		} else {
-			if (parentElement != null) {
-				nodeList = parentElement.getElementsByTagName(elementName);
-			} else {
-				return list;
-			}
+			return list;
 		}
 		for (int i=0; i < nodeList.getLength(); i++) {
 			Node node = nodeList.item(i);
@@ -355,8 +356,13 @@ public class Main {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document document = documentBuilder.parse(file);
 			document.getDocumentElement().normalize();
+			Element problems = (Element) document.getElementsByTagName("problems").item(0);
+			if (problems == null) {
+				System.err.println("Cannot find <problems> tag.");
+				return;
+			}
 			LinkedList<Element> listOfProblemElements =
-				getListOfElementsInDocumentOrParentElement(document, null, "problem");
+				getListOfElementsInParentElement(problems, "problem");
 			for (Element element: listOfProblemElements) {
 				TestProblem problem = parseTestProblem(element);
 				if (problem == null) {
@@ -398,7 +404,7 @@ public class Main {
 		problem.getTestFunction().setName(problemName);
 		String description = getTagValueIfExists("description", element);
 		LinkedList<Element> listOfConstantElements =
-			getListOfElementsInDocumentOrParentElement(null, element, "constant");
+			getListOfElementsInParentElement(element, "constant");
 		for (Element constantElement: listOfConstantElements) {
 			String constantName = getTagValue("constant_name", constantElement);
 			String constantValue = getTagValue("constant_value", constantElement);
