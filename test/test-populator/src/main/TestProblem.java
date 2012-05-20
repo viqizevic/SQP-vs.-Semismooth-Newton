@@ -195,6 +195,9 @@ public class TestProblem {
 	}
 
 	public void setTolerance(String tolerance) {
+		if (tolerance == null) {
+			tolerance = f.getEps();
+		}
 		this.tolerance = tolerance;
 	}
 
@@ -203,6 +206,9 @@ public class TestProblem {
 	}
 
 	public void setMaxIteration(String maxIteration) {
+		if (maxIteration == null) {
+			maxIteration = "100";
+		}
 		this.maxIteration = maxIteration;
 	}
 	

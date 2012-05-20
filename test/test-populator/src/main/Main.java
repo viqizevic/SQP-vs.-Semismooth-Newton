@@ -121,31 +121,33 @@ public class Main {
 				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
 		System.out.println("Finish!");
 		
-		System.out.println("\nTotal number of problems: " + testProblems.size());
-		
-		HashMap<String, Integer> classifications = new HashMap<String, Integer>();
-		for (TestProblem p : testProblems) {
-			String cl = p.getClassification();
-			if (!classifications.containsKey(cl)) {
-				classifications.put(cl, 1);
-			} else {
-				classifications.put(cl, classifications.get(cl)+1);
+		if (!testProblems.isEmpty()) {
+			System.out.println("\nTotal number of problems: " + testProblems.size());
+			
+			HashMap<String, Integer> classifications = new HashMap<String, Integer>();
+			for (TestProblem p : testProblems) {
+				String cl = p.getClassification();
+				if (!classifications.containsKey(cl)) {
+					classifications.put(cl, 1);
+				} else {
+					classifications.put(cl, classifications.get(cl)+1);
+				}
 			}
-		}
-		System.out.println("\nClass\t#Problem");
-		for (String cl : classifications.keySet()) {
-			System.out.println(cl + "\t" + classifications.get(cl));
-		}
-		
-		System.out.println("\nn\t#Problem");
-		int[] dimensions = new int[25];
-		for (TestProblem p : testProblems) {
-			int n = p.getDimension();
-			dimensions[n]++;
-		}
-		for (int i=0; i<dimensions.length; i++) {
-			if (dimensions[i] > 0) {
-				System.out.println(i + "\t" + dimensions[i]);
+			System.out.println("\nClass\t#Problem");
+			for (String cl : classifications.keySet()) {
+				System.out.println(cl + "\t" + classifications.get(cl));
+			}
+			
+			System.out.println("\nn\t#Problem");
+			int[] dimensions = new int[25];
+			for (TestProblem p : testProblems) {
+				int n = p.getDimension();
+				dimensions[n]++;
+			}
+			for (int i=0; i<dimensions.length; i++) {
+				if (dimensions[i] > 0) {
+					System.out.println(i + "\t" + dimensions[i]);
+				}
 			}
 		}
 	}
@@ -218,7 +220,7 @@ public class Main {
 			</function>
 		</functions>
 		Every function should be defined in a <function> tag.
-		The tags name, var, def are required.
+		The tags name, var and def are required.
 		The tags constant, grad and hess are optional.
 		*/
 		File file = new File(fileName);
@@ -228,14 +230,11 @@ public class Main {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document document = documentBuilder.parse(file);
 			document.getDocumentElement().normalize();
-			NodeList nodeList = document.getElementsByTagName("function");
-			for (int i=0; i < nodeList.getLength(); i++) {
-				Node node = nodeList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					Element element = (Element) node;
-					TestFunction function = parseTestFunction(element);
-					testFunctions.put(function.getName(), function);
-				}
+			LinkedList<Element> listOfFunctionElements =
+				getListOfElementsInDocumentOrParentElement(document, null, "function"); 
+			for (Element element : listOfFunctionElements) {
+				TestFunction function = parseTestFunction(element);
+				testFunctions.put(function.getName(), function);
 			}
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -262,19 +261,37 @@ public class Main {
 		function.setDefinition(def);
 		function.setGradient(grad);
 		function.setHessianMatrix(hess);
-		NodeList constantsNodeList = element.getElementsByTagName("constant");
-		if (constantsNodeList.getLength() != 0) {
-			for (int i=0; i<constantsNodeList.getLength(); i++) {
-				Node node = constantsNodeList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					Element constantElement = (Element) node;
-					String constantName = getTagValue("constant_name", constantElement);
-					String constantValue = getTagValue("constant_value", constantElement);
-					function.putConstant(constantName, constantValue);
-				}
-			}
+		LinkedList<Element> listOfConstantElements =
+			getListOfElementsInDocumentOrParentElement(null, element, "constant");
+		for (Element constantElement: listOfConstantElements) {
+			String constantName = getTagValue("constant_name", constantElement);
+			String constantValue = getTagValue("constant_value", constantElement);
+			function.putConstant(constantName, constantValue);
 		}
 		return function;
+	}
+	
+	private static LinkedList<Element> getListOfElementsInDocumentOrParentElement(
+			Document document, Element parentElement, String elementName) {
+		LinkedList<Element> list = new LinkedList<Element>();
+		NodeList nodeList = null;
+		if (document != null) {
+			nodeList = document.getElementsByTagName(elementName);
+		} else {
+			if (parentElement != null) {
+				nodeList = parentElement.getElementsByTagName(elementName);
+			} else {
+				return list;
+			}
+		}
+		for (int i=0; i < nodeList.getLength(); i++) {
+			Node node = nodeList.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) node;
+				list.add(element);
+			}
+		}
+		return list;
 	}
 	
 	/**
@@ -329,7 +346,7 @@ public class Main {
 			</problem>
 		</problems>
 		Every problem should be defined in a <problem> tag.
-		The tags function_name, x0, tolerance and max_iteration are required.
+		The tags function_name and x0 are required.
 		*/
 		File file = new File(fileName);
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -338,18 +355,15 @@ public class Main {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			Document document = documentBuilder.parse(file);
 			document.getDocumentElement().normalize();
-			NodeList nodeList = document.getElementsByTagName("problem");
-			for (int i=0; i < nodeList.getLength(); i++) {
-				Node node = nodeList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					Element element = (Element) node;
-					TestProblem problem = parseTestProblem(element);
-					if (problem == null) {
-						testProblems.clear();
-						return;
-					}
-					testProblems.add(problem);
+			LinkedList<Element> listOfProblemElements =
+				getListOfElementsInDocumentOrParentElement(document, null, "problem");
+			for (Element element: listOfProblemElements) {
+				TestProblem problem = parseTestProblem(element);
+				if (problem == null) {
+					testProblems.clear();
+					return;
 				}
+				testProblems.add(problem);
 			}
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -380,21 +394,16 @@ public class Main {
 			return null;
 		}
 		TestFunction function = testFunctions.get(functionName);
-		NodeList constantsNodeList = element.getElementsByTagName("constant");
-		if (constantsNodeList.getLength() != 0) {
-			for (int i=0; i<constantsNodeList.getLength(); i++) {
-				Node node = constantsNodeList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					Element constantElement = (Element) node;
-					String constantName = getTagValue("constant_name", constantElement);
-					String constantValue = getTagValue("constant_value", constantElement);
-					function.putConstant(constantName, constantValue);
-				}
-			}
-		}
 		TestProblem problem = new TestProblem(problemName, function);
 		problem.getTestFunction().setName(problemName);
 		String description = getTagValueIfExists("description", element);
+		LinkedList<Element> listOfConstantElements =
+			getListOfElementsInDocumentOrParentElement(null, element, "constant");
+		for (Element constantElement: listOfConstantElements) {
+			String constantName = getTagValue("constant_name", constantElement);
+			String constantValue = getTagValue("constant_value", constantElement);
+			problem.getTestFunction().putConstant(constantName, constantValue);
+		}
 		String A = getTagValueIfExists("A", element);
 		String b = getTagValueIfExists("b", element);
 		String G = getTagValueIfExists("G", element);
@@ -402,8 +411,8 @@ public class Main {
 		String u = getTagValueIfExists("u", element);
 		String v = getTagValueIfExists("v", element);
 		String x0 = getTagValue("x0", element);
-		String tolerance = getTagValue("tolerance", element);
-		String maxIteration = getTagValue("max_iteration", element);
+		String tolerance = getTagValueIfExists("tolerance", element);
+		String maxIteration = getTagValueIfExists("max_iteration", element);
 		problem.setDescription(description);
 		problem.set_A(A);
 		problem.set_b(b);

@@ -115,6 +115,17 @@ public class TestFunction {
 		this.usingApproximationDifferentiation = usingApproximationDifferentiation;
 	}
 
+	public String getEps() {
+		return eps;
+	}
+
+	public void setEps(String eps) {
+		if (eps == null) {
+			return;
+		}
+		this.eps = eps;
+	}
+
 	public String getGradient() {
 		if (usingApproximationDifferentiation || gradient.equals("not available")) {
 			gradient = "g = approx_gradient('"+name+"',x,"+eps+");";
