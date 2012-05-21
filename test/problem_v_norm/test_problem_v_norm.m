@@ -1,7 +1,7 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_v_norm(show)
-    u = [3; 6];
-    v = [10; 20];
-    x0 = [8; 17];
+    u = [-10; -10];
+    v = [10; 10];
+    x0 = [8; 9];
     tol = 0.001;
     itmax = 100;
     A = [];

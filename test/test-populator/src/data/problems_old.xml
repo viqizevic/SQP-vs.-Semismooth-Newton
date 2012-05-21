@@ -4,21 +4,6 @@
 		<function_name>quad_func</function_name>
 		<constant>
 			<constant_name>Q</constant_name>
-			<constant_value>[2 0; 0 2]</constant_value>
-		</constant>
-		<constant>
-			<constant_name>q</constant_name>
-			<constant_value>[-4; -4]</constant_value>
-		</constant>
-		<u>[-1; -1]</u>
-		<v>[1; 2]</v>
-		<x0>[-1; 0]</x0>
-	</problem>
-
-	<problem>
-		<function_name>quad_func</function_name>
-		<constant>
-			<constant_name>Q</constant_name>
 			<constant_value>2*[1 0 -1 0; 0 1 0 -1; -1 0 1 0; 0 -1 0 1]</constant_value>
 		</constant>
 		<constant>
@@ -63,15 +48,6 @@
 		<v>[10; 10; 10; 10]</v>
 		<x0>[5; 5; 5; 5]</x0>
 	</problem-->
-
-    <!--problem>
-        <function_name>exp_func</function_name>
-        <u>[1; 0.5; 1]</u>
-        <v>[10; 20; 4]</v>
-        <x0>[5; 2; 4]</x0>
-        <tolerance>0.001</tolerance>
-        <max_iteration>500</max_iteration>
-    </problem-->
 
 	<problem>
 		<function_name>rosenbrock_func</function_name>

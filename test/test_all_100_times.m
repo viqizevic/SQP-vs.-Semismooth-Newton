@@ -21,6 +21,9 @@ function test_all_100_times()
 	disp('test_problem_v_exp');
 	test_problem_v_exp_100_times(1);
 	disp(sprintf('\n'));
+	disp('test_problem_v_exp_1');
+	test_problem_v_exp_1_100_times(1);
+	disp(sprintf('\n'));
 	disp('test_problem_v_himmelblau');
 	test_problem_v_himmelblau_100_times(1);
 	disp(sprintf('\n'));

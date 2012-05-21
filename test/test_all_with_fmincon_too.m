@@ -21,6 +21,9 @@ function test_all_with_fmincon_too()
 	disp('test_problem_v_exp');
 	test_problem_v_exp_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_problem_v_exp_1');
+	test_problem_v_exp_1_with_fmincon_too();
+	disp(sprintf('\n'));
 	disp('test_problem_v_himmelblau');
 	test_problem_v_himmelblau_with_fmincon_too();
 	disp(sprintf('\n'));

@@ -21,6 +21,9 @@ function test_all()
 	disp('test_problem_v_exp');
 	test_problem_v_exp(1);
 	disp(sprintf('\n'));
+	disp('test_problem_v_exp_1');
+	test_problem_v_exp_1(1);
+	disp(sprintf('\n'));
 	disp('test_problem_v_himmelblau');
 	test_problem_v_himmelblau(1);
 	disp(sprintf('\n'));

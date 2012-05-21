@@ -1,6 +1,6 @@
 function test_problem_v_exp_with_sqp_octave_too(show)
-    u = [-10; -2; -4];
-    v = [10; 20; 4];
+    u = [-10; -10; -10];
+    v = [10; 10; 10];
     x0 = [5; 2; 4];
     tol = 0.001;
     itmax = 500;
@@ -65,8 +65,8 @@ function c = h(x)
 end
 
 function s = g(x)
-    u = [-10; -2; -4];
-    v = [10; 20; 4];
+    u = [-10; -10; -10];
+    v = [10; 10; 10];
     G = [];
     r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];

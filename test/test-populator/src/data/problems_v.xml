@@ -27,16 +27,16 @@
 			<constant_name>xd</constant_name>
 			<constant_value>[4; 7]</constant_value>
 		</constant>
-		<u>[3; 6]</u>
-		<v>[10; 20]</v>
-		<x0>[8; 17]</x0>
+		<u>[-10; -10]</u>
+		<v>[10; 10]</v>
+		<x0>[8; 9]</x0>
 	</problem>
 	
     <problem>
     	<name>exp</name>
         <function_name>exp_func</function_name>
-        <u>[-10; -2; -4]</u>
-        <v>[10; 20; 4]</v>
+        <u>[-10; -10; -10]</u>
+        <v>[10; 10; 10]</v>
         <x0>[5; 2; 4]</x0>
         <tolerance>0.001</tolerance>
         <max_iteration>500</max_iteration>
@@ -97,5 +97,13 @@
 		<v>[1; 2]</v>
 		<x0>[-1; 0]</x0>
 	</problem>
+
+    <problem>
+        <name>exp</name>
+        <function_name>exp_func</function_name>
+        <u>[1; 0.5; 1]</u>
+        <v>[10; 10; 10]</v>
+        <x0>[5; 2; 4]</x0>
+    </problem>
 
 </problems>

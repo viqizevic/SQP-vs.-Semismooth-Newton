@@ -175,10 +175,11 @@ public class Main {
 		}
 		
 		System.out.println("\nTest problems (" + testProblems.size() + "):");
-		Object[] problems = testProblems.keySet().toArray();
-		Arrays.sort(problems);
-		for (Object p : problems) {
-			System.out.println(p);
+		Object[] problemNames = testProblems.keySet().toArray();
+		Arrays.sort(problemNames);
+		for (Object problemName : problemNames) {
+			TestProblem p = testProblems.get(problemName);
+			System.out.println(p.getName());
 		}
 	}
 	
