@@ -2,8 +2,8 @@
 	
 	<problem>
 		<name>example_16_2_nocedal_wright</name>
-		<function_name>quad_func</function_name>
 		<description>See Example 16.2 in [NW06, p. 452]</description>
+		<function_name>quad_func</function_name>
 		<constant>
 			<constant_name>Q</constant_name>
 			<constant_value>[6 2 1; 2 5 2; 1 2 4]</constant_value>
@@ -27,6 +27,14 @@
 		<A>[1 1 1 1 1]</A>
 		<b>[1]</b>
 		<x0>[5; -1; -1; -1; -1]</x0>
+	</problem>
+	
+	<problem>
+		<name>huang_aggerwal</name>
+		<function_name>huang_aggerwal_func</function_name>
+		<A>[1 1 1 1 1; 0 0 1 -2 -2]</A>
+		<b>[5; -3]</b>
+		<x0>[3; 5; -3; 2; -2]</x0>
 	</problem>
 	
 </problems>

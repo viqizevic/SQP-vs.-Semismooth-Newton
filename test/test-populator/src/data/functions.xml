@@ -9,7 +9,7 @@
 		</constant>
 		<constant>
 			<constant_name>q</constant_name>
-			<constant_value>[1; 1]</constant_value>
+			<constant_value>[0; 0]</constant_value>
 		</constant>
 		<constant>
 			<constant_name>c</constant_name>

@@ -15,5 +15,44 @@
 		<r>[2; 1; 1; 2]</r>
 		<x0>[-1; 0]</x0>
 	</problem>
+
+	<problem>
+		<name>example_16_4_nocedal_wright</name>
+		<description>See Example 16.4 in [NW06, p. 475]</description>
+		<function_name>norm_func</function_name>
+		<constant>
+			<constant_name>xd</constant_name>
+			<constant_value>[1; 2.5]</constant_value>
+		</constant>
+		<G>[-1 2; 1 2; 1 -2]</G>
+		<r>[2; 6; 2]</r>
+		<u>[0; 0]</u>
+		<x0>[2; 0]</x0>
+	</problem>
+
+	<problem>
+		<name>rosenbrock</name>
+		<function_name>rosenbrock_func</function_name>
+		<G>[0 -1]</G>
+		<r>[-1.5]</r>
+		<x0>[2; 3]</x0>
+	</problem>
+
+	<problem>
+		<name>example_13_2_antoniou_lu</name>
+		<description>See Example 13.2 in [AL07, p. 415f]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[1 0 -1 0; 0 1 0 -1; -1 0 1 0; 0 -1 0 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[0; 0; 0; 0]</constant_value>
+		</constant>
+		<G>[-1 0 0 0; 0 -1 0 0; 1 2 0 0; 0 0 0 -1; 0 0 -1 -1; 0 0 1 2]</G>
+		<r>[0; 0; 2; -2; -3; 6]</r>
+		<x0>[0; 1; 2; 2]</x0>
+	</problem>
 	
 </problems>

@@ -61,6 +61,8 @@ function test_problem_v_exp_1_100_times(show)
         str2 = ['x_sqp = [ ', x2, '], it = ', num2str(it2_total), ', ', t2, t2min, t2max];
         disp(str1);
         disp(str2);
-        disp(['[', num2str(k_total), ']']);
+        if (k_total ~= 100)
+            disp(['[', num2str(k_total), ']']);
+        end
     end
 end
