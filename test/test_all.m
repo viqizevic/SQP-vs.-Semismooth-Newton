@@ -30,6 +30,9 @@ function test_all()
 	disp('test_problem_v_quadratic');
 	test_problem_v_quadratic(1);
 	disp(sprintf('\n'));
+	disp('test_problem_v_quadratic_1');
+	test_problem_v_quadratic_1(1);
+	disp(sprintf('\n'));
 	disp('test_problem_v_rosenbrock');
 	test_problem_v_rosenbrock(1);
 	disp(sprintf('\n'));

@@ -96,6 +96,10 @@ public class TestProblem {
 		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public TestFunction getTestFunction() {
 		return f;
 	}

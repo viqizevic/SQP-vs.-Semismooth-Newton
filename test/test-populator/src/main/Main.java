@@ -117,6 +117,9 @@ public class Main {
 		LinkedList<TestProblem> problems = new LinkedList<TestProblem>();
 		for (Object name : problemNames) {
 			TestProblem p = testProblems.get(name);
+			if (p.getName().endsWith("_"+0)) {
+				p.setName(p.getName().substring(0, p.getName().length()-2));
+			}
 			if (useApproxDiff) {
 				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
 			}
@@ -446,7 +449,14 @@ public class Main {
 		}
 
 		String problemName = getTagValue("name", element);
-		problemName = "problem" + "_" + classification + "_" + problemName;
+		problemName = "problem" + "_" + classification + "_" + problemName + "_" + 0;
+		int k = 1;
+		while (testProblems.containsKey(problemName)) {
+			String suffix = "_"+k;
+			problemName = problemName.substring(0, problemName.length()-2);
+			problemName += suffix;
+			k++;
+		}
 		
 		// Create a new test problem object
 		TestProblem problem = new TestProblem(problemName, function);

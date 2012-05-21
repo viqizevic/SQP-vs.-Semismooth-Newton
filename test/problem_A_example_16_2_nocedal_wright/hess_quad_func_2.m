@@ -1,6 +1,6 @@
 function H = hess_quad_func_2(x)
-	Q = [2 0; 0 2];
+	Q = [6 2 1; 2 5 2; 1 2 4];
 	c = 0;
-	q = [-4; -4];
+	q = [-8; -3; -3];
 	H = Q;
 end

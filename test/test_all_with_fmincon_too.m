@@ -30,6 +30,9 @@ function test_all_with_fmincon_too()
 	disp('test_problem_v_quadratic');
 	test_problem_v_quadratic_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_problem_v_quadratic_1');
+	test_problem_v_quadratic_1_with_fmincon_too();
+	disp(sprintf('\n'));
 	disp('test_problem_v_rosenbrock');
 	test_problem_v_rosenbrock_with_fmincon_too();
 	disp(sprintf('\n'));

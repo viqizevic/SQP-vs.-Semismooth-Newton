@@ -82,4 +82,20 @@
 		<x0>[3; -1; -3; -1]</x0>
 	</problem>
 
+	<problem>
+		<name>quadratic</name>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>[2 0; 0 2]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[-4; -4]</constant_value>
+		</constant>
+		<u>[-1; -1]</u>
+		<v>[1; 2]</v>
+		<x0>[-1; 0]</x0>
+	</problem>
+
 </problems>
