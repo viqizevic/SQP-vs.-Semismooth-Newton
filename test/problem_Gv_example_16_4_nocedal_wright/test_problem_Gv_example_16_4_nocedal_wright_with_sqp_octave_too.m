@@ -2,7 +2,7 @@ function test_problem_Gv_example_16_4_nocedal_wright_with_sqp_octave_too(show)
     u = [0; 0];
     v = [];
     x0 = [2; 0];
-    tol = 0.001;
+    tol = 0.00001;
     itmax = 100;
     A = [];
     b = [];

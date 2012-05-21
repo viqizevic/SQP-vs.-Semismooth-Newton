@@ -2,7 +2,7 @@ function test_problem_v_quadratic_1_with_sqp_octave_too(show)
     u = [-1; -1];
     v = [1; 2];
     x0 = [-1; 0];
-    tol = 0.001;
+    tol = 0.00001;
     itmax = 100;
     A = [];
     b = [];

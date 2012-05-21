@@ -2,7 +2,7 @@ function test_problem_v_rosenbrock_with_sqp_octave_too(show)
     u = [-10; -10];
     v = [10; 10];
     x0 = [-1; 2];
-    tol = 0.001;
+    tol = 0.00001;
     itmax = 100;
     A = [];
     b = [];

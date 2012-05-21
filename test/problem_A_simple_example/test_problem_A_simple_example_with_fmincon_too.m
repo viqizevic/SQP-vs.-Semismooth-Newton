@@ -2,7 +2,7 @@ function test_problem_A_simple_example_with_fmincon_too()
 	u = [];
 	v = [];
 	x0 = [5; -1; -1; -1; -1];
-	tol = 0.001;
+	tol = 0.00001;
 	itmax = 100;
     A = [1 1 1 1 1];
     b = [1];

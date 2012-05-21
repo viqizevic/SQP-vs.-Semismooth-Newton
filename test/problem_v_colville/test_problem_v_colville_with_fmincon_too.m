@@ -2,7 +2,7 @@ function test_problem_v_colville_with_fmincon_too()
 	u = [-10; -10; -10; -10];
 	v = [10; 10; 10; 10];
 	x0 = [3; -1; -3; -1];
-	tol = 0.001;
+	tol = 0.00001;
 	itmax = 100;
     A = [];
     b = [];

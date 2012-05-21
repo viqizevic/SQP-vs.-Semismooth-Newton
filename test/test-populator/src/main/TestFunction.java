@@ -71,7 +71,7 @@ public class TestFunction {
 	public TestFunction(String name) {
 		this.name = name;
 		constants = new HashMap<String, String>();
-		eps = "0.001";
+		eps = "0.00001";
 	}
 
 	public String getName() {

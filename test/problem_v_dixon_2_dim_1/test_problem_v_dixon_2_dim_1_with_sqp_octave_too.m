@@ -2,7 +2,7 @@ function test_problem_v_dixon_2_dim_1_with_sqp_octave_too(show)
     u = [-10; -10];
     v = [2; -5];
     x0 = [-6; -7];
-    tol = 0.001;
+    tol = 0.00001;
     itmax = 100;
     A = [];
     b = [];

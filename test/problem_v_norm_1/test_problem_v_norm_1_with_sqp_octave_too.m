@@ -2,7 +2,7 @@ function test_problem_v_norm_1_with_sqp_octave_too(show)
     u = [5; 5; 5];
     v = [10; 10; 10];
     x0 = [7; 10; 9];
-    tol = 0.001;
+    tol = 0.00001;
     itmax = 100;
     A = [];
     b = [];

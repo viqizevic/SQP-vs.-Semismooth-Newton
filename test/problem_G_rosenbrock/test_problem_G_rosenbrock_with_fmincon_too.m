@@ -2,7 +2,7 @@ function test_problem_G_rosenbrock_with_fmincon_too()
 	u = [];
 	v = [];
 	x0 = [2; 3];
-	tol = 0.001;
+	tol = 0.00001;
 	itmax = 100;
     A = [];
     b = [];

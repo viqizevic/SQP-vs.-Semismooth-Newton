@@ -2,7 +2,7 @@ function test_problem_G_example_with_diamond_area_with_sqp_octave_too(show)
     u = [];
     v = [];
     x0 = [-1; 0];
-    tol = 0.001;
+    tol = 0.00001;
     itmax = 100;
     A = [];
     b = [];

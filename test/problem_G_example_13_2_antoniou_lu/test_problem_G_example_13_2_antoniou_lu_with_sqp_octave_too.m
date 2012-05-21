@@ -2,7 +2,7 @@ function test_problem_G_example_13_2_antoniou_lu_with_sqp_octave_too(show)
     u = [];
     v = [];
     x0 = [0; 1; 2; 2];
-    tol = 0.001;
+    tol = 0.00001;
     itmax = 100;
     A = [];
     b = [];

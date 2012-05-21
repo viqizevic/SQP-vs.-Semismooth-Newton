@@ -2,7 +2,7 @@ function test_problem_v_himmelblau_1_with_fmincon_too()
 	u = [5; 5];
 	v = [10; 10];
 	x0 = [10; 10];
-	tol = 0.001;
+	tol = 0.00001;
 	itmax = 100;
     A = [];
     b = [];
