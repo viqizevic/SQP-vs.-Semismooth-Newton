@@ -1,4 +1,4 @@
-function test_problem_A_huang_aggerwal_100_times(show)
+function test_problem_A_huang_aggerwal_hs28_100_times(show)
     t1_total = 0;
     t2_total = 0;
     t_max = 0.95;
@@ -13,7 +13,7 @@ function test_problem_A_huang_aggerwal_100_times(show)
     k_total = 0;
     while k<=total
         k_total = k_total+1;
-        [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_A_huang_aggerwal(0);
+        [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_A_huang_aggerwal_hs28(0);
         if (norm(x_ssn-x_sqp) > 0.1)
             break;
         end

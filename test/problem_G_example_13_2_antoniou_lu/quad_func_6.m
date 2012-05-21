@@ -1,6 +1,6 @@
-function g = grad_quad_func_4(x)
+function y = quad_func_6(x)
 	Q = 2*[1 0 -1 0; 0 1 0 -1; -1 0 1 0; 0 -1 0 1];
 	c = 0;
 	q = [0; 0; 0; 0];
-	g = Q*x + q;
+	y = 0.5*x'*Q*x + q'*x + c;
 end

@@ -3,8 +3,11 @@ function test_all_100_times()
 	disp('test_problem_A_example_16_2_nocedal_wright');
 	test_problem_A_example_16_2_nocedal_wright_100_times(1);
 	disp(sprintf('\n'));
-	disp('test_problem_A_huang_aggerwal');
-	test_problem_A_huang_aggerwal_100_times(1);
+	disp('test_problem_A_huang_aggerwal_hs28');
+	test_problem_A_huang_aggerwal_hs28_100_times(1);
+	disp(sprintf('\n'));
+	disp('test_problem_A_huang_aggerwal_miele_hs48');
+	test_problem_A_huang_aggerwal_miele_hs48_100_times(1);
 	disp(sprintf('\n'));
 	disp('test_problem_A_simple_example');
 	test_problem_A_simple_example_100_times(1);
@@ -17,6 +20,12 @@ function test_all_100_times()
 	disp(sprintf('\n'));
 	disp('test_problem_G_rosenbrock');
 	test_problem_G_rosenbrock_100_times(1);
+	disp(sprintf('\n'));
+	disp('test_problem_Gv_beale_hs35');
+	test_problem_Gv_beale_hs35_100_times(1);
+	disp(sprintf('\n'));
+	disp('test_problem_Gv_betts_hs21');
+	test_problem_Gv_betts_hs21_100_times(1);
 	disp(sprintf('\n'));
 	disp('test_problem_Gv_example_16_4_nocedal_wright');
 	test_problem_Gv_example_16_4_nocedal_wright_100_times(1);

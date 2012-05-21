@@ -1,4 +1,4 @@
-function g = grad_quad_func_3(x)
+function g = grad_quad_func_5(x)
 	Q = [2 0; 0 2];
 	c = 0;
 	q = [-4; -4];

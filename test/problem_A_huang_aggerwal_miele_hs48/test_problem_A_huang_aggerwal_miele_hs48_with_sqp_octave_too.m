@@ -1,24 +1,24 @@
-function test_problem_G_example_with_diamond_area_with_sqp_octave_too(show)
+function test_problem_A_huang_aggerwal_miele_hs48_with_sqp_octave_too(show)
     u = [];
     v = [];
-    x0 = [-1; 0];
+    x0 = [3; 5; -3; 2; -2];
     tol = 0.00001;
     itmax = 100;
-    A = [];
-    b = [];
-    G = [2 1; 1 -1; -1 -1; -2 1];
-    r = [2; 1; 1; 2];
+    A = [1 1 1 1 1; 0 0 1 -2 -2];
+    b = [5; -3];
+    G = [];
+    r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     tic;
-    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func_5','grad_quad_func_5','hess_quad_func_5',A,b,G,r,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('quad_func_4','grad_quad_func_4','hess_quad_func_4',A,b,G,r,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
     t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
     str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('quad_func_5','grad_quad_func_5','hess_quad_func_5',A,b,G,r,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('quad_func_4','grad_quad_func_4','hess_quad_func_4',A,b,G,r,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);
@@ -55,20 +55,20 @@ function test_problem_G_example_with_diamond_area_with_sqp_octave_too(show)
 end
 
 function obj = phi(x)
-    obj = quad_func_5(x);
+    obj = quad_func_4(x);
 end
 
 function c = h(x)
-    A = [];
-    b = [];
+    A = [1 1 1 1 1; 0 0 1 -2 -2];
+    b = [5; -3];
     c = b - A*x;
 end
 
 function s = g(x)
     u = [];
     v = [];
-    G = [2 1; 1 -1; -1 -1; -2 1];
-    r = [2; 1; 1; 2];
+    G = [];
+    r = [];
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     s = r - G*x;

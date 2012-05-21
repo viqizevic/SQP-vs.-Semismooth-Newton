@@ -30,8 +30,38 @@
 	</problem>
 	
 	<problem>
-		<name>huang_aggerwal</name>
-		<function_name>huang_aggerwal_func</function_name>
+		<name>huang_aggerwal_hs28</name>
+		<description>See Problem 28 in [HS81, p. 51]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[1 1 0; 1 2 1; 0 1 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[0; 0; 0]</constant_value>
+		</constant>
+		<A>[1 2 3]</A>
+		<b>[1]</b>
+		<x0>[-4; 1; 1]</x0>
+	</problem>
+	
+	<problem>
+		<name>huang_aggerwal_miele_hs48</name>
+		<description>See Problem 48 in [HS81, p. 71]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[1 0 0 0 0; 0 1 -1 0 0; 0 -1 1 0 0; 0 0 0 1 -1; 0 0 0 -1 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[-2; 0; 0; 0; 0]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>1</constant_value>
+		</constant>
 		<A>[1 1 1 1 1; 0 0 1 -2 -2]</A>
 		<b>[5; -3]</b>
 		<x0>[3; 5; -3; 2; -2]</x0>

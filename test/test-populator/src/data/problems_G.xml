@@ -55,4 +55,49 @@
 		<x0>[0; 1; 2; 2]</x0>
 	</problem>
 	
+	<problem>
+		<name>betts_hs21</name>
+		<description>See Problem 21 in [HS81, p. 44]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[0.1 0; 0 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[0; 0]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>-100</constant_value>
+		</constant>
+		<G>[-10 1]</G>
+		<r>[-10]</r>
+		<u>[2; -50]</u>
+		<v>[50; 50]</v>
+		<x0>[10; -10]</x0>
+	</problem>
+	
+	<problem>
+		<name>beale_hs35</name>
+		<description>See Problem 35 in [HS81, p. 58]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[2 1 1; 1 2 0; 1 0 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[-8; -6; -4]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>9</constant_value>
+		</constant>
+		<G>[1 1 2]</G>
+		<r>[3]</r>
+		<u>[0; 0; 0]</u>
+		<x0>[0.5; 0.5; 0.5]</x0>
+	</problem>
+	
 </problems>
