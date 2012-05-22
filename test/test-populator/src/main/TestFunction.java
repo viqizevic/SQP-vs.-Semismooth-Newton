@@ -71,7 +71,7 @@ public class TestFunction {
 	public TestFunction(String name) {
 		this.name = name;
 		constants = new HashMap<String, String>();
-		eps = "0.001";
+		eps = "0.00001";
 	}
 
 	public String getName() {
@@ -113,6 +113,17 @@ public class TestFunction {
 	public void setUsingApproximationDifferentiation(
 			boolean usingApproximationDifferentiation) {
 		this.usingApproximationDifferentiation = usingApproximationDifferentiation;
+	}
+
+	public String getEps() {
+		return eps;
+	}
+
+	public void setEps(String eps) {
+		if (eps == null) {
+			return;
+		}
+		this.eps = eps;
 	}
 
 	public String getGradient() {

@@ -1,4 +1,6 @@
-Wir betrachten nun zuerst unrestringierte Optimierungsprobleme.
+Wir beginnen nun zuerst mit Optimierungsproblemen ohne Restriktionen
+und stellen die notwendige und hinreichende Optimalitätsbedingungen bereit.
+Wir werden auch zwei numerische Verfahren hierfür vorstellen.
 
 \begin{definition}
 \emph{(Unrestringierte Optimierungsprobleme)}
@@ -10,7 +12,8 @@ Wir nehmen hier der Einfachheit halber an, dass der Definitionsbereich
 $D$ gleich $\R^n$ sei.
 
 \begin{theorem}
-\emph{(Notwendige Bedingung erster Ordnung)}\\
+\emph{(Notwendige Bedingung erster Ordnung, vgl. Satz 3.1.2 in
+\cite[S.~42]{alt})}\\
 Sei $\xopt$ eine lokale Lösung des Problems~(\ref{eq:uop}) und
 sei $f$ einmal stetig differenzierbar in einer Umgebung von $\xopt$,
 dann gilt
@@ -19,13 +22,14 @@ dann gilt
 \end{equation}
 \end{theorem}
 
-Diese Bedingung gilt aber nicht nur für lokales Minimum sondern auch für lokales
-Maximum von $f$.
+Die Bedingung~\eqref{eq:grad_zero} gilt aber nicht nur für lokales Minimum
+sondern auch für lokales Maximum von~$f$.
 
 \begin{definition}
-\emph{(Stationärer Punkt)}
+\emph{(Stationärer Punkt, vgl. Definition 3.1.4 in \cite[S.~42]{alt})}\\
 Die Funktion $f$ sei in $\xopt$ differenzierbar. Der Punkt $\xopt$ heißt ein
-stationärer Punkt von $f$, wenn $\xopt$ die notwendige Bedingung~(\ref{eq:grad_zero}) erfüllt.
+stationärer Punkt von $f$, wenn $\xopt$ die notwendige Bedingung~(\ref{eq:grad_zero})
+erfüllt.
 \end{definition}
 
 Viele Optimierungsverfahren suchen in der Regel nach einem stationärem Punkt
@@ -35,7 +39,8 @@ Durch folgende notwendige Bedingung kann man zwischen einem lokalen Minimum und
 einem lokalen Maximum unterscheiden.
 
 \begin{theorem}
-\emph{(Notwendige Bedingung zweiter Ordnung)}
+\emph{(Notwendige Bedingung zweiter Ordnung, vgl. Satz 3.1.6 in
+\cite[S.~43]{alt})}\\
 Sei $\xopt$ eine lokale Lösung des Problems~(\ref{eq:uop})
 und sei $f$ zweimal stetig differenzierbar in einer Umgebung von $\xopt$,
 dann gilt~(\ref{eq:grad_zero}) und
@@ -46,7 +51,8 @@ $f''(\xopt)$ ist also positiv semidefinit.
 \end{theorem}
 
 \begin{theorem}
-\emph{(Hinreichende Bedingung zweiter Ordnung)}
+\emph{(Hinreichende Bedingung zweiter Ordnung, vgl. Satz 3.1.11 in
+\cite[S.~44]{alt})}\\
 Sei $f$ zweimal stetig differenzierbar in einer Umgebung von $\xopt$.
 Die notwendige Bedingung~(\ref{eq:grad_zero}) sei erfüllt und $f''(\xopt)$
 sei positiv definit, d.\,h.
@@ -63,8 +69,8 @@ Eine wichtige Grundlage für einige Verfahren ist
 die Definition der Abstiegsrichtung.
 
 \begin{definition}
-\emph{(Abstiegsrichtung)}
-Die Funktion $f:\R^n \rightarrow \R$ sei differenzierbar in $x$. Ein Vektor
+\emph{(Abstiegsrichtung, vgl. Definition 4.1.2 in \cite[S.~68]{alt})}\\
+Die Funktion $f$ sei differenzierbar in $x$. Ein Vektor
 $d \in \R^n\backslash\{0\}$ heißt Abstiegsrichtung von~$f$ in~$x$, wenn
 \begin{equation}
   \nabla f(x)^T d < 0
@@ -76,7 +82,8 @@ Sei $x \in \R^n$ mit $\nabla f(x) \neq 0$, dann ist beispielsweise $d = - \nabla
 f(x)$ eine Abstiegsrichtung von~$f$ in~$x$.
 
 \begin{theorem}
-Seien $x \in \R^n$, $f:\R^n \rightarrow \R$ differenzierbar in $x$ und $d$
+\emph{(vgl. Lemma 4.1.1 in \cite[S.~68]{alt})}\\
+Seien $x \in \R^n$, $f$ differenzierbar in $x$ und $d$
 eine Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
 \begin{equation}
   f( x + \sigma d) < f(x) \qquad \forall \sigma \in \ ]0, \hat{\sigma}[.
@@ -86,7 +93,7 @@ eine Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
 Die meisten Optimierungsverfahren sind iterativ. Sie fangen also mit einem
 Anfangspunkt $x^0$ an und versuchen dann weitere Punkte ($x^1, x^2, \ldots , x^k
 , \ldots$) zu finden, die besser als die vorherige sind.
-Viele iterative Verfahren zur Bestimmung eine lokale Lösung sind häufig
+Viele iterative Verfahren zur Bestimmung einer lokalen Lösung sind häufig
 Abstiegsverfahren. In der $k$-ten Iteration bestimmen sie zu einem Punkt~$x^k$
 eine Abstiegsrichtung~$d^k$ und eine Schrittweite $\sigma_k$ so, dass für
 $x^{k+1} := x^k + \sigma_k d^k$
@@ -98,14 +105,14 @@ gilt.
 \subsection{Gradientenverfahren}
 
 Das Gradientenverfahren ist ein einfaches Abstiegsverfahren,
-welches die negative Gradienten als Abstiegsrichtungen verwendet.
+welches die negativen Gradienten als Abstiegsrichtungen verwendet.
 
 \begin{algorithm}
-\emph{(Gradientenverfahren)}
+\emph{(Gradientenverfahren, vgl. Verfahren 4.2.39 in \cite[S.~98]{alt})}
 \begin{enumerate}
-  \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
+  \item Wähle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
         Setze $k := 0$.
-  \item Ist $\|\nabla f(x^k)\| < \epsilon$ \label{list:stop_criteria_grad_verf}
+  \item Ist $\|\nabla f(x^k)\| < \varepsilon$ \label{list:stop_criteria_grad_verf}
         $\Rightarrow$ STOP.
   \item Setze $d^k := - \nabla f(x^k)$.
   \item Bestimme $\sigma_k$ so, dass
@@ -118,26 +125,31 @@ welches die negative Gradienten als Abstiegsrichtungen verwendet.
 \end{enumerate}
 \end{algorithm}
 
-Um die Schrittweite $\sigma_k$ zu bestimmen, kann man das Armijo-Verfahren
-oder das Powell-Verfahren verwenden. %TODO Siehe ..
+Um die Schrittweite $\sigma_k$ zu bestimmen, kann man das Schrittweitenverfahren
+von Armijo oder das Schrittweitenverfahren von Wolfe-Powell verwenden.
+Wir verweisen auf das Unterkapitel 4.2.7 über Schrittweitenverfahren in
+\cite[S.~90ff]{alt}.
 
 \subsection{Newton-Verfahren} \label{sec:newton_verfahren}
 
-Ein bekanntes Verfahren der numerischen Mathematik, um ein nichtlineares
-Gleichungssystem zu lösen, ist das Newton-Verfahren.
+Ein bekanntes Verfahren der numerischen Mathematik, um eine nichtlineare
+Gleichung zu lösen, ist das Newton-Verfahren.
+Man berechnet mit dem Newton-Verfahren eine Nullstelle
+von einer gegebenen Abbildung $F:\R^n \rightarrow \R^n$,
+d.\,h. eine Lösung $\xopt \in \R^n$ der nichtlinearen Gleichung $F(x) = 0$.
 Für unsere unrestringierte Optimierungsprobleme können wir das Newton-Verfahren
-verwenden, um die Lösung des nichtlinearen
-Gleichungssystems~\eqref{eq:grad_zero},
+verwenden, um die Lösung der nichtlinearen
+Gleichung~\eqref{eq:grad_zero},
 $\nabla f(x) = 0$, zu finden.
 Wir müssen dabei voraussetzen,
 dass die Funktion $f$ zweimal differenzierbar sei.
 
 \begin{algorithm}
-\emph{(Newton-Verfahren)}
+\emph{(Newton-Verfahren, vgl. Verfahren 4.3.1 in \cite[S.~107]{alt})}
 \begin{enumerate}
-  \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
+  \item Wähle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
         Setze $k := 0$.
-  \item Ist $\|\nabla f(x^k)\| < \epsilon$ \label{list:stop_criteria_newt_verf}
+  \item Ist $\|\nabla f(x^k)\| < \varepsilon$ \label{list:stop_criteria_newt_verf}
         $\Rightarrow$ STOP.
   \item Berechne die Lösung $d$ des linearen Gleichungssystems
         \begin{equation}
@@ -182,7 +194,5 @@ durchführen. D.\,h., man bestimmt ein $\sigma_k \in \R$ und definiert
 $x^{k+1} := x^k + \sigma_k d^k$.
 Dann bekommt man ein Abstiegsverfahren,
 welches man als das gedämpfte Newton-Verfahren bezeichnet.
-
-% TODO Quasi-Newton-Verfahren bzw. BFGS-Verfahren erwähnen.
-
-% TODO Das Konvergenzverhalten der Verfahren erwähnen?
+Wir verweisen auf das Unterkapitel 4.3.2 über das gedämpfte Newton-Verfahren in
+\cite[S.~111ff]{alt}.

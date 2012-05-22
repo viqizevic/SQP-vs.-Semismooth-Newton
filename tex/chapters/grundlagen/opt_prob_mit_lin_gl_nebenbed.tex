@@ -10,7 +10,7 @@ $A$ sei eine $(m \times n)$-Matrix und $b$ sei ein Vektor mit $m$ Elementen.
 D.\,h., die Menge $\F$ sieht hier so aus:  $\F = \{ x \in \R^n\ |\ A x = b \}$.
 
 \begin{theorem} \label{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed}
-\emph{(Notwendige Bedingung)}
+\emph{(Notwendige Bedingung, vgl. Satz 5.3.2 in \cite[S.~174]{alt})}\\
 Sei $\xopt$ eine lokale Lösung des
 Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
 und $f$ sei in $\xopt$ differenzierbar.
@@ -18,28 +18,31 @@ Dann gibt es ein $\lambda \in \R^m$ mit
 \begin{equation}
   \nabla f(\xopt) + A^T \lambda = 0.
 \end{equation}
-Hat A einen vollen Rang, dann ist $\lambda$ eindeutig zu bestimmen.
+Hat A einen vollen Rang, dann ist $\lambda$ eindeutig bestimmt.
 \end{theorem}
 
-Diese Bedingung heißt die Multiplikatoren Regel von Lagrange. Man bezeichnet
-$\lambda$ als die Lagrange-Multiplikator.
+Diese Bedingung heißt die Multiplikatoren-Regel von Lagrange. Man bezeichnet
+$\lambda$ als Lagrange-Multiplikator.
 
 \begin{theorem}
-\emph{(Hinreichende Bedingung)}\\
+\emph{(Hinreichende Bedingung, vgl. Satz 5.3.8 in \cite[S.~177]{alt})}\\
 Sei $f$ in $\xopt$ zweimal stetig differenzierbar. Die notwendige Bedingung
-in Satz~\ref{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed} sei erfüllt. Es gäbe
-eine Konstante $\alpha > 0$ mit
+in Satz~\ref{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed} sei erfüllt.
+Es existiere eine Konstante $\alpha > 0$ mit
 \begin{equation}
   d^T f''(x) d \geq \alpha \|d\|^2 \qquad \forall d \in \kr A.
 \end{equation}
-Dann ist $\xopt$ eine strikte Lösung des linearen restringierten Problems.
+Dann ist $\xopt$ eine strikte Lösung des
+Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}.
 \end{theorem}
 
 Eine wichtige Grundlage zum Lösen des Pröblems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
-ist die Definition der Nullraum-Matrix.
+als ein unrestringiertes Problem
+ist die Definition der Nullraum-Matrix
+(vgl. \cite[S.~182]{alt}).
 
 \begin{definition}
-\emph{(Nullraum-Matrix)}
+\emph{(Nullraum-Matrix)}\\
 Eine $(n \times l)$-Matrix $Z$ heißt Nullraum-Matrix von~$A$, wenn für $d \in
 \R^n$ gilt
 \begin{equation}
@@ -63,5 +66,5 @@ Das Problem~\eqref{prob:opt_prob_mit_lin_gl_nebenbed} ist dann äquivalent zu
 
 Dieses Problem hat keine Nebenbedingung mehr, also unrestringiert.
 Man kann also Verfahren für unrestringierte Probleme anwenden.
-Wir werden aber nachher auch sehen, wie man dieses Problem effektiv lösen kann,
-wenn die Zeilfunktion quadratisch ist.
+Wir werden nachher im Unterkapitel~\ref{sec:nullraum_verfahren} sehen, wie
+man dieses Problem effektiv lösen kann, wenn die Zeilfunktion quadratisch ist.

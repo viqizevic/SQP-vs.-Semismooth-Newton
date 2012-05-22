@@ -4,22 +4,17 @@ definiert:
 \begin{equation}
   \min_{x \in \F} f(x) \tag{P} \label{prob:allg_opt_prob}
 \end{equation}
-Die Funktion $f:D \subseteq \R^n \rightarrow \R$ ist die sogennante
+Die Funktion $f \colon D \subseteq \R^n \rightarrow \R$ ist die sogennante
 Zielfunktion.
 $D$ sei der Definitionsbereich von $f$.
 $\F$ sei eine nichtleere Teilmenge von $D$, die man als Lösungsmenge bezeichnet.
 Alle Elemente von $\F$ werden als zulässige Punkte bezeichnet.
-$\F$ wird durch die sogennanten Nebenbedingungen definiert.
+$\F$ wird durch die sogennanten Nebenbedingungen oder Restriktionen definiert.
 \end{definition}
-
-Ein einfaches Beispiel ist das Problem
-\[
-  \min_{x \in \R}\ (x-1)^2.
-\]
 
 Falls $\F = D$ gilt,
 dann bezeichnet man das Optimierungsproblem als unrestringiert.
-Es besitzt also keine Nebenbedingungen.
+Es besitzt also keine Restriktionen.
 Ansonsten heißt es ein restringiertes Optimierungsproblem.
 
 Man definiert in der Regel Optimierungsproblem als ein Minimierungsproblem,
@@ -27,7 +22,7 @@ weil ein Maximierungsproblem $\max g(x)$ zu dem Minimierungsproblem
 $\min f(x) := -g(x)$ äquivalent ist.
 
 \begin{definition}
-\emph{(Globale und lokale Lösung)}
+\emph{(Globale und lokale Lösung, vgl. Definition 1.1.4 in \cite[S.~2f]{alt})}\\
 Ein Punkt $\xopt \in \F$ heißt globale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
 globales Minimum, wenn
 \begin{equation}
@@ -60,31 +55,59 @@ beinhaltet.
 Wegen dieser Definitionen kommt der Begriff \emph{globale Optimierung}.
 Bei der globalen Optimierung versucht man, eine globale Lösung zu finden.
 Viele Verfahren versuchen nur lokale Lösungen zu bestimmen,
-weil Globale Lösungen nicht so einfach zu bestimmen sind.
+weil globale Lösungen nicht so einfach zu bestimmen sind.
 
-Die Aufgabenstellung bei der nichtlinearen Optimierung kann man
-spezifischer wie folgt definieren:
+\begin{example}\label{example:unrestr_opt_prob}
+\emph{(vgl. Beispiel 1.1.2 in \cite[S.~1]{alt})}\\
+Ein Beispiel eines unrestringierten Optimierungsproblems ist
+\begin{equation}
+  \min_{x \in \R}\ f(x) := (2x-2)^2 (3x+3)^2 + 10x.
+\end{equation}
+Das Problem hat eine strikte globale Lösung an der Stelle $\xopt = -1$
+und eine strikte lokale Lösung an der Stelle $x = 1$
+(siehe Abbildung~\ref{fig:beispiel_unrestr_opt_prob}).
+\end{example}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[yscale=0.7,xscale=2.5]
+  \draw[very thin,color=gray,ystep=2,xstep=0.5] (-1.47,-2.9) grid (1.47,7.4);
+  \draw[->] (-1.48,0) -- (1.48,0) node [above] {$x$};
+  \draw[->] (0,-3) -- (0,7.5) node [right] {$f(x)$};
+  \foreach \x/\xtext in {-1,-0.5/-\frac{1}{2},0,0.5/\frac{1}{2},1}
+    \draw (\x,0.1) -- (\x,-0.1) node [below,fill=white] {$\xtext$};
+  \foreach \y/\ytext in {-2/-20,0,2/20,4/40,6/60}
+    \draw (0.03,\y) -- (-0.03,\y) node [left,fill=white] {$\ytext$};
+  \draw[color=blue] plot[smooth] file {images/beispiel-unrestr-opt-prob.table};
+\end{tikzpicture}
+\caption{Die Funktion von Beispiel \ref{example:unrestr_opt_prob}}
+\label{fig:beispiel_unrestr_opt_prob}
+\end{figure}
 
 \begin{definition}
 \emph{(Nichtlineare Optimierungsprobleme)}
+Die Aufgabenstellung bei der nichtlinearen Optimierung kann man
+spezifischer wie folgt definieren:
 \begin{align}
   \min_{x \in D}\ & f(x) \tag{PN}\label{prob:opt_prob_mit_nichtlin_restr} \\
               \nb & g(x) \leq 0 \notag \\
                   & h(x) = 0 \notag
 \end{align}
-Die Zielfunktion ist wieder die Funktion $f:D \subseteq \R^n \rightarrow \R$.
+Die Zielfunktion ist wieder die Funktion
+$f \colon D \subseteq \R^n \rightarrow \R$.
 Die Nebenbedingungen sind von den Funktionen
-$g:D \subseteq \R^n \rightarrow \R^p$ und
-$h:D \subseteq \R^n \rightarrow \R^m$
-abhängig.
-\end{definition}
-
+$g \colon D \subseteq \R^n \rightarrow \R^p$ und
+$h \colon D \subseteq \R^n \rightarrow \R^m$ abhängig.
 D.\,h., die Menge $\F$ sieht hier so aus:
 $\F = \{ x \in \R^n \,|\, g(x) \leq 0, \, h(x) = 0  \}$.
+\end{definition}
+
+Die Bezeichnung ``Nb.'' steht hier als Abkürzung für
+``unter der Nebenbedingung'' oder ``unter den Nebenbedingungen''.
 
 Man kann dieses Problem ausführlicher schreiben, indem man die Funktionen
-$g$ und $h$ in skalare Funktionen $g_1, \ldots, g_p : \R^n \rightarrow \R$
-und $h_1, \ldots, h_m: \R^n \rightarrow \R$ zerlegen, so dass
+$g$ und $h$ in skalare Funktionen $g_1, \ldots, g_p \colon \R^n \rightarrow \R$
+und $h_1, \ldots, h_m \colon \R^n \rightarrow \R$ zerlegt, so dass
 \begin{equation*}
   g(x) =
     \left(
@@ -109,7 +132,7 @@ Man bekommt dann das Problem
 \begin{align*}
   \min_{x \in D}\ & f(x) \\
               \nb & g_i(x) \leq 0 \text{ für } i = 1,\ldots,p \\
-                  & h_j(x) = 0 \text{ für } j = 1,\ldots,m
+                  & h_j(x) = 0 \text{ für } j = 1,\ldots,m.
 \end{align*}
 
 Man kann hierbei den Unterschied zwischen der linearen Optimierung und
@@ -120,5 +143,3 @@ und die Nebenbedingungen sollen durch lineare Gleichungen bzw.
 Ungleichungen definiert werden.
 Bei der nichtlinearen Optimierung gibt es dagegen keine Einschränkung,
 wie die Zielfunktion und die Nebenbedingungen aussehen sollen.
-
-% TODO: Glatte bzw. nichtglatte Optimierung

@@ -4,48 +4,71 @@ package main;
  * TestProblem represents test problem in the form:
  *    min  f(x)
  *     x
- *   s.t.  G*x <= r
- *        a <= x <= b
+ *   s.t.  A*x = b
+ *         G*x <= r
+ *       u <= x <= v
  * 
  * This problem will be written at the end in a Matlab file.
  * That's why all components of this problem are from the type String
  * and will be written using Matlab syntax.
+ * @author Vicky H. Tanzil
  */
 public class TestProblem {
 	
 	/**
 	 * The name of the problem.
 	 */
-	private String testProblemName;
+	private String name;
 
 	/**
-	 * The test function f.
+	 * The objective function.
 	 */
 	private TestFunction f;
-
+	
 	/**
-	 * The matrix G defining the left hand side of the inequality constraints.
+	 * The description of the problem.
+	 * Especially, from where the problem was taken.
+	 */
+	private String description;
+	
+	/**
+	 * The classification of the problem.
+	 */
+	private String classification;
+	
+	/**
+	 * The matrix defining the left hand side of the equality constraints.
+	 */
+	private String A;
+	
+	/**
+	 * The vector defining the right hand side of the equality constraints.
+	 */
+	private String b;
+	
+	/**
+	 * The matrix defining the left hand side of the inequality constraints.
 	 */
 	private String G;
 
 	/**
-	 * The vector r defining the right hand side of the inequality constraints.
+	 * The vector defining the right hand side of the inequality constraints.
 	 */
 	private String r;
 
 	/**
-	 * The vector a defining the lower bound.
+	 * The vector defining the lower bound.
 	 */
-	private String a;
+	private String u;
 
 	/**
-	 * The vector b defining the upper bound.
+	 * The vector defining the upper bound.
 	 */
-	private String b;
+	private String v;
 
 	/**
-	 * The point x0 as the starting point for the algorithms.
-	 * x0 should be a feasible point.
+	 * The point as the starting point for the algorithms.
+	 * This should be a feasible point.
 	 */
 	private String x0;
 
@@ -62,19 +85,61 @@ public class TestProblem {
 	/**
 	 * Create an initial test problem.
 	 * @param testProblemName The name of the problem.
-	 * @param testFunction The function f.
+	 * @param testFunction The objective function.
 	 */
 	public TestProblem(String testProblemName, TestFunction testFunction) {
-		this.testProblemName = testProblemName;
+		this.name = testProblemName;
 		f = testFunction.clone();
 	}
 
-	public String getTestProblemName() {
-		return testProblemName;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public TestFunction getTestFunction() {
 		return f;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getClassification() {
+		return classification;
+	}
+
+	public void setClassification(String classification) {
+		this.classification = classification;
+	}
+
+	public String get_A() {
+		return A;
+	}
+
+	public void set_A(String A) {
+		if (A == null) {
+			A = "[]";
+		}
+		this.A = A;
+	}
+
+	public String get_b() {
+		return b;
+	}
+
+	public void set_b(String b) {
+		if (b == null) {
+			b = "[]";
+		}
+		this.b = b;
 	}
 
 	public String get_G() {
@@ -99,26 +164,26 @@ public class TestProblem {
 		this.r = r;
 	}
 
-	public String get_a() {
-		return a;
+	public String get_u() {
+		return u;
 	}
 
-	public void set_a(String a) {
-		if (a == null) {
-			a = "[]";
+	public void set_u(String u) {
+		if (u == null) {
+			u = "[]";
 		}
-		this.a = a;
+		this.u = u;
 	}
 
-	public String get_b() {
-		return b;
+	public String get_v() {
+		return v;
 	}
 
-	public void set_b(String b) {
-		if (b == null) {
-			b = "[]";
+	public void set_v(String v) {
+		if (v == null) {
+			v = "[]";
 		}
-		this.b = b;
+		this.v = v;
 	}
 
 	public String get_x0() {
@@ -134,6 +199,9 @@ public class TestProblem {
 	}
 
 	public void setTolerance(String tolerance) {
+		if (tolerance == null) {
+			tolerance = f.getEps();
+		}
 		this.tolerance = tolerance;
 	}
 
@@ -142,6 +210,9 @@ public class TestProblem {
 	}
 
 	public void setMaxIteration(String maxIteration) {
+		if (maxIteration == null) {
+			maxIteration = "100";
+		}
 		this.maxIteration = maxIteration;
 	}
 	
@@ -157,8 +228,8 @@ public class TestProblem {
 	
 	public String toLaTeX() {
 		String result = "";
-		result += "a = " + getVectorInLaTeX(a) + "\n";
-		result += "b = " + getVectorInLaTeX(b) + "\n";
+		result += "u = " + getVectorInLaTeX(u) + "\n";
+		result += "v = " + getVectorInLaTeX(v) + "\n";
 		result += "x^0 = " + getVectorInLaTeX(x0) + "\n";
 		return result;
 	}

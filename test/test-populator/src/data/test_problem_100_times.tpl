@@ -1,4 +1,4 @@
-function test_{var_function_name}_100_times(show)
+function test_{var_problem_name}_100_times(show)
     t1_total = 0;
     t2_total = 0;
     t_max = 0.95;
@@ -13,7 +13,7 @@ function test_{var_function_name}_100_times(show)
     k_total = 0;
     while k<=total
         k_total = k_total+1;
-        [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_{var_function_name}(0);
+        [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_{var_problem_name}(0);
         if (norm(x_ssn-x_sqp) > 0.1)
             break;
         end
@@ -61,6 +61,8 @@ function test_{var_function_name}_100_times(show)
         str2 = ['x_sqp = [ ', x2, '], it = ', num2str(it2_total), ', ', t2, t2min, t2max];
         disp(str1);
         disp(str2);
-        disp(['[', num2str(k_total), ']']);
+        if (k_total ~= 100)
+            disp(['[', num2str(k_total), ']']);
+        end
     end
 end

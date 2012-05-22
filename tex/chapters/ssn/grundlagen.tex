@@ -71,9 +71,9 @@ unter der Bedingung, dass $|x^0 - \xopt|$ genügend klein ist.
 \begin{algorithm}
 \emph{(Das halbglatte Newton-Verfahren)}
 \begin{enumerate}
-  \item Wähle einen Startpunkt $x^0$ und ein Abbruchkriterium $\epsilon > 0$.
+  \item Wähle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
         Setze $k := 0$.
-  \item Ist $\|\nabla f(x^k)\| < \epsilon$ \label{list:stop_criteria_ssn}
+  \item Ist $\|\nabla f(x^k)\| < \varepsilon$ \label{list:stop_criteria_ssn}
         $\Rightarrow$ STOP.
   \item Wähle $V_k \in \partial \nabla f (x^k)$
   \item Berechne die Lösung $d$ des linearen Gleichungssystems

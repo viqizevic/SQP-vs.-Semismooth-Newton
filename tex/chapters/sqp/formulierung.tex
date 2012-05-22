@@ -33,10 +33,11 @@ der Stelle~\eqref{eq:teilprob_lin_gl_nebenbed} die Gleichung $Ad = 0$ schreiben.
 Nun sind wir bereit, das SQP-Verfahren zu formulieren.
 
 \begin{algorithm}
-\emph{(SQP-Verfahren)}
+\emph{(SQP-Verfahren für \eqref{prob:opt_prob_mit_lin_ungl_nebenbed},
+vgl. Verfahren 6.4.1 in \cite[S.~237]{alt})}
 \begin{enumerate}
   \item Wähle einen zulässigen Startpunkt $x^0$
-        und ein Abbruchkriterium $\epsilon > 0$. Setze $k:=0$.
+        und eine Abbruchschranke $\varepsilon > 0$. Setze $k:=0$.
   \item Berechne die Lösung $d$ des Problems \label{list:quad_opt_prob_in_sqp}
   \begin{align}
     \min_{x \in \R^n}\ & \frac{1}{2} d^T f''(x^k) d
@@ -45,10 +46,29 @@ Nun sind wir bereit, das SQP-Verfahren zu formulieren.
                        & G x^k + G d \leq r \notag
   \end{align}
         Setze $d^k := d$.
-  \item Ist $\|d^k\| < \epsilon \Rightarrow$ STOP.
+  \item Ist $\|d^k\| < \varepsilon \Rightarrow$ STOP.
   \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$.
         $\Rightarrow$ Gehe zu Schritt~\ref{list:quad_opt_prob_in_sqp}.
 \end{enumerate}
 \end{algorithm}
 
-% TODO: Konvergenzverhalten???
+\begin{theorem}
+\emph{(vgl. Satz 6.4.4 in \cite[S.~243]{alt})}\\
+Sei $\xopt$ lokale Lösung von \eqref{prob:opt_prob_mit_lin_ungl_nebenbed}.
+Sei $f$ auf $D$ zweimal stetig differenzierbar
+und es gäbe eine Konstante $\alpha > 0$ mit
+\begin{equation}
+  d^T f''(x) d \geq \alpha \|d\|^2 \qquad \forall d \in \kr A.
+\end{equation}
+Dann gibt es ein $\delta > 0$, so dass das SQP-Verfahren
+für jeden Startpunkt $x^0 \in B(\xopt,\delta)$
+eine Folge $\{x^k\}$ definiert,
+die superlinear gegen $\xopt$ konvergiert.
+Ist zusätzlich $f''$ auf $D$ Lipschitz-stetig,
+d.\,h. es gibt eine Konstante $L > 0$ mit
+\begin{equation}
+  \|f''(x) - f''(y)\| \leq L \|x-y\| \qquad \forall x,y \in D,
+\end{equation}
+dann konvergiert $\{x^k\}$ für jeden Startpunkt $x^0 \in B(\xopt,\delta)$
+quadratisch gegen $\xopt$.
+\end{theorem}

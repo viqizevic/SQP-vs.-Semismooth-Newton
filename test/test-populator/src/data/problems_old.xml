@@ -1,0 +1,201 @@
+<problems>
+
+	<!--problem>
+		<function_name>linear_func</function_name>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>[1; -1; 1; -1]</constant_value>
+		</constant>
+		<u>[0; 0; 0; 0]</u>
+		<v>[10; 10; 10; 10]</v>
+		<x0>[5; 5; 5; 5]</x0>
+	</problem-->
+	
+	<!--problem>
+		<function_name>schuldt_func</function_name>
+		<u>[-10; 0]</u>
+		<v>[10; 10]</v>
+		<x0>[0.7;0.5]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem-->
+	
+	<!--problem>
+		<function_name>asaadi_func</function_name>
+		<u>[1; 0]</u>
+		<v>[20; 20]</v>
+		<x0>[7; 5]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem-->
+	
+	<problem>
+		<function_name>mccormick_func</function_name>
+		<u>[-1.5; -3]</u>
+		<v>[4; 3]</v>
+		<x0>[0; -0.75]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>200</max_iteration>
+	</problem>
+	
+	<!--problem>
+		<function_name>holzmann_func</function_name>
+		<u>[0.1; 0; 0]</u>
+		<v>[100; 25.6; 5]</v>
+		<x0>[100; 12.5; 3]</x0>
+		<tolerance>0.0001</tolerance>
+		<max_iteration>200</max_iteration>
+	</problem-->
+
+	<problem>
+		<function_name>dixon_3_dim_func</function_name>
+		<u>[-10; -10; -10]</u>
+		<v>[10; 10; 10]</v>
+		<x0>[1.5; 1.5; 1.5]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+
+	<!--problem>
+		<function_name>dixon_func</function_name>
+		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>dixon_func</function_name>
+		<u>[2; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+	
+	<problem>
+		<function_name>dixon_func</function_name>
+		<u>[3; 3; 3; 3; 3; 2; 2; 2; 2; 2]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>dixon_func</function_name>
+		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5]</v>
+		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+	
+	<problem>
+		<function_name>dixon_func</function_name>
+        <constant>
+            <constant_name>n</constant_name>
+            <constant_value>5</constant_value>
+        </constant>
+		<u>[3; -3; 5; 3; 2]</u>
+		<v>[7; 0; 5; 10; 14]</v>
+		<x0>[4; -1; 5; 4; 7]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem-->
+
+	<!--problem>
+		<function_name>dixon_func</function_name>
+        <constant>
+            <constant_name>n</constant_name>
+            <constant_value>20</constant_value>
+        </constant>
+		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>dixon_func</function_name>
+        <constant>
+            <constant_name>n</constant_name>
+            <constant_value>20</constant_value>
+        </constant>
+		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
+		<v>[-5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5; -5 ]</v>
+		<x0>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem>
+
+	<problem>
+		<function_name>dixon_func</function_name>
+        <constant>
+            <constant_name>n</constant_name>
+            <constant_value>40</constant_value>
+        </constant>
+		<u>[2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2; 2]</u>
+		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>
+		<x0>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>500</max_iteration>
+	</problem-->
+	
+	<problem>
+		<function_name>betts_func</function_name>
+		<u>[0.25; 0.25]</u>
+		<v>[2; 2]</v>
+		<x0>[1; 1.5]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+	
+	<problem>
+		<function_name>paviani_func</function_name>
+		<u>[3; 3]</u>
+		<v>[9; 9]</v>
+		<x0>[4; 5]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+	
+	<problem>
+		<function_name>paviani_func</function_name>
+		<u>[3; 3]</u>
+		<v>[9; 9]</v>
+		<x0>[6; 6]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem>
+	
+	<!--problem>
+		<function_name>lin_regression_func</function_name>
+		<u>[-20; -20]</u>
+		<v>[20; 20]</v>
+		<x0>[1; 1]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem-->
+
+	<!--problem>
+		<function_name>quad_regression_func</function_name>
+		<u>[-10; -10; -10]</u>
+		<v>[20; 20; 20]</v>
+		<x0>[0.5; 2; -7]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem-->
+	
+	<!--problem>
+		<function_name>nichtlin_regression_3_vars_func</function_name>
+		<u>[-2; -2; -2]</u>
+		<v>[10; 10; 10]</v>
+		<x0>[0.29; 0.29; 0.6]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem-->
+
+</problems>

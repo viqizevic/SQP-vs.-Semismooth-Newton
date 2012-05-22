@@ -57,7 +57,7 @@ immer noch
 $\langle g_j, x^k+d \rangle \leq r_j$.
 
 Seien $J_k := J(x^k)$, $p_k := |J_k|$ und $j_1, \ldots, j_{p_k} \in J_k$
-Wir definieren dann folgendes Teilproblem mit nur
+Wir definieren dann folgendes Teilproblem nur mit
 linearen Gleichungsnebenbedingungen:
 \begin{align}
   \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
@@ -82,7 +82,7 @@ Da wir nur $j \in J_k$ betrachten,
 kann es sein,
 dass die Ungleichung $\langle g_i, x^k+d \rangle \leq r_i$
 für $i \in I_k := \{ 1, \ldots, p \} \backslash J_k$ verletzt wurde.
-Definieren Schrittweite durch
+Definiere Schrittweite durch
 \begin{equation}
   \tau_k :=
   \begin{cases}
@@ -100,7 +100,9 @@ und
 Diese Schrittweite brauchen wir, damit $x^{k+1}$ ein zulässiger Punkt bleibt.
 
 \begin{algorithm}
-\emph{(Aktive-Mengen-Methode für~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed})}
+\emph{(Aktive-Mengen-Verfahren
+für \eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed},
+vgl. Verfahren 6.2.1 in \cite[S.~213]{alt})}
 \begin{compactenum}[1.]
   \item Wähle einen Startpunkt $x^0$. Setze $k:=0$.
   \item Löse das Problem~\eqref{prob:teil_prob_in_akt_me_verf}
