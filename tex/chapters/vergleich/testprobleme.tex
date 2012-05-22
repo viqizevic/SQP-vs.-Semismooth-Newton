@@ -191,11 +191,9 @@ Löse folgendes, einfaches, 2-dimensionales Problem.
   \draw[fill=blue!10] (0,0) -- (0,1) -- (2,2) -- (4,1) -- (2,0) -- cycle;
   \draw (1.7,1) node {$\F$};
   
-  % Die Niveaulinie
-  \draw[dashed,color=red] (1,2.5) circle (0.25);
-  \draw[dashed,color=red] (1,2.5) circle (0.55);
-  \draw[dashed,color=red] (1,2.5) circle (0.85);
-  \draw[dashed,color=red] (1,2.5) circle (1.15);
+  % Die Niveaulinien
+  \foreach \r in {0.25, 0.55, 0.85, 1.15}
+    \draw[dashed,color=red] (1,2) circle (\r);
   
   % Koordinatenachsen
   \draw[->] (0,0) -- (4.3,0) node [below right] {$x_1$};
