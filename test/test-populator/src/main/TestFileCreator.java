@@ -8,18 +8,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Set;
 
 /**
- * MFileCreator ables to create the needed Matlab files
+ * TestFileCreator can be used to create the needed test files
  * for the test problem.
  * @author Vicky H. Tanzil
  */
 public class TestFileCreator {
 	
 	/**
-	 * The extension for the Matlab files.
+	 * The extension for the test files.
 	 */
 	private static final String extension = ".m";
 	

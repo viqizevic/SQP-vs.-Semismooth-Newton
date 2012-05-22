@@ -1,23 +1,11 @@
 package main;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 /**
  * This is a project for a bachelor thesis using Matlab
@@ -60,25 +48,6 @@ public class Main {
 	private static String configFile = "SQP-vs.-Semismooth-Newton/test.config";
 	
 	/**
-	 * A hash map containing all test functions as values
-	 * and the functions names as keys.
-	 */
-	private static HashMap<String, TestFunction> testFunctions = new HashMap<String, TestFunction>();
-
-	/**
-	 * A hash map with the functions names as keys
-	 * and the number of occurrence of this function in the test problems.
-	 * Needed for naming the test file of the problems.
-	 */
-	private static HashMap<String, Integer> functionOccurences = new HashMap<String, Integer>();
-	
-	/**
-	 * A hash map containing all test problems as values
-	 * and the problem names as keys.
-	 */
-	private static HashMap<String, TestProblem> testProblems = new HashMap<String, TestProblem>();
-	
-	/**
 	 * The main function.
 	 * Reads the xml files containing the test functions and the test problems
 	 * and then calls the file creator.
@@ -94,55 +63,48 @@ public class Main {
 		// Get each variable.
 		String pathToTestDir = configs.get("path_to_test_dir");
 		String pathToDataDir = pathToTestDir + configs.get("path_to_data_dir");
-		String functionsXMLFile = pathToDataDir + configs.get("functions_xml_file");
+		String functionsXMLFile = configs.get("functions_xml_file");
 		
-		LinkedList<String> problemsXMLFiles = getMultipleVars("problems_xml_file_", configs);
+		LinkedList<String> problemsXMLFiles = getMultipleConfigVars("problems_xml_file", configs);
 		boolean useApproxDiff = Boolean.parseBoolean(configs.get("use_approx_diff"));
 		//boolean useOctave = Boolean.parseBoolean(configs.get("use_octave"));
 		
 		String templateFileExtension = configs.get("template_file_extension");
 		HashMap<String, String> testTemplates = new HashMap<String, String>();
-		for (String templateName : getMultipleVars("test_template_file_name_", configs)) {
+		for (String templateName : getMultipleConfigVars("test_template_file_name", configs)) {
 			testTemplates.put(templateName, pathToDataDir+templateName+templateFileExtension);
 		}
 		String prefixForMainTestFile = configs.get("prefix_for_main_test_file");
 		
-		parseFunctionsFromXMLFile(functionsXMLFile);
-		for (String problemsXMLFile: problemsXMLFiles) {
-			parseProblemsFromXMLFile(pathToDataDir+problemsXMLFile);
-		}
-		
-		Object[] problemNames = testProblems.keySet().toArray();
-		Arrays.sort(problemNames);
-		LinkedList<TestProblem> problems = new LinkedList<TestProblem>();
-		for (Object name : problemNames) {
-			TestProblem p = testProblems.get(name);
-			if (p.getName().endsWith("_"+0)) {
-				p.setName(p.getName().substring(0, p.getName().length()-2));
-			}
+		LinkedList<String> functionsXMLFiles = new LinkedList<String>();
+		functionsXMLFiles.add(functionsXMLFile);
+		MainDatabase db = new MainDatabase(pathToDataDir, functionsXMLFiles, problemsXMLFiles);
+		LinkedList<TestProblem> problems = db.getTestProblems();
+		for (TestProblem p : problems) {
 			if (useApproxDiff) {
 				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
 			}
 			TestFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
-			problems.add(p);
 		}
 		
 		TestFileCreator.createMainTestFile(problems,
 				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
 		System.out.println("Finish!");
 		
-		if (testProblems.isEmpty()) {
-			System.out.println("No Problems found.");
+		if (problems.isEmpty()) {
+			System.out.println("No Problem found.");
 		} else {
-			printStatistic();
+			printStatistic(db.getTestFunctions(), problems);
 		}
+		
 	}
 	
-	private static void printStatistic() {
+	private static void printStatistic(LinkedList<TestFunction> testFunctions,
+			LinkedList<TestProblem> testProblems) {
 		System.out.println("\nTotal number of problems: " + testProblems.size());
 		
 		HashMap<String, Integer> classifications = new HashMap<String, Integer>();
-		for (TestProblem p : testProblems.values()) {
+		for (TestProblem p : testProblems) {
 			String cl = p.getClassification();
 			if (!classifications.containsKey(cl)) {
 				classifications.put(cl, 1);
@@ -157,7 +119,7 @@ public class Main {
 		
 		System.out.println("\nn\t#Problem");
 		int[] dimensions = new int[25];
-		for (TestProblem p : testProblems.values()) {
+		for (TestProblem p : testProblems) {
 			int n = p.getDimension();
 			dimensions[n]++;
 		}
@@ -168,17 +130,12 @@ public class Main {
 		}
 		
 		System.out.println("\nTest functions (" + testFunctions.size() + "):");
-		Object[] functions = testFunctions.keySet().toArray();
-		Arrays.sort(functions);
-		for (Object f : functions) {
-			System.out.println(f);
+		for (TestFunction f : testFunctions) {
+			System.out.println(f.getName());
 		}
 		
 		System.out.println("\nTest problems (" + testProblems.size() + "):");
-		Object[] problemNames = testProblems.keySet().toArray();
-		Arrays.sort(problemNames);
-		for (Object problemName : problemNames) {
-			TestProblem p = testProblems.get(problemName);
+		for (TestProblem p : testProblems) {
 			System.out.println(p.getName());
 		}
 	}
@@ -212,13 +169,21 @@ public class Main {
 		return configs;
 	}
 	
-	private static LinkedList<String> getMultipleVars(String prefix,
+	/**
+	 * Get variables in the config files from the type
+	 * <var_name>_<index>, where <var_name> the name of the variable is
+	 * and <index> a number starting from 0.
+	 * @param varName
+	 * @param configs
+	 * @return
+	 */
+	private static LinkedList<String> getMultipleConfigVars(String varName,
 			HashMap<String, String> configs) {
 		int k = 0;
 		LinkedList<String> vars = new LinkedList<String>();
 		boolean keepReadingVars = true;
 		while (keepReadingVars) {
-			String var = prefix + k;
+			String var = varName + "_" + k;
 			if (!configs.containsKey(var)) {
 				keepReadingVars = false;
 			} else {
@@ -229,267 +194,5 @@ public class Main {
 		}
 		return vars;
 	}
-
-	/**
-	 * Read a .xml file defining all available test functions
-	 * @param fileName The name of the .xml file
-	 */
-	private static void parseFunctionsFromXMLFile(String fileName) {
-		/*
-		This is a simple example how the file should be:
-		<functions>
-			<function>
-				<name>quad_func</name>
-				<var>x</var>
-				<constant>
-					<constant_name>xd</constant_name>
-					<constant_value>3</constant_value>
-				</constant>
-				<def>y = norm(x-xd)^2;</def>
-				<grad>g = 2*(x-xd);</grad>
-				<hess>H = 2*eye(length(x));</hess>
-			</function>
-		</functions>
-		Every function should be defined in a <function> tag.
-		The tags name, var and def are required.
-		The tags constant, grad and hess are optional.
-		*/
-		File file = new File(fileName);
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder documentBuilder;
-		try {
-			documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse(file);
-			document.getDocumentElement().normalize();
-			Element functions = (Element) document.getElementsByTagName("functions").item(0);
-			if (functions == null) {
-				System.err.println("Cannot find <functions> tag.");
-				return;
-			}
-			LinkedList<Element> listOfFunctionElements =
-				getListOfElementsInParentElement(functions, "function"); 
-			for (Element element : listOfFunctionElements) {
-				TestFunction function = parseTestFunction(element);
-				testFunctions.put(function.getName(), function);
-			}
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Return a test function defined by the xml element.
-	 * @param element The xml element defining the test function.
-	 * @return The test function.
-	 */
-	private static TestFunction parseTestFunction(Element element) {
-		String name = getTagValue("name", element);
-		TestFunction function = new TestFunction(name);
-		String var = getTagValue("var", element);
-		String def = getTagValue("def", element);
-		String grad = getTagValueIfExists("grad", element);
-		String hess = getTagValueIfExists("hess", element);
-		function.setVar(var);
-		function.setDefinition(def);
-		function.setGradient(grad);
-		function.setHessianMatrix(hess);
-		LinkedList<Element> listOfConstantElements =
-			getListOfElementsInParentElement(element, "constant");
-		for (Element constantElement: listOfConstantElements) {
-			String constantName = getTagValue("constant_name", constantElement);
-			String constantValue = getTagValue("constant_value", constantElement);
-			function.putConstant(constantName, constantValue);
-		}
-		return function;
-	}
 	
-	private static LinkedList<Element> getListOfElementsInParentElement(Element parentElement,
-			String elementName) {
-		LinkedList<Element> list = new LinkedList<Element>();
-		NodeList nodeList = null;
-		if (parentElement != null) {
-			nodeList = parentElement.getElementsByTagName(elementName);
-		} else {
-			return list;
-		}
-		for (int i=0; i < nodeList.getLength(); i++) {
-			Node node = nodeList.item(i);
-			if (node.getNodeType() == Node.ELEMENT_NODE) {
-				Element element = (Element) node;
-				list.add(element);
-			}
-		}
-		return list;
-	}
-	
-	/**
-	 * Get tag value of an xml.
-	 * @param tag The searched tag in the xml element.
-	 * @param e The xml element.
-	 * @return The value inside this tag.
-	 */
-	private static String getTagValue(String tag, Element e) {
-		NodeList nodeList = e.getElementsByTagName(tag).item(0).getChildNodes();
-		Node node = nodeList.item(0);
-		if (node == null) {
-			return "";
-		}
-		return node.getNodeValue().trim();
-	}
-	
-	/**
-	 * Get tag value of an xml, if the tag exists in the element given.
-	 * @param tag The searched tag in the xml element.
-	 * @param element The xml element.
-	 * @return The value inside this tag, if it exists, otherwise return null.
-	 */
-	private static String getTagValueIfExists(String tag, Element element) {
-		NodeList nList = element.getElementsByTagName(tag);
-		if (nList.getLength() != 0) {
-			return getTagValue(tag, element);
-		} else {
-			return null;
-		}
-	}
-
-	/**
-	 * Read a .xml file defining all test problems.
-	 * @param fileName The name of the .xml file.
-	 */
-	private static void parseProblemsFromXMLFile(String fileName) {
-		/*
-		This is a simple example how the file should be:
-		<problems>
-			<problem>
-				<function_name>quad_func</function_name>
-				<constant>
-					<constant_name>xd</constant_name>
-					<constant_value>4</constant_value>
-				</constant>
-				<u>3</u>
-				<v>10</v>
-				<x0>8</x0>
-				<tolerance>0.001</tolerance>
-				<max_iteration>100</max_iteration>
-			</problem>
-		</problems>
-		Every problem should be defined in a <problem> tag.
-		The tags function_name and x0 are required.
-		*/
-		File file = new File(fileName);
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder documentBuilder;
-		try {
-			documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse(file);
-			document.getDocumentElement().normalize();
-			Element problems = (Element) document.getElementsByTagName("problems").item(0);
-			if (problems == null) {
-				System.err.println("Cannot find <problems> tag.");
-				return;
-			}
-			LinkedList<Element> listOfProblemElements =
-				getListOfElementsInParentElement(problems, "problem");
-			for (Element element: listOfProblemElements) {
-				TestProblem problem = parseTestProblem(element);
-				if (problem == null) {
-					testProblems.clear();
-					return;
-				}
-				testProblems.put(problem.getName(), problem);
-			}
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Return a test problem defined in the xml file.
-	 * @param element The xml element containing the test problem.
-	 * @return
-	 */
-	private static TestProblem parseTestProblem(Element element) {
-		
-		// Get the objective function for the problem
-		String functionName = getTagValue("function_name", element);
-		if (!testFunctions.containsKey(functionName)) {
-			System.err.println("Cannot find function: " + functionName);
-			return null;
-		}
-		TestFunction function = testFunctions.get(functionName);
-		
-		String A = getTagValueIfExists("A", element);
-		String b = getTagValueIfExists("b", element);
-		String G = getTagValueIfExists("G", element);
-		String r = getTagValueIfExists("r", element);
-		String u = getTagValueIfExists("u", element);
-		String v = getTagValueIfExists("v", element);
-		String x0 = getTagValue("x0", element);
-		String tolerance = getTagValueIfExists("tolerance", element);
-		String maxIteration = getTagValueIfExists("max_iteration", element);
-		String classification = "";
-		if (A != null) {
-			classification += "A";
-		}
-		if (G != null) {
-			classification += "G";
-		}
-		if (u != null || v != null) {
-			classification += "v";
-		}
-		if (classification.equals("")) {
-			classification = "0";
-		}
-
-		String problemName = getTagValue("name", element);
-		problemName = "problem" + "_" + classification + "_" + problemName + "_" + 0;
-		int k = 1;
-		while (testProblems.containsKey(problemName)) {
-			String suffix = "_"+k;
-			problemName = problemName.substring(0, problemName.length()-2);
-			problemName += suffix;
-			k++;
-		}
-		
-		// Create a new test problem object
-		TestProblem problem = new TestProblem(problemName, function);
-		
-		// Set a new name for the function, if it's used by another problem too
-		if (!functionOccurences.containsKey(functionName)) {
-			functionOccurences.put(functionName, 1);
-		} else {
-			int nr = functionOccurences.get(functionName);
-			functionOccurences.put(functionName, nr+1);
-			problem.getTestFunction().setName(functionName+"_"+nr);
-		}
-		
-		String description = getTagValueIfExists("description", element);
-		LinkedList<Element> listOfConstantElements =
-			getListOfElementsInParentElement(element, "constant");
-		for (Element constantElement: listOfConstantElements) {
-			String constantName = getTagValue("constant_name", constantElement);
-			String constantValue = getTagValue("constant_value", constantElement);
-			problem.getTestFunction().putConstant(constantName, constantValue);
-		}
-		problem.setDescription(description);
-		problem.set_A(A);
-		problem.set_b(b);
-		problem.set_G(G);
-		problem.set_r(r);
-		problem.set_u(u);
-		problem.set_v(v);
-		problem.set_x0(x0);
-		problem.setTolerance(tolerance);
-		problem.setMaxIteration(maxIteration);
-		problem.setClassification(classification);
-		return problem;
-	}
 }

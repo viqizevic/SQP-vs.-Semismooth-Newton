@@ -2,6 +2,7 @@ package main;
 
 /**
  * TestProblem represents test problem in the form:
+ * 
  *    min  f(x)
  *     x
  *   s.t.  A*x = b
@@ -9,7 +10,7 @@ package main;
  *       u <= x <= v
  * 
  * This problem will be written at the end in a Matlab file.
- * That's why all components of this problem are from the type String
+ * That's why most of the properties in this class are from the type String
  * and will be written using Matlab syntax.
  * @author Vicky H. Tanzil
  */
