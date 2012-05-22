@@ -1,6 +1,0 @@
-function g = grad_quad_func_2(x)
-	Q = [6 2 1; 2 5 2; 1 2 4];
-	c = 0;
-	q = [-8; -3; -3];
-	g = Q*x + q;
-end

@@ -70,6 +70,7 @@ public class MainDatabase {
 				if (p.getName().endsWith("_"+0)) {
 					p.setName(p.getName().substring(0, p.getName().length()-2));
 				}
+				p.getTestFunction().setName("func_for_"+p.getName());
 			}
 		}
 	}
