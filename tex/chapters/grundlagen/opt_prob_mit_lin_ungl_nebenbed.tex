@@ -45,9 +45,78 @@ wie folgt ausführlicher schreiben.
          & \langle g_j, x \rangle \leq r_j \text{ für } j = 1,\ldots,p
 \end{align*}
 
-Die Notwendige Bedingung für eine lokale Lösung
+\begin{example}\label{example:abstand_zw_dreiecken_problem}
+Gegeben seien zwei Dreiecke $R$ und $S$
+in der Abbildung~\ref{fig:abstand_zw_dreiecken}.
+Gesucht ist der kürzeste Abstand zwischen diesen Dreiecken
+und die zugehörigen Punkte $r^* \in R$ und $s^* \in S$, die
+diesen kürzesten Abstand bilden.
+\end{example}
+
+Seien $r = (x_1, x_2)^T \in R$ und $s = (x_3, x_4)^T \in S$.
+Der quadratische Abstand zwischen $r$ und $s$ ist durch
+\begin{equation}
+  \| r - s \|^2 = (x_1 - x_3)^2 + (x_2 - x_4)^2 = x^T H x
+\end{equation}
+gegeben, wobei
+\begin{equation}
+  H :=
+  \left(\begin{array}{cccc}
+     1 &  0 & -1 &  0 \\
+     0 &  1 &  0 & -1 \\
+    -1 &  0 &  1 &  0 \\
+     0 & -1 &  0 &  1
+  \end{array}\right).
+\end{equation}
+
+Die Bedingungen $r \in R$ und $s \in S$ sind durch die Ungleichungen
+\begin{equation}
+\begin{split}
+    x_1, x_2 & \geq 0 \\
+  x_1 + 2x_2 & \leq 2 \\
+         x_4 & \geq 2 \\
+   x_3 + x_4 & \geq 3 \\
+  x_3 + 2x_4 & \leq 6
+\end{split}
+\end{equation}
+gegeben.
+D.\,h. das Problem kann als ein Optimierungsproblem mit einer quadratischen
+Zielfunktion und linearen Ungleichungsnebenbedingungen dargestellt werden.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=2.5]
+  % Dreieck R
+  \draw[fill=red!10] (0,0) -- (0,1) -- (2,0) -- cycle;
+  \draw (0.5,0.3) node {$R$};
+  % Dreieck S
+  \draw[fill=blue!10] (0,3) -- (1,2) -- (2,2) -- cycle;
+  \draw (1.1,2.2) node {$S$};
+  % Punkt r*
+  \fill (0.4,0.8) circle (0.04);
+  \draw (0.45,0.85) node [right] {$r^*$};
+  % Punkt s*
+  \fill (1,2) circle (0.04);
+  \draw (1,2) node [below right] {$s^*$};
+  % Linie zwischen r* und s*
+  \draw (0.4,0.8) -- (1,2);
+  % Koordinatenachsen
+  \draw[->] (0,0) -- (2.3,0) node [below right] {$x_1, x_3$};
+  \foreach \x in {0,...,2}
+    \draw (\x,0.05) -- (\x,-0.05) node [below] {\x};
+  \draw[->] (0,0) -- (0,3.2) node [above left] {$x_2, x_4$};
+  \foreach \y in {0,...,3}
+    \draw (0.05,\y) -- (-0.05,\y) node [left] {\y};
+\end{tikzpicture}
+\caption{Geometrische Darstellung
+des Beispiels~\ref{example:abstand_zw_dreiecken_problem}}
+\label{fig:abstand_zw_dreiecken}
+\end{figure}
+
+Der folgende Satz hat sich als besonders hilfreich erwiesen,
+um eine lokale Lösung
 des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
-ergibt sich aus dem folgenden Satz.
+zu charakterisieren.
 
 \begin{theorem} \label{satz:karush_kuhn_tucker}
 \emph{(Karush-Kuhn-Tucker-Satz, vgl. Satz 5.4.7 in \cite[S.193]{alt})}\\
