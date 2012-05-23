@@ -107,6 +107,12 @@
 	y = (1.5-x(1)*(1-x(2)))^2+(2.25-x(1)*(1-x(2)^2))^2+(2.625-x(1)*(1-x(2)^3))^2;
 		</def>
 	</function>
+	
+	<function>
+		<name>betts_box_func</name>
+		<var>x</var>
+		<def>y = ( 1 / ( 27 * sqrt(3) ) ) * ( (x(1)-3)^2 - 9 ) * x(2)^3;</def>
+	</function>
 
 	<function>
 		<name>schuldt_func</name>

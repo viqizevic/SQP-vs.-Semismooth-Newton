@@ -168,5 +168,15 @@
 		<tolerance>0.001</tolerance>
 		<max_iteration>100</max_iteration>
 	</problem-->
+
+	<!--problem>
+		<name>betts_box_hs24</name>
+		<description>See Problem 24 in [HS81, p. 47]</description>
+		<function_name>betts_box_func</function_name>
+		<G>[-1/sqrt(3) 1; -1 -sqrt(3); 1 sqrt(3)]</G>
+		<r>[0; 0; 6]</r>
+		<u>[0; 0]</u>
+		<x0>[2.5; 0.5]</x0>
+	</problem-->
 	
 </problems>
