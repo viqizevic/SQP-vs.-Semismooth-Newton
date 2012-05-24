@@ -1,21 +1,48 @@
-%SQP Sequential Quadratic Programming
+%  Function: [x, fval, it] = seq_quad_prog (f, gradf, hessf,
+%                                    A, b, G, r, x0, itmax, tol)
 %
-%   [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,x0,itmax,tol) attempts to solve the problem:
+%  Attempt to solve the problem
 %
-%   min f(x) subject to: A*x <= b
-%    x
-function [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,x0,itmax,tol)
+%        min f(x)
+%         x
+%
+%  subject to
+%
+%        A*x  = b
+%        G*x <= r
+%
+%  using the sequential quadratic programming method.
+%
+%  f     : The name of the objective function f : R^n -> R.
+%  gradf : The name of the function that returns the gradient of f.
+%  hessf : The name of the function that returns the hessian matrix of f.
+%  A     : A matrix with dimension m x n for the linear equality contraints.
+%  b     : A vector with m elements for the linear equality contraints.
+%  G     : A matrix with dimension p x n for the linear inequality constraints.
+%  r     : A vector with p elements for the linear inequality constraints.
+%  x0    : The start point for the algorithm.
+%  itmax : The maximal number of iterations allowed.
+%  tol   : The bound needed for the stop criteria.
+%
+function [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 	it = 0;
+	[p,n] = size(G);
+	n = length(x0);
 	x = x0;
 	stop = false;
 	while( ~stop )
 		% solve the problem:
-		% min 0.5*d'*hessf(x)*d + gradf(x)'*d subject to: A*x + A*d <= b
+		% min 0.5*d'*hessf(x)*d + gradf(x)'*d
 		%  d
+		% subject to: G*x + G*d <= r
 		Q = feval(hessf,x);
 		q = feval(gradf,x);
-		z = zeros(length(x),1);
-		[d, it2] = aktive_mengen_methode(Q,q,[],[],A,b-A*x,z,tol,itmax);
+		rd = [];
+		if (p ~= 0)
+			rd = r-G*x;
+		end
+		z = zeros(n,1);
+		[d, it2] = aktive_mengen_methode(Q,q,A,b,G,rd,z,tol,itmax);
 		it = it + it2;
 		if( norm(d) < tol )
 			stop = true; % => x is the solution
@@ -104,14 +131,10 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 				end
 			end
 			% Streiche in G_k die Zeile mit dem Index j_min
-			if j_min == p_k
-				G_k = [];
-			else
-				H_k = [];
-				H_k(1:j_min-1,:) = G_k(1:j_min-1,:);
-				H_k(j_min:p_k-1,:) = G_k(j_min+1:p_k,:);
-				G_k = H_k;
-			end
+			H_k = [];
+			H_k(1:j_min-1,:) = G_k(1:j_min-1,:);
+			H_k(j_min:p_k-1,:) = G_k(j_min+1:p_k,:);
+			G_k = H_k;
 			% Loese wieder das Problem (QLG)_k
 			B_k = [A; G_k];
 			[m_k,n_k] = size(B_k);
@@ -120,15 +143,16 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 			%  x
 			% mit Nebenbedingung B_k = 0
 			[d_k,v_k] = nullraum_verfahren(Q,(Q*x_k+q),B_k,z);
+			k = k+1;
 			% Nun ist d_k ungleich 0
 		end
 		% Berechne Scrittweite sigma_k.
 		%
-		% Bestimme I_k := { j=1,...,p | (g_j)'*d_k > 0 }
+		% Bestimme I_k := { j=1,...,p | (g_j)'*x_k < r_j und (g_j)'*d_k > 0 }
 		l = 1;
 		I_k = [];
 		for j=1:p
-			if ( G(j,:)*d_k > 0 )
+			if ( (r(j) > G(j,:)*x_k) && (G(j,:)*d_k > 0) )
 				I_k = [I_k; j];
 				l = l+1;
 			end
@@ -144,18 +168,13 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 			tao_k = (r(j) - G(j,:)*x_k) / (G(j,:)*d_k);
 			for t=2:l
 				j = I_k(t);
-				if tao_k > (r(j) - G(j,:)*x_k) / (G(j,:)*d_k)
-					tao_k = (r(j) - G(j,:)*x_k) / (G(j,:)*d_k);
-				end
+				tao_k = min(tao_k, ((r(j)-G(j,:)*x_k)/(G(j,:)*d_k)));
 			end
 			sigma_k = min(1,tao_k);
 		end
 		% Setze x_{k+1} := x_k + sigma_k*d_k und k = k+1.
 		%
 		x_k = x_k + sigma_k*d_k;
-		if sigma_k == 0
-			break;
-		end
 		k = k+1;
 		if k >= itmax
 			break;

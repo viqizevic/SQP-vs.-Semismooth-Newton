@@ -1,0 +1,182 @@
+<problems>
+	
+	<problem>
+		<name>example_with_diamond_area</name>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>[2 0; 0 2]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[-4; -4]</constant_value>
+		</constant>
+		<G>[2 1; 1 -1; -1 -1; -2 1]</G>
+		<r>[2; 1; 1; 2]</r>
+		<x0>[-1; 0]</x0>
+	</problem>
+
+	<problem>
+		<name>example_16_4_nocedal_wright</name>
+		<description>See Example 16.4 in [NW06, p. 475]</description>
+		<function_name>norm_func</function_name>
+		<constant>
+			<constant_name>xd</constant_name>
+			<constant_value>[1; 2.5]</constant_value>
+		</constant>
+		<G>[-1 2; 1 2; 1 -2]</G>
+		<r>[2; 6; 2]</r>
+		<u>[0; 0]</u>
+		<x0>[2; 0]</x0>
+	</problem>
+
+	<problem>
+		<name>rosenbrock</name>
+		<function_name>rosenbrock_func</function_name>
+		<G>[0 -1]</G>
+		<r>[-1.5]</r>
+		<x0>[2; 3]</x0>
+	</problem>
+
+	<problem>
+		<name>example_13_2_antoniou_lu</name>
+		<description>See Example 13.2 in [AL07, p. 415f]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[1 0 -1 0; 0 1 0 -1; -1 0 1 0; 0 -1 0 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[0; 0; 0; 0]</constant_value>
+		</constant>
+		<G>[-1 0 0 0; 0 -1 0 0; 1 2 0 0; 0 0 0 -1; 0 0 -1 -1; 0 0 1 2]</G>
+		<r>[0; 0; 2; -2; -3; 6]</r>
+		<x0>[0; 1; 2; 2]</x0>
+	</problem>
+	
+	<problem>
+		<name>betts_hs21</name>
+		<description>See Problem 21 in [HS81, p. 44]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[0.1 0; 0 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[0; 0]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>-100</constant_value>
+		</constant>
+		<G>[-10 1]</G>
+		<r>[-10]</r>
+		<u>[2; -50]</u>
+		<v>[50; 50]</v>
+		<x0>[10; -10]</x0>
+	</problem>
+	
+	<problem>
+		<name>beale_hs35</name>
+		<description>See Problem 35 in [HS81, p. 58]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[2 1 1; 1 2 0; 1 0 1]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[-8; -6; -4]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>c</constant_name>
+			<constant_value>9</constant_value>
+		</constant>
+		<G>[1 1 2]</G>
+		<r>[3]</r>
+		<u>[0; 0; 0]</u>
+		<x0>[0.5; 0.5; 0.5]</x0>
+	</problem>
+	
+	<problem>
+		<name>murtagh_sargent_hs76</name>
+		<description>See Problem 76 in [HS81, p. 96]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*[1 0 -0.5 0; 0 0.5 0 0; -0.5 0 1 0.5; 0 0 0.5 0.5]</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[-1; -3; 1; -1]</constant_value>
+		</constant>
+		<G>[1 2 1 1; 3 1 2 -1; 0 -1 -4 0]</G>
+		<r>[5; 4; -1.5]</r>
+		<u>[0; 0; 0; 0]</u>
+		<x0>[0.5; 1; 0.5; 0.5]</x0>
+	</problem>
+	
+	<!--problem>
+		<name>bartholomew_biggs_hs118</name>
+		<description>See Problem 118 in [HS81, p. 126]</description>
+		<function_name>quad_func</function_name>
+		<constant>
+			<constant_name>Q</constant_name>
+			<constant_value>2*diag([0.0001 0.0001 0.00015 0.0001 0.0001 0.00015 0.0001 0.0001 0.00015 0.0001 0.0001 0.00015 0.0001 0.0001 0.00015])</constant_value>
+		</constant>
+		<constant>
+			<constant_name>q</constant_name>
+			<constant_value>[2.3; 1.7; 2.2; 2.3; 1.7; 2.2; 2.3; 1.7; 2.2; 2.3; 1.7; 2.2; 2.3; 1.7; 2.2]</constant_value>
+		</constant>
+		<G>
+		[1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0;
+		 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0;
+		 0 1 0 0 -1 0 0 0 0 0 0 0 0 0 0;
+		 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0;
+		 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 0;
+		 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0;
+		 0 0 0 1 0 0 -1 0 0 0 0 0 0 0 0;
+		 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0;
+		 0 0 0 0 1 0 0 -1 0 0 0 0 0 0 0;
+		 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0;
+		 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 0;
+		 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0;
+		 0 0 0 0 0 0 1 0 0 -1 0 0 0 0 0;
+		 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0;
+		 0 0 0 0 0 0 0 1 0 0 -1 0 0 0 0;
+		 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0;
+		 0 0 0 0 0 0 0 0 1 0 0 -1 0 0 0;
+		 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0;
+		 0 0 0 0 0 0 0 0 0 1 0 0 -1 0 0;
+		 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0;
+		 0 0 0 0 0 0 0 0 0 0 1 0 0 -1 0;
+		 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0;
+		 0 0 0 0 0 0 0 0 0 0 0 1 0 0 -1;
+		 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1;
+		 -1 -1 -1 0 0 0 0 0 0 0 0 0 0 0 0;
+		 0 0 0 -1 -1 -1 0 0 0 0 0 0 0 0 0;
+		 0 0 0 0 0 0 -1 -1 -1 0 0 0 0 0 0;
+		 0 0 0 0 0 0 0 0 0 -1 -1 -1 0 0 0;
+		 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 -1]
+		</G>
+		<r>[7; 6; 7; 7; 7; 6; 7; 6; 7; 7; 7; 6; 7; 6; 7; 7; 7; 6; 7; 6; 7; 7; 7; 6; -60; -50; -70; -85; -100]</r>
+		<u>[8; 43; 3; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0]</u>
+		<v>[21; 57; 16; 90; 120; 60; 90; 120; 60; 90; 120; 60; 90; 120; 60]</v>
+		<x0>[20; 55; 15; 20; 60; 20; 20; 60; 20; 20; 60; 20; 20; 60; 20]</x0>
+		<tolerance>0.001</tolerance>
+		<max_iteration>100</max_iteration>
+	</problem-->
+
+	<!--problem>
+		<name>betts_box_hs24</name>
+		<description>See Problem 24 in [HS81, p. 47]</description>
+		<function_name>betts_box_func</function_name>
+		<G>[-1/sqrt(3) 1; -1 -sqrt(3); 1 sqrt(3)]</G>
+		<r>[0; 0; 6]</r>
+		<u>[0; 0]</u>
+		<x0>[2.5; 0.5]</x0>
+	</problem-->
+	
+</problems>
