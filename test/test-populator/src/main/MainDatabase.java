@@ -198,6 +198,7 @@ public class MainDatabase {
 		}
 		TestFunction function = testFunctions.get(functionName);
 		
+		String description = getTagValue("description", element);
 		String A = getTagValue("A", element);
 		String b = getTagValue("b", element);
 		String G = getTagValue("G", element);
@@ -243,7 +244,6 @@ public class MainDatabase {
 			problem.getTestFunction().setName(functionName+"_"+nr);
 		}
 		
-		String description = getTagValue("description", element);
 		LinkedList<Element> listOfConstantElements =
 			getListOfElementsInParentElement(element, "constant");
 		for (Element constantElement: listOfConstantElements) {

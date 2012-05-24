@@ -80,23 +80,26 @@ public class Main {
 		functionsXMLFiles.add(functionsXMLFile);
 		MainDatabase db = new MainDatabase(pathToDataDir, functionsXMLFiles, problemsXMLFiles);
 		LinkedList<TestProblem> problems = db.getTestProblems();
-		for (TestProblem p : problems) {
-			if (useApproxDiff) {
-				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
-			}
-			TestFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
-		}
-		
-		TestFileCreator.createMainTestFile(problems,
-				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
-		System.out.println("Finish!");
+//		for (TestProblem p : problems) {
+//			if (useApproxDiff) {
+//				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
+//			}
+//			TestFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
+//		}
+//		
+//		TestFileCreator.createMainTestFile(problems,
+//				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
+//		System.out.println("Finish!");
 		
 		if (problems.isEmpty()) {
 			System.out.println("No Problem found.");
 		} else {
-			printStatistic(db.getTestFunctions(), problems);
+//			printStatistic(db.getTestFunctions(), problems);
+			for (TestProblem p : problems) {
+				TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
+				System.out.println("\n"+tp2tex.getResult());
+			}
 		}
-		
 	}
 	
 	private static void printStatistic(LinkedList<TestFunction> testFunctions,
