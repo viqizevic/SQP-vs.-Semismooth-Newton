@@ -128,6 +128,12 @@
 		<var>x</var>
 		<def>y = (x(1)-x(2))^2 + (x(2)-x(3))^2 + (x(3)-x(4))^4 + (x(4)-x(5))^2;</def>
 	</function>
+	
+	<function>
+		<name>hsia_func</name>
+		<var>x</var>
+		<def>y = x(1) + 2*x(2) + 4*x(5) + exp(x(1)*x(4));</def>
+	</function>
 
 	<function>
 		<name>schuldt_func</name>
