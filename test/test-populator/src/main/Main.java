@@ -47,6 +47,8 @@ public class Main {
 	 */
 	private static String configFile = "SQP-vs.-Semismooth-Newton/test.config";
 	
+	public static boolean inDebugMode = false;
+	
 	/**
 	 * The main function.
 	 * Reads the xml files containing the test functions and the test problems
@@ -80,24 +82,29 @@ public class Main {
 		functionsXMLFiles.add(functionsXMLFile);
 		MainDatabase db = new MainDatabase(pathToDataDir, functionsXMLFiles, problemsXMLFiles);
 		LinkedList<TestProblem> problems = db.getTestProblems();
-//		for (TestProblem p : problems) {
-//			if (useApproxDiff) {
-//				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
-//			}
-//			TestFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
-//		}
-//		
-//		TestFileCreator.createMainTestFile(problems,
-//				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
-//		System.out.println("Finish!");
+		for (TestProblem p : problems) {
+			if (useApproxDiff) {
+				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
+			}
+			TestFileCreator.create(p, pathToTestDir+p.getName(), testTemplates);
+		}
+		
+		TestFileCreator.createMainTestFile(problems,
+				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
+		if (inDebugMode) {
+			System.out.println("Finish creating test files!");
+		}
 		
 		if (problems.isEmpty()) {
 			System.out.println("No Problem found.");
 		} else {
-//			printStatistic(db.getTestFunctions(), problems);
+			problems = db.getTestProblemsInGivenOrder();
+			if (inDebugMode) {
+				printStatistic(db.getTestFunctions(), problems);
+			}
 			for (TestProblem p : problems) {
 				TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
-				System.out.println("\n"+tp2tex.getResult());
+				System.out.println(tp2tex.getResult());
 			}
 		}
 	}

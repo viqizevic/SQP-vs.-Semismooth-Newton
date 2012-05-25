@@ -62,6 +62,8 @@ public class TestFunction {
 	 * and the hessian matrix.
 	 */
 	private String eps;
+	
+	private String definitionInLaTeX;
 
 	/**
 	 * Create a test function with the name given.
@@ -166,6 +168,14 @@ public class TestFunction {
 		return str;
 	}
 	
+	public String getDefinitionInLaTeX() {
+		return definitionInLaTeX;
+	}
+
+	public void setDefinitionInLaTeX(String definitionInLaTeX) {
+		this.definitionInLaTeX = definitionInLaTeX;
+	}
+
 	public TestFunction clone() {
 		TestFunction f = new TestFunction(name);
 		f.setVar(var);
@@ -173,6 +183,7 @@ public class TestFunction {
 		f.setGradient(gradient);
 		f.setHessianMatrix(hessianMatrix);
 		f.setUsingApproximationDifferentiation(usingApproximationDifferentiation);
+		f.setDefinitionInLaTeX(definitionInLaTeX);
 		if (constants.size() != 0) {
 			for (String s : constants.keySet()) {
 				f.putConstant(s, constants.get(s));

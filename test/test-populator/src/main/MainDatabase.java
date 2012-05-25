@@ -46,6 +46,8 @@ public class MainDatabase {
 	 */
 	private HashMap<String, TestProblem> testProblems;
 	
+	private LinkedList<String> listOfProblemNamesInGivenOrder;
+	
 	public MainDatabase(String pathToDataDirectory,
 			LinkedList<String> functionsXMLFiles, LinkedList<String> problemsXMLFiles) {
 		
@@ -61,12 +63,14 @@ public class MainDatabase {
 		
 		functionOccurences = new HashMap<String, Integer>();
 		testProblems = new HashMap<String, TestProblem>();
+		listOfProblemNamesInGivenOrder = new LinkedList<String>();
 		for (String fileName : problemsXMLFiles) {
 			LinkedList<Element> list = parseElementsFromXMLFile(
 					pathToDataDirectory+fileName, "problems", "problem");
 			for (Element e : list) {
 				TestProblem p = parseTestProblem(e);
 				testProblems.put(p.getName(), p);
+				listOfProblemNamesInGivenOrder.add(p.getName());
 				if (p.getName().endsWith("_"+0)) {
 					p.setName(p.getName().substring(0, p.getName().length()-2));
 				}
@@ -90,6 +94,14 @@ public class MainDatabase {
 		Arrays.sort(problemNames);
 		LinkedList<TestProblem> list = new LinkedList<TestProblem>();
 		for (Object name : problemNames) {
+			list.add(testProblems.get(name));
+		}
+		return list;
+	}
+	
+	public LinkedList<TestProblem> getTestProblemsInGivenOrder() {
+		LinkedList<TestProblem> list = new LinkedList<TestProblem>();
+		for (String name : listOfProblemNamesInGivenOrder) {
 			list.add(testProblems.get(name));
 		}
 		return list;
@@ -169,10 +181,12 @@ public class MainDatabase {
 		String def = getTagValue("def", element);
 		String grad = getTagValue("grad", element);
 		String hess = getTagValue("hess", element);
+		String defInLaTeX = getTagValue("latex_def", element);
 		function.setVar(var);
 		function.setDefinition(def);
 		function.setGradient(grad);
 		function.setHessianMatrix(hess);
+		function.setDefinitionInLaTeX(defInLaTeX);
 		LinkedList<Element> listOfConstantElements =
 			getListOfElementsInParentElement(element, "constant");
 		for (Element constantElement: listOfConstantElements) {

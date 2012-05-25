@@ -13,24 +13,29 @@ public class TestProblem2LaTeX {
 		r += "\\begin{testproblem}\n";
 		r += "%\\emph(" + tp.getName() + ")\\\\\n";
 		r += "\\begin{equation}\n";
-		r += "\\begin{split}\n";
 		if (tp.getDescription() != null) {
 			r += "%" + tp.getDescription() + "\n";
 		}
 		r += getFuncDef() + "\n";
+		r += "\\end{equation}\n";
+		r += "\\begin{equation*}\n";
+		r += "\\begin{split}\n";
 		r += getConstraints();
 		r += "\\end{split}\n";
-		r += "\\end{equation}\n";
+		r += "\\end{equation*}\n";
 		r += "\\end{testproblem}\n";
 		return r;
 	}
 	
 	private String getFuncDef() {
 		String y = tp.getTestFunction().getDefinition();
+		if (tp.getTestFunction().getDefinitionInLaTeX() != null) {
+			y = tp.getTestFunction().getDefinitionInLaTeX();
+		}
 		String[] s = y.split("\n");
 		int n = tp.getDimension();
 		if (s.length > 1) {
-			y = "f(x) \\\\%TODO write f(x)";
+			y = "f(x) %TODO write f(x)";
 			for (String str : s) {
 				y += "\n% " + str;
 			}
@@ -39,7 +44,6 @@ public class TestProblem2LaTeX {
 			y = y.replace(';', ' ');
 			y = y.replace('*', ' ');
 			y = y.replaceAll("'", "^T");
-			y = y.replaceAll("\\s?0\\.5\\s+", "\\\\tfrac{1}{2} ");
 			for (int i=1; i<=n; i++) {
 				String replace = "x_"+i+"";
 				if (n >= 10) {
@@ -47,12 +51,11 @@ public class TestProblem2LaTeX {
 				}
 				y = y.replaceAll("x\\("+i+"\\)", replace);
 			}
-			y = y + "\\\\";
 		}
 		if (n > 1) {
-			y = "\\min_{x\\in\\R^" + n + "}\\ & " + y;
+			y = "\\min_{x\\in\\R^" + n + "}\\ " + y;
 		} else {
-			y = "\\min_{x\\in\\R}\\ & " + y;
+			y = "\\min_{x\\in\\R}\\ " + y;
 		}
 		return y;
 	}
@@ -79,60 +82,39 @@ public class TestProblem2LaTeX {
 		}
 		if (tp.get_u() != "[]") {
 			double[][] u = getMatrix(tp.get_u());
+			int n = u.length;
 			double[][] v = null;
 			if (tp.get_v() != "[]") {
 				v = getMatrix(tp.get_v());
 			}
-			if (allElementsAreTheSame(u)) { //TODO
-				String u_i = getValue(u[0][0], false);
-				r += u_i + " & \\leq x_i";
-				if (v != null) {
-					if (allElementsAreTheSame(v)) {
-						String v_i = getValue(v[0][0], false);
-						r += " \\leq " + v_i + " \\\\\n";
-					} else {
-						for (int i=0; i<u.length; i++) {
-							u_i = getValue(u[i][0], false);
-							if (i+1 >= 10) {
-								r += u_i + " & \\leq x_{" + (i+1) + "}";
-							} else {
-								r += u_i + " & \\leq x_" + (i+1);
-							}
-							if (v != null) {
-								String v_i = getValue(v[i][0], false);
-								r += " \\leq " + v_i + " \\\\\n";
-							} else {
-								r += " \\\\\n";
-							}
-						}
-					}
+			if (v == null) {
+				if (allVectorElementsAreTheSame(u)) {
+					r += getBoundedX(getValue(u[0][0], false), null, "i") +
+							",\\quad " + getIndexesTo("i", n) + " \\\\\n";
 				} else {
-					r += " \\\\\n";
+					for (int i=0; i<u.length; i++) {
+						r += getBoundedX(getValue(u[i][0], false), null, (i+1)+"") + " \\\\\n";
+					}
 				}
 			} else {
-				for (int i=0; i<u.length; i++) {
-					String u_i = getValue(u[i][0], false);
-					if (i+1 >= 10) {
-						r += u_i + " & \\leq x_{" + (i+1) + "}";
-					} else {
-						r += u_i + " & \\leq x_" + (i+1);
-					}
-					if (v != null) {
-						String v_i = getValue(v[i][0], false);
-						r += " \\leq " + v_i + " \\\\\n";
-					} else {
-						r += " \\\\\n";
+				if (allVectorElementsAreTheSame(u) && allVectorElementsAreTheSame(v)) {
+					r += getBoundedX(getValue(u[0][0],false), getValue(v[0][0], false), "i") +
+							",\\quad " + getIndexesTo("i", n) + " \\\\\n";
+				} else {
+					for (int i=0; i<u.length; i++) {
+						r += getBoundedX(getValue(u[i][0], false), getValue(v[i][0], false), (i+1)+"") + " \\\\\n";
 					}
 				}
 			}
 		} else if (tp.get_v() != "[]") {
 			double[][] v = getMatrix(tp.get_v());
-			for (int i=0; i<v.length; i++) {
-				String v_i = getValue(v[i][0], false);
-				if (i+1 >= 10) {
-					r += "x_{" + (i+1) + "} & \\leq " + v_i + " \\\\\n";
-				} else {
-					r += "x_" + (i+1) + " & \\leq " + v_i + " \\\\\n";
+			int n = v.length;
+			if (allVectorElementsAreTheSame(v)) {
+				r += getBoundedX(getValue(v[0][0], false), null, "i") +
+						",\\quad " + getIndexesTo("i", n) + " \\\\\n";
+			} else {
+				for (int i=0; i<v.length; i++) {
+					r += getBoundedX(getValue(v[i][0], false), null, (i+1)+"") + " \\\\\n";
 				}
 			}
 		}
@@ -204,7 +186,7 @@ public class TestProblem2LaTeX {
 		return s;
 	}
 	
-	private boolean allElementsAreTheSame(double[][] v) {
+	private boolean allVectorElementsAreTheSame(double[][] v) {
 		if (v.length <= 1) {
 			return false;
 		}
@@ -218,6 +200,41 @@ public class TestProblem2LaTeX {
 			}
 		}
 		return true;
+	}
+	
+	private String getBoundedX(String u, String v, String idx) {
+		String s = "";
+		String x = "";
+		if (idx.length() > 1) {
+			x = "x_{" + idx + "}";
+		} else {
+			x = "x_" + idx + "";
+		}
+		if (u != null && v != null) {
+			s = u + " \\leq " + x + " & \\leq " + v;
+		} else {
+			if (u != null) {
+				s = u + " & \\leq " + x;
+			}
+			if (v != null) {
+				s = x + " & \\leq " + v;
+			}
+		}
+		return s;
+	}
+	
+	private String getIndexesTo(String idxVar, int idx) {
+		if (idx == 0) {
+			return null;
+		} else if (idx == 1) {
+			return idxVar + " = 1";
+		} else if (idx == 2) {
+			return idxVar + " = 1,2";
+		} else if (idx == 3) {
+			return idxVar + " = 1,2,3";
+		} else {
+			return idxVar + " = 1,\\ldots," + idx;
+		}
 	}
 	
 	private void printMatrix(double[][] matrix) {
