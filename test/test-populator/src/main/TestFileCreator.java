@@ -194,7 +194,7 @@ public class TestFileCreator {
 			fileWriter.flush();
 			fileWriter.close();
 			if (Main.inDebugMode) {
-				System.out.println("Fil created: " + fileName);
+				System.out.println("File created: " + fileName);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

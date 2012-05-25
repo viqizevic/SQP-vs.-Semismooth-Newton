@@ -116,6 +116,18 @@
 		<var>x</var>
 		<def>y = ( 1 / ( 27 * sqrt(3) ) ) * ( (x(1)-3)^2 - 9 ) * x(2)^3;</def>
 	</function>
+	
+	<function>
+		<name>huang_aggerwal_func</name>
+		<var>x</var>
+		<def>y = (x(1)-x(2))^2 + (x(3)-1)^2 + (x(4)-1)^2 + (x(5)-1)^6;</def>
+	</function>
+	
+	<function>
+		<name>huang_aggerwal_1_func</name>
+		<var>x</var>
+		<def>y = (x(1)-x(2))^2 + (x(2)-x(3))^2 + (x(3)-x(4))^4 + (x(4)-x(5))^2;</def>
+	</function>
 
 	<function>
 		<name>schuldt_func</name>

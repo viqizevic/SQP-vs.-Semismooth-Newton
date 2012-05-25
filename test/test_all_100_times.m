@@ -6,6 +6,12 @@ function test_all_100_times()
 	disp('test_problem_A_huang_aggerwal_hs28');
 	test_problem_A_huang_aggerwal_hs28_100_times(1);
 	disp(sprintf('\n'));
+	disp('test_problem_A_huang_aggerwal_hs49');
+	test_problem_A_huang_aggerwal_hs49_100_times(1);
+	disp(sprintf('\n'));
+	disp('test_problem_A_huang_aggerwal_hs50');
+	test_problem_A_huang_aggerwal_hs50_100_times(1);
+	disp(sprintf('\n'));
 	disp('test_problem_A_huang_aggerwal_hs51');
 	test_problem_A_huang_aggerwal_hs51_100_times(1);
 	disp(sprintf('\n'));

@@ -47,7 +47,7 @@ public class Main {
 	 */
 	private static String configFile = "SQP-vs.-Semismooth-Newton/test.config";
 	
-	public static boolean inDebugMode = false;
+	public static boolean inDebugMode = true;
 	
 	/**
 	 * The main function.
@@ -92,7 +92,7 @@ public class Main {
 		TestFileCreator.createMainTestFile(problems,
 				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
 		if (inDebugMode) {
-			System.out.println("Finish creating test files!");
+			System.out.println("Finished creating test files!");
 		}
 		
 		if (problems.isEmpty()) {
@@ -104,7 +104,7 @@ public class Main {
 			}
 			for (TestProblem p : problems) {
 				TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
-				System.out.println(tp2tex.getResult());
+//				System.out.println(tp2tex.getResult());
 			}
 		}
 	}

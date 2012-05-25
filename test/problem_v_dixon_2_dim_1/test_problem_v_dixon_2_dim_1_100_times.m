@@ -50,12 +50,12 @@ function test_problem_v_dixon_2_dim_1_100_times(show)
     end
     if ( (show == 1) && (k == total+1) )
         x1 = sprintf('%.3f ',x_ssn);
-        t1 = sprintf('solved in %.2f ms.',t1_total*1000);
+        t1 = sprintf('solved in %.2f ms',t1_total*1000);
         t1min = sprintf(' (%.2f -',t1_min*1000);
         t1max = sprintf(' %.2f).',t1_max*1000);
         str1 = ['x_ssn = [ ', x1, '], it = ', num2str(it1_total), ', ', t1, t1min, t1max];
         x2 = sprintf('%.3f ',x_sqp);
-        t2 = sprintf('solved in %.2f ms.',t2_total*1000);
+        t2 = sprintf('solved in %.2f ms',t2_total*1000);
         t2min = sprintf(' (%.2f -',t2_min*1000);
         t2max = sprintf(' %.2f).',t2_max*1000);
         str2 = ['x_sqp = [ ', x2, '], it = ', num2str(it2_total), ', ', t2, t2min, t2max];

@@ -6,6 +6,12 @@ function test_all_with_fmincon_too()
 	disp('test_problem_A_huang_aggerwal_hs28');
 	test_problem_A_huang_aggerwal_hs28_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_problem_A_huang_aggerwal_hs49');
+	test_problem_A_huang_aggerwal_hs49_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_problem_A_huang_aggerwal_hs50');
+	test_problem_A_huang_aggerwal_hs50_with_fmincon_too();
+	disp(sprintf('\n'));
 	disp('test_problem_A_huang_aggerwal_hs51');
 	test_problem_A_huang_aggerwal_hs51_with_fmincon_too();
 	disp(sprintf('\n'));

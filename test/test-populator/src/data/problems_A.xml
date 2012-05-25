@@ -132,4 +132,22 @@
 		<x0>[-1.5; 0.5; 2; -1; 0.5]</x0>
 	</problem>
 	
+	<problem>
+		<name>huang_aggerwal_hs49</name>
+		<description>See Problem 49 in [HS81, p. 72]</description>
+		<function_name>huang_aggerwal_func</function_name>
+		<A>[1 1 1 4 0; 0 0 1 0 5]</A>
+		<b>[7; 6]</b>
+		<x0>[10; 7; 2; -3; 0.8]</x0>
+	</problem>
+	
+	<problem>
+		<name>huang_aggerwal_hs50</name>
+		<description>See Problem 50 in [HS81, p. 73]</description>
+		<function_name>huang_aggerwal_1_func</function_name>
+		<A>[1 2 3 0 0; 0 1 2 3 0; 0 0 1 2 3]</A>
+		<b>[6; 6; 6]</b>
+		<x0>[35; -31; 11; 5; -5]</x0>
+	</problem>
+	
 </problems>

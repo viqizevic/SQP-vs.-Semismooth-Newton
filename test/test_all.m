@@ -6,6 +6,12 @@ function test_all()
 	disp('test_problem_A_huang_aggerwal_hs28');
 	test_problem_A_huang_aggerwal_hs28(1);
 	disp(sprintf('\n'));
+	disp('test_problem_A_huang_aggerwal_hs49');
+	test_problem_A_huang_aggerwal_hs49(1);
+	disp(sprintf('\n'));
+	disp('test_problem_A_huang_aggerwal_hs50');
+	test_problem_A_huang_aggerwal_hs50(1);
+	disp(sprintf('\n'));
 	disp('test_problem_A_huang_aggerwal_hs51');
 	test_problem_A_huang_aggerwal_hs51(1);
 	disp(sprintf('\n'));
