@@ -1,5 +1,8 @@
 function test_all_100_times()
 	warning('off','all')
+	disp('test_problem_AG_opt_ctrl');
+	test_problem_AG_opt_ctrl_100_times(1);
+	disp(sprintf('\n'));
 	disp('test_problem_A_example_16_2_nocedal_wright');
 	test_problem_A_example_16_2_nocedal_wright_100_times(1);
 	disp(sprintf('\n'));

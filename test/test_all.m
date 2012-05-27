@@ -1,5 +1,8 @@
 function test_all()
 	warning('off','all')
+	disp('test_problem_AG_opt_ctrl');
+	test_problem_AG_opt_ctrl(1);
+	disp(sprintf('\n'));
 	disp('test_problem_A_example_16_2_nocedal_wright');
 	test_problem_A_example_16_2_nocedal_wright(1);
 	disp(sprintf('\n'));

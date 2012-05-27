@@ -128,7 +128,7 @@ public class Main {
 		}
 		
 		System.out.println("\nn\t#Problem");
-		int[] dimensions = new int[25];
+		int[] dimensions = new int[35];
 		for (TestProblem p : testProblems) {
 			int n = p.getDimension();
 			dimensions[n]++;

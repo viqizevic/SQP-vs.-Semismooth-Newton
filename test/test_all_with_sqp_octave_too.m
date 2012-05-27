@@ -1,5 +1,8 @@
 function test_all_with_sqp_octave_too()
 	warning('off','all')
+	disp('test_problem_AG_opt_ctrl');
+	test_problem_AG_opt_ctrl_with_sqp_octave_too(1);
+	disp(sprintf('\n'));
 	disp('test_problem_A_example_16_2_nocedal_wright');
 	test_problem_A_example_16_2_nocedal_wright_with_sqp_octave_too(1);
 	disp(sprintf('\n'));
