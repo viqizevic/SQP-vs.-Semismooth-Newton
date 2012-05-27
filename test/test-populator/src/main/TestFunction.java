@@ -1,6 +1,7 @@
 package main;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  * TestFunction represents a scalar function
@@ -26,6 +27,11 @@ public class TestFunction {
 	 * A hash map containing all constants needed by the function.
 	 */
 	private HashMap<String, String> constants;
+	
+	/**
+	 * A list containing the names of all constants in the given order.
+	 */
+	private LinkedList<String> listOfConstantsNamesInGivenOrder;
 
 	/**
 	 * The function definition.
@@ -63,6 +69,9 @@ public class TestFunction {
 	 */
 	private String eps;
 	
+	/**
+	 * The definition of the function in LaTeX format.
+	 */
 	private String definitionInLaTeX;
 
 	/**
@@ -73,6 +82,7 @@ public class TestFunction {
 	public TestFunction(String name) {
 		this.name = name;
 		constants = new HashMap<String, String>();
+		listOfConstantsNamesInGivenOrder = new LinkedList<String>();
 		eps = "0.00001";
 	}
 
@@ -93,13 +103,16 @@ public class TestFunction {
 	}
 
 	public void putConstant(String name, String value) {
+		if (!constants.containsKey(name)) {
+			listOfConstantsNamesInGivenOrder.add(name);
+		}
 		constants.put(name, value);
 	}
-
-	public HashMap<String, String> getConstants() {
-		return constants;
-	}
 	
+	public LinkedList<String> getConstantNames() {
+		return listOfConstantsNamesInGivenOrder;
+	}
+		
 	public String getConstantValue(String constant) {
 		return constants.get(constant);
 	}
@@ -184,8 +197,8 @@ public class TestFunction {
 		f.setHessianMatrix(hessianMatrix);
 		f.setUsingApproximationDifferentiation(usingApproximationDifferentiation);
 		f.setDefinitionInLaTeX(definitionInLaTeX);
-		if (constants.size() != 0) {
-			for (String s : constants.keySet()) {
+		if (listOfConstantsNamesInGivenOrder.size() != 0) {
+			for (String s : listOfConstantsNamesInGivenOrder) {
 				f.putConstant(s, constants.get(s));
 			}
 		}

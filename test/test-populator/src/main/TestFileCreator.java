@@ -81,8 +81,8 @@ public class TestFileCreator {
 		String fileName = defFileName;
 		// create the definition file for function f
 		String content = "function y = " + fileName + "(" + f.getVar() + ")\n";
-		if (f.getConstants().size() != 0) {
-			for (String s : f.getConstants().keySet()) {
+		if (f.getConstantNames().size() != 0) {
+			for (String s : f.getConstantNames()) {
 				content += "\t" + s + " = " + f.getConstantValue(s) + ";\n";
 			}
 		}
@@ -95,8 +95,8 @@ public class TestFileCreator {
 		String fileName = gradFileName;
 		// create the file for the gradient of function f
 		String content = "function g = " + fileName + "(" + f.getVar() + ")\n";
-		if (f.getConstants().size() != 0) {
-			for (String s : f.getConstants().keySet()) {
+		if (f.getConstantNames().size() != 0) {
+			for (String s : f.getConstantNames()) {
 				content += "\t" + s + " = " + f.getConstantValue(s) + ";\n";
 			}
 		}
@@ -109,8 +109,8 @@ public class TestFileCreator {
 		String fileName = hessFileName;
 		// create the file for the hessian matrix of function f
 		String content = "function H = " + fileName + "(" + f.getVar() + ")\n";
-		if (f.getConstants().size() != 0) {
-			for (String s : f.getConstants().keySet()) {
+		if (f.getConstantNames().size() != 0) {
+			for (String s : f.getConstantNames()) {
 				content += "\t" + s + " = " + f.getConstantValue(s) + ";\n";
 			}
 		}

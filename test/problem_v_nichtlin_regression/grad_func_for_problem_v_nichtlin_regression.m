@@ -1,6 +1,6 @@
 function g = grad_func_for_problem_v_nichtlin_regression(x)
-	eta = [1; 1.1; 1.2; 1.35; 1.55; 1.75; 2.5; 3; 3.7; 4.5];
 	xi = [1:1:10]';
+	eta = [1; 1.1; 1.2; 1.35; 1.55; 1.75; 2.5; 3; 3.7; 4.5];
 	m = length(xi);
 	g = zeros(2,1);
    	for k=1:m
