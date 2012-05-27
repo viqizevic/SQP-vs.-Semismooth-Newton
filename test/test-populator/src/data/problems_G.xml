@@ -3,14 +3,14 @@
 	<problem>
 		<name>example_with_diamond_area</name>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>[2 0; 0 2]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[-4; -4]</constant_value>
-		</constant>
+		</function_constant>
 		<G>[2 1; 1 -1; -1 -1; -2 1]</G>
 		<r>[2; 1; 1; 2]</r>
 		<x0>[-1; 0]</x0>
@@ -20,10 +20,10 @@
 		<name>example_16_4_nocedal_wright</name>
 		<description>See Example 16.4 in [NW06, p. 475]</description>
 		<function_name>norm_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>xd</constant_name>
 			<constant_value>[1; 2.5]</constant_value>
-		</constant>
+		</function_constant>
 		<G>[-1 2; 1 2; 1 -2]</G>
 		<r>[2; 6; 2]</r>
 		<u>[0; 0]</u>
@@ -42,14 +42,14 @@
 		<name>example_13_2_antoniou_lu</name>
 		<description>See Example 13.2 in [AL07, p. 415f]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[1 0 -1 0; 0 1 0 -1; -1 0 1 0; 0 -1 0 1]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[0; 0; 0; 0]</constant_value>
-		</constant>
+		</function_constant>
 		<G>[-1 0 0 0; 0 -1 0 0; 1 2 0 0; 0 0 0 -1; 0 0 -1 -1; 0 0 1 2]</G>
 		<r>[0; 0; 2; -2; -3; 6]</r>
 		<x0>[0; 1; 2; 2]</x0>
@@ -59,18 +59,18 @@
 		<name>betts_hs21</name>
 		<description>See Problem 21 in [HS81, p. 44]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[0.1 0; 0 1]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[0; 0]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>c</constant_name>
 			<constant_value>-100</constant_value>
-		</constant>
+		</function_constant>
 		<G>[-10 1]</G>
 		<r>[-10]</r>
 		<u>[2; -50]</u>
@@ -82,18 +82,18 @@
 		<name>beale_hs35</name>
 		<description>See Problem 35 in [HS81, p. 58]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[2 1 1; 1 2 0; 1 0 1]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[-8; -6; -4]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>c</constant_name>
 			<constant_value>9</constant_value>
-		</constant>
+		</function_constant>
 		<G>[1 1 2]</G>
 		<r>[3]</r>
 		<u>[0; 0; 0]</u>
@@ -104,14 +104,14 @@
 		<name>murtagh_sargent_hs76</name>
 		<description>See Problem 76 in [HS81, p. 96]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[1 0 -0.5 0; 0 0.5 0 0; -0.5 0 1 0.5; 0 0 0.5 0.5]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[-1; -3; 1; -1]</constant_value>
-		</constant>
+		</function_constant>
 		<G>[1 2 1 1; 3 1 2 -1; 0 -1 -4 0]</G>
 		<r>[5; 4; -1.5]</r>
 		<u>[0; 0; 0; 0]</u>
@@ -122,14 +122,14 @@
 		<name>bartholomew_biggs_hs118</name>
 		<description>See Problem 118 in [HS81, p. 126]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*diag([0.0001 0.0001 0.00015 0.0001 0.0001 0.00015 0.0001 0.0001 0.00015 0.0001 0.0001 0.00015 0.0001 0.0001 0.00015])</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[2.3; 1.7; 2.2; 2.3; 1.7; 2.2; 2.3; 1.7; 2.2; 2.3; 1.7; 2.2; 2.3; 1.7; 2.2]</constant_value>
-		</constant>
+		</function_constant>
 		<G>
 		[1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0;
 		 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0;

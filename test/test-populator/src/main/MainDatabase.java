@@ -258,9 +258,9 @@ public class MainDatabase {
 			problem.getTestFunction().setName(functionName+"_"+nr);
 		}
 		
-		LinkedList<Element> listOfConstantElements =
-			getListOfElementsInParentElement(element, "constant");
-		for (Element constantElement: listOfConstantElements) {
+		LinkedList<Element> listOfFunctionConstantElements =
+			getListOfElementsInParentElement(element, "function_constant");
+		for (Element constantElement: listOfFunctionConstantElements) {
 			String constantName = getTagValue("constant_name", constantElement);
 			String constantValue = getTagValue("constant_value", constantElement);
 			problem.getTestFunction().putConstant(constantName, constantValue);

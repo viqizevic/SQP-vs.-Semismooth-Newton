@@ -4,14 +4,14 @@
 		<name>example_16_2_nocedal_wright</name>
 		<description>See Example 16.2 in [NW06, p. 452]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>[6 2 1; 2 5 2; 1 2 4]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[-8; -3; -3]</constant_value>
-		</constant>
+		</function_constant>
 		<A>[1 0 1; 0 1 1]</A>
 		<b>[3; 0]</b>
 		<x0>[5; 2; -2]</x0>
@@ -20,10 +20,10 @@
 	<problem>
 		<name>simple_example</name>
 		<function_name>norm_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>xd</constant_name>
 			<constant_value>[0; 0; 0; 0; 0]</constant_value>
-		</constant>
+		</function_constant>
 		<A>[1 1 1 1 1]</A>
 		<b>[1]</b>
 		<x0>[5; -1; -1; -1; -1]</x0>
@@ -33,14 +33,14 @@
 		<name>huang_aggerwal_hs28</name>
 		<description>See Problem 28 in [HS81, p. 51]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[1 1 0; 1 2 1; 0 1 1]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[0; 0; 0]</constant_value>
-		</constant>
+		</function_constant>
 		<A>[1 2 3]</A>
 		<b>[1]</b>
 		<x0>[-4; 1; 1]</x0>
@@ -50,18 +50,18 @@
 		<name>huang_aggerwal_miele_hs48</name>
 		<description>See Problem 48 in [HS81, p. 71]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[1 0 0 0 0; 0 1 -1 0 0; 0 -1 1 0 0; 0 0 0 1 -1; 0 0 0 -1 1]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[-2; 0; 0; 0; 0]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>c</constant_name>
 			<constant_value>1</constant_value>
-		</constant>
+		</function_constant>
 		<A>[1 1 1 1 1; 0 0 1 -2 -2]</A>
 		<b>[5; -3]</b>
 		<x0>[3; 5; -3; 2; -2]</x0>
@@ -71,18 +71,18 @@
 		<name>huang_aggerwal_hs51</name>
 		<description>See Problem 51 in [HS81, p. 74]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[1 -1 0 0 0; -1 2 1 0 0; 0 1 1 0 0; 0 0 0 1 0; 0 0 0 0 1]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[0; -4; -4; -2; -2]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>c</constant_name>
 			<constant_value>6</constant_value>
-		</constant>
+		</function_constant>
 		<A>[1 3 0 0 0; 0 0 1 1 -2; 0 1 0 0 -1]</A>
 		<b>[4; 0; 0]</b>
 		<x0>[2.5; 0.5; 2; -1; 0.5]</x0>
@@ -92,18 +92,18 @@
 		<name>miele_hs52</name>
 		<description>See Problem 52 in [HS81, p. 75]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[16 -4 0 0 0; -4 2 1 0 0; 0 1 1 0 0; 0 0 0 1 0; 0 0 0 0 1]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[0; -4; -4; -2; -2]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>c</constant_name>
 			<constant_value>6</constant_value>
-		</constant>
+		</function_constant>
 		<A>[1 3 0 0 0; 0 0 1 1 -2; 0 1 0 0 -1]</A>
 		<b>[0; 0; 0]</b>
 		<x0>[-1.5; 0.5; 2; -1; 0.5]</x0>
@@ -113,18 +113,18 @@
 		<name>betts_miele_hs53</name>
 		<description>See Problem 53 in [HS81, p. 76]</description>
 		<function_name>quad_func</function_name>
-		<constant>
+		<function_constant>
 			<constant_name>Q</constant_name>
 			<constant_value>2*[1 -1 0 0 0; -1 2 1 0 0; 0 1 1 0 0; 0 0 0 1 0; 0 0 0 0 1]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>q</constant_name>
 			<constant_value>[0; -4; -4; -2; -2]</constant_value>
-		</constant>
-		<constant>
+		</function_constant>
+		<function_constant>
 			<constant_name>c</constant_name>
 			<constant_value>6</constant_value>
-		</constant>
+		</function_constant>
 		<A>[1 3 0 0 0; 0 0 1 1 -2; 0 1 0 0 -1]</A>
 		<b>[0; 0; 0]</b>
 		<u>[-10; -10; -10; -10; -10]</u>
