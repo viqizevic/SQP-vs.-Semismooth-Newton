@@ -1,7 +1,7 @@
 function test_problem_v_quadratic_100_times(show)
     t1_total = 0;
     t2_total = 0;
-    t_max = 0.95;
+    t_max = 1.25;
     t1_min = t_max;
     t2_min = t_max;
     t1_max = 0;
