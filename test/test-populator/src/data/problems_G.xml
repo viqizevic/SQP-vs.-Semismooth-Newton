@@ -18,7 +18,7 @@
 
 	<problem>
 		<name>example_16_4_nocedal_wright</name>
-		<description>See Example 16.4 in [NW06, p. 475]</description>
+		<description>(vgl. Beispiel 16.4 in \cite[S.~475]{nocedal})</description>
 		<function_name>norm_func</function_name>
 		<function_constant>
 			<constant_name>xd</constant_name>
@@ -40,7 +40,7 @@
 
 	<problem>
 		<name>example_13_2_antoniou_lu</name>
-		<description>See Example 13.2 in [AL07, p. 415f]</description>
+		<description>(vgl. Beispiel 13.2 in \cite[S.~415f]{antoniou})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -57,7 +57,7 @@
 	
 	<problem>
 		<name>betts_hs21</name>
-		<description>See Problem 21 in [HS81, p. 44]</description>
+		<description>(vgl. Problem 21 in \cite[S.~44]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -80,7 +80,7 @@
 	
 	<problem>
 		<name>beale_hs35</name>
-		<description>See Problem 35 in [HS81, p. 58]</description>
+		<description>(vgl. Problem 35 in \cite[S.~58]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -102,7 +102,7 @@
 	
 	<problem>
 		<name>murtagh_sargent_hs76</name>
-		<description>See Problem 76 in [HS81, p. 96]</description>
+		<description>(vgl. Problem 76 in \cite[S.~96]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -120,7 +120,7 @@
 	
 	<!--problem>
 		<name>bartholomew_biggs_hs118</name>
-		<description>See Problem 118 in [HS81, p. 126]</description>
+		<description>(vgl. Problem 118 in \cite[S.~126]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -171,7 +171,7 @@
 
 	<!--problem>
 		<name>betts_box_hs24</name>
-		<description>See Problem 24 in [HS81, p. 47]</description>
+		<description>(vgl. Problem 24 in \cite[S.~47]{hock})</description>
 		<function_name>betts_box_func</function_name>
 		<G>[-1/sqrt(3) 1; -1 -sqrt(3); 1 sqrt(3)]</G>
 		<r>[0; 0; 6]</r>
@@ -181,7 +181,7 @@
 
 	<!--problem>
 		<name>hsia_hs55</name>
-		<description>See Problem 55 in [HS81, p. 78]</description>
+		<description>(vgl. Problem 55 in \cite[S.~78]{hock})</description>
 		<function_name>hsia_func</function_name>
 		<A>[1 2 0 0 5 0; 1 1 1 0 0 0; 0 0 0 1 1 1; 1 0 0 1 0 0; 0 1 0 0 1 0; 0 0 1 0 0 1]</A>
 		<b>[6; 3; 2; 1; 2; 2]</b>

@@ -11,11 +11,10 @@ public class TestProblem2LaTeX {
 	public String getResult() {
 		String r = "";
 		r += "\\begin{testproblem}\n";
-		r += "%\\emph(" + tp.getName() + ")\\\\\n";
-		r += "\\begin{equation}\n";
 		if (tp.getDescription() != null) {
-			r += "%" + tp.getDescription() + "\n";
+			r += tp.getDescription() + "\n";
 		}
+		r += "\\begin{equation}\n";
 		r += getFuncDef() + "\n";
 		r += "\\end{equation}\n";
 		r += "\\begin{equation*}\n";

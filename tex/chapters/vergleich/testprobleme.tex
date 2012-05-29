@@ -1,25 +1,432 @@
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
 
-Die folgende Tabelle zeigt die Ergebnisse
-der Optimierung der Testfunktionen
-mit Variablenbeschränkung, wobei die Minimalstellen
-immer noch in dem zulässigen Bereich bleiben.
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ \| x-x_d \|^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
 
-\begin{table}[h]
-\centering
-\begin{tabular*}{0.5\linewidth}{@{\extracolsep{\fill}}lcc}
-  \toprule
-  Problem &   SSN   &   SQP   \\
-  \cmidrule{2-3}
-          & \multicolumn{2}{c}{T (ms)} \\
-  \midrule
-  Rosenbrock     &  16.72  &  25.62  \\
-  Himmelblau     &  17.34  &  30.31  \\
-  Bazaraa-Shetty &  53.59  & 109.38  \\
-  Colville       & 593.75  & 656.25  \\
-  \bottomrule
-\end{tabular*}
-\caption{Vergleich}
-\end{table}
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^3}\ e^{\|x\|^2} 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2,3 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+Rosenbrock-Funktion (vgl. Beispiel 1.4.1 in \cite[S.~14]{alt})
+\begin{equation}
+\min_{x\in\R^2}\ 100 (x_2-x_1^2)^2+(1-x_1)^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+Himmelblau-Funktion (vgl. Beispiel 1.4.2 in \cite[S.~14f]{alt})
+\begin{equation}
+\min_{x\in\R^2}\ (x_1^2+x_2-11)^2 + (x_1+x_2^2-7)^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+Bazaraa-Shetty-Funktion (vgl. Beispiel 1.4.3 in \cite[S.~15f]{alt})
+\begin{equation}
+\min_{x\in\R^2}\ (x_1-2)^4+(x_1-2 x_2)^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Beispiel 1.4.4 in \cite[S.~16]{alt})
+\begin{equation}
+\min_{x\in\R^2}\ (1.5-x_1 (1-x_2))^2+(2.25-x_1 (1-x_2^2))^2+(2.625-x_1 (1-x_2^3))^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ (1-x_1)^2+(x_1^2-x_2)^2+(1-x_2)^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^4}\ 100 (x_2-x_1^2)^2 + (1-x_1)^2 + 90 (x_4-x_3^2)^2 + (1-x_3)^2 + 10.1 ((x_2-1)^2 + (x_4-1)^2) + 19.8 (x_2-1) (x_4-1) 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,\ldots,4 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+-1 \leq x_1 & \leq 1 \\
+-1 \leq x_2 & \leq 2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^3}\ e^{\|x\|^2} 
+\end{equation}
+\begin{equation*}
+\begin{split}
+1 \leq x_1 & \leq 10 \\
+0.5 \leq x_2 & \leq 10 \\
+1 \leq x_3 & \leq 10 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ (x_1^2+x_2-11)^2 + (x_1+x_2^2-7)^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+5 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^3}\ \| x-x_d \|^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+5 \leq x_i & \leq 10,\quad i = 1,2,3 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ (1-x_1)^2+(x_1^2-x_2)^2+(1-x_2)^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_1 & \leq 2 \\
+-10 \leq x_2 & \leq -5 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ f(x) %TODO write f(x)
+% y = 0;
+% 	m = length(xi);
+% 	for k=1:m
+% 		y = y + ( x(1)*xi(k) + x(2) - eta(k) )^2;
+% 	end
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^3}\ f(x) %TODO write f(x)
+% y = 0;
+% 	m = length(xi);
+% 	for k=1:m
+% 		y = y + ( x(1)*(xi(k) - x(2))^2 + x(3) - eta(k) )^2;
+% 	end
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 20,\quad i = 1,2,3 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ f(x) %TODO write f(x)
+% y = 0;
+% 	for k=1:m
+% 		y = y + ( x(1)*exp(xi(k)*x(2)) - eta(k) )^2;
+% 	end
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 \leq x_i & \leq 10,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Beispiel 16.2 in \cite[S.~452]{nocedal}
+\begin{equation}
+\min_{x\in\R^3}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + x_3 & = 3 \\
+x_2 + x_3 & = 0 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^5}\ \| x-x_d \|^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + x_2 + x_3 + x_4 + x_5 & = 1 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 28 in \cite[S.~51]{hock})
+\begin{equation}
+\min_{x\in\R^3}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + 2 x_2 + 3 x_3 & = 1 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 48 in \cite[S.~71]{hock})
+\begin{equation}
+\min_{x\in\R^5}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + x_2 + x_3 + x_4 + x_5 & = 5 \\
+x_3 - 2 x_4 - 2 x_5 & = -3 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 51 in \cite[S.~74]{hock})
+\begin{equation}
+\min_{x\in\R^5}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + 3 x_2 & = 4 \\
+x_3 + x_4 - 2 x_5 & = 0 \\
+x_2 - x_5 & = 0 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 52 in \cite[S.~75]{hock})
+\begin{equation}
+\min_{x\in\R^5}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + 3 x_2 & = 0 \\
+x_3 + x_4 - 2 x_5 & = 0 \\
+x_2 - x_5 & = 0 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 53 in \cite[S.~76]{hock})
+\begin{equation}
+\min_{x\in\R^5}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + 3 x_2 & = 0 \\
+x_3 + x_4 - 2 x_5 & = 0 \\
+x_2 - x_5 & = 0 \\
+-10 \leq x_i & \leq 10,\quad i = 1,\ldots,5 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 49 in \cite[S.~72]{hock})
+\begin{equation}
+\min_{x\in\R^5}\ (x_1-x_2)^2 + (x_3-1)^2 + (x_4-1)^2 + (x_5-1)^6 
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + x_2 + x_3 + 4 x_4 & = 7 \\
+x_3 + 5 x_5 & = 6 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 50 in \cite[S.~73]{hock})
+\begin{equation}
+\min_{x\in\R^5}\ (x_1-x_2)^2 + (x_2-x_3)^2 + (x_3-x_4)^4 + (x_4-x_5)^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + 2 x_2 + 3 x_3 & = 6 \\
+x_2 + 2 x_3 + 3 x_4 & = 6 \\
+x_3 + 2 x_4 + 3 x_5 & = 6 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+2 x_1 + x_2 & \leq 2 \\
+x_1 - x_2 & \leq 1 \\
+-x_1 - x_2 & \leq 1 \\
+-2 x_1 + x_2 & \leq 2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Beispiel 16.4 in \cite[S.~475]{nocedal})
+\begin{equation}
+\min_{x\in\R^2}\ \| x-x_d \|^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-x_1 + 2 x_2 & \leq 2 \\
+x_1 + 2 x_2 & \leq 6 \\
+x_1 - 2 x_2 & \leq 2 \\
+0 & \leq x_i,\quad i = 1,2 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+\begin{equation}
+\min_{x\in\R^2}\ 100 (x_2-x_1^2)^2+(1-x_1)^2 
+\end{equation}
+\begin{equation*}
+\begin{split}
+-x_2 & \leq -1.5 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Beispiel 13.2 in \cite[S.~415f]{antoniou})
+\begin{equation}
+\min_{x\in\R^4}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+-x_1 & \leq 0 \\
+-x_2 & \leq 0 \\
+x_1 + 2 x_2 & \leq 2 \\
+-x_4 & \leq -2 \\
+-x_3 - x_4 & \leq -3 \\
+x_3 + 2 x_4 & \leq 6 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 21 in \cite[S.~44]{hock})
+\begin{equation}
+\min_{x\in\R^2}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+-10 x_1 + x_2 & \leq -10 \\
+2 \leq x_1 & \leq 50 \\
+-50 \leq x_2 & \leq 50 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 35 in \cite[S.~58]{hock})
+\begin{equation}
+\min_{x\in\R^3}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + x_2 + 2 x_3 & \leq 3 \\
+0 & \leq x_i,\quad i = 1,2,3 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+\begin{testproblem}
+(vgl. Problem 76 in \cite[S.~96]{hock})
+\begin{equation}
+\min_{x\in\R^4}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\end{equation}
+\begin{equation*}
+\begin{split}
+x_1 + 2 x_2 + x_3 + x_4 & \leq 5 \\
+3 x_1 + x_2 + 2 x_3 - x_4 & \leq 4 \\
+-x_2 - 4 x_3 & \leq -1.5 \\
+0 & \leq x_i,\quad i = 1,\ldots,4 \\
+\end{split}
+\end{equation*}
+\end{testproblem}
+
+
+
 
 \begin{testproblem}
 \emph{(Lineare Regression, vgl. Beispiel 1.1.6 in \cite[S.~4f]{alt})}\\
@@ -137,3 +544,5 @@ Löse folgendes, einfaches, 2-dimensionales Problem.
 \end{tikzpicture}
 \caption{Restringiertes Problem}
 \end{figure}
+
+
