@@ -49,6 +49,8 @@ public class Main {
 	
 	public static boolean inDebugMode = true;
 	
+	private static boolean printLaTeX = true;
+	
 	/**
 	 * The main function.
 	 * Reads the xml files containing the test functions and the test problems
@@ -81,7 +83,7 @@ public class Main {
 		LinkedList<String> functionsXMLFiles = new LinkedList<String>();
 		functionsXMLFiles.add(functionsXMLFile);
 		MainDatabase db = new MainDatabase(pathToDataDir, functionsXMLFiles, problemsXMLFiles);
-		LinkedList<TestProblem> problems = db.getTestProblems();
+		LinkedList<TestProblem> problems = db.getTestProblemsInGivenOrder();
 		for (TestProblem p : problems) {
 			if (useApproxDiff) {
 				p.getTestFunction().setUsingApproximationDifferentiation(useApproxDiff);
@@ -98,13 +100,14 @@ public class Main {
 		if (problems.isEmpty()) {
 			System.out.println("No Problem found.");
 		} else {
-			problems = db.getTestProblemsInGivenOrder();
 			if (inDebugMode) {
 				printStatistic(db.getTestFunctions(), problems);
 			}
-			for (TestProblem p : problems) {
-				TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
-//				System.out.println(tp2tex.getResult());
+			if (printLaTeX) {
+				for (TestProblem p : problems) {
+					TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
+					System.out.println(tp2tex.getResult());
+				}
 			}
 		}
 	}
