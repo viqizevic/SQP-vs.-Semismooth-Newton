@@ -47,7 +47,7 @@ public class Main {
 	 */
 	private static String configFile = "SQP-vs.-Semismooth-Newton/test.config";
 	
-	public static boolean inDebugMode = true;
+	public static boolean inDebugMode = false;
 	
 	private static boolean printLaTeX = true;
 	
@@ -105,8 +105,10 @@ public class Main {
 			}
 			if (printLaTeX) {
 				for (TestProblem p : problems) {
-					TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
-					System.out.println(tp2tex.getResult());
+					if (!p.getName().equals("problem_AG_opt_ctrl")) {
+						TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
+						System.out.println(tp2tex.getResult());
+					}
 				}
 			}
 		}
