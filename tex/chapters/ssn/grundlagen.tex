@@ -1,84 +1,66 @@
-Wir betrachten erst mal die allgemeine Definition
-einer halbglatten\footnote{englisch: semismooth} Funktion.
+
+
+Wir betrachten erst mal die Definition
+einer halbglatten Funktion.
 
 \begin{definition}
-Seien $X, Z$ reelle Banachräume und sei $D \subset X$ offen.
-Eine Funktion $F : D \subset X \rightarrow Z$ heißt
-Newton-differenzierbar in Punkt $x \in D$,
-falls es eine Umgebung $U(x) \subset D$ von $x$
-und eine Abbildung $G : U(x) \rightarrow L(X,Z)$ gibt,
-so dass
+\emph(Vgl. Definition 2.1 in \cite[S.~25]{ulbrich})\\
+Sei $V \subset \R^n$ eine nichtleere offene Menge.
+Sei $f \colon V \rightarrow \R^m$ lokal Lipschitz-stetig
+in $x \in V$.
+Sei $D_f$ die Menge aller Punkte,
+wo $f$ eine (Fr\'echet-)Ableitung $f' \in L(\R^n,\R^m)$besitzt.
+Die Menge
 \begin{equation}
-  \lim_{|h| \rightarrow 0} \frac{|F(x+h)-F(x)-G(x+h)h|_Z}{|h|_X} = 0
+  \partial_B f(x) := \left\{ M \in \R^{m \times n}\ |\ 
+    \exists (x_k) \subset D_f :
+    x_k \rightarrow x, f'(x_k) \rightarrow M \right\}
 \end{equation}
-Die Familie
+heißt B-Sub-Ableitung\footnote{englisch: B-subdifferential,
+\textss{B} für Bouligand}
+von $f$ an der Stelle $x$.
+Ferner ist nach Clarke die allgemeine Jacobi-Matrix
+von $f$ an der Stelle $x$ die konvexe Hülle
 \begin{equation}
-  \{ G(u)\,|\, u \in U(x) \}
+  \partial f(x) := \co \partial_B f(x).
 \end{equation}
-heißt N-Ableitung von $F$ in $x$.
 \end{definition}
 
 \begin{definition}
-Seien $X, Z$ reelle Banachräume und sei $D \subset X$ offen.
-Eine Funktion $F : D \subset X \rightarrow Z$ heißt
-halbglatt in $x \in D$,
-falls $F$ Newton-differenzierbar in $x$ ist und
+\emph(Vgl. Definition 2.5 in \cite[S.~27]{ulbrich})\\
+Sei $V \subset \R^n$ nichtleer und offen.
+Die Funktion $f \colon V \rightarrow \R^m$ heißt halbglatt in $x \in V$,
+falls $f$ lokal Lipschitz-stetig in $x$ ist und
 \begin{equation}
-  \lim_{t \rightarrow 0^+} G(x+th)h
+  \lim_{M \in \partial f(x+ \tau d), d \rightarrow s, \tau \rightarrow 0^+} Md
 \end{equation}
-einheitlich in $|h| = 1$ existiert.
+für alle $s \in \R^m$ existiert.
+
+Falls $f$ halbglatt in allen $x \in V$ ist,
+dann heißt $f$ halbglatt (in $V$).  
 \end{definition}
 
-Nun kommt die Definition in endlichdimensionalen Räumen.
-
-\begin{definition}
-Sei $F : \R^m \rightarrow \R^n$ lokal Lipschitz-stetig.
-Sei $D_F$ die Menge aller Punkte, wo $F$ differenzierbar ist.
-Für $x \in \R^m$ definieren wir
+Wir formulieren nun das halbglatte Newton-Verfahren
+zum Lösen der Gleichung
 \begin{equation}
-  \partial_B F(x) := \left\{ J\  |\ 
-    J = \lim_{x_i \rightarrow x, x_i \in D_F} \nabla F(x_i) \right\}
+  f(x) = 0, \label{eq:halbglatte_gleichung}
 \end{equation}
-und die allgemeine Ableitung in $x$
-\begin{equation}
-  \partial F(x) := \co \partial_B F(x),
-\end{equation}
-wobei $\co$ für die konvexe Hülle steht.
-\end{definition}
+wobei
+$f \colon V \rightarrow \R^n$, $V \subset \R^n$ offen,
+halbglatt an der Stelle der Lösung $\xopt \in V$ ist.
 
-\begin{definition}
-$F : \R^m \rightarrow \R^n$ heißt halbglatt in $x \in \R^m$,
-falls $F$ lokal Lipschitz-stetig in $x$ ist und
-\begin{equation}
-  \lim_{V \in \partial F(x+th'), h' \rightarrow h, t \rightarrow 0^+} Vh'
-\end{equation}
-für alle $h \in \R^m$ existiert.
-\end{definition}
-
-\begin{theorem}
-Sei $\xopt$ eine Lösung des Problems $F(x) = 0$
-und $F$ sei Newton-differenzierbar in $\xopt$ mit N-Ableitung $G$.
-Falls $G$ nichtsingulär für alle $x \in U(\xopt)$ ist
-und $\{ \|G(x)^{-1}\|\, | \, x \in U(\xopt) \}$ beschränkt ist,
-dann konvergiert die Newton-Iteration
-\begin{equation}
-  x^{k+1} := x^k - G(x^k)^{-1} F(x^k)
-\end{equation}
-superlinear gegen $\xopt$
-unter der Bedingung, dass $|x^0 - \xopt|$ genügend klein ist.
-\end{theorem}
-
-\begin{algorithm}
-\emph{(Das halbglatte Newton-Verfahren)}
+\begin{algorithm}\label{algo:halbglattes_newton}
+\emph{(Das halbglatte Newton-Verfahren,
+vgl. Algorithmus 2.11 in \cite[S.~29]{ulbrich})}
 \begin{enumerate}
   \item Wähle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
         Setze $k := 0$.
-  \item Ist $\|\nabla f(x^k)\| < \varepsilon$ \label{list:stop_criteria_ssn}
+  \item Ist $\|f(x^k)\| < \varepsilon$ \label{list:stop_criteria_ssn}
         $\Rightarrow$ STOP.
-  \item Wähle $V_k \in \partial \nabla f (x^k)$
+  \item Wähle $M_k \in \partial \nabla f (x^k)$
   \item Berechne die Lösung $d$ des linearen Gleichungssystems
         \begin{equation}
-          V_k d = - \nabla f(x^k).
+          M_k d = - f(x^k).
         \end{equation}
         Setze $d^k := d$.
   \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$ $\Rightarrow$
@@ -86,8 +68,28 @@ unter der Bedingung, dass $|x^0 - \xopt|$ genügend klein ist.
 \end{enumerate}
 \end{algorithm}
 
-Das halbglatte Newton-Verfahren hat also das gleiche Ziel
-wie bei dem Newton-Verfahren,
-nämlich ein nichtlineares Gleichungssystem zu lösen. 
-Der Unterschied liegt darin, dass hier die Funktion nicht
+Das halbglatte Newton-Verfahren arbeitet eigentlich genauso
+wie das Newton-Verfahren.
+Der Unterschied liegt nur darin, dass hier die Funktion nicht
 unbedingt so glatt ist.
+
+\begin{theorem}
+\emph{(Vgl. Satz 2.12 in \cite[S.~29f]{ulbrich})}\\
+Sei $f \colon V \rightarrow \R^n$ auf der offenen Menge $V \subset \R^n$
+definiert.
+Sei $\xopt$ eine Lösung des Problems~\eqref{eq:halbglatte_gleichung}.
+Es gelte:
+\begin{compactenum}[(i)]
+  \item Die Funktion $f$ sei halbglatt in $\xopt$.
+  \item Es existiere eine Konstante $C > 0$, sodass die Matrizen $M_k$
+    für alle $k$ nichtsingulär mit $\| M_k^{-1} \| \leq C$ sind.
+    \label{list:loesbarkeit_der_gleichung_in_halbgl_newton_verf}
+\end{compactenum}
+Dann existiert $\delta > 0$, sodass für alle
+$x_0 \in U_{\delta}(\xopt)$
+die Bedingung~(\ref{list:loesbarkeit_der_gleichung_in_halbgl_newton_verf})
+erfüllt ist und das Verfahren~\ref{algo:halbglattes_newton}
+entweder mit $x_k = \xopt$ terminiert
+oder eine Folge $(x_k)$ erzeugt,
+die $q$-superlinear gegen $\xopt$ konvergiert.
+\end{theorem}
