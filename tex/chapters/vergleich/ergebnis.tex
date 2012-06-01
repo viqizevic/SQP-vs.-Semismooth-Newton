@@ -1,22 +1,29 @@
-
-Die folgende Tabelle zeigt die Ergebnisse
-der Optimierung der Testfunktionen
-mit Variablenbeschränkung, wobei die Minimalstellen
-immer noch in dem zulässigen Bereich bleiben.
-
 \begin{table}[h]
 \centering
-\begin{tabular*}{0.5\linewidth}{@{\extracolsep{\fill}}lcc}
+\begin{tabular*}{0.5\linewidth}{@{\extracolsep{\fill}}crr}
   \toprule
-  Problem &   SSN   &   SQP   \\
+  Testproblem &   SSN   &   SQP   \\
   \cmidrule{2-3}
-          & \multicolumn{2}{c}{T (ms)} \\
+              & \multicolumn{2}{c}{T (ms)} \\
   \midrule
-  Rosenbrock     &  16.72  &  25.62  \\
-  Himmelblau     &  17.34  &  30.31  \\
-  Bazaraa-Shetty &  53.59  & 109.38  \\
-  Colville       & 593.75  & 656.25  \\
+  1 & 17.5 & 17.5 \\ % test_problem_v_norm
+  2 & 22.5 & 37.34 \\ % test_problem_v_rosenbrock
+  3 & 23.91 & 40.0 \\ % test_problem_v_himmelblau
+  4 & 62.03 & 134.69 \\ % test_problem_v_bazaraa_shetty
+  5 & 67.66 & 83.75 \\ % test_problem_v_beale
+  6 & 205.62 & 355.31 \\ % test_problem_v_exp
+  7 & 592.03 & 659.22 \\ % test_problem_v_colville
+  8 & 15.78 & 19.84 \\ % test_problem_v_norm_1
+  9 & 22.97 & 51.25 \\ % test_problem_v_rosenbrock_1
+  10 & 23.59 & 80.62 \\ % test_problem_v_himmelblau_1
+  11 & 19.38 & 23.28 \\ % test_problem_v_bazaraa_shetty_1
+  12 & 81.88 & 80.31 \\ % test_problem_v_beale_1
+  13 & 206.41 & 374.53 \\ % test_problem_v_exp_1
+  14 & 267.5 & 328.28 \\ % test_problem_v_colville_1
+  15 & 62.5 & 72.5 \\ % test_problem_v_lin_regression
+  16 & 680.94 & 741.88 \\ % test_problem_v_quad_regression
+  17 & 412.03 & 490.78 \\ % test_problem_v_nichtlin_regression
   \bottomrule
 \end{tabular*}
-\caption{Vergleich}
+\caption{Laufzeiten der Programme für Testprobleme 1 bis 17}
 \end{table}
