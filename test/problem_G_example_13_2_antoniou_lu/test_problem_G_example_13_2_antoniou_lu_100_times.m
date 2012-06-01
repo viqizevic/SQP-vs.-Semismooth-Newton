@@ -1,7 +1,7 @@
 function test_problem_G_example_13_2_antoniou_lu_100_times(show)
     t1_total = 0;
     t2_total = 0;
-    t_max = 1.25;
+    t_max = 2.5;
     t1_min = t_max;
     t2_min = t_max;
     t1_max = 0;

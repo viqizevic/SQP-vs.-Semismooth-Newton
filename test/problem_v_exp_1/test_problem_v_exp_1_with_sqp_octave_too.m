@@ -1,5 +1,5 @@
 function test_problem_v_exp_1_with_sqp_octave_too(show)
-    u = [1; 0.5; 1];
+    u = [0.5; 1; 1];
     v = [10; 10; 10];
     x0 = [5; 2; 4];
     tol = 0.00001;
@@ -65,7 +65,7 @@ function c = h(x)
 end
 
 function s = g(x)
-    u = [1; 0.5; 1];
+    u = [0.5; 1; 1];
     v = [10; 10; 10];
     G = [];
     r = [];

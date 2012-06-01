@@ -213,6 +213,7 @@ public class MainDatabase {
 		TestFunction function = testFunctions.get(functionName);
 		
 		String description = getTagValue("description", element);
+		String funcDefInLaTeX = getTagValue("latex_func_def", element);
 		String A = getTagValue("A", element);
 		String b = getTagValue("b", element);
 		String G = getTagValue("G", element);
@@ -266,6 +267,7 @@ public class MainDatabase {
 			problem.getTestFunction().putConstant(constantName, constantValue);
 		}
 		problem.setDescription(description);
+		problem.getTestFunction().setDefinitionInLaTeX(funcDefInLaTeX);
 		problem.set_A(A);
 		problem.set_b(b);
 		problem.set_G(G);

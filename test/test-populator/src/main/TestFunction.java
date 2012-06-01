@@ -186,7 +186,9 @@ public class TestFunction {
 	}
 
 	public void setDefinitionInLaTeX(String definitionInLaTeX) {
-		this.definitionInLaTeX = definitionInLaTeX;
+		if (definitionInLaTeX != null) {
+			this.definitionInLaTeX = definitionInLaTeX;
+		}
 	}
 
 	public TestFunction clone() {

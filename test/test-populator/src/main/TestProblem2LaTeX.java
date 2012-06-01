@@ -19,7 +19,7 @@ public class TestProblem2LaTeX {
 		r += "\\end{equation}\n";
 		r += "\\begin{equation*}\n";
 		r += "\\begin{split}\n";
-		r += getConstraints();
+		r += "\\nb " + getConstraints();
 		r += "\\end{split}\n";
 		r += "\\end{equation*}\n";
 		r += "\\end{testproblem}\n";
@@ -89,7 +89,7 @@ public class TestProblem2LaTeX {
 			if (v == null) {
 				if (allVectorElementsAreTheSame(u)) {
 					r += getBoundedX(getValue(u[0][0], false), null, "i") +
-							",\\quad " + getIndexesTo("i", n) + " \\\\\n";
+							",\\ " + getIndexesTo("i", n) + " \\\\\n";
 				} else {
 					for (int i=0; i<u.length; i++) {
 						r += getBoundedX(getValue(u[i][0], false), null, (i+1)+"") + " \\\\\n";
@@ -98,7 +98,7 @@ public class TestProblem2LaTeX {
 			} else {
 				if (allVectorElementsAreTheSame(u) && allVectorElementsAreTheSame(v)) {
 					r += getBoundedX(getValue(u[0][0],false), getValue(v[0][0], false), "i") +
-							",\\quad " + getIndexesTo("i", n) + " \\\\\n";
+							",\\ " + getIndexesTo("i", n) + " \\\\\n";
 				} else {
 					for (int i=0; i<u.length; i++) {
 						r += getBoundedX(getValue(u[i][0], false), getValue(v[i][0], false), (i+1)+"") + " \\\\\n";
@@ -110,7 +110,7 @@ public class TestProblem2LaTeX {
 			int n = v.length;
 			if (allVectorElementsAreTheSame(v)) {
 				r += getBoundedX(getValue(v[0][0], false), null, "i") +
-						",\\quad " + getIndexesTo("i", n) + " \\\\\n";
+						",\\ " + getIndexesTo("i", n) + " \\\\\n";
 			} else {
 				for (int i=0; i<v.length; i++) {
 					r += getBoundedX(getValue(v[i][0], false), null, (i+1)+"") + " \\\\\n";

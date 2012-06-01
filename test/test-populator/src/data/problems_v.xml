@@ -7,6 +7,7 @@
 			<constant_name>xd</constant_name>
 			<constant_value>[4; 7]</constant_value>
 		</function_constant>
+		<latex_func_def>(x_1 - 4)^2 + (x_2 - 7)^2</latex_func_def>
 		<u>[-10; -10]</u>
 		<v>[10; 10]</v>
 		<x0>[8; 9]</x0>
@@ -73,6 +74,7 @@
             <constant_name>xd</constant_name>
             <constant_value>[4; 2; 7]</constant_value>
         </function_constant>
+		<latex_func_def>(x_1 - 4)^2 + (x_2 - 2)^2 + (x_3 - 7)^2</latex_func_def>
         <u>[5; 5; 5]</u>
         <v>[10; 10; 10]</v>
         <x0>[7; 10; 9]</x0>
@@ -114,7 +116,7 @@
     <problem>
         <name>exp</name>
         <function_name>exp_func</function_name>
-        <u>[1; 0.5; 1]</u>
+        <u>[0.5; 1; 1]</u>
         <v>[10; 10; 10]</v>
         <x0>[5; 2; 4]</x0>
     </problem>
