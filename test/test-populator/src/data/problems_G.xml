@@ -31,14 +31,6 @@
 	</problem>
 
 	<problem>
-		<name>rosenbrock</name>
-		<function_name>rosenbrock_func</function_name>
-		<G>[0 -1]</G>
-		<r>[-1.5]</r>
-		<x0>[2; 3]</x0>
-	</problem>
-
-	<problem>
 		<name>example_13_2_antoniou_lu</name>
 		<description>(vgl. Beispiel 13.2 in \cite[S.~415f]{antoniou})</description>
 		<function_name>quad_func</function_name>
