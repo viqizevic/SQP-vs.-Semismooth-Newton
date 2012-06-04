@@ -1,7 +1,7 @@
 \begin{testproblem}
 (vgl. Beispiel 16.2 in \cite[S.~452]{nocedal}
 \begin{equation}
-\min_{x\in\R^3}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^3}\ 3 x_1^2 + 2 x_1 x_2 + x_1 x_3 + 2.5 x_2^2 + 2 x_2 x_3 + 2 x_3^2 - 8 x_1 - 3 x_2 - 3 x_3
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -13,7 +13,7 @@ x_2 + x_3 & = 0 \\
 
 \begin{testproblem}
 \begin{equation}
-\min_{x\in\R^5}\ \| x-x_d \|^2
+\min_{x\in\R^5}\ \| x \|^2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -25,7 +25,7 @@ x_2 + x_3 & = 0 \\
 \begin{testproblem}
 (vgl. Problem 28 in \cite[S.~51]{hock})
 \begin{equation}
-\min_{x\in\R^3}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^3}\ (x_1 + x_2)^2 + (x_2 + x_3)^2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -37,7 +37,7 @@ x_2 + x_3 & = 0 \\
 \begin{testproblem}
 (vgl. Problem 48 in \cite[S.~71]{hock})
 \begin{equation}
-\min_{x\in\R^5}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^5}\ (x_1 - 1)^2 + (x_2 - x_3)^2 + (x_4 - x_5)^2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -50,7 +50,7 @@ x_3 - 2 x_4 - 2 x_5 & = -3 \\
 \begin{testproblem}
 (vgl. Problem 51 in \cite[S.~74]{hock})
 \begin{equation}
-\min_{x\in\R^5}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^5}\ (x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -64,7 +64,7 @@ x_2 - x_5 & = 0 \\
 \begin{testproblem}
 (vgl. Problem 52 in \cite[S.~75]{hock})
 \begin{equation}
-\min_{x\in\R^5}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^5}\ (4 x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -78,7 +78,7 @@ x_2 - x_5 & = 0 \\
 \begin{testproblem}
 (vgl. Problem 53 in \cite[S.~76]{hock})
 \begin{equation}
-\min_{x\in\R^5}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^5}\ (x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -119,7 +119,7 @@ x_3 + 2 x_4 + 3 x_5 & = 6 \\
 
 \begin{testproblem}
 \begin{equation}
-\min_{x\in\R^2}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^2}\ x_1^2 + x_2^2 - 4 x_1 - 4 x_2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -134,7 +134,7 @@ x_1 - x_2 & \leq 1 \\
 \begin{testproblem}
 (vgl. Beispiel 16.4 in \cite[S.~475]{nocedal})
 \begin{equation}
-\min_{x\in\R^2}\ \| x-x_d \|^2
+\min_{x\in\R^2}\ (x_1 - 1)^2 + (x_2 - 2.5)^2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -149,7 +149,7 @@ x_1 - 2 x_2 & \leq 2 \\
 \begin{testproblem}
 (vgl. Beispiel 13.2 in \cite[S.~415f]{antoniou})
 \begin{equation}
-\min_{x\in\R^4}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^4}\ (x_1 - x_3)^2 + (x_2 - x_4)^2
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -166,7 +166,7 @@ x_3 + 2 x_4 & \leq 6 \\
 \begin{testproblem}
 (vgl. Problem 21 in \cite[S.~44]{hock})
 \begin{equation}
-\min_{x\in\R^2}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^2}\ 0.01 x_1^2 + x_2^2 - 100
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -180,7 +180,7 @@ x_3 + 2 x_4 & \leq 6 \\
 \begin{testproblem}
 (vgl. Problem 35 in \cite[S.~58]{hock})
 \begin{equation}
-\min_{x\in\R^3}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^3}\ 2 x_1^2 + 2 x_1 x_2 + 2 x_1 x_3 + 2 x_2^2 + x_3^2 - 8 x_1 - 6 x_2 - 4 x_3 + 9
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -193,7 +193,7 @@ x_3 + 2 x_4 & \leq 6 \\
 \begin{testproblem}
 (vgl. Problem 76 in \cite[S.~96]{hock})
 \begin{equation}
-\min_{x\in\R^4}\ \tfrac{1}{2} x^T Q x + q^T x + c
+\min_{x\in\R^4}\ x_1^2 + 0.5 x_2^2 + x_3^2 + 0.5 x_4^2 - x_1 x_3 + x_3 x_4 - x_1 - 3 x_2 + x_3 - x_4
 \end{equation}
 \begin{equation*}
 \begin{split}
@@ -204,43 +204,3 @@ x_3 + 2 x_4 & \leq 6 \\
 \end{split}
 \end{equation*}
 \end{testproblem}
-
-
-
-
-\begin{testproblem}
-Löse folgendes, einfaches, 2-dimensionales Problem.
-\begin{align}
-  \min_{x \in \R^2}\ (x_1 - 1)^2 + (x_2 &- 2.5)^2 \\
-  \nb -x_1 + 2x_2 & \leq 2 \\
-       x_1 + 2x_2 & \leq 6 \\
-       x_1 - 2x_2 & \leq 6 \\
-                0 & \leq x_1, x_2
-\end{align}
-\end{testproblem}
-
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[scale=2.5]
-  
-  % Die zulässige Menge
-  \draw[fill=blue!10] (0,0) -- (0,1) -- (2,2) -- (4,1) -- (2,0) -- cycle;
-  \draw (1.7,1) node {$\F$};
-  
-  % Die Niveaulinien
-  \foreach \r in {0.25, 0.55, 0.85, 1.15}
-    \draw[dashed,color=red] (1,2) circle (\r);
-  
-  % Koordinatenachsen
-  \draw[->] (0,0) -- (4.3,0) node [below right] {$x_1$};
-  \foreach \x in {0,...,4}
-    \draw (\x,0.05) -- (\x,-0.05) node [below] {\x};
-  \draw[->] (0,0) -- (0,3.6) node [above left] {$x_2$};
-  \foreach \y in {0,...,3}
-    \draw (0.05,\y) -- (-0.05,\y) node [left] {\y};
-  
-\end{tikzpicture}
-\caption{Restringiertes Problem}
-\end{figure}
-
-
