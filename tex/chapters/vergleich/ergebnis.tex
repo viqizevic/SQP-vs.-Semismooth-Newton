@@ -68,3 +68,20 @@
 \end{tabular*}
 \caption{Laufzeiten der Programme für Testprobleme 27 bis 32}
 \end{table}
+
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[yscale=0.05,xscale=0.35]
+  \draw[->] (0,0) -- (27.5,0) node [above] {$$};
+  \foreach \x in {0,4,...,27}
+    \draw (\x,0.5) -- (\x,-0.5) node [below] {\x};
+  \draw[->] (0,0) -- (0,155) node [right] {(ms)};
+  \foreach \y in {0,50,...,150}
+    \draw (0.05,\y) -- (-0.05,\y) node [left] {\y};
+  \draw[color=blue] plot file {images/sqp_results_under_150_ms.table};
+  \draw[color=red] plot file {images/ssn_results_under_150_ms.table};
+\end{tikzpicture}
+\caption{Laufzeiten der Programme unterhalb 150 ms (sortiert nach den
+Ergebnissen von SQP)}
+\end{figure}
