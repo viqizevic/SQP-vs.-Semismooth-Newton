@@ -21,6 +21,14 @@ Rosenbrock-Funktion (vgl. Beispiel 1.4.1 in \cite[S.~14]{alt})
 \end{equation*}
 \end{testproblem}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.45\textwidth]{rosenbrock}
+  \includegraphics[width=0.45\textwidth]{himmelblau}
+  \caption{Rosenbrock- und Himmelblau-Funktion}
+  \label{fig:rosenbrock_und_himmelblau}
+\end{figure}
+
 \begin{testproblem}
 Himmelblau-Funktion (vgl. Beispiel 1.4.2 in \cite[S.~14f]{alt})
 \begin{equation}
@@ -59,14 +67,22 @@ Bazaraa-Shetty-Funktion (vgl. Beispiel 1.4.3 in \cite[S.~15f]{alt})
 
 \begin{testproblem}
 \begin{equation}
-\min_{x\in\R^3}\ e^{\|x\|^2} 
+\min_{x\in\R^2}\ e^{\|x\|^2} 
 \end{equation}
 \begin{equation*}
 \begin{split}
-\nb -10 \leq x_i & \leq 10,\ i = 1,2,3 \\
+\nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
 \end{equation*}
 \end{testproblem}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.45\textwidth]{bazaraa-shetty}
+  \includegraphics[width=0.45\textwidth]{exp-func}
+  \caption{Bazaraa-Shetty- und Exponent-Funktion}
+  \label{fig:bazaraa_shetty_und_exp_funktion}
+\end{figure}
 
 \begin{testproblem}
 \begin{equation}
@@ -169,30 +185,9 @@ Bazaraa-Shetty-Funktion (vgl. Beispiel 1.4.3 in \cite[S.~15f]{alt})
 \end{equation*}
 \end{testproblem}
 
-\begin{example}
-\emph{(Lineare Regression, vgl. Beispiel 1.1.6 in \cite[S.~4f]{alt})}\\
-Ein Beispiel unrestringiertes Optimierungsproblems ist
-die Aufgabe der linearen Regression.
-Gegeben seien m-Messwerte $(\xi_i,\eta_i), i = 1,\ldots,m$.
-Gesucht ist eine Gerade
-\begin{equation}
-  \eta(\xi) := x_1 \xi + x_2,
-\end{equation}
-die \textss{optimal} zu den Messwerten passt.
-D.\,h. wir sollen den Parameter $x = (x_1,x_2)^T \in \R^2$
-so bestimmen, dass die Summe der Fehlerquadrate
-in den Messpunkten minimiert wird.
-Wir haben somit das Optimierungsproblem
-\begin{equation}
-  \min_{x \in \R^2}\ 
-  f(x) := \sum_{i=1}^{m} (\eta(\xi_i) - \eta_i)^2
-        = \sum_{i=1}^{m} (x_1 \xi_i + x_2 - \eta_i)^2.
-\end{equation}
-\end{example}
-
 \begin{testproblem}
 \label{test_prob:lin_regres}
-Lineare Regression
+Lineare Regression (Vgl. Beispiel~\ref{example:lineare_regression})
 \begin{equation}
 \min_{x\in\R^2}\ \sum_{i=1}^{10} (x_1 \xi_i + x_2 - \eta_i)^2
 \end{equation}
@@ -219,29 +214,11 @@ und~\ref{test_prob:nichtlin_regres_quad}}
 \label{tbl:messwerte_lin_regres}
 \end{table}
 
-\begin{example}
-\emph{(Nichtlineare Regression, vgl. Abschnitt 2.3.2 in \cite[S.~30f]{alt})}\\
-Neben linearen Regressionsaufgaben sind auch oft
-nichtlineare Regressionsaufgaben zu lösen.
-Gesucht ist der funktionale Zusammenhang $\eta(\xi)$
-zwischen den $\xi$- und den $\eta$-Werten,
-beispielweise
-\begin{equation}\label{eq:nichtlin_regres_quad_zusammenhang}
-  \eta(\xi) := x_1 (\xi -x_2)^2 + x_3
-\end{equation}
-oder
-\begin{equation}\label{eq:nichtlin_regres_exp_zusammenhang}
-  \eta(\xi) := x_1 e^{\xi x_2}.
-\end{equation}
-Dabei ist $x = (x_1,\ldots,x_n)^T \in \R^n$ ein Parametervektor,
-der \textss{optimal}
-bestimmt werden soll.
-\end{example}
-
 \begin{testproblem}
 \label{test_prob:nichtlin_regres_quad}
 Nichtlineare Regression mit dem funktionalen
 Zusammenhang~\eqref{eq:nichtlin_regres_quad_zusammenhang}
+(vgl. Beispiel~\ref{example:nichtlineare_regression})
 \begin{equation}
 \min_{x\in\R^3}\ \sum_{i=1}^{10} (x_1 (\xi_i -x_2)^2 + x_3 - \eta_i)^2
 \end{equation}
@@ -282,6 +259,7 @@ und~\ref{test_prob:nichtlin_regres_quad}}
 \label{test_prob:nichtlin_regres_exp}
 Nichtlineare Regression mit dem funktionalen
 Zusammenhang~\eqref{eq:nichtlin_regres_exp_zusammenhang}
+(vgl. Beispiel~\ref{example:nichtlineare_regression})
 \begin{equation}
 \min_{x\in\R^2}\ \sum_{i=1}^{10} (x_1 e^{\xi x_2} - \eta_i)^2
 \end{equation}
