@@ -11,19 +11,19 @@ D.\,h., die Menge $\F$ sieht hier so aus:  $\F = \{ x \in \R^n\ |\ A x = b \}$.
 
 \begin{example}\label{example:opt_prob_mit_lin_gl_nebenbed}
 Ein einfaches Beispiel eines
-Optimierungsproblems~\ref{prob:opt_prob_mit_lin_gl_nebenbed} ist
+Optimierungsproblems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed} ist
 \begin{equation}
 \begin{split}
   \min_{x \in \R^2}\ & x_1^2 + x_2^2 \\
   \nb & x_1 + x_2 = 1.
 \end{split}
 \end{equation}
-Die zulässige Punkte dieses Problems liegen auf einer Gerade
+Die zulässigen Punkte dieses Problems liegen auf einer Gerade
 (Siehe Abbildung~\ref{fig:beispiel_opt_prob_mit_lin_gl_nebenbed}).
 \end{example}
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
-\begin{tikzpicture}[scale=2.5]
+\begin{tikzpicture}[scale=2.3]
   \draw[->] (-0.9,0) -- (1.5,0) node [above] {$x_1$};
   \draw[->] (0,-0.9) -- (0,1.5) node [below right] {$x_2$};
   % Die Niveaulinien
@@ -69,8 +69,9 @@ Dann ist $\xopt$ eine strikte Lösung des
 Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}.
 \end{theorem}
 
-Eine wichtige Grundlage zum Lösen des Pröblems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
-als ein unrestringiertes Problem
+Eine wichtige Grundlage zum Lösen des
+Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
+als unrestringiertes Problem
 ist die Definition der Nullraum-Matrix
 (vgl. \cite[S.~182]{alt}).
 
@@ -85,17 +86,17 @@ D.\,h. $\im Z = \kr A$.
 \end{definition}
 
 Sei $w$ eine Lösung von der Gleichung $Ax=b$.
-Man kann nun für die Menge $\F$ des Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
+Man kann nun die Menge $\F$ des Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
 so schreiben:
 \begin{equation}
   \F = w + \kr A = w + \im Z = w + \{ Z z\ |\ z \in \R^l \}.
 \end{equation}
 
-D.\,h., Jedes Element $x \in \F$ ist mit $w + Zz$, $z \in \R^l$, zu ersetzen.
+D.\,h., jedes Element $x \in \F$ ist mit $w + Zz$, $z \in \R^l$, zu ersetzen.
 Das Problem~\eqref{prob:opt_prob_mit_lin_gl_nebenbed} ist dann äquivalent zu
 \begin{equation}
   \min_{z \in \R^l} F(z) := f(w + Zz).
 \end{equation}
 
-Dieses Problem hat keine Nebenbedingung mehr, also unrestringiert.
-Man kann also Verfahren für unrestringierte Probleme anwenden.
+Dieses Problem hat keine Nebenbedingung mehr, ist also unrestringiert.
+Man kann folglich Verfahren für unrestringierte Probleme anwenden.

@@ -15,7 +15,7 @@
 
 	<problem>
 		<name>rosenbrock</name>
-		<description>Rosenbrock-Funktion (vgl. Beispiel 1.4.1 in \cite[S.~14]{alt})</description>
+		<description>(Rosenbrock-Funktion, vgl. Beispiel 1.4.1 in \cite[S.~14]{alt})</description>
 		<function_name>rosenbrock_func</function_name>
 		<u>[-10; -10]</u>
 		<v>[10; 10]</v>
@@ -24,7 +24,7 @@
 
 	<problem>
 		<name>himmelblau</name>
-		<description>Himmelblau-Funktion (vgl. Beispiel 1.4.2 in \cite[S.~14f]{alt})</description>
+		<description>(Himmelblau-Funktion, vgl. Beispiel 1.4.2 in \cite[S.~14f]{alt})</description>
 		<function_name>himmelblau_func</function_name>
 		<u>[-10; -10]</u>
 		<v>[10; 10]</v>
@@ -33,7 +33,7 @@
 	
 	<problem>
 		<name>bazaraa_shetty</name>
-		<description>Bazaraa-Shetty-Funktion (vgl. Beispiel 1.4.3 in \cite[S.~15f]{alt})</description>
+		<description>(Bazaraa-Shetty-Funktion, vgl. Beispiel 1.4.3 in \cite[S.~15f]{alt})</description>
 		<function_name>bazaraa_shetty_func</function_name>
 		<u>[-10; -10]</u>
 		<v>[10; 10]</v>
@@ -42,7 +42,7 @@
 
 	<problem>
 		<name>beale</name>
-		<description>(vgl. Beispiel 1.4.4 in \cite[S.~16]{alt})</description>
+		<description>(Vgl. Beispiel 1.4.4 in \cite[S.~16]{alt})</description>
 		<function_name>beale_func</function_name>
 		<u>[-10; -10]</u>
 		<v>[10; 10]</v>
@@ -52,10 +52,9 @@
     <problem>
     	<name>exp</name>
         <function_name>exp_func</function_name>
-        <u>[-10; -10; -10]</u>
-        <v>[10; 10; 10]</v>
-        <x0>[5; 2; 4]</x0>
-        <tolerance>0.001</tolerance>
+        <u>[-10; -10]</u>
+        <v>[10; 10]</v>
+        <x0>[5; 4]</x0>
         <max_iteration>500</max_iteration>
     </problem>
 
@@ -106,7 +105,6 @@
 
 	<problem>
 		<name>beale</name>
-		<description>(vgl. Beispiel 1.4.4 in \cite[S.~16]{alt})</description>
 		<function_name>beale_func</function_name>
 		<u>[3; -10]</u>
 		<v>[10; 10]</v>

@@ -24,7 +24,7 @@ mit nur Gleichungsnebenbedingungen zu optimieren.
 
 Sei $x^k \in \R^n$ ein zulässiger Punkt des Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}.
 Angenommen, wir können eine Suchrichtung $d \in \R^n$ finden,
-so dass der Punkt $x^{k+1} := x^k + d$ ein besserer zulässiger Punkt ist.
+sodass der Punkt $x^{k+1} := x^k + d$ ein besserer zulässiger Punkt ist.
 Diesen Vektor $d$ können wir finden, indem wir das Problem
 \begin{align}
   \min_{d \in \R^n}\ &
@@ -72,7 +72,7 @@ Dieses Problem werden wir mit dem Nullraum-Verfahren lösen,
 von dem wir auch den Lagrange-Multiplikator $\tilde{\lambda}$
 bekommen werden.
 $\tilde{\lambda}$ können wir in $\lambda \in \R^m$ und $\mu \in \R^{p_k}$ zerlegen,
-so dass
+sodass
 $\tilde{\lambda} = \left(\begin{array}{c} \lambda \\ \mu \end{array}\right)$.
 % TODO: Dieses Matrix ist nicht schön. 
 Besonders nachher für die Abbruchbedingung des Verfahrens zu betrachten,
@@ -112,7 +112,7 @@ vgl. Verfahren 6.2.1 in \cite[S.~213]{alt})}
       \item Falls $\mu^k \geq 0 \Rightarrow$ STOP.
       \item Falls $\mu^k \ngeq 0$
         \begin{compactenum}[i.]
-          \item Bestimme $j \in J(x^k)$, so dass
+          \item Bestimme $j \in J(x^k)$, sodass
                 $\mu_j^k = \min\{ \mu_i^k \ |\ i \in J(x^k) \}$.
           \item $J(x^k) := J(x^k)\backslash\{j\}$ 
           \item Streiche in $G_k$ die $j$-te Zeile.

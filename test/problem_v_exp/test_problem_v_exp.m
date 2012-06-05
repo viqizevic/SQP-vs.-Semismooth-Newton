@@ -1,8 +1,8 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_v_exp(show)
-    u = [-10; -10; -10];
-    v = [10; 10; 10];
-    x0 = [5; 2; 4];
-    tol = 0.001;
+    u = [-10; -10];
+    v = [10; 10];
+    x0 = [5; 4];
+    tol = 0.00001;
     itmax = 500;
     A = [];
     b = [];

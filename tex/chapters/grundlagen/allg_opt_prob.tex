@@ -13,12 +13,12 @@ $\F$ wird durch die sogennanten Nebenbedingungen oder Restriktionen definiert.
 \end{definition}
 
 Falls $\F = D$ gilt,
-dann bezeichnet man das Optimierungsproblem als unrestringiert.
+bezeichnet man das Optimierungsproblem als unrestringiert.
 Es besitzt also keine Restriktionen.
-Ansonsten heißt es ein restringiertes Optimierungsproblem.
+Ansonsten heißt es restringiertes Optimierungsproblem.
 
-Man definiert in der Regel Optimierungsproblem als ein Minimierungsproblem,
-weil ein Maximierungsproblem $\max g(x)$ zu dem Minimierungsproblem
+In der Regel definiert man ein Optimierungsproblem als Minimierungsproblem,
+weil ein Maximierungsproblem $\max g(x)$ zum Minimierungsproblem
 $\min f(x) := -g(x)$ äquivalent ist.
 
 \begin{definition}
@@ -52,13 +52,13 @@ Eine Umgebung $U(\xopt)$ von $\xopt$ ist eine offene Menge, die $\xopt$
 beinhaltet.
 \end{definition}
 
-Wegen dieser Definitionen kommt der Begriff \emph{globale Optimierung}.
+Von diesen Definitionen kommt der Begriff \emph{globale Optimierung} her.
 Bei der globalen Optimierung versucht man, eine globale Lösung zu finden.
 Viele Verfahren versuchen nur lokale Lösungen zu bestimmen,
 weil globale Lösungen nicht so einfach zu bestimmen sind.
 
 \begin{example}\label{example:unrestr_opt_prob}
-\emph{(vgl. Beispiel 1.1.2 in \cite[S.~1]{alt})}\\
+\emph{(Vgl. Beispiel 1.1.2 in \cite[S.~1]{alt})}\\
 Ein Beispiel eines unrestringierten Optimierungsproblems ist
 \begin{equation}
   \min_{x \in \R}\ f(x) := (2x-2)^2 (3x+3)^2 + 10x.
@@ -97,23 +97,23 @@ Die Zielfunktion ist wieder die Funktion
 $f \colon D \subseteq \R^n \rightarrow \R$.
 Die Nebenbedingungen sind von den Funktionen
 $g \colon D \subseteq \R^n \rightarrow \R^p$ und
-$h \colon D \subseteq \R^n \rightarrow \R^m$ abhängig.
-D.\,h., die Menge $\F$ sieht hier so aus:
+$h \colon D \subseteq \R^n \rightarrow \R^m$ abhängig,
+d.\,h., die Menge $\F$ sieht hier so aus:
 $\F = \{ x \in \R^n \,|\, g(x) \leq 0, \, h(x) = 0  \}$.
 \end{definition}
 
-Die Bezeichnung ``Nb.'' steht hier als Abkürzung für
-``unter der Nebenbedingung'' oder ``unter den Nebenbedingungen''.
+Die Bezeichnung \textss{Nb.} steht hier als Abkürzung für
+\textss{unter der Nebenbedingung} oder \textss{unter den Nebenbedingungen}.
 Die Operatoren $\leq$ und $=$ vergleichen hier die Vektoren
 miteinander elementenweise.
-Die Zahl $0$ hier
-ist je nach dem in welchem Kontext
+Die Zahl $0$
+ist hier, je nach dem in welchem Kontext,
 ein Element von $\R$, $\R^p$ oder $\R^m$.
 
 Man kann das Problem~\ref{prob:opt_prob_mit_nichtlin_restr}
 ausführlicher schreiben, indem man die Funktionen
 $g$ und $h$ in skalare Funktionen $g_1, \ldots, g_p \colon \R^n \rightarrow \R$
-und $h_1, \ldots, h_m \colon \R^n \rightarrow \R$ zerlegt, so dass
+und $h_1, \ldots, h_m \colon \R^n \rightarrow \R$ zerlegt, sodass
 \begin{equation*}
   g(x) =
     \left(
@@ -151,7 +151,7 @@ Bei der nichtlinearen Optimierung gibt es dagegen keine Einschränkung,
 wie die Zielfunktion und die Nebenbedingungen aussehen sollen.
 
 \begin{example}\label{example:opt_prob_mit_nichtlin_restr}
-\emph{(vgl. Problem 1.2 in \cite[S.~3]{nocedal})}\\
+\emph{(Vgl. Problem 1.2 in \cite[S.~3]{nocedal})}\\
 Ein Beispiel eines restringierten Optimierungsproblems ist
 \begin{equation}
 \begin{split}
@@ -165,9 +165,10 @@ zeigt die zulässige Menge $\F$,
 die Höhenlinien der Zielfunktion und
 die optimale Lösung~$\xopt$.
 \end{example}
-Die Höhenlinie ist eine Menge von Punkten,
-wo die Zielfunktion einen konstanten Wert nimmt.
-In der Abbildung~\ref{fig:beispiel_opt_prob_mit_nichtlin_restr}
+
+Eine Höhenlinie ist eine Menge von Punkten,
+wo die Zielfunktion einen konstanten Wert annimmt.
+In Abbildung~\ref{fig:beispiel_opt_prob_mit_nichtlin_restr}
 sind die Höhenlinien in Form von Kreisen zu sehen
 und je größer der Kreis ist,
 desto größer ist der Wert der Zielfunktion.

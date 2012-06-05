@@ -1,5 +1,5 @@
 Wir kommen nun zu unserem allgemeinen nichtlinearen Optimierungsproblem.
-Wir schreiben nochmal das Problem~\eqref{prob:opt_prob_mit_nichtlin_restr}.
+Wir schreiben noch einmal das Problem~\eqref{prob:opt_prob_mit_nichtlin_restr}.
 \begin{align*}
   \min_{x \in \R^n}\ & f(x) \\
               \nb & g_i(x) \leq 0 \text{ für } i = 1,\ldots,p \\
@@ -7,14 +7,13 @@ Wir schreiben nochmal das Problem~\eqref{prob:opt_prob_mit_nichtlin_restr}.
 \end{align*}
 
 Um die Optimalitätsbedingung des Problems~\eqref{prob:opt_prob_mit_nichtlin_restr}
-zu bekommen, definiert man die sogennante Regularitätsbedingung
+zu bekommen, definiert man die sogenannte Regularitätsbedingung
 (vgl. Definition 7.2.14 in \cite[S.~261]{alt}),
-die wir hier nicht näher betrachtet werden.
+die wir hier nicht näher betrachten werden.
 Die folgende Definition ist eine spezielle Bedingung,
 aus der diese Regularitätsbedingung folgt.
 Diese Regularitätsbedingung kann aber
 noch von anderen Bedingungen hergeleitet werden.
-
 
 \begin{definition}
 \emph{(Mangasarian-Fromowitz-Regularitätsbedingung, vgl. Satz 7.2.24 in
@@ -48,7 +47,7 @@ Problems~\eqref{prob:opt_prob_mit_nichtlin_restr} und $\xopt$ erfülle die
 Mangasarian-Fromowitz-Regularitätsbedingung.
 Sei $f$ in $\xopt$ differenzierbar.
 Dann existieren Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$,
-so dass
+sodass
 \begin{gather}
   \nabla f(\xopt) + \sum_{i=1}^{m} \lambda_i \nabla h_i(\xopt)
     + \sum_{j=1}^{p} \mu_j \nabla g_j(\xopt) = 0 \\

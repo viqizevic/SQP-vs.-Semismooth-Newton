@@ -2,7 +2,7 @@
 	
 	<problem>
 		<name>example_16_2_nocedal_wright</name>
-		<description>(vgl. Beispiel 16.2 in \cite[S.~452]{nocedal}</description>
+		<description>(Vgl. Beispiel 16.2 in \cite[S.~452]{nocedal}</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -33,7 +33,7 @@
 	
 	<problem>
 		<name>huang_aggerwal_hs28</name>
-		<description>(vgl. Problem 28 in \cite[S.~51]{hock})</description>
+		<description>(Vgl. Problem 28 in \cite[S.~51]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -51,7 +51,7 @@
 	
 	<problem>
 		<name>huang_aggerwal_miele_hs48</name>
-		<description>(vgl. Problem 48 in \cite[S.~71]{hock})</description>
+		<description>(Vgl. Problem 48 in \cite[S.~71]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -73,7 +73,7 @@
 	
 	<problem>
 		<name>huang_aggerwal_hs51</name>
-		<description>(vgl. Problem 51 in \cite[S.~74]{hock})</description>
+		<description>(Vgl. Problem 51 in \cite[S.~74]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -95,7 +95,7 @@
 	
 	<problem>
 		<name>miele_hs52</name>
-		<description>(vgl. Problem 52 in \cite[S.~75]{hock})</description>
+		<description>(Vgl. Problem 52 in \cite[S.~75]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -117,7 +117,7 @@
 	
 	<problem>
 		<name>betts_miele_hs53</name>
-		<description>(vgl. Problem 53 in \cite[S.~76]{hock})</description>
+		<description>(Vgl. Problem 53 in \cite[S.~76]{hock})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -141,7 +141,7 @@
 	
 	<problem>
 		<name>huang_aggerwal_hs49</name>
-		<description>(vgl. Problem 49 in \cite[S.~72]{hock})</description>
+		<description>(Vgl. Problem 49 in \cite[S.~72]{hock})</description>
 		<function_name>huang_aggerwal_func</function_name>
 		<A>[1 1 1 4 0; 0 0 1 0 5]</A>
 		<b>[7; 6]</b>
@@ -150,7 +150,7 @@
 	
 	<problem>
 		<name>huang_aggerwal_hs50</name>
-		<description>(vgl. Problem 50 in \cite[S.~73]{hock})</description>
+		<description>(Vgl. Problem 50 in \cite[S.~73]{hock})</description>
 		<function_name>huang_aggerwal_1_func</function_name>
 		<A>[1 2 3 0 0; 0 1 2 3 0; 0 0 1 2 3]</A>
 		<b>[6; 6; 6]</b>

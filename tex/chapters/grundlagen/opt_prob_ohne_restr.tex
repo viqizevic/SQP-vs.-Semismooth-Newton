@@ -1,5 +1,5 @@
 Wir beginnen nun zuerst mit Optimierungsproblemen ohne Restriktionen
-und stellen die notwendige und hinreichende Optimalitätsbedingungen bereit.
+und stellen notwendige und hinreichende Optimalitätsbedingungen bereit.
 Wir werden auch zwei numerische Verfahren hierfür vorstellen.
 
 \begin{definition}
@@ -21,7 +21,7 @@ Gesucht ist eine Gerade
   \eta(\xi) := x_1 \xi + x_2,
 \end{equation}
 die \textss{optimal} zu den Messwerten passt.
-D.\,h. wir sollen den Parameter $x = (x_1,x_2)^T \in \R^2$
+D.\,h., wir sollen den Parameter $x = (x_1,x_2)^T \in \R^2$
 so bestimmen, dass die Summe der Fehlerquadrate
 in den Messpunkten minimiert wird.
 Wir haben somit das unrestringierte Optimierungsproblem
@@ -62,8 +62,8 @@ dann gilt
 \end{equation}
 \end{theorem}
 
-Die Bedingung~\eqref{eq:grad_zero} gilt aber nicht nur für lokales Minimum
-sondern auch für lokales Maximum von~$f$.
+Die Bedingung~\eqref{eq:grad_zero} gilt aber nicht nur für lokale Minima
+sondern auch für lokale Maxima von~$f$.
 
 \begin{definition}
 \emph{(Stationärer Punkt, vgl. Definition 3.1.4 in \cite[S.~42]{alt})}\\
@@ -72,9 +72,9 @@ stationärer Punkt von $f$, wenn $\xopt$ die notwendige Bedingung~(\ref{eq:grad_z
 erfüllt.
 \end{definition}
 
-Viele Optimierungsverfahren suchen in der Regel nach einem stationärem Punkt
+Viele Optimierungsverfahren suchen in der Regel nach einem stationären Punkt
 von~$f$.
-Aber ein stationärer Punkt muss nicht ein globales oder lokales Minimum sein.
+Aber ein stationärer Punkt muss kein globales oder lokales Minimum sein.
 Durch folgende notwendige Bedingung kann man zwischen einem lokalen Minimum und
 einem lokalen Maximum unterscheiden.
 
@@ -122,7 +122,7 @@ Sei $x \in \R^n$ mit $\nabla f(x) \neq 0$, dann ist beispielsweise $d = - \nabla
 f(x)$ eine Abstiegsrichtung von~$f$ in~$x$.
 
 \begin{theorem}
-\emph{(vgl. Lemma 4.1.1 in \cite[S.~68]{alt})}\\
+\emph{(Vgl. Lemma 4.1.1 in \cite[S.~68]{alt})}\\
 Seien $x \in \R^n$, $f$ differenzierbar in $x$ und $d$
 eine Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
 \begin{equation}
@@ -132,7 +132,7 @@ eine Abstiegsrichtung von $f$ in $x$. Dann gibt es ein $\hat{\sigma} > 0$ mit
 
 Die meisten Optimierungsverfahren sind iterativ. Sie fangen also mit einem
 Anfangspunkt $x^0$ an und versuchen dann weitere Punkte ($x^1, x^2, \ldots , x^k
-, \ldots$) zu finden, die besser als die vorherige sind.
+, \ldots$) zu finden, die besser als die vorherigen sind.
 Viele iterative Verfahren zur Bestimmung einer lokalen Lösung sind häufig
 Abstiegsverfahren. In der $k$-ten Iteration bestimmen sie zu einem Punkt~$x^k$
 eine Abstiegsrichtung~$d^k$ und eine Schrittweite $\sigma_k$ so, dass für
@@ -167,7 +167,7 @@ welches die negativen Gradienten als Abstiegsrichtungen verwendet.
 
 Um die Schrittweite $\sigma_k$ zu bestimmen, kann man das Schrittweitenverfahren
 von Armijo oder das Schrittweitenverfahren von Wolfe-Powell verwenden.
-Wir verweisen auf das Unterkapitel 4.2.7 über Schrittweitenverfahren in
+Wir verweisen auf den Abschnitt 4.2.7 über Schrittweitenverfahren in
 \cite[S.~90ff]{alt}.
 
 \subsection{Newton-Verfahren} \label{sec:newton_verfahren}
@@ -177,12 +177,12 @@ Gleichung zu lösen, ist das Newton-Verfahren.
 Man berechnet mit dem Newton-Verfahren eine Nullstelle
 von einer gegebenen Abbildung $F:\R^n \rightarrow \R^n$,
 d.\,h. eine Lösung $\xopt \in \R^n$ der nichtlinearen Gleichung $F(x) = 0$.
-Für unsere unrestringierte Optimierungsprobleme können wir das Newton-Verfahren
+Für unsere unrestringierten Optimierungsprobleme können wir das Newton-Verfahren
 verwenden, um die Lösung der nichtlinearen
 Gleichung~\eqref{eq:grad_zero},
 $\nabla f(x) = 0$, zu finden.
 Wir müssen dabei voraussetzen,
-dass die Funktion $f$ zweimal differenzierbar sei.
+dass die Funktion $f$ zweimal differenzierbar ist.
 
 \begin{algorithm}
 \emph{(Newton-Verfahren, vgl. Verfahren 4.3.1 in \cite[S.~107]{alt})}
@@ -234,5 +234,5 @@ durchführen. D.\,h., man bestimmt ein $\sigma_k \in \R$ und definiert
 $x^{k+1} := x^k + \sigma_k d^k$.
 Dann bekommt man ein Abstiegsverfahren,
 welches man als das gedämpfte Newton-Verfahren bezeichnet.
-Wir verweisen auf das Unterkapitel 4.3.2 über das gedämpfte Newton-Verfahren in
+Wir verweisen auf den Abschnitt 4.3.2 über das gedämpfte Newton-Verfahren in
 \cite[S.~111ff]{alt}.
