@@ -19,7 +19,7 @@
 \usepackage[ngerman]{babel}
 
 %
-% Pakete um Latin1 Zeichnensätze verwenden zu können und die dazu
+% Pakete um Latin1 Zeichensätze verwenden zu können und die dazu
 % passenden Schriften.
 %
 \usepackage[latin1]{inputenc}
@@ -29,17 +29,22 @@
 % Paket um Latin Modern Font zu benutzen
 %
 \usepackage{lmodern}
-\renewcommand*\familydefault{\sfdefault} % Verwende die Sans Version
-\DeclareMathVersion{sansmath}
+\renewcommand*\familydefault{\sfdefault}% Verwende die Sans Version
+\DeclareMathVersion{sansmath}% Mach die Mathe Font auch zu sans
 \SetSymbolFont{letters}{sansmath}{OML}{cmbr}{m}{it}
 \SetSymbolFont{operators}{sansmath}{OT1}{lmss}{m}{n}
 \SetSymbolFont{symbols}{sansmath}{OMS}{cmbr}{m}{n}
-\mathversion{sansmath} % Mach die Mathe Font auch zu sans
+\mathversion{sansmath}
 
 %
-% Paket für Quotes
+% Paket für Quotes (Befehl: \enquote)
 %
-\usepackage[babel,german=swiss]{csquotes}
+\usepackage[babel,german=quotes]{csquotes}
+
+%
+% Anführungsstriche mithilfe von \textss{-anzufuehrendes-}
+%
+\newcommand{\textss}[1]{\enquote{#1}}% oder mit \glqq und \grqq
 
 %
 % Paket zum Erweitern der Tabelleneigenschaften
@@ -110,13 +115,13 @@
 %
 % Paket für Links innerhalb des PDF Dokuments
 %
-\definecolor{LinkColor}{rgb}{0,0,0.5}
+%\definecolor{LinkColor}{rgb}{0,0,0.5}
 \usepackage[%
-	pdftitle={Titel},% Titel der Diplomarbeit
-	pdfauthor={Autor},% Autor(en)
+	pdftitle={Vergleich zwischen halbglattem Newton-Verfahren und SQP-Verfahren},
+	pdfauthor={Vicky Hartanto Tanzil},
 	pdfcreator={LaTeX, LaTeX with hyperref and KOMA-Script},% Genutzte Programme
-	pdfsubject={Betreff}, % Betreff
-	pdfkeywords={Keywords}]{hyperref} % Keywords halt :-)
+	pdfsubject={Bachelorarbeit}, % Betreff
+	pdfkeywords={SQP, Semismooth-Newton, Optimization}]{hyperref}
 %\hypersetup{colorlinks=true,% Definition der Links im PDF File
 %	linkcolor=LinkColor,%
 %	citecolor=LinkColor,%
@@ -170,12 +175,6 @@
 \bibliographystyle{alpha}
 
 %
-% Anführungsstriche mithilfe von \textss{-anzufuehrendes-}
-%
-%\newcommand{\textss}[1]{"`#1"'}
-\newcommand{\textss}[1]{``#1''}
-
-%
 % Strukturiertiefe bis subsubsection{} möglich
 %
 \setcounter{secnumdepth}{3}
@@ -186,9 +185,9 @@
 \setcounter{tocdepth}{1}
 
 %
-% Zeilenabstand wird um den Faktor 1.5 verändert
+% Zeilenabstand wird um den Faktor 1.15 verändert
 %
-%\renewcommand{\baselinestretch}{1.5}
+%\renewcommand{\baselinestretch}{1.15}
 
 %
 % Neue Umgebungen
@@ -210,6 +209,9 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\I}{\mathcal{I}}
 
+%
+% Neue Mathe-Operatoren
+%
 \usepackage{amsopn}
 \DeclareMathOperator{\nb}{Nb.\ }
 \DeclareMathOperator{\kr}{Kern}
