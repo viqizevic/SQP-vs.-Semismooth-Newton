@@ -103,11 +103,10 @@ public class Main {
 //				TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
 //				System.out.println(tp2tex.toString());
 //			}
+//			String resultFile = pathToDataDir+configs.get("result_file");
+//			TestResultParser trp = new TestResultParser(resultFile, problems);
+//			trp.parse();
 		}
-		
-		String resultFile = pathToDataDir+configs.get("result_file");
-		TestResultParser trp = new TestResultParser(resultFile,problems);
-		trp.parse();
 	}
 	
 	private static void printStatistic(LinkedList<TestFunction> testFunctions,

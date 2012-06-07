@@ -6,6 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 
+/**
+ * A parser for the test results.
+ * The test result received from the programs
+ * should be saved in a file.
+ * @author Vicky H. Tanzil
+ */
 public class TestResultParser {
 	
 	private String resultFile;
