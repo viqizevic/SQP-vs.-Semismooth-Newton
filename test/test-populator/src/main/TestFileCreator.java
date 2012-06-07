@@ -52,6 +52,8 @@ public class TestFileCreator {
 	 */
 	private String directoryPath;
 	
+	private TestProblem2LaTeX tp2tex;
+	
 	/**
 	 * Create MFileCreator for the given test problem.
 	 * @param testProblem The test problem.
@@ -59,6 +61,7 @@ public class TestFileCreator {
 	 */
 	public TestFileCreator(TestProblem testProblem, String directoryPath) {
 		this.testProblem = testProblem;
+		tp2tex = new TestProblem2LaTeX(testProblem);
 		f = testProblem.getTestFunction();
 		defFileName = f.getName();
 		gradFileName = "grad_" + defFileName;
@@ -80,7 +83,9 @@ public class TestFileCreator {
 	private void createFunctionDefinitionFile() {
 		String fileName = defFileName;
 		// create the definition file for function f
-		String content = "function y = " + fileName + "(" + f.getVar() + ")\n";
+		String content = "%" + tp2tex.getStringForTestFile().replaceAll("\n", "\n%")
+							+ "\n";
+		content += "function y = " + fileName + "(" + f.getVar() + ")\n";
 		if (f.getConstantNames().size() != 0) {
 			for (String s : f.getConstantNames()) {
 				content += "\t" + s + " = " + f.getConstantValue(s) + ";\n";

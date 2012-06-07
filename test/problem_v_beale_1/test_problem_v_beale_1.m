@@ -29,10 +29,8 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_v_beale_1(show)
         show = 1;
     end
     if ( show == 1 )
-        u = sprintf('%.3f ',u);
-        v = sprintf('%.3f ',v);
         x0 = sprintf('%.3f ',x0);
-        str0 = ['u = [ ', u, '], v = [ ', v, '], x0 = [ ', x0, ']'];
+        str0 = ['x0 = [ ', x0, ']'];
         disp(str0);
         disp(str1);
         disp(str2);

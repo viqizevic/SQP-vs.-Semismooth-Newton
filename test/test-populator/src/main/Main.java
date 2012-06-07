@@ -49,8 +49,6 @@ public class Main {
 	
 	public static boolean inDebugMode = false;
 	
-	private static boolean printLaTeX = true;
-	
 	/**
 	 * The main function.
 	 * Reads the xml files containing the test functions and the test problems
@@ -103,14 +101,10 @@ public class Main {
 			if (inDebugMode) {
 				printStatistic(db.getTestFunctions(), problems);
 			}
-			if (printLaTeX) {
-				for (TestProblem p : problems) {
-					if (!p.getName().equals("problem_AG_opt_ctrl")) {
-						TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
-						System.out.println(tp2tex.getResult());
-					}
-				}
-			}
+//			for (TestProblem p : problems) {
+//				TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
+//				System.out.println(tp2tex.toString());
+//			}
 		}
 	}
 	

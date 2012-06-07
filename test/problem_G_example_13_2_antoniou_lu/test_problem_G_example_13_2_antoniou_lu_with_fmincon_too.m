@@ -32,10 +32,8 @@ function test_problem_G_example_13_2_antoniou_lu_with_fmincon_too()
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);
 	t3 = sprintf('solved in %.2f ms.',t_fmc*1000);
 	str3 = ['x_fmc = [ ', x3, '], ', f3, ', ', t3];
-	u = sprintf('%.3f ',u);
-	v = sprintf('%.3f ',v);
 	x0 = sprintf('%.3f ',x0);
-	str0 = ['u = [ ', u, '], v = [ ', v, '], x0 = [ ', x0, ']'];
+	str0 = ['x0 = [ ', x0, ']'];
 	disp(str0);
 	disp(str1);
 	disp(str2);

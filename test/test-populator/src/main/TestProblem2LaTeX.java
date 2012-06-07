@@ -8,7 +8,10 @@ public class TestProblem2LaTeX {
 		this.tp = testProblem;
 	}
 	
-	public String getResult() {
+	public String toString() {
+		if (tp.getName().equals("problem_AG_opt_ctrl")) {
+			return "%" + tp.getName();
+		}
 		String r = "";
 		r += "\\begin{testproblem}\n";
 		if (tp.getDescription() != null) {
@@ -23,6 +26,19 @@ public class TestProblem2LaTeX {
 		r += "\\end{split}\n";
 		r += "\\end{equation*}\n";
 		r += "\\end{testproblem}\n";
+		return r;
+	}
+	
+	public String getStringForTestFile() {
+		String r = tp.getName() + "\n";
+		if (r.equals("problem_AG_opt_ctrl"+"\n")) {
+			return r;
+		}
+		if (tp.getDescription() != null) {
+			r += tp.getDescription() + "\n";
+		}
+		r += getFuncDef() + "\n";
+		r += "\\nb " + getConstraints();
 		return r;
 	}
 	
@@ -236,7 +252,7 @@ public class TestProblem2LaTeX {
 		}
 	}
 	
-	private void printMatrix(double[][] matrix) {
+	public static void printMatrix(double[][] matrix) {
 		String r = "";
 		for (int i=0; i<matrix.length; i++) {
 			for (int j=0; j<matrix[i].length; j++) {
