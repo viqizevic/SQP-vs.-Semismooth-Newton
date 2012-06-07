@@ -47,7 +47,7 @@ public class Main {
 	 */
 	private static String configFile = "SQP-vs.-Semismooth-Newton/test.config";
 	
-	public static boolean inDebugMode = false;
+	public static boolean printInfo = false;
 	
 	/**
 	 * The main function.
@@ -65,7 +65,7 @@ public class Main {
 		// Get each variable.
 		String pathToTestDir = configs.get("path_to_test_dir");
 		String pathToDataDir = pathToTestDir + configs.get("path_to_data_dir");
-		String functionsXMLFile = configs.get("functions_xml_file");
+		LinkedList<String> functionsXMLFiles = getMultipleConfigVars("functions_xml_file", configs);
 		
 		LinkedList<String> problemsXMLFiles = getMultipleConfigVars("problems_xml_file", configs);
 		boolean useApproxDiff = Boolean.parseBoolean(configs.get("use_approx_diff"));
@@ -78,8 +78,6 @@ public class Main {
 		}
 		String prefixForMainTestFile = configs.get("prefix_for_main_test_file");
 		
-		LinkedList<String> functionsXMLFiles = new LinkedList<String>();
-		functionsXMLFiles.add(functionsXMLFile);
 		MainDatabase db = new MainDatabase(pathToDataDir, functionsXMLFiles, problemsXMLFiles);
 		LinkedList<TestProblem> problems = db.getTestProblemsInGivenOrder();
 		for (TestProblem p : problems) {
@@ -91,14 +89,14 @@ public class Main {
 		
 		TestFileCreator.createMainTestFile(problems,
 				prefixForMainTestFile, pathToTestDir, testTemplates.keySet());
-		if (inDebugMode) {
+		if (printInfo) {
 			System.out.println("Finished creating test files!");
 		}
 		
 		if (problems.isEmpty()) {
 			System.out.println("No Problem found.");
 		} else {
-			if (inDebugMode) {
+			if (printInfo) {
 				printStatistic(db.getTestFunctions(), problems);
 			}
 //			for (TestProblem p : problems) {

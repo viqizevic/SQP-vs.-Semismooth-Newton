@@ -72,7 +72,7 @@ public class TestFileCreator {
 		File dir = new File(directoryPath);
 		if (!dir.exists()) {
 			if (dir.mkdirs()) {
-				if (Main.inDebugMode) {
+				if (Main.printInfo) {
 					System.out.println("Create directory: " + directoryPath);
 				}
 			}
@@ -198,7 +198,7 @@ public class TestFileCreator {
 			fileWriter.write(fileContens);
 			fileWriter.flush();
 			fileWriter.close();
-			if (Main.inDebugMode) {
+			if (Main.printInfo) {
 				System.out.println("File created: " + fileName);
 			}
 		} catch (IOException e) {
