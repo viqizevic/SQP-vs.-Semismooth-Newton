@@ -104,6 +104,10 @@ public class Main {
 //				System.out.println(tp2tex.toString());
 //			}
 		}
+		
+		String resultFile = pathToDataDir+configs.get("result_file");
+		TestResultParser trp = new TestResultParser(resultFile,problems);
+		trp.parse();
 	}
 	
 	private static void printStatistic(LinkedList<TestFunction> testFunctions,

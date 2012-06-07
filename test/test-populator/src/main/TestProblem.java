@@ -82,6 +82,11 @@ public class TestProblem {
 	 * The maximum number of iterations the algorithms can have.
 	 */
 	private String maxIteration;
+	
+	private double ssnSolveTime;
+	private double sqpSolveTime;
+	private int ssnSolveIterationNumber;
+	private int sqpSolveIterationNumber;
 
 	/**
 	 * Create an initial test problem.
@@ -227,28 +232,35 @@ public class TestProblem {
 		}
 	}
 	
-	public String toLaTeX() {
-		String result = "";
-		result += "u = " + getVectorInLaTeX(u) + "\n";
-		result += "v = " + getVectorInLaTeX(v) + "\n";
-		result += "x^0 = " + getVectorInLaTeX(x0) + "\n";
-		return result;
+	public double getSsnSolveTime() {
+		return ssnSolveTime;
 	}
-	
-	private String getVectorInLaTeX(String vec) {
-		String[] s = vec.replace("[", "").replace("]", "").split(";");
-		for (int i=0; i<s.length; i++) {
-			s[i] = s[i].trim();
-		}
-		String v = "\\left(\\begin{array}{c} ";
-		for (int i=0; i<s.length; i++) {
-			if (i < s.length-1) {
-				v += s[i] + " \\\\ ";
-			} else {
-				v += s[i];
-			}
-		}
-		v += " \\end{array}\\right)";
-		return v;
+
+	public void setSsnSolveTime(double ssnSolveTime) {
+		this.ssnSolveTime = ssnSolveTime;
+	}
+
+	public double getSqpSolveTime() {
+		return sqpSolveTime;
+	}
+
+	public void setSqpSolveTime(double sqpSolveTime) {
+		this.sqpSolveTime = sqpSolveTime;
+	}
+
+	public int getSsnSolveIterationNumber() {
+		return ssnSolveIterationNumber;
+	}
+
+	public void setSsnSolveIterationNumber(int ssnSolveIterationNumber) {
+		this.ssnSolveIterationNumber = ssnSolveIterationNumber;
+	}
+
+	public int getSqpSolveIterationNumber() {
+		return sqpSolveIterationNumber;
+	}
+
+	public void setSqpSolveIterationNumber(int sqpSolveIterationNumber) {
+		this.sqpSolveIterationNumber = sqpSolveIterationNumber;
 	}
 }

@@ -1,0 +1,178 @@
+test_problem_v_norm
+x_ssn = [ 4.000 7.000 ], it = 2, solved in 17.50 ms (15.62 - 46.88).
+x_sqp = [ 4.000 7.000 ], it = 1, solved in 17.50 ms (15.62 - 46.88).
+[242]
+
+
+test_problem_v_rosenbrock
+x_ssn = [ 1.000 1.000 ], it = 6, solved in 22.50 ms (15.62 - 46.88).
+x_sqp = [ 1.000 1.000 ], it = 5, solved in 37.34 ms (15.62 - 62.50).
+
+
+test_problem_v_himmelblau
+x_ssn = [ 3.000 2.000 ], it = 7, solved in 23.91 ms (15.62 - 62.50).
+x_sqp = [ 3.000 2.000 ], it = 6, solved in 40.00 ms (15.62 - 62.50).
+
+
+test_problem_v_bazaraa_shetty
+x_ssn = [ 2.000 1.000 ], it = 30, solved in 62.03 ms (46.88 - 125.00).
+x_sqp = [ 2.000 1.000 ], it = 29, solved in 134.69 ms (109.38 - 281.25).
+
+
+test_problem_v_beale
+x_ssn = [ 3.000 0.500 ], it = 9, solved in 67.66 ms (46.88 - 109.38).
+x_sqp = [ 3.000 0.500 ], it = 8, solved in 83.75 ms (62.50 - 109.38).
+
+
+test_problem_v_exp
+x_ssn = [ 0.000 0.000 0.000 ], it = 52, solved in 205.62 ms (171.88 - 375.00).
+x_sqp = [ 0.000 0.000 0.000 ], it = 51, solved in 355.31 ms (312.50 - 687.50).
+
+
+test_problem_v_colville
+x_ssn = [ 1.000 1.000 1.000 1.000 ], it = 27, solved in 592.03 ms (546.88 - 1140.62).
+x_sqp = [ 1.000 1.000 1.000 1.000 ], it = 26, solved in 659.22 ms (625.00 - 1125.00).
+
+
+test_problem_v_norm_1
+x_ssn = [ 5.000 5.000 7.000 ], it = 3, solved in 15.78 ms (15.62 - 31.25).
+x_sqp = [ 5.000 5.000 7.000 ], it = 4, solved in 19.84 ms (15.62 - 46.88).
+[200]
+
+
+test_problem_v_rosenbrock_1
+x_ssn = [ 1.224 1.500 ], it = 9, solved in 22.97 ms (15.62 - 62.50).
+x_sqp = [ 1.224 1.500 ], it = 10, solved in 51.25 ms (31.25 - 93.75).
+
+
+test_problem_v_himmelblau_1
+x_ssn = [ -2.928 5.000 ], it = 9, solved in 23.59 ms (15.62 - 62.50).
+x_sqp = [ -2.928 5.000 ], it = 14, solved in 80.62 ms (62.50 - 156.25).
+
+
+test_problem_v_bazaraa_shetty_1
+x_ssn = [ 4.000 2.000 ], it = 6, solved in 19.38 ms (15.62 - 46.88).
+x_sqp = [ 4.000 2.000 ], it = 3, solved in 23.28 ms (15.62 - 62.50).
+[113]
+
+
+test_problem_v_beale_1
+x_ssn = [ 3.000 0.500 ], it = 10, solved in 81.88 ms (62.50 - 171.88).
+x_sqp = [ 3.000 0.500 ], it = 10, solved in 80.31 ms (62.50 - 187.50).
+
+
+test_problem_v_exp_1
+x_ssn = [ 0.500 1.000 1.000 ], it = 49, solved in 206.41 ms (187.50 - 375.00).
+x_sqp = [ 0.500 1.000 1.000 ], it = 48, solved in 374.53 ms (343.75 - 609.38).
+
+test_problem_v_colville_1
+x_ssn = [ 2.000 3.831 0.030 -0.178 ], it = 11, solved in 267.50 ms (218.75 - 500.00).
+x_sqp = [ 2.000 3.831 0.030 -0.178 ], it = 11, solved in 328.28 ms (281.25 - 656.25).
+
+
+test_problem_v_lin_regression
+x_ssn = [ 0.700 -4.300 ], it = 3, solved in 62.50 ms (46.88 - 109.38).
+x_sqp = [ 0.700 -4.300 ], it = 5, solved in 72.50 ms (62.50 - 93.75).
+
+
+test_problem_v_quad_regression
+x_ssn = [ 0.242 4.056 -2.955 ], it = 14, solved in 680.94 ms (531.25 - 2406.25).
+x_sqp = [ 0.242 4.056 -2.955 ], it = 13, solved in 741.88 ms (578.12 - 1890.62).
+
+
+test_problem_v_nichtlin_regression
+x_ssn = [ 0.632 0.195 ], it = 21, solved in 412.03 ms (265.62 - 1234.38).
+x_sqp = [ 0.632 0.195 ], it = 20, solved in 490.78 ms (312.50 - 1500.00).
+
+
+test_problem_A_example_16_2_nocedal_wright
+x_ssn = [ 2.000 -1.000 1.000 ], it = 2, solved in 15.62 ms (15.62 - 15.62).
+x_sqp = [ 2.000 -1.000 1.000 ], it = 1, solved in 15.78 ms (15.62 - 31.25).
+[844]
+
+
+test_problem_A_simple_example
+x_ssn = [ 0.200 0.200 0.200 0.200 0.200 ], it = 2, solved in 16.09 ms (15.62 - 46.88).
+x_sqp = [ 0.200 0.200 0.200 0.200 0.200 ], it = 1, solved in 15.62 ms (15.62 - 15.62).
+[659]
+
+
+test_problem_A_huang_aggerwal_hs28
+x_ssn = [ 0.500 -0.500 0.500 ], it = 2, solved in 16.41 ms (15.62 - 46.88).
+x_sqp = [ 0.500 -0.500 0.500 ], it = 1, solved in 15.94 ms (15.62 - 31.25).
+[741]
+
+
+test_problem_A_huang_aggerwal_miele_hs48
+x_ssn = [ 1.000 1.000 1.000 1.000 1.000 ], it = 2, solved in 16.09 ms (15.62 - 62.50).
+x_sqp = [ 1.000 1.000 1.000 1.000 1.000 ], it = 1, solved in 16.88 ms (15.62 - 46.88).
+[781]
+
+
+test_problem_A_huang_aggerwal_hs51
+x_ssn = [ 1.000 1.000 1.000 1.000 1.000 ], it = 2, solved in 15.62 ms (15.62 - 15.62).
+x_sqp = [ 1.000 1.000 1.000 1.000 1.000 ], it = 1, solved in 15.62 ms (15.62 - 15.62).
+[971]
+
+
+test_problem_A_miele_hs52
+x_ssn = [ -0.095 0.032 0.516 -0.453 0.032 ], it = 2, solved in 15.94 ms (15.62 - 31.25).
+x_sqp = [ -0.095 0.032 0.516 -0.453 0.032 ], it = 1, solved in 16.25 ms (15.62 - 31.25).
+[909]
+
+
+test_problem_Av_betts_miele_hs53
+x_ssn = [ -0.767 0.256 0.628 -0.116 0.256 ], it = 2, solved in 17.03 ms (15.62 - 93.75).
+x_sqp = [ -0.767 0.256 0.628 -0.116 0.256 ], it = 1, solved in 18.28 ms (15.62 - 31.25).
+[160]
+
+
+test_problem_A_huang_aggerwal_hs49
+x_ssn = [ 1.000 1.000 1.000 1.000 1.000 ], it = 3, solved in 67.81 ms (46.88 - 187.50).
+x_sqp = [ 1.000 1.000 1.000 1.000 1.000 ], it = 2, solved in 73.91 ms (62.50 - 156.25).
+
+
+test_problem_A_huang_aggerwal_hs50
+x_ssn = [ 1.000 1.000 1.000 1.000 1.000 ], it = 9, solved in 232.50 ms (203.12 - 468.75).
+x_sqp = [ 1.000 1.000 1.000 1.000 1.000 ], it = 8, solved in 265.31 ms (218.75 - 515.62).
+
+
+test_problem_G_example_with_diamond_area
+x_ssn = [ 0.400 1.200 ], it = 3, solved in 16.09 ms (15.62 - 31.25).
+x_sqp = [ 0.400 1.200 ], it = 4, solved in 18.75 ms (15.62 - 46.88).
+[239]
+
+
+test_problem_Gv_example_16_4_nocedal_wright
+x_ssn = [ 1.400 1.700 ], it = 3, solved in 15.62 ms (15.62 - 15.62).
+x_sqp = [ 1.400 1.700 ], it = 5, solved in 19.84 ms (15.62 - 31.25).
+[230]
+
+
+test_problem_G_example_13_2_antoniou_lu
+x_ssn = [ 0.400 0.800 1.000 2.000 ], it = 3, solved in 15.94 ms (15.62 - 46.88).
+x_sqp = [ 0.400 0.800 1.000 2.000 ], it = 7, solved in 31.09 ms (15.62 - 46.88).
+[190]
+
+
+test_problem_Gv_betts_hs21
+x_ssn = [ 2.000 -0.000 ], it = 4, solved in 16.41 ms (15.62 - 31.25).
+x_sqp = [ 2.000 0.000 ], it = 2, solved in 17.66 ms (15.62 - 46.88).
+[162]
+
+
+test_problem_Gv_beale_hs35
+x_ssn = [ 1.333 0.778 0.444 ], it = 3, solved in 15.78 ms (15.62 - 31.25).
+x_sqp = [ 1.333 0.778 0.444 ], it = 4, solved in 16.25 ms (15.62 - 31.25).
+[243]
+
+
+test_problem_Gv_murtagh_sargent_hs76
+x_ssn = [ 0.273 2.091 0.000 0.545 ], it = 5, solved in 16.41 ms (15.62 - 31.25).
+x_sqp = [ 0.273 2.091 0.000 0.545 ], it = 9, solved in 42.34 ms (31.25 - 62.50).
+[124]
+
+
+test_problem_AG_opt_ctrl
+x_ssn = [ 0.087 0.000 0.087 -0.047 0.083 -0.084 0.074 -0.110 0.063 -0.127 0.051 -0.132 0.037 -0.126 0.025 -0.110 0.014 -0.083 0.005 -0.046 0.001 -0.000 -0.378 -0.283 -0.186 -0.088 0.010 0.107 0.201 0.293 0.381 0.464 ], it = 2, solved in 20.94 ms (15.62 - 46.88).
+x_sqp = [ 0.087 0.000 0.087 -0.047 0.082 -0.083 0.075 -0.109 0.063 -0.126 0.050 -0.131 0.038 -0.125 0.026 -0.109 0.014 -0.083 0.006 -0.046 0.001 -0.000 -0.376 -0.281 -0.184 -0.087 0.011 0.107 0.201 0.293 0.380 0.463 ], it = 1, solved in 27.19 ms (15.62 - 46.88).
