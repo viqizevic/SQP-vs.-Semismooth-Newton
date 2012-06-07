@@ -72,6 +72,11 @@ public class TestProblem {
 	 * This should be a feasible point.
 	 */
 	private String x0;
+	
+	/**
+	 * The point known as the solution of the problem.
+	 */
+	private String xstar;
 
 	/**
 	 * The tolerance for the stop criteria in the algorithms
@@ -198,6 +203,14 @@ public class TestProblem {
 
 	public void set_x0(String x0) {
 		this.x0 = x0;
+	}
+
+	public String get_xstar() {
+		return xstar;
+	}
+
+	public void set_xstar(String xstar) {
+		this.xstar = xstar;
 	}
 
 	public String getTolerance() {

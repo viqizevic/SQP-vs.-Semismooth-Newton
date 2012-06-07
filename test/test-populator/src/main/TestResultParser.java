@@ -37,6 +37,7 @@ public class TestResultParser {
 			String line = "";
 			while ( (line=br.readLine()) != null ) {
 				if (line.startsWith("test_problem_")) {
+					// Find problem
 					line = line.substring("test_".length());
 					TestProblem p = null;
 					for (TestProblem problem : testProblems) {
@@ -48,6 +49,7 @@ public class TestResultParser {
 						System.out.println("Cannot find problem:" + line);
 						return;
 					}
+					// Get solve time from SSN
 					line = br.readLine();
 					if (!line.startsWith(ssn_prefix)) {
 						System.err.println("Result from SSN expected!");
@@ -55,6 +57,7 @@ public class TestResultParser {
 					}
 					double d = getTime(line);
 					p.setSsnSolveTime(d);
+					// Get solve time from SQP
 					line = br.readLine();
 					if (!line.startsWith(sqp_prefix)) {
 						System.err.println("Result from SQP expected!");
@@ -62,6 +65,9 @@ public class TestResultParser {
 					}
 					d = getTime(line);
 					p.setSqpSolveTime(d);
+					// Get x*
+					String xstar = getXStar(line);
+					p.set_xstar(xstar);
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -70,20 +76,33 @@ public class TestResultParser {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Total time SSN: " + getTotalTime(ssn));
-		System.out.println("Total time SQP: " + getTotalTime(sqp));
-		
-		System.out.println();
-		System.out.println("Comparison Table:");
-		System.out.println(getComparisonTable());
-		
-		System.out.println("Sorting..\n");
-		sort();
-		
-		System.out.println("Results of SSN (for plot):");
-		System.out.println(getResultForPlot(ssn));
-		System.out.println("Results of SQP (for plot):");
-		System.out.println(getResultForPlot(sqp));
+		if (Main.printInfo) {
+			System.out.println("Total time SSN: " + getTotalTime(ssn));
+			System.out.println("Total time SQP: " + getTotalTime(sqp));
+			
+			System.out.println();
+			System.out.println("Comparison Table:");
+			System.out.println(getComparisonTable());
+			
+			System.out.println("Sorting..\n");
+			sort();
+			
+			System.out.println("Results of SSN (for plot):");
+			System.out.println(getResultForPlot(ssn));
+			System.out.println("Results of SQP (for plot):");
+			System.out.println(getResultForPlot(sqp));
+		}
+	}
+	
+	private String getXStar(String line) {
+		String d = line.split("\\], it =")[0].split("= \\[")[1].trim();
+		String[] s = d.split(" ");
+		d = "[";
+		for (int i=0; i<s.length-1; i++) {
+			d += s[i] + "; ";
+		}
+		d += s[s.length-1] + "]";
+		return d;
 	}
 	
 	private double getTime(String line) {
