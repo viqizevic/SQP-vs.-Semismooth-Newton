@@ -73,17 +73,17 @@
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[yscale=0.05,xscale=0.35]
-  \draw[->] (1,0) -- (27.5,0) node [above] {Testproblem};
-  \foreach \x in {1,5,...,27}
+  \draw[->] (1,0) -- (35.5,0) node [above] {Testproblem};
+  \foreach \x in {1,5,...,35}
     \draw (\x,0.5) -- (\x,-0.5) node [below] {\x};
-  \draw[->] (1,0) -- (1,155) node [right] {(ms)};
-  \foreach \y in {0,50,...,150}
+  \draw[->] (1,0) -- (1,205) node [right] {(ms)};
+  \foreach \y in {0,50,...,200}
     \draw (1.1,\y) -- (0.9,\y) node [left] {\y};
   \draw[color=blue] plot file {images/sqp_results_under_150_ms.table};
   \draw[color=red] plot file {images/ssn_results_under_150_ms.table};
   \draw[color=blue] (5,125) -- (9,125) node [right] {SQP};
   \draw[color=red] (5,115) -- (9,115) node [right] {SSN};
 \end{tikzpicture}
-\caption{Laufzeiten der Programme unterhalb 150 ms (sortiert nach den
+\caption{Laufzeiten der Programme unterhalb 200 ms (sortiert nach den
 Ergebnissen von SQP, d.\,h. andere Nummerierung der Testprobleme)}
 \end{figure}
