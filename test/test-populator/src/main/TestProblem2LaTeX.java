@@ -25,6 +25,9 @@ public class TestProblem2LaTeX {
 		r += "\\nb " + getConstraints();
 		r += "\\end{split}\n";
 		r += "\\end{equation*}\n";
+		r += "\n\\begin{equation*}\n";
+		r += "\\xopt = "+getVectorInLaTeX(tp.get_xstar())+"\n";
+		r += "\\end{equation*}\n";
 		r += "\\end{testproblem}\n";
 		return r;
 	}
@@ -39,6 +42,9 @@ public class TestProblem2LaTeX {
 		}
 		r += getFuncDef() + "\n";
 		r += "\\nb " + getConstraints();
+		if (tp.get_xstar() != null) {
+			r += "\\xopt = "+getVectorInLaTeX(tp.get_xstar());
+		}
 		return r;
 	}
 	
@@ -250,6 +256,18 @@ public class TestProblem2LaTeX {
 		} else {
 			return idxVar + " = 1,\\ldots," + idx;
 		}
+	}
+	
+	private String getVectorInLaTeX(String v) {
+		String vec = "(";
+		String[] s = v.split(";");
+		vec += s[0].replace("[","").trim() + ", ";
+		for (int i=1; i<s.length-1; i++) {
+			vec += s[i].trim() + ", ";
+		}
+		vec += s[s.length-1].replace("]","").trim();
+		vec += ")^T";
+		return vec;
 	}
 	
 	public static void printMatrix(double[][] matrix) {

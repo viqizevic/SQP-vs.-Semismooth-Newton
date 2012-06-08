@@ -99,10 +99,19 @@ public class TestResultParser {
 		String[] s = d.split(" ");
 		d = "[";
 		for (int i=0; i<s.length-1; i++) {
-			d += s[i] + "; ";
+			d += getDoubleValue(s[i]) + "; ";
 		}
-		d += s[s.length-1] + "]";
+		d += getDoubleValue(s[s.length-1]) + "]";
 		return d;
+	}
+	
+	private String getDoubleValue(String d) {
+		double dbl = Double.parseDouble(d);
+		long l = Math.round(dbl);
+		if ((l+".0").equals(dbl+"")) {
+			return l+"";
+		}
+		return dbl+"";
 	}
 	
 	private double getTime(String line) {
