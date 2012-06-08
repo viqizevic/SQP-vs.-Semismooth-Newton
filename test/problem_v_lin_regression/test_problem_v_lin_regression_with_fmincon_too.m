@@ -26,7 +26,7 @@ function test_problem_v_lin_regression_with_fmincon_too()
 	str2 = ['x_sqp = [ ', x2, '], ', f2, ', it = ', num2str(it_sqp), ', ', t2];
 	options = optimset('Algorithm','active-set','Display','off');
 	tic;
-	[x_fmc,fval_fmc,exitflag,output] = fmincon('func_for_problem_v_lin_regression',x0,G,r,[],[],[],[],[],options);
+	[x_fmc,fval_fmc,exitflag,output] = fmincon('func_for_problem_v_lin_regression',x0,G,r,A,b,[],[],[],options);
 	t_fmc = toc;
 	x3 = sprintf('%.3f ',x_fmc);
 	f3 = sprintf('f(x_fmc) = %.3f',fval_fmc);
