@@ -42,7 +42,7 @@
 
 	<problem>
 		<name>beale</name>
-		<description>(Vgl. Beispiel 1.4.4 in \cite[S.~16]{alt})</description>
+		<description>(Beale-Funktion, vgl. Aufgabe 2.2 in \cite[S.~39]{alt})</description>
 		<function_name>beale_func</function_name>
 		<u>[-10; -10]</u>
 		<v>[10; 10]</v>
@@ -68,6 +68,7 @@
 
 	<problem>
 		<name>dixon</name>
+		<description>(Dixon-Funktion, vgl. Beispiel 1.4.5 in \cite[S.~16]{alt})</description>
 		<function_name>dixon_func</function_name>
 		<u>[-10; -10; -10; -10; -10; -10; -10; -10; -10; -10]</u>
 		<v>[10; 10; 10; 10; 10; 10; 10; 10; 10; 10]</v>

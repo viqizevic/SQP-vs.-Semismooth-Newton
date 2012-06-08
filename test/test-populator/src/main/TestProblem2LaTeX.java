@@ -25,9 +25,11 @@ public class TestProblem2LaTeX {
 		r += "\\nb " + getConstraints();
 		r += "\\end{split}\n";
 		r += "\\end{equation*}\n";
-		r += "\n\\begin{equation*}\n";
-		r += "\\xopt = "+getVectorInLaTeX(tp.get_xstar())+"\n";
-		r += "\\end{equation*}\n";
+		if (tp.get_xstar() != null) {
+			r += "\n\\begin{equation*}\n";
+			r += "\\xopt = "+getVectorInLaTeX(tp.get_xstar())+"\n";
+			r += "\\end{equation*}\n";
+		}
 		r += "\\end{testproblem}\n";
 		return r;
 	}
@@ -74,7 +76,11 @@ public class TestProblem2LaTeX {
 			}
 		}
 		if (n > 1) {
-			y = "\\min_{x\\in\\R^" + n + "}\\ " + y;
+			if (n < 10) {
+				y = "\\min_{x\\in\\R^" + n + "}\\ " + y;
+			} else {
+				y = "\\min_{x\\in\\R^{" + n + "}}\\ " + y;
+			}
 		} else {
 			y = "\\min_{x\\in\\R}\\ " + y;
 		}
