@@ -21,6 +21,9 @@ function test_all()
 	disp('test_problem_v_colville');
 	test_problem_v_colville(1);
 	disp(sprintf('\n'));
+	disp('test_problem_v_dixon');
+	test_problem_v_dixon(1);
+	disp(sprintf('\n'));
 	disp('test_problem_v_norm_1');
 	test_problem_v_norm_1(1);
 	disp(sprintf('\n'));
@@ -41,6 +44,9 @@ function test_all()
 	disp(sprintf('\n'));
 	disp('test_problem_v_colville_1');
 	test_problem_v_colville_1(1);
+	disp(sprintf('\n'));
+	disp('test_problem_v_dixon_1');
+	test_problem_v_dixon_1(1);
 	disp(sprintf('\n'));
 	disp('test_problem_v_lin_regression');
 	test_problem_v_lin_regression(1);

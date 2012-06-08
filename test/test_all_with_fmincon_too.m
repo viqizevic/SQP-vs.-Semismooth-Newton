@@ -21,6 +21,9 @@ function test_all_with_fmincon_too()
 	disp('test_problem_v_colville');
 	test_problem_v_colville_with_fmincon_too();
 	disp(sprintf('\n'));
+	disp('test_problem_v_dixon');
+	test_problem_v_dixon_with_fmincon_too();
+	disp(sprintf('\n'));
 	disp('test_problem_v_norm_1');
 	test_problem_v_norm_1_with_fmincon_too();
 	disp(sprintf('\n'));
@@ -41,6 +44,9 @@ function test_all_with_fmincon_too()
 	disp(sprintf('\n'));
 	disp('test_problem_v_colville_1');
 	test_problem_v_colville_1_with_fmincon_too();
+	disp(sprintf('\n'));
+	disp('test_problem_v_dixon_1');
+	test_problem_v_dixon_1_with_fmincon_too();
 	disp(sprintf('\n'));
 	disp('test_problem_v_lin_regression');
 	test_problem_v_lin_regression_with_fmincon_too();

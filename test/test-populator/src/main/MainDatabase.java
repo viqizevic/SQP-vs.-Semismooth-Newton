@@ -176,6 +176,10 @@ public class MainDatabase {
 	 */
 	private TestFunction parseTestFunction(Element element) {
 		String name = getTagValue("name", element);
+		if (name == null) {
+			System.err.println("Error: Cannot find name tag for a function.");
+			return null;
+		}
 		TestFunction function = new TestFunction(name);
 		String var = getTagValue("var", element);
 		String def = getTagValue("def", element);
@@ -238,6 +242,10 @@ public class MainDatabase {
 		}
 
 		String problemName = getTagValue("name", element);
+		if (problemName == null) {
+			System.err.println("Error: Cannot find name tag for a problem.");
+			return null;
+		}
 		problemName = "problem" + "_" + classification + "_" + problemName + "_" + 0;
 		int k = 1;
 		while (testProblems.containsKey(problemName)) {
