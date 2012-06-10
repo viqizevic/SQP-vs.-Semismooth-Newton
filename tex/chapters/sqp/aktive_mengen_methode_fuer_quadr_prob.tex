@@ -66,7 +66,7 @@ $G_k = \left(\begin{array}{c}
 g_{j_1}^T \\ \vdots \\ g_{j_{p_k}}^T
 \end{array}\right)$.
 
-Wir definieren dann folgendes Teilproblem nur mit
+Wir definieren dann folgendes Teilproblem mit nur
 linearen Gleichungsnebenbedingungen:
 \begin{align}
   \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
@@ -104,26 +104,95 @@ und somit
 wegen $Ad=0$ und $G_k d=0$.
 D.\,h. $\nabla f(x^k)^T d < 0$ für positiv definite Matrix Q.
 
-Da wir nur $j \in J_k$ betrachten,
-kann es sein,
-dass die Ungleichung $\langle g_i, x^k+d \rangle \leq r_i$
-für $i \in I_k := \{ 1, \ldots, p \} \backslash J_k$ verletzt wurde.
-Definiere Schrittweite durch
+Da $d$ nun eine Abstiegsrichtung ist,
+können wir also eine Schrittweite $\sigma$ berechnen,
+damit $f(x^{k+1} := x^k + \sigma d) < f(x^k)$ gilt.
+
+Sei $t$ diese Schrittweite.
+\begin{align}
+f(x^k+td) & = \tfrac{1}{2} (x^k+td)^T Q (x^k+td) + q^T (x^k+td) \\
+  & = \tfrac{1}{2} (x^k)^T Q x^k + t (x^k)^T Q d + \tfrac{1}{2} t^2 d^T Q d
+    + q^T x^k + t q^T d \\
+  & = f(x^k) + t (x^k)^T Q d + \tfrac{1}{2} t^2 d^T Q d + t q^T d \\
+  & = f(x^k) + \tfrac{1}{2} t^2 d^T Q d + t (Q x^k + q)^T d \\
+  & = f(x^k) + \tfrac{1}{2} t^2 d^T Q d + t \nabla f(x^k)^T d \\
+  & = f(x^k) + \tfrac{1}{2} t^2 d^T Q d - t d^T Q d \\
+  & = f(x^k) + (\tfrac{1}{2} t^2 - t) d^T Q d
+\end{align}
+
+Die Funktion $\tfrac{1}{2} t^2 - t$ hat ein globales Minimum
+an der Stelle $t = 1$ mit dem Optimalwert $-\tfrac{1}{2}$.
+Wir erhalten also mit $t = 1$ den größten Abstieg.
+
+Wir müssen noch beachten,
+dass $x^{k+1} := x^k + td$
+nicht unbedingt ein zulässiger Punkt ist.
+Durch die Bedingungen $Ad = 0$ und $G_k = 0$
+bekommen wir zwar
+\begin{gather}
+A x^{k+1} = A x^k + tAd = A x^k \leq 0 \\
+\text{und} \notag \\
+\langle g_j, x^{k+1} \rangle
+  = \langle g_j, x^k \rangle + t \langle g_j, d \rangle
+  = \langle g_j, x^k \rangle
+  = r_j \text{ für } j \in J_k,
+\end{gather}
+aber es kann sein,
+dass eine Ungleichung
 \begin{equation}
-  \tau_k :=
+\langle g_j, x^{k+1} \rangle \leq r_j
+\text{ für } j \in \{ 1, \ldots, p \} \backslash J_k
+\end{equation}
+verletzt wurde.
+
+Sei nun $j \in \{ 1, \ldots, p \} \backslash J_k$.
+Falls $\langle g_j, d \rangle < 0$ gilt,
+dann erfüllt $x^{k+1}$
+\begin{equation}
+\langle g_j, x^{k+1} \rangle
+  = \langle g_j, x^k \rangle + t \langle g_j, d \rangle
+  < \langle g_j, x^k \rangle
+  \leq r_j.
+\end{equation}
+Falls $\langle g_j, d \rangle > 0$ gilt,
+müssen wir dann vorsichtig sein.
+In diesem Fall gilt
+\begin{equation}
+\langle g_j, x^{k+1} \rangle
+  = \langle g_j, x^k \rangle + t \langle g_j, d \rangle
+  \leq r_j
+\end{equation}
+nur, wenn $t$ die Ungleichung
+\begin{equation}
+\label{eq:schrittweite_bedingung_in_aktive_mengen_verfahren}
+t \leq \frac{r_j - \langle g_j, x^k \rangle}{\langle g_j, d \rangle}
+\end{equation}
+erfüllt.
+Sei
+\begin{equation}
+I_k := \{\ j \in \{ 1, \ldots, p \} \backslash J_k
+\ | \ \langle g_j,d \rangle > 0 \ \}.
+\end{equation}
+Dann muss $t$ die
+Ungleichung~\eqref{eq:schrittweite_bedingung_in_aktive_mengen_verfahren}
+für alle $j \in I_k$ erfüllen.
+
+Zusammengefasst müssen wir unsere Schrittweite $\sigma$
+wie folgt definieren.
+Sei
+\begin{equation}
+\sigma_k := \min \{ 1, \tau_k\},
+\end{equation}
+wobei
+\begin{equation}
+\tau_k :=
   \begin{cases}
-    \min\left\{ \frac{r_j - g_j^T x^k}{g_j^T d^k}\ | \ j \in I_k \right\},
-      & \text{falls } I_k \neq \emptyset \\
+    \min\left\{ \frac{r_j - \langle g_j, x^k \rangle}{\langle g_j, d \rangle}
+      \ | \ j \in I_k \right\}, & \text{falls } I_k \neq \emptyset \\
     \infty,
       & \text{sonst}.
   \end{cases}
 \end{equation}
-und
-\begin{equation}
-  \sigma_k := \min \{ 1, \tau_k\}.
-\end{equation}
-
-Diese Schrittweite brauchen wir, damit $x^{k+1}$ ein zulässiger Punkt bleibt.
 
 \begin{algorithm}
 \emph{(Aktive-Mengen-Verfahren
