@@ -26,9 +26,10 @@ public class TestResultParser {
 	
 	private LinkedList<TestProblem> testProblems;
 	
+	@SuppressWarnings("unchecked")
 	public TestResultParser(String resultFile, LinkedList<TestProblem> problems) {
 		this.resultFile = resultFile;
-		testProblems = problems;
+		testProblems = (LinkedList<TestProblem>) problems.clone();
 	}
 
 	public void parse() {
@@ -55,16 +56,20 @@ public class TestResultParser {
 						System.err.println("Result from SSN expected!");
 						return;
 					}
-					double d = getTime(line);
-					p.setSsnSolveTime(d);
+					double t = getTime(line);
+					int it = getIterationNumber(line);
+					p.setSsnSolveTime(t);
+					p.setSsnSolveIterationNumber(it);
 					// Get solve time from SQP
 					line = br.readLine();
 					if (!line.startsWith(sqp_prefix)) {
 						System.err.println("Result from SQP expected!");
 						return;
 					}
-					d = getTime(line);
-					p.setSqpSolveTime(d);
+					t = getTime(line);
+					it = getIterationNumber(line);
+					p.setSqpSolveTime(t);
+					p.setSqpSolveIterationNumber(it);
 					// Get x*
 					String xstar = getXStar(line);
 					p.set_xstar(xstar);
@@ -118,6 +123,11 @@ public class TestResultParser {
 		String d = line.split("solved in")[1].split("ms")[0].trim();
 		return Double.parseDouble(d);
 	}
+	
+	private int getIterationNumber(String line) {
+		String it = line.split(", solved in")[0].split("it =")[1].trim();
+		return Integer.parseInt(it);
+	}
 
 	private String getResultForPlot(String algo) {
 		if (!algo.equals(ssn) && !algo.equals(sqp)) {
@@ -158,14 +168,24 @@ public class TestResultParser {
 	}
 	
 	private String getComparisonTable() {
-		String s = " TP & SSN & SQP \\\\\n" +
-					"    & Time (ms) \\\\\\\n";
+		String s = " TP & SSN t[ms] & SQP t(ms) " +
+				"& SSN #it & SQP #it & n \\\\\n";
 		int i = 1;
 		for (TestProblem p : testProblems) {
-			double d1 = p.getSsnSolveTime();
-			double d2 = p.getSqpSolveTime();
-			s += "  " + i + " & " + d1 + " & " + d2 + " \\\\"
-			  + " % " + p.getName() + "\n";
+			String d1 = p.getSsnSolveTime()+"";
+			if (d1.split("\\.")[1].length() == 1) {
+				d1 += "0";
+			}
+			String d2 = p.getSqpSolveTime()+"";
+			if (d2.split("\\.")[1].length() == 1) {
+				d2 += "0";
+			}
+			s += "  " + i + " & " + d1 + " & " + d2
+				+ " & " + p.getSsnSolveIterationNumber()
+				+ " & " + p.getSqpSolveIterationNumber()
+				+ " & " + p.getDimension() + " \\\\"
+				+ " % " + p.getName() + "\n";
+			i++;
 		}
 		return s;
 	}

@@ -3,7 +3,7 @@ function test_problem_v_exp_with_sqp_octave_too(show)
     v = [10; 10];
     x0 = [5; 4];
     tol = 0.00001;
-    itmax = 500;
+    itmax = 100;
     A = [];
     b = [];
     G = [];

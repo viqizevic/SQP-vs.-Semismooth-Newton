@@ -55,7 +55,6 @@
         <u>[-10; -10]</u>
         <v>[10; 10]</v>
         <x0>[5; 4]</x0>
-        <max_iteration>500</max_iteration>
     </problem>
 
 	<problem>

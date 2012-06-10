@@ -25,11 +25,14 @@ public class TestProblem2LaTeX {
 		r += "\\nb " + getConstraints();
 		r += "\\end{split}\n";
 		r += "\\end{equation*}\n";
+		String x0 = tp.get_x0().replace('[', '(')
+			.replace(']', ')').replace(';', ',') + "^T";
+		r += "\n\\begin{equation*}\n";
+		r += "x_0 = " + x0;
 		if (tp.get_xstar() != null) {
-			r += "\n\\begin{equation*}\n";
-			r += "\\xopt = "+getVectorInLaTeX(tp.get_xstar())+"\n";
-			r += "\\end{equation*}\n";
+			r += ",\\quad \\xopt = "+getVectorInLaTeX(tp.get_xstar());
 		}
+		r += "\n\\end{equation*}\n";
 		r += "\\end{testproblem}\n";
 		return r;
 	}
