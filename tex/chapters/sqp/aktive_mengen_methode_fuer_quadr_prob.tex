@@ -23,7 +23,8 @@ Die Idee des Aktive-Mengen-Verfahrens ist, iterativ Probleme
 mit nur Gleichungsnebenbedingungen zu optimieren.
 % TODO weiter erklären
 
-Sei $x^k \in \R^n$ ein zulässiger Punkt des Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}.
+Sei $x^k \in \R^n$ ein zulässiger Punkt des
+Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}.
 Angenommen, wir können eine Suchrichtung $d \in \R^n$ finden,
 sodass der Punkt $x^{k+1} := x^k + d$ ein besserer zulässiger Punkt ist.
 Diesen Vektor $d$ können wir finden, indem wir das Problem
@@ -48,39 +49,57 @@ Weil $x^k$ zulässig ist, d.\,h., es gilt $Ax^k = b$,
 können wir dann als Gleichungsnebenbedingungen
 $Ad = 0$ schreiben.
 
-Seien $g_j \in \R^n$, $j = 1,\ldots,p$,
-die Transponierten der Zeilenvektoren in $G$, d.\,h.
-$G = \left(\begin{array}{c}
-g_1^T \\ \vdots \\ g_p^T
-\end{array}\right)$,
-und $J(x^k) := \{ 1 \leq j \leq p \ | \ \langle g_j,x^k \rangle = r_j \}$ die
-Indexmenge der aktiven Ungleichungsrestriktionen zu $x^k$.
+Seien $a_1,\ldots,a_m \in \R^n$ bzw. $g_1,\ldots,g_p \in \R^n$
+wieder die Transponierten der Zeilenvektoren in $A$ bzw. $G$
+wie in~\eqref{eq:zerlegung_von_A_und_G} und
+$J(x^k) := \{ 1 \leq j \leq p \ | \ \langle g_j,x^k \rangle = r_j \}$
+die Indexmenge der aktiven Ungleichungsrestriktionen zu $x^k$
+wie in~\eqref{eq:indexmenge_der_aktiven_restr}.
 
 Ist eine Ungleichungsrestriktion zu $x^k$ mit Index $j$ aktiv,
 dann kann diese Ungleichungsrestriktion auch zu $x^k+d$ aktiv bleiben,
 wenn $\langle g_j, d \rangle = 0$ gilt.
 
-Seien $J_k := J(x^k)$, $p_k := |J_k|$,
-$j_1, \ldots, j_{p_k} \in J_k$ und
-$G_k = \left(\begin{array}{c}
+Seien $J_k := J(x^k)$, $p_k := |J_k|$ und
+$j_1, \ldots, j_{p_k} \in J_k$.
+Weiter seien
+\begin{equation}
+G_k = \left(\begin{array}{c}
 g_{j_1}^T \\ \vdots \\ g_{j_{p_k}}^T
-\end{array}\right)$.
+\end{array}\right)
+\quad \text{und} \quad
+B_k = \left(\begin{array}{c}
+A \\ G_k
+\end{array}\right)
+\end{equation}
 
 Wir definieren dann folgendes Teilproblem mit nur
 linearen Gleichungsnebenbedingungen:
 \begin{align}
   \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
                        + \langle Qx^k+q,d\rangle
-    \tag{$Q_k$} \label{prob:teilprob_in_aktive_mengen_verfahren} \\
-  \nb & Ad = 0 \notag \\
-      & G_k d = 0. \notag
+    \tag{$\text{QLG}_k$} \label{prob:teilprob_in_aktive_mengen_verfahren} \\
+  \nb & B_k d = 0 \notag
 \end{align}
 
+Wir werden hier voraussetzen, dass folgende gelten:
+\begin{gather}
+  \label{eq:vorauss_Bk_hat_voll_rang}
+  B_k \text{ hat vollen Rang}\\
+  \text{ (d.\,h., } a_1,\ldots,a_m,\ g_{j_1},\ldots,g_{j_{p_k}}
+  \text{ sind linear unabhängig)} \nonumber
+\end{gather}
+und
+\begin{equation}
+  \label{eq:vorauss_Q_pos_def_auf_ker_Bk}
+  Q \text{ ist positiv definit auf } \kr{B_k}.
+\end{equation}
+
 Sei $d$ eine Lösung des
-Problems~\eqref{prob:teilprob_in_aktive_mengen_verfahren}.
+Teilproblems~\eqref{prob:teilprob_in_aktive_mengen_verfahren}.
 Dann existiert nach Satz~\ref{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed}
 ein Lagrange-Multiplikator
-$\tilde{\lambda} = \left(\begin{array}{c} \lambda \\ \mu \end{array}\right)$
+$\nu = \left(\begin{array}{c} \lambda \\ \mu \end{array}\right)$
 mit $\lambda \in \R^m$ und $\mu \in \R^{p_k}$, sodass
 \begin{equation}
 \label{eq:notw_bed_teilprob_in_aktive_mengen_verfahren}
@@ -127,7 +146,7 @@ Wir erhalten also mit $t = 1$ den größten Abstieg.
 Wir müssen noch beachten,
 dass $x^{k+1} := x^k + td$
 nicht unbedingt ein zulässiger Punkt ist.
-Durch die Bedingungen $Ad = 0$ und $G_k = 0$
+Durch die Bedingungen $Ad = 0$ und $G_k d = 0$
 bekommen wir zwar
 \begin{gather}
 A x^{k+1} = A x^k + tAd = A x^k \leq 0 \\
@@ -177,9 +196,8 @@ Dann muss $t$ die
 Ungleichung~\eqref{eq:schrittweite_bedingung_in_aktive_mengen_verfahren}
 für alle $j \in I_k$ erfüllen.
 
-Zusammengefasst müssen wir unsere Schrittweite $\sigma$
+Zusammengefasst müssen wir unsere Schrittweite $\sigma_k$
 wie folgt definieren.
-Sei
 \begin{equation}
 \sigma_k := \min \{ 1, \tau_k\},
 \end{equation}
@@ -194,6 +212,88 @@ wobei
   \end{cases}
 \end{equation}
 
+Wir haben den Fall $d \neq 0$ betrachtet.
+Jetzt kommen wir zu dem Fall $d = 0$.
+Für $d = 0$ lautet die Gleichung~\eqref{eq:notw_bed_teilprob_in_aktive_mengen_verfahren}
+\begin{equation}
+\label{eq:notw_bed_teilprob_in_aktive_mengen_verf_mit_d_gl_null}
+  Qx^k + q + A^T \lambda + G_k^T \mu = 0.
+\end{equation}
+
+Sei $\mu \geq 0$.
+Wir setzen
+\begin{equation}
+  \lambda^* := \lambda
+  \quad \text{und} \quad
+  \mu^* = (\mu_j^*)_{j=1,\ldots,p} :=
+    \begin{cases}
+      \mu_j, & \text{falls } j \in J_k \\
+      0, & \text{sonst}.
+    \end{cases}
+\end{equation}
+Dann erfüllt $x_k$ die notwendigen
+Bedingungen von Satz~\ref{satz:karush_kuhn_tucker}
+\begin{align}
+\nabla f(x^k) + A^T \lambda^* + G^T \mu^* &=
+    Qx^k + q + A^T \lambda + G_k^T \mu= 0 \\
+\mu_j^* (\langle g_j, x^k \rangle - r_j ) & = 0 \text{ für } j = 1,\ldots,p \\
+                                    \mu^* & \geq 0
+\end{align}
+und wegen Voraussetzung~\eqref{eq:vorauss_Q_pos_def_auf_ker_Bk}
+auch die hinreichende
+Optimalitätsbedingung~\eqref{satz:hinr_bed_fuer_prob_mit_lin_ungl_nebenbed}.
+Daher ist $x^k$ eine optimale Lösung
+von~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}
+und wir können somit das Verfahren stoppen.
+
+Falls $\mu \ngeq 0$, dann wählen wir den Index $j \in J_k$ mit
+\begin{equation}
+  \mu_j = \min\{ \mu_i | i \in J_k \} < 0
+\end{equation}
+und setzen
+\begin{equation}
+  \tilde{J}_k := J_k \backslash \{\,j\}
+  \quad \text{und} \quad
+  \tilde{p}_k := p_k - 1.
+\end{equation}
+Mit $\tilde{J}_k$ bekommen wir eine neue Matrix $\tilde{B}_k$
+und ein neues Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}.
+Wir beachten somit die $j$-te Ungleichung nicht mehr als aktiv.
+
+Sei $\tilde{d}$ die Lösung des neuen Problems mit den zugehörigen
+Multiplikatoren $\tilde{\lambda}$ und $\tilde{\mu}$.
+Es gilt die notwendige Bedingung
+\begin{equation}
+Q\tilde{d} + Qx^k + q + A^T \tilde{\lambda} + G_k^T \tilde{\mu} = 0.
+\end{equation}
+
+Angenommen ist $\tilde{d} = 0$. Dann lautet die notwendige Bedingung
+\begin{equation}
+\label{eq:notw_bed_fuer_QLGk_tilde}
+  Qx^k + q + A^T \tilde{\lambda} + G_k^T \tilde{\mu} = 0.
+\end{equation}
+Fassen wir diese mit der
+Gleichung~\eqref{eq:notw_bed_teilprob_in_aktive_mengen_verf_mit_d_gl_null},
+dann bekommen wir
+\begin{equation}
+-A^T \lambda - G_k^T \mu + A^T \tilde{\lambda} + \tilde{G_k}^T \tilde{\mu} = 0
+\end{equation}
+\begin{equation}
+\sum_{i=1}^{m} (\tilde{\lambda}_i - \lambda_i) a_i
++ \sum_{i=1}^{p_k-1} (\tilde{\mu}_i - \mu_i) g_{j_i}
+= \mu_j g_j
+\end{equation}
+Für die letzte Gleichung haben wir o.\,B.\,d.\,A. angenommen, dass $j = p_k$.
+
+Wegen $\mu_j < 0$ heißt es, dass $g_j$ durch die Linearkombination
+der Vektoren $a_1,\ldots,a_m$ und $g_{j_1},\ldots,g_{j_{\tilde{p}_k}}$
+darstellbar ist.
+Das ist ein Widerspruch zu der
+Voraussetzung~\eqref{eq:vorauss_Bk_hat_voll_rang}.
+Daher gilt $\tilde{d} \neq 0$
+und dies wäre wie zuvor beschrieben eine Abstiegsrichtung.
+
+Insgesamt haben wir folgendes Verfahren:
 \begin{algorithm}
 \emph{(Aktive-Mengen-Verfahren
 für \eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed},
@@ -201,16 +301,16 @@ vgl. Verfahren 6.2.1 in \cite[S.~213]{alt})}
 \begin{compactenum}[1.]
   \item Wähle einen Startpunkt $x^0$. Setze $k:=0$.
   \item Löse das Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}
-        $\Rightarrow d^k, \lambda^k, \mu^k$.
+        $\Rightarrow$ Wir bekommen $d^k, \lambda^k, \mu^k$.
   \item Falls $d^k = 0$
     \begin{compactenum}[3a.]
       \item Falls $\mu^k \geq 0 \Rightarrow$ STOP.
       \item Falls $\mu^k \ngeq 0$
         \begin{compactenum}[i.]
-          \item Bestimme $j \in J(x^k)$, sodass
-                $\mu_j^k = \min\{ \mu_i^k \ |\ i \in J(x^k) \}$.
-          \item $J(x^k) := J(x^k)\backslash\{j\}$ 
-          \item Streiche in $G_k$ die $j$-te Zeile.
+          \item Bestimme $j \in J_k$, sodass
+                $\mu_j^k = \min\{ \mu_i^k \ |\ i \in J_k \}$.
+          \item $\tilde{J}_k := J_k \backslash\{\,j\}$ 
+          \item Bestimme $\tilde{G}_k$.
           \item Löse wieder das Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}
                 $\Rightarrow d^k \neq 0$
         \end{compactenum}

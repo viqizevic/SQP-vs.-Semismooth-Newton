@@ -16,6 +16,7 @@ $\F = \{ x \in \R^n\ |\ A x = b,\ G x \leq r \}$.
 Seien $a_k \in \R^n$, $k = 1,\ldots,m$, bzw. $g_j \in \R^n$, $j = 1,\ldots,p$,
 Vektoren in der Matrix $A$ bzw. $G$, sodass
 \begin{equation}
+\label{eq:zerlegung_von_A_und_G}
   A =
   \left(
     \begin{array}{c}
@@ -181,15 +182,17 @@ Die Vektoren $\lambda$ und $\mu$ heißen Lagrange-Multiplikatoren zu $\xopt$.
 
 Sei $x \in \F$. Wir bezeichnen mit
 \begin{equation}
+\label{eq:indexmenge_der_aktiven_restr}
   J(x) := \{ 1 \leq j \leq p \ | \ \langle g_j,x \rangle = r_j \}
 \end{equation}
 die Indexmenge der in $x$ aktiven Ungleichungsrestriktionen.
 
 \begin{theorem}
+\label{satz:hinr_bed_fuer_prob_mit_lin_ungl_nebenbed}
 \emph{(Hinreichende Optimalitätsbedingung, vgl. Satz 5.4.13 in
 \cite[S.~198]{alt})}\\
 Sei $f$ in $\xopt \in \F$ zweimal stetig differenzierbar. Die notwendigen
-Bedingungen von Satz~\ref{satz:karush_kuhn_tucker} seien erfüllt
+Bedingungen von Satz~\eqref{satz:karush_kuhn_tucker} seien erfüllt
 und es gelte mit $\alpha > 0$
 \begin{equation}
 d^T f''(\xopt) d \geq \alpha \|d\|^2 \quad

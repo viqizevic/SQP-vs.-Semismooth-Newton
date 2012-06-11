@@ -5,7 +5,7 @@ Wir werden auch zwei numerische Verfahren hierfür vorstellen.
 \begin{definition}
 \emph{(Unrestringierte Optimierungsprobleme)}
 \begin{equation}
-  \min_{x \in \R^n} f(x) \tag{PU} \label{eq:uop}
+  \min_{x \in \R^n} f(x) \tag{PU} \label{prob:opt_prob_unrestr}
 \end{equation}
 Wir nehmen hier der Einfachheit halber an, dass der Definitionsbereich
 $D$ gleich $\R^n$ sei.
@@ -54,7 +54,7 @@ bestimmt werden soll.
 \begin{theorem}
 \emph{(Notwendige Bedingung erster Ordnung, vgl. Satz 3.1.2 in
 \cite[S.~42]{alt})}\\
-Sei $\xopt$ eine lokale Lösung des Problems~(\ref{eq:uop}) und
+Sei $\xopt$ eine lokale Lösung des Problems~(\ref{prob:opt_prob_unrestr}) und
 sei $f$ einmal stetig differenzierbar in einer Umgebung von $\xopt$,
 dann gilt
 \begin{equation}
@@ -81,7 +81,7 @@ einem lokalen Maximum unterscheiden.
 \begin{theorem}
 \emph{(Notwendige Bedingung zweiter Ordnung, vgl. Satz 3.1.6 in
 \cite[S.~43]{alt})}\\
-Sei $\xopt$ eine lokale Lösung des Problems~(\ref{eq:uop})
+Sei $\xopt$ eine lokale Lösung des Problems~(\ref{prob:opt_prob_unrestr})
 und sei $f$ zweimal stetig differenzierbar in einer Umgebung von $\xopt$,
 dann gilt~(\ref{eq:grad_zero}) und
 \begin{equation}
@@ -99,7 +99,7 @@ sei positiv definit, d.\,h.
 \begin{equation}
   x^T f''(\xopt) x > 0 \qquad \forall x \in \R^n.
 \end{equation}
-Dann ist $\xopt$ eine strikte Lösung des Problems~(\ref{eq:uop}).
+Dann ist $\xopt$ eine strikte Lösung des Problems~(\ref{prob:opt_prob_unrestr}).
 \end{theorem}
 
 Diese hinreichende Bedingung benutzt man in der Regel erst dann, wenn man einen
