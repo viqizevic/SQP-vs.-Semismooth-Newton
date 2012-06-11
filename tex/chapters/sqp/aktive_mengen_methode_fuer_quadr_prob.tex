@@ -19,9 +19,13 @@ $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 $G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
 \end{definition}
 
-Die Idee des Aktive-Mengen-Verfahrens ist, iterativ Probleme
-mit nur Gleichungsnebenbedingungen zu optimieren.
-% TODO weiter erklären
+Die Idee des Aktive-Mengen-Verfahrens ist,
+iterativ durch die aktiven Nebenbedingungen
+ein Problem mit nur Gleichungsnebenbedingungen zu formulieren
+und zu lösen.
+Wir brauchen daher wieder ein anderes Verfahren,
+das wir im nächsten Abschnitt besprechen werden,
+um das entstehende Teilproblem zu lösen.
 
 Sei $x^k \in \R^n$ ein zulässiger Punkt des
 Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}.
@@ -70,7 +74,7 @@ g_{j_1}^T \\ \vdots \\ g_{j_{p_k}}^T
 \quad \text{und} \quad
 B_k = \left(\begin{array}{c}
 A \\ G_k
-\end{array}\right)
+\end{array}\right).
 \end{equation}
 
 Wir definieren dann folgendes Teilproblem mit nur
@@ -79,15 +83,15 @@ linearen Gleichungsnebenbedingungen:
   \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
                        + \langle Qx^k+q,d\rangle
     \tag{$\text{QLG}_k$} \label{prob:teilprob_in_aktive_mengen_verfahren} \\
-  \nb & B_k d = 0 \notag
+  \nb & B_k d = 0. \notag
 \end{align}
 
 Wir werden hier voraussetzen, dass folgende gelten:
 \begin{gather}
   \label{eq:vorauss_Bk_hat_voll_rang}
-  B_k \text{ hat vollen Rang}\\
-  \text{ (d.\,h., } a_1,\ldots,a_m,\ g_{j_1},\ldots,g_{j_{p_k}}
-  \text{ sind linear unabhängig)} \nonumber
+  B_k \text{ hat vollen Rang},\\
+  \text{d.\,h., } a_1,\ldots,a_m,\ g_{j_1},\ldots,g_{j_{p_k}}
+  \text{ sind linear unabhängig,} \nonumber
 \end{gather}
 und
 \begin{equation}
@@ -127,7 +131,7 @@ Da $d$ nun eine Abstiegsrichtung ist,
 können wir also eine Schrittweite $\sigma$ berechnen,
 damit $f(x^{k+1} := x^k + \sigma d) < f(x^k)$ gilt.
 
-Sei $t$ diese Schrittweite.
+Sei $t$ diese Schrittweite. Es gilt
 \begin{align}
 f(x^k+td) & = \tfrac{1}{2} (x^k+td)^T Q (x^k+td) + q^T (x^k+td) \\
   & = \tfrac{1}{2} (x^k)^T Q x^k + t (x^k)^T Q d + \tfrac{1}{2} t^2 d^T Q d
@@ -199,6 +203,7 @@ für alle $j \in I_k$ erfüllen.
 Zusammengefasst müssen wir unsere Schrittweite $\sigma_k$
 wie folgt definieren.
 \begin{equation}
+\label{eq:schrittweite_formel_fuer_aktive_mengen_verf}
 \sigma_k := \min \{ 1, \tau_k\},
 \end{equation}
 wobei
@@ -295,28 +300,38 @@ und dies wäre wie zuvor beschrieben eine Abstiegsrichtung.
 
 Insgesamt haben wir folgendes Verfahren:
 \begin{algorithm}
+\label{algo:aktive_mengen_verfahren}
 \emph{(Aktive-Mengen-Verfahren
 für \eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed},
 vgl. Verfahren 6.2.1 in \cite[S.~213]{alt})}
 \begin{compactenum}[1.]
-  \item Wähle einen Startpunkt $x^0$. Setze $k:=0$.
+  \item Wähle einen Startpunkt $x^0$ und setze $k:=0$.
   \item Löse das Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}
-        $\Rightarrow$ Wir bekommen $d^k, \lambda^k, \mu^k$.
+  	$\Rightarrow$ Wir bekommen $d^k, \lambda^k$ und $\mu^k$.
+  	\label{list:quad_teilprob_in_aktive_mengen_verf}
   \item Falls $d^k = 0$
     \begin{compactenum}[3a.]
       \item Falls $\mu^k \geq 0 \Rightarrow$ STOP.
       \item Falls $\mu^k \ngeq 0$
         \begin{compactenum}[i.]
           \item Bestimme $j \in J_k$, sodass
-                $\mu_j^k = \min\{ \mu_i^k \ |\ i \in J_k \}$.
-          \item $\tilde{J}_k := J_k \backslash\{\,j\}$ 
-          \item Bestimme $\tilde{G}_k$.
-          \item Löse wieder das Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}
-                $\Rightarrow d^k \neq 0$
+            $\mu_j^k = \min\{ \mu_i^k \ |\ i \in J_k \}$.
+          \item Setze $\tilde{J}_k := J_k \backslash\{\,j\}$
+            und bestimme $\tilde{G}_k$.
+          \item Löse das neue
+            Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}
+            $\Rightarrow$ Wir bekommen $d^k \neq 0, \lambda^k$ und $\mu^k$.
         \end{compactenum}
     \end{compactenum}
-  \item Berechne Schrittweite $\sigma_k$.
+  \item Berechne die Schrittweite $\sigma_k$
+    nach~\eqref{eq:schrittweite_formel_fuer_aktive_mengen_verf}.
   \item Setze $x^{k+1} := x^k + \sigma_k d^k$ und $k := k+1$.
-        $\Rightarrow $ Gehe zu Schritt 2. %FIMXE use label
+    $\Rightarrow $ Gehe zu Schritt
+  \ref{list:quad_teilprob_in_aktive_mengen_verf}.
 \end{compactenum}
 \end{algorithm}
+
+Es kann gezeigt werden, dass das Verfahren~\eqref{algo:aktive_mengen_verfahren}
+in endlich vielen Schritten die Lösung des
+Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}
+berechnet (siehe Satz 6.2.3 in \cite[S.~214]{alt}).

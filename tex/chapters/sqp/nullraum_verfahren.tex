@@ -1,10 +1,15 @@
+Wie das SQP-Verfahren die Hilfe von Aktive-Mengen-Verfahren braucht,
+braucht das Aktive-Mengen-Verfahren die Hilfe eines anderen Verfahrens,
+um die entstehenden quadratischen Teilprobleme mit nur linearen
+Gleichungsnebenbedingungen zu lösen.
 
 \begin{definition}
 \emph{(Quadratische Optimierungsprobleme mit linearen
 Gleichungsnebenbedingungen)}
 \begin{align}
-  \min_{x \in \R^n}\ & \frac{1}{2} \langle Qx,x \rangle + \langle q,x \rangle
-    \tag{QLG} \label{prob:quad_opt_prob_mit_lin_gl_nebenbed} \\
+  \min_{x \in \R^n}\ & f(x) := \frac{1}{2} \langle Qx,x \rangle
+    + \langle q,x \rangle \tag{QLG}
+    \label{prob:quad_opt_prob_mit_lin_gl_nebenbed} \\
   \nb & Ax = b \notag
 \end{align}
 Dabei sei $Q$ eine symmetrische $(n \times n)$-Matrix und $q \in \R^n$.
@@ -12,8 +17,11 @@ $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 \end{definition}
 
 Das Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed} werden wir auf ein
-unrestringiertes Verfahren reduzieren mit Hilfe einer Nullraum-Matrix von~$A$.
+unrestringiertes Verfahren reduzieren mit Hilfe einer Nullraum-Matrix von~$A$
+(siehe Definition~\ref{def:nullraum_matrix}).
 Daher kommt der Name \emph{Nullraum-Verfahren}.
+Wir schreiben nun zunächst alle Schritten des Verfahrens.
+Anschließend kommen die Erklärungen des einzelnen Schrittes.
 
 \begin{algorithm}
 \emph{(Nullraum-Verfahren für \eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed},
@@ -25,6 +33,7 @@ vgl. Verfahren 6.1.1 in \cite[S.~208f]{alt})}
   \begin{equation}
     H A^T = \left(\begin{array}{c} R \\ 0 \end{array}\right).
   \end{equation}
+  \label{list:qr_zerlegung_in_nullraum_verfahren}
   \item Berechne
   \begin{equation}
     \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right) := -Hq
@@ -52,3 +61,51 @@ vgl. Verfahren 6.1.1 in \cite[S.~208f]{alt})}
   \end{equation}
 \end{enumerate}
 \end{algorithm}
+
+Bei Schritt~\ref{list:qr_zerlegung_in_nullraum_verfahren}
+berechnen wir die Matrizen $H$ und $R$.
+Die Matrix $H$ kann so zerlegt werden, dass
+\begin{equation}
+  H^T = \left( Y \ Z \right)
+\end{equation}
+mit $Y \in \R^{n,m}$ und $Z \in \R^{n,n-m}$.
+Wegen der Orthogonalität von H
+können die Spaltenvektoren in $Y$ und $Z$
+eine Basis von $\R^n$ bilden.
+D.\,h., für jedes Element $x \in \R^n$
+gibt es eindeutig bestimmte Vektoren
+$x_y \in R^m$ und $x_z \in \R^{n-m}$, sodass
+\begin{equation}
+  x = Y x_y + Z x_z = H^T \left(\begin{array}{c} x_y \\ x_z \end{array}\right)
+\end{equation}
+gilt.
+Sei $d \in \kr{A} \subseteq \R^n$.
+Dann gibt es $d_y \in R^m$ und $d_z \in \R^{n-m}$ mit $d = Y d_y + Z d_z$.
+Es gilt
+\begin{equation}
+Ad = AY d_y + AZ d_z = AH^T \left(\begin{array}{c} d_y \\ d_z \end{array}\right)
+   = (R^T \ 0) \left(\begin{array}{c} d_y \\ d_z \end{array}\right)
+   = R^T d_y
+\end{equation}
+und somit wegen der Invertierbarkeit von der Matrix $R$
+\begin{equation}
+  Ad = 0 \quad \Leftrightarrow \quad d_y = 0
+  \quad \Leftrightarrow \quad d = Z d_z,
+\end{equation}
+d.\,h. $\kr{A} = \im{Z}$.
+Damit ist diese Matrix $Z$ die Nullraum-Matrix von $A$.
+
+Wie in~\eqref{prob:opt_prob_unrestr_mithilfe_nullraum_matrix}
+können wir unser Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
+so umformulieren:
+\begin{equation}
+\min_{z \in \R^{n-m}} f(w + Zz) =: F(z),
+\end{equation}
+wobei $w$ eine spezielle Lösung der Gleichung $Ax = b$ ist.
+
+\begin{align}
+  F(z) & = \frac{1}{2}(w+Zz)^T Q (w+Zz) + q^T(w+(Zz)) \\
+       & = \frac{1}{2}w^T Qw + \frac{1}{2}w^T Q Zz
+         + \frac{1}{2}z^T ZQw + \frac{1}{2}z^T ZQZz + q^T w+ q^T Zz
+\end{align}
+

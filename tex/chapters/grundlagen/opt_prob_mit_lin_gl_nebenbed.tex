@@ -76,26 +76,28 @@ ist die Definition der Nullraum-Matrix
 (vgl. \cite[S.~182]{alt}).
 
 \begin{definition}
+\label{def:nullraum_matrix}
 \emph{(Nullraum-Matrix)}\\
-Eine $(n \times l)$-Matrix $Z$ heißt Nullraum-Matrix von~$A$, wenn für $d \in
+Eine $(n \times s)$-Matrix $Z$ heißt Nullraum-Matrix von~$A$, wenn für $d \in
 \R^n$ gilt
 \begin{equation}
-d \in \kr A \quad \Leftrightarrow \quad d = Z z \text{ für ein } z \in \R^l.
+d \in \kr A \quad \Leftrightarrow \quad d = Z z \text{ für ein } z \in \R^s.
 \end{equation}
 D.\,h. $\im Z = \kr A$.
 \end{definition}
 
-Sei $w$ eine Lösung von der Gleichung $Ax=b$.
+Sei $w$ eine Lösung der Gleichung $Ax=b$.
 Man kann nun die Menge $\F$ des Problems~\eqref{prob:opt_prob_mit_lin_gl_nebenbed}
 so schreiben:
 \begin{equation}
-  \F = w + \kr A = w + \im Z = w + \{ Z z\ |\ z \in \R^l \}.
+  \F = w + \kr A = w + \im Z = w + \{ Z z\ |\ z \in \R^s \}.
 \end{equation}
 
-D.\,h., jedes Element $x \in \F$ ist mit $w + Zz$, $z \in \R^l$, zu ersetzen.
+D.\,h., jedes Element $x \in \F$ ist mit $w + Zz$, $z \in \R^s$, zu ersetzen.
 Das Problem~\eqref{prob:opt_prob_mit_lin_gl_nebenbed} ist dann äquivalent zu
 \begin{equation}
-  \min_{z \in \R^l} F(z) := f(w + Zz).
+  \label{prob:opt_prob_unrestr_mithilfe_nullraum_matrix}
+  \min_{z \in \R^s} F(z) := f(w + Zz).
 \end{equation}
 
 Dieses Problem hat keine Nebenbedingung mehr, ist also unrestringiert.
