@@ -1,11 +1,11 @@
-function A = opt_ctrl_prob_constr_A (D, B, T, N)
+function A = opt_ctrl_prob_constr_A (T, N)
 	tao = T/N;
-	A = eye(2*(N+1));
-	E = -(eye(2)+tao*D);
-	d = -tao*B;
-	for i=1:N
-		j = 2*i+1;
-		A(j:j+1,j-2:j-1) = E;
-		A(j:j+1,(2*(N+1))+i) = d;
+	A = zeros(N,2*N);
+	A(1,1) = -tao;
+	A(1,2) = 1;
+	for k=2:N
+		A(k,2*k-2) = -1;
+		A(k,2*k-1) = -tao;
+		A(k,2*k) = 1;
 	end
 end

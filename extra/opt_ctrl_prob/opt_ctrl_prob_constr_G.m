@@ -1,7 +1,8 @@
 function G = opt_ctrl_prob_constr_G (N)
-	G = zeros(2*N,2*N+2);
-	for i=1:N
-		j = 2*i-1;
-		G(j:j+1,2*N+2+i) = [-1; 1];
+	G = zeros(3*N,2*N);
+	for k=1:N
+		G(3*k-2,2*k-1) = -1;
+		G(3*k-1,2*k) = -1;
+		G(3*k,2*k) = 1;
 	end
 end

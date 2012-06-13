@@ -1,7 +1,6 @@
-function r = opt_ctrl_prob_contsr_r (u_min, u_max, N)
-	r = zeros(2*N,1);
-	for i=1:N
-		j = 2*i-1;
-		r(j:j+1,1) = [-u_min; u_max];
+function r = opt_ctrl_prob_contsr_r (eta, N)
+	r = zeros(3*N,1);
+	for k=1:N
+		r(3*k,1) = eta;
 	end
 end
