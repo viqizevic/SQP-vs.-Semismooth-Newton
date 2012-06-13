@@ -43,7 +43,7 @@ function [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 		end
 		z = zeros(n,1);
 		[d, it2] = aktive_mengen_methode(Q,q,A,b,G,rd,z,tol,itmax);
-		it = it + it2;
+		it = it + 1;
 		if( norm(d) < tol )
 			stop = true; % => x is the solution
 		else
@@ -77,6 +77,7 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 	m = length(b);
 	p = length(r);
 	while true
+		k = k+1;
 		% Bilde die Matrix G_k := [g_j'], wobei j aus J_k.
 		% J_k := { 1<=j<=p | (g_j)'*x_k = r_j }
 		% die Indexmenge der in x_k aktiven Ungleichungsrestriktionen.
@@ -175,7 +176,6 @@ function [x, it] = aktive_mengen_methode(Q,q,A,b,G,r,x0,tol,itmax)
 		% Setze x_{k+1} := x_k + sigma_k*d_k und k = k+1.
 		%
 		x_k = x_k + sigma_k*d_k;
-		k = k+1;
 		if k >= itmax
 			break;
 		end
