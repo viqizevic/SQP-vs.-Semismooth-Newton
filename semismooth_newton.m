@@ -1,4 +1,4 @@
-%  Function: [x, fval, it] = semismooth_newton (f, gradf, hessf,
+%  Function: [x,fval,it,X] = semismooth_newton (f, gradf, hessf,
 %                                      A, b, G, r, x0, itmax, tol)
 %
 %  Attempt to solve the problem
@@ -24,18 +24,18 @@
 %  itmax : The maximal number of iterations allowed.
 %  tol   : The bound needed for the stop criteria.
 %
-function [x,fval,it] = semismooth_newton(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
+function [x,fval,it,X] = semismooth_newton(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 	it = 0;
 	[m,n] = size(A);
 	[p,n] = size(G);
 	n = length(x0);
 	x = x0;
+	X(1,:) = x';
 	lambda = zeros(m,1);
 	mu = zeros(p,1);
 	
 	stop = false;
 	while( ~stop )
-		it = it + 1;
 		h1 = feval(gradf,x);
 		h2 = [];
 		h3 = [];
@@ -68,6 +68,8 @@ function [x,fval,it] = semismooth_newton(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 		dlambda = d(n+1:n+m);
 		dmu = d(n+m+1:n+m+p);
 		x = x + dx;
+		it = it + 1;
+		X(it+1,:) = x';
 		lambda = lambda + dlambda;
 		mu = mu + dmu;
 		% Check the stop criteria

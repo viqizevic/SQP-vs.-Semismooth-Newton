@@ -1,4 +1,4 @@
-%  Function: [x, fval, it] = seq_quad_prog (f, gradf, hessf,
+%  Function: [x,fval,it,X] = seq_quad_prog (f, gradf, hessf,
 %                                    A, b, G, r, x0, itmax, tol)
 %
 %  Attempt to solve the problem
@@ -24,11 +24,12 @@
 %  itmax : The maximal number of iterations allowed.
 %  tol   : The bound needed for the stop criteria.
 %
-function [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
+function [x,fval,it,X] = seq_quad_prog(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 	it = 0;
 	[p,n] = size(G);
 	n = length(x0);
 	x = x0;
+	X(1,:) = x';
 	stop = false;
 	while( ~stop )
 		% solve the problem:
@@ -43,11 +44,12 @@ function [x,fval,it] = seq_quad_prog(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 		end
 		z = zeros(n,1);
 		[d, it2] = aktive_mengen_methode(Q,q,A,b,G,rd,z,tol,itmax);
-		it = it + 1;
 		if( norm(d) < tol )
 			stop = true; % => x is the solution
 		else
 			x = x + d;
+			it = it + 1;
+			X(it+1,:) = x';
 		end
         % If there are too many iterations
 		if (it >= itmax)

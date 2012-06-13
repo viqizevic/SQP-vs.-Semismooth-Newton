@@ -1,4 +1,4 @@
-% Function: [x,fval,it] = active_set_strategy (f, gradf, hessf,
+% Function: [x,fval,it,X] = active_set_strategy (f, gradf, hessf,
 %                                    A, b, G, r, x0, itmax, tol)
 %
 %  Attempt to solve the problem
@@ -24,18 +24,18 @@
 %  itmax : The maximal number of iterations allowed.
 %  tol   : The bound needed for the stop criteria.
 %
-function [x,fval,it] = active_set_strategy(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
+function [x,fval,it,X] = active_set_strategy(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 	it = 0;
 	[m,n] = size(A);
 	[p,n] = size(G);
 	n = length(x0);
 	x = x0;
+	X(1,:) = x';
 	lambda = zeros(m,1);
 	mu = zeros(p,1);
 	
 	stop = false;
 	while( ~stop )
-		it = it + 1;
 		F = feval(hessf,x);
 		H2 = [];
 		if (m ~= 0)
@@ -60,6 +60,8 @@ function [x,fval,it] = active_set_strategy(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 		x = w(1:n);
 		lambda = w(n+1:n+m);
 		mu = w(n+m+1:n+m+p);
+		it = it + 1;
+		X(it+1,:) = x';
 		
 		% Check the stop criteria
 		d = feval(gradf,x);
