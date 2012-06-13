@@ -204,7 +204,7 @@
 		<A>opt_ctrl_prob_constr_A(12,50)</A>
 		<b>opt_ctrl_prob_constr_b(5,12,50)</b>
 		<G>opt_ctrl_prob_constr_G(50)</G>
-		<r>opt_ctrl_prob_contsr_r(6,50)</r>
+		<r>opt_ctrl_prob_constr_r(6,50)</r>
 		<x0>opt_ctrl_prob_constr_x0(5,12,50)</x0>
 	</problem>
 	

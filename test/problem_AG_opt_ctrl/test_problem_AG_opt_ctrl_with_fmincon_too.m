@@ -7,7 +7,7 @@ function test_problem_AG_opt_ctrl_with_fmincon_too()
     A = opt_ctrl_prob_constr_A(12,50);
     b = opt_ctrl_prob_constr_b(5,12,50);
 	G = opt_ctrl_prob_constr_G(50);
-	r = opt_ctrl_prob_contsr_r(6,50);
+	r = opt_ctrl_prob_constr_r(6,50);
 	G = [ G; -eye(length(u)); eye(length(v)) ];
 	r = [ r; -u; v ];
 	tic;
