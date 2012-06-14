@@ -168,7 +168,7 @@ so umformulieren:
   \min_{z \in \R^{n-m}} f(w + Zz) =: F(z).
 \end{equation}
 Die Lösung dieses Problems erfüllt
-nach~\ref{eq:grad_zero}
+nach Satz~\ref{satz:notw_bed_fuer_unrestr_prob}
 die Optimalitätsbedingung
 \begin{equation}
   \nabla F(z^*) = 0.
@@ -187,8 +187,8 @@ Für den Gradient von $F$ gilt
   \nabla F(z) = Z^T QZz + Z^T Q Y y^* + Z^T q.
 \end{equation}
 
-Jetzt betrachten wir den Vektor $h$ und die Matrix $B$
-in Schritt~\ref{list:matrix_B_in_nullraum_verfahren} an:
+Nun betrachten wir den Vektor $h$ und die Matrix $B$
+in Schritt~\ref{list:matrix_B_in_nullraum_verfahren}.
 \begin{gather}
 \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right)
   = -Hq
@@ -202,7 +202,6 @@ in Schritt~\ref{list:matrix_B_in_nullraum_verfahren} an:
       Z^T Q Y & Z^T Q Z \end{array}\right)
 \end{gather}
 
-
 %-------------------------------------------------------------------------%
 % Erklärung: Lösung des Problems
 %
@@ -212,13 +211,13 @@ Die Bedingung $\nabla F(z^*) = 0$ können wir daher als
   B_{22} z^* + B_{21} y^* - h_2 = 0.
 \end{equation}
 schreiben.
-Auf diese Weise bestimmen wir in
+Mit Hilfe dieser Gleichung bestimmen wir in
 Schritt~\ref{list:vektor_z_in_nullraum_verfahren}
 den Vektor $z^*$
 und folglich in
 Schritt~\ref{list:opt_loesung_in_nullraum_verfahren}
 die Lösung $\xopt$
-nach~\ref{eq:zerlegung_von_xopt_in_nullraum_verfahren}.
+nach~\eqref{eq:zerlegung_von_xopt_in_nullraum_verfahren}.
 
 %-------------------------------------------------------------------------%
 % Erklärung: Berechnung des Multiplikators
@@ -229,11 +228,11 @@ Schritt~\ref{list:multiplikator_lambda_in_nullraum_verfahren}
 den Multiplikator $\lambda$.
 Nach Satz~\ref{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed}
 lautet die Optimalitätsbedingung unseres
-Problems~\ref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
+Problems~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
 \begin{equation}
   Q \xopt + q + A^T \lambda = 0.
 \end{equation}
-Multiplizieren wir diese Gleichung mit $H$, dann erhalten wir
+Multiplizieren wir diese mit $H$, dann erhalten wir
 \begin{equation}
   0 = HQ \xopt + Hq + H A^T \lambda
     = \left(\begin{array}{c} Y^T \\ Z^T \end{array}\right) Q \xopt
