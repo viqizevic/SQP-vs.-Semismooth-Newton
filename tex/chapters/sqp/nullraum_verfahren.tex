@@ -1,7 +1,13 @@
 Wie das SQP-Verfahren die Hilfe von Aktive-Mengen-Verfahren braucht,
-braucht das Aktive-Mengen-Verfahren die Hilfe eines anderen Verfahrens,
+braucht das Aktive-Mengen-Verfahren die Hilfe von Nullraum-Verfahren,
 um die entstehenden quadratischen Teilprobleme mit nur linearen
 Gleichungsnebenbedingungen zu lösen.
+
+%-------------------------------------------------------------------------%
+%                                                                         %
+% Definition (Quadr. Opt.-Prob. mit lin. Gl.-Nebenbed.)                   %
+%                                                                         %
+%-------------------------------------------------------------------------%
 
 \begin{definition}
 \emph{(Quadratische Optimierungsprobleme mit linearen
@@ -23,6 +29,12 @@ Daher kommt der Name \emph{Nullraum-Verfahren}.
 Wir schreiben nun zunächst alle Schritten des Verfahrens.
 Anschließend kommen die Erklärungen des einzelnen Schrittes.
 
+%-------------------------------------------------------------------------%
+%                                                                         %
+% Algo (Nullraum-Verf. f. quadr. Opt.-Prob. mit lin. Gl.-Nebenbed.)       %
+%                                                                         %
+%-------------------------------------------------------------------------%
+
 \begin{algorithm}
 \emph{(Nullraum-Verfahren für \eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed},
 vgl. Verfahren 6.1.1 in \cite[S.~208f]{alt})}
@@ -34,39 +46,54 @@ vgl. Verfahren 6.1.1 in \cite[S.~208f]{alt})}
     H A^T = \left(\begin{array}{c} R \\ 0 \end{array}\right).
   \end{equation}
   \label{list:qr_zerlegung_in_nullraum_verfahren}
+  
+  \item Berechne den Vektor $y \in \R^m$ als Lösung der Gleichung
+  \begin{equation}
+    R^T y = b.
+  \end{equation}
+  \label{list:vektor_y_in_nullraum_verfahren}
+  
   \item Berechne
   \begin{equation}
-    \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right) := -Hq
+    h := -Hq
+       = \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right)
     \quad \text{und} \quad
     B := H Q H^T
        = \left(\begin{array}{cc} B_{11} & B_{12} \\ B_{21} & B_{22}
          \end{array}\right),
   \end{equation}
-  wobei $h_1 \in \R^m$ und $B_{11} \in \R^{m,m}$
-  \item Berechne den Vektor $u_1$ als Lösung der Gleichung
+  wobei $h_1 \in \R^m$ und $B_{11} \in \R^{m,m}$.
+  \label{list:matrix_B_in_nullraum_verfahren}
+  
+  \item Berechne den Vektor $z \in \R^{n-m}$ als Lösung der Gleichung
   \begin{equation}
-    R^T u_1 = b
+    B_{22} z = h_2 - B_{21} y.
   \end{equation}
-  und den Vektor $u_2$ als Lösung der Gleichung
+  \label{list:vektor_z_in_nullraum_verfahren}
+  
+  \item Berechne $\xopt$ mit
   \begin{equation}
-    B_{22} u_2 = h_2 - B_{21} u_1
+    \xopt := H^T \left(\begin{array}{c} y \\ z \end{array}\right).
   \end{equation}
-  \item Berechne $\xopt$
+  \label{list:opt_loesung_in_nullraum_verfahren}
+  
+  \item Der Multiplikator $\lambda$ ist die Lösung der Gleichung
   \begin{equation}
-    \xopt := H^T \left(\begin{array}{c} u_1 \\ u_2 \end{array}\right)
+    R \lambda = h_1 - B_{11} y - B_{12} z.
   \end{equation}
-  \item Der Multiplikator $\lambda^*$ ist die Lösung der Gleichung
-  \begin{equation}
-    R \lambda^* = h_1 - B_{11} u_1 - B_{12} u_2
-  \end{equation}
+  \label{list:multiplikator_lambda_in_nullraum_verfahren}
 \end{enumerate}
 \end{algorithm}
+
+%-------------------------------------------------------------------------%
+% Erklärung: In der Matrix H finden wir die Nullraum-Matrix Z
+%
 
 Bei Schritt~\ref{list:qr_zerlegung_in_nullraum_verfahren}
 berechnen wir die Matrizen $H$ und $R$.
 Die Matrix $H$ kann so zerlegt werden, dass
 \begin{equation}
-  H^T = \left( Y \ Z \right)
+  H^T = \left(\begin{array}{cc} Y & Z \end{array}\right)
 \end{equation}
 mit $Y \in \R^{n,m}$ und $Z \in \R^{n,n-m}$.
 Wegen der Orthogonalität von H
@@ -81,31 +108,141 @@ $x_y \in R^m$ und $x_z \in \R^{n-m}$, sodass
 gilt.
 Sei $d \in \kr{A} \subseteq \R^n$.
 Dann gibt es $d_y \in R^m$ und $d_z \in \R^{n-m}$ mit $d = Y d_y + Z d_z$.
-Es gilt
+Es gilt folglich
 \begin{equation}
 Ad = AY d_y + AZ d_z = AH^T \left(\begin{array}{c} d_y \\ d_z \end{array}\right)
    = (R^T \ 0) \left(\begin{array}{c} d_y \\ d_z \end{array}\right)
    = R^T d_y
 \end{equation}
-und somit wegen der Invertierbarkeit von der Matrix $R$
+und wegen der Invertierbarkeit von der Matrix $R$
 \begin{equation}
   Ad = 0 \quad \Leftrightarrow \quad d_y = 0
-  \quad \Leftrightarrow \quad d = Z d_z,
+  \quad \Leftrightarrow \quad d = Z d_z.
 \end{equation}
-d.\,h. $\kr{A} = \im{Z}$.
-Damit ist diese Matrix $Z$ die Nullraum-Matrix von $A$.
+Daraus folgt
+\begin{equation}
+  \kr{A} = \{ d \in \R^n\, |\, Ad = 0 \}
+    = \{ d \in \R^n\, |\, \exists d_z \in R^{n-m} : d = Z d_z \} = \im{Z}.
+\end{equation}
+Deshalb ist diese Matrix $Z$ die Nullraum-Matrix von $A$.
 
-Wie in~\eqref{prob:opt_prob_unrestr_mithilfe_nullraum_matrix}
-können wir unser Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
+%-------------------------------------------------------------------------%
+% Erklärung: Wie wir eine spezielle Lösung der Gleichung Ax = b finden
+%
+
+Sei $\xopt$ die optimale Lösung. Dann gibt es $y^*$ und $z^*$ mit
+\begin{equation}
+\label{eq:zerlegung_von_xopt_in_nullraum_verfahren}
+  \xopt = Y y^* + Z z^*
+    = H^T \left(\begin{array}{c} y^* \\ z^* \end{array}\right).
+\end{equation}
+Es gilt
+\begin{equation}
+  b = A \xopt
+    = A H^T \left(\begin{array}{c} y^* \\ z^* \end{array}\right)
+    = \left(\begin{array}{cc} R^T & 0 \end{array}\right)
+      \left(\begin{array}{c} y^* \\ z^* \end{array}\right)
+    = R^T y^*
+\end{equation}
+Daher bestimmen wir in
+Schritt~\ref{list:vektor_y_in_nullraum_verfahren}
+eigentlich den Vektor $y^*$.
+
+Da $Z$ eine Nullraum-Matrix ist,
+gilt $Zz^* \in \kr{A}$, d.\,h. $AZz^* = 0$.
+Dann erfüllt $w := Y y^*$
+\begin{equation}
+  Aw = Aw + AZz^* = A (w + Zz^*)
+     = A (Yy^* + Zz^*) = A \xopt = b
+\end{equation}
+Der Vektor $w$ ist somit eine spezielle Lösung der Gleichung $Ax=b$.
+
+%-------------------------------------------------------------------------%
+% Erklärung: Umformulierung des Problems als ein unrestringiertes
+%
+
+Nun können wir unser Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
+wie in~\eqref{prob:opt_prob_unrestr_mithilfe_nullraum_matrix}
 so umformulieren:
 \begin{equation}
-\min_{z \in \R^{n-m}} f(w + Zz) =: F(z),
+  \min_{z \in \R^{n-m}} f(w + Zz) =: F(z).
 \end{equation}
-wobei $w$ eine spezielle Lösung der Gleichung $Ax = b$ ist.
-
+Die Lösung dieses Problems erfüllt
+nach~\ref{eq:grad_zero}
+die Optimalitätsbedingung
+\begin{equation}
+  \nabla F(z^*) = 0.
+\end{equation}
+Wir sehen jetzt $F(z)$ genauer an.
 \begin{align}
-  F(z) & = \frac{1}{2}(w+Zz)^T Q (w+Zz) + q^T(w+(Zz)) \\
+  F(z) & = f(w + Zz) = \frac{1}{2}(w+Zz)^T Q (w+Zz) + q^T(w+(Zz)) \\
        & = \frac{1}{2}w^T Qw + \frac{1}{2}w^T Q Zz
-         + \frac{1}{2}z^T ZQw + \frac{1}{2}z^T ZQZz + q^T w+ q^T Zz
+         + \frac{1}{2}z^T ZQw + \frac{1}{2}z^T Z^T QZz + q^T w+ q^T Zz \\
+       & = \frac{1}{2}z^T Z^T QZz + w^T Q Zz + q^T Zz + f(w) \\
+       & = \frac{1}{2}z^T Z^T QZz + (Z^T Qw + Z^T q)^T z + f(w) \\
+       & = \frac{1}{2}z^T Z^T QZz + (Z^T Q Y y^* + Z^T q)^T z + f(Y y^*).
 \end{align}
+Für den Gradient von $F$ gilt
+\begin{equation}
+  \nabla F(z) = Z^T QZz + Z^T Q Y y^* + Z^T q.
+\end{equation}
 
+Jetzt betrachten wir den Vektor $h$ und die Matrix $B$
+in Schritt~\ref{list:matrix_B_in_nullraum_verfahren} an:
+\begin{gather}
+\left(\begin{array}{c} h_1 \\ h_2 \end{array}\right)
+  = -Hq
+  = - \left(\begin{array}{c} Y^T \\ Z^T \end{array}\right) q
+  = - \left(\begin{array}{c} Y^T q \\ Z^T q \end{array}\right) \\
+\left(\begin{array}{cc} B_{11} & B_{12} \\ B_{21} & B_{22} \end{array}\right)
+  = H Q H^T
+  = \left(\begin{array}{c} Y^T \\ Z^T \end{array}\right) Q
+      \left(\begin{array}{cc} Y & Z \end{array}\right)
+  = \left(\begin{array}{cc} Y^T Q Y & Y^T Q Z \\
+      Z^T Q Y & Z^T Q Z \end{array}\right)
+\end{gather}
+
+
+%-------------------------------------------------------------------------%
+% Erklärung: Lösung des Problems
+%
+
+Die Bedingung $\nabla F(z^*) = 0$ können wir daher als
+\begin{equation}
+  B_{22} z^* + B_{21} y^* - h_2 = 0.
+\end{equation}
+schreiben.
+Auf diese Weise bestimmen wir in
+Schritt~\ref{list:vektor_z_in_nullraum_verfahren}
+den Vektor $z^*$
+und folglich in
+Schritt~\ref{list:opt_loesung_in_nullraum_verfahren}
+die Lösung $\xopt$
+nach~\ref{eq:zerlegung_von_xopt_in_nullraum_verfahren}.
+
+%-------------------------------------------------------------------------%
+% Erklärung: Berechnung des Multiplikators
+%
+
+Zum Abschluss berechnen wir in
+Schritt~\ref{list:multiplikator_lambda_in_nullraum_verfahren}
+den Multiplikator $\lambda$.
+Nach Satz~\ref{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed}
+lautet die Optimalitätsbedingung unseres
+Problems~\ref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
+\begin{equation}
+  Q \xopt + q + A^T \lambda = 0.
+\end{equation}
+Multiplizieren wir diese Gleichung mit $H$, dann erhalten wir
+\begin{equation}
+  0 = HQ \xopt + Hq + H A^T \lambda
+    = \left(\begin{array}{c} Y^T \\ Z^T \end{array}\right) Q \xopt
+        - \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right)
+        + \left(\begin{array}{c} R \\ 0 \end{array}\right) \lambda.
+\end{equation}
+Aus dem oberen Teil dieses Gleichungssystems ergibt sich die Gleichung
+\begin{equation}
+  0 = Y^T Q (Y y^* + Z z^*) - h_1 + R^T \lambda
+    = B_{11} y^* + B_{12} z^* - h_1 + R^T \lambda
+\end{equation}
+zur Berechnung von $\lambda$.
