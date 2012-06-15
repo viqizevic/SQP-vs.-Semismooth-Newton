@@ -151,23 +151,31 @@ welches die negativen Gradienten als Abstiegsrichtungen verwendet.
 \begin{algorithm}
 \emph{(Gradientenverfahren, vgl. Verfahren 4.2.39 in \cite[S.~98]{alt})}
 \begin{enumerate}
-  \item Wähle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
-        Setze $k := 0$.
-  \item Ist $\|\nabla f(x^k)\| < \varepsilon$ \label{list:stop_criteria_grad_verf}
-        $\Rightarrow$ STOP.
-  \item Setze $d^k := - \nabla f(x^k)$.
-  \item Bestimme $\sigma_k$ so, dass
+  \item Wähle einen Startpunkt $x^0$ und setze $k := 0$.
+  \item Setze $d^k := - \nabla f(x^k)$. \label{list:compute_d_in_grad_verf}
+  \item Ist $d^k = 0$ $\Rightarrow$ STOP. \label{list:stop_criteria_grad_verf}
+  \item Bestimme Schrittweite $\sigma_k$ so, dass
         \begin{equation}
           f(x^k + \sigma_k d^k) < f(x^k + \sigma d^k)
             \qquad \forall \sigma \geq 0.
         \end{equation}
   \item Setze $x^{k+1} := x^k + \sigma_k d^k$ und $k := k+1$. $\Rightarrow$
-        Gehe zu Schritt~\ref{list:stop_criteria_grad_verf}.
+        Gehe zu Schritt~\ref{list:compute_d_in_grad_verf}.
 \end{enumerate}
 \end{algorithm}
 
-Um die Schrittweite $\sigma_k$ zu bestimmen, kann man das Schrittweitenverfahren
-von Armijo oder das Schrittweitenverfahren von Wolfe-Powell verwenden.
+Es ist zu beachten, dass die Abbruchbedingung in
+Schritt~\ref{list:stop_criteria_grad_verf}
+nur theoretisch zu verstehen ist.
+Praktisch gibt man eine Abbruchschranke $\varepsilon > 0$ vor
+und führt beispielsweise den Test
+\begin{equation}
+  \|d^k\| < \varepsilon
+\end{equation}
+durch.
+
+Zur Bestimmung der Schrittweite $\sigma_k$ kann man das
+Schrittweitenverfahren von Armijo oder das Schrittweitenverfahren von Wolfe-Powell verwenden.
 Wir verweisen auf den Abschnitt 4.2.7 über Schrittweitenverfahren in
 \cite[S.~90ff]{alt}.
 
@@ -188,9 +196,8 @@ dass die Funktion $f$ zweimal differenzierbar ist.
 \begin{algorithm}
 \emph{(Newton-Verfahren, vgl. Verfahren 4.3.1 in \cite[S.~107]{alt})}
 \begin{enumerate}
-  \item Wähle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
-        Setze $k := 0$.
-  \item Ist $\|\nabla f(x^k)\| < \varepsilon$ \label{list:stop_criteria_newt_verf}
+  \item Wähle einen Startpunkt $x^0$ und setze $k := 0$.
+  \item Ist $\nabla f(x^k) = 0$ \label{list:stop_criteria_newt_verf}
         $\Rightarrow$ STOP.
   \item Berechne die Lösung $d$ des linearen Gleichungssystems
         \begin{equation}
@@ -204,7 +211,7 @@ dass die Funktion $f$ zweimal differenzierbar ist.
 
 Der Punkt $x^{k+1}$ in jedem Iterationschritt ist eigentlich die Lösung des
 Minimierungsproblems, welches durch die quadratische Approximation von $f$ in Punkt $x^k$ definiert ist.
-In der Umgebung von $x^k$ können wir die Funktion $f$ wie folgt approximieren:
+In der Umgebung von $x^k$ kann die Funktion $f$ wie folgt approximiert werden:
 \begin{equation}
   f(x) \approx f(x^k) + \nabla f(x^k)^T (x-x^k)
                  + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k).
@@ -235,5 +242,5 @@ durchführen. D.\,h., man bestimmt ein $\sigma_k \in \R$ und definiert
 $x^{k+1} := x^k + \sigma_k d^k$.
 Dann bekommt man ein Abstiegsverfahren,
 welches man als das gedämpfte Newton-Verfahren bezeichnet.
-Wir verweisen auf den Abschnitt 4.3.2 über das gedämpfte Newton-Verfahren in
+Wir verweisen auf den Abschnitt 4.3.2 über dieses Verfahren in
 \cite[S.~111ff]{alt}.

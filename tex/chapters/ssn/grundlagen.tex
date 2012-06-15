@@ -52,9 +52,8 @@ halbglatt an der Stelle der Lösung $\xopt \in V$ ist.
 \emph{(Das halbglatte Newton-Verfahren,
 vgl. Algorithmus 2.11 in \cite[S.~29]{ulbrich})}
 \begin{enumerate}
-  \item Wähle einen Startpunkt $x^0$ und eine Abbruchschranke $\varepsilon > 0$.
-        Setze $k := 0$.
-  \item Ist $\|f(x^k)\| < \varepsilon$ \label{list:stop_criteria_ssn}
+  \item Wähle einen Startpunkt $x^0$ und setze $k := 0$.
+  \item Ist $f(x^k) = 0$ \label{list:stop_criteria_ssn}
         $\Rightarrow$ STOP.
   \item Wähle $M_k \in \partial \nabla f (x^k)$
   \item Berechne die Lösung $d$ des linearen Gleichungssystems
