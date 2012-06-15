@@ -1,22 +1,23 @@
-Wir betrachen zuerst Optimierungsprobleme mit linearen
-Gleichungs- und
-Ungleichungsnebenbedingungen~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}.
+Zunächst werden in diesem Unterkapitel
+Optimierungsprobleme mit linearen Gleichungs- und
+Ungleichungsnebenbedingungen~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
+betrachtet.
 \begin{align*}
   \min_{x \in \R^n}\ & f(x) \\
                  \nb & Ax = b \\
                      & Gx \leq r
 \end{align*}
 
-Das Teilproblem nach~\eqref{prob:teilprob_von_sqp_allg} sieht dann so aus:
+Das Teilproblem nach~\eqref{prob:teilprob_von_sqp_allg} lautet dann
 \begin{align}
   \min_{x \in \R^n}\ & \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k)
                          + \nabla f(x^k)^T (x-x^k) \\
                  \nb & A x = b \notag \\
-                     & G x \leq r \notag
+                     & G x \leq r \notag.
 \end{align}
 
-Definieren wir $d := x - x^k$.
-Dann haben wir $x = x^k + d$ und als Teilproblem
+Setze $d := x - x^k$.
+Folglich ist $x = x^k + d$ und das Teilproblem lässt sich schreiben als
 \begin{align}
   \min_{x \in \R^n}\ & \frac{1}{2} d^T f''(x^k) d
                          + \nabla f(x^k)^T d \\
@@ -25,12 +26,12 @@ Dann haben wir $x = x^k + d$ und als Teilproblem
 \end{align}
 
 Das ist ein quadratisches Optimierungsproblem mit linearen Restriktionen.
-Wir werden im nächsten Unterkapitel sehen, wie man es lösen kann.
+Im nächsten Unterkapitel wird ein Verfahren für dieses Problem vorgestellt.
 
-Weil wir voraussetzen werden, dass $x^k \in \F$ ist,
-d.\,h., es gilt \mbox{$A x^k = b$}, können wir als Gleichungsnebenbedingung an
-der Stelle~\eqref{eq:teilprob_lin_gl_nebenbed} die Gleichung $Ad = 0$ schreiben.
-Nun sind wir bereit, das SQP-Verfahren zu formulieren.
+Da $x^k \in \F$ ist, d.\,h., es gilt $A x^k = b$,
+kann als Gleichungsnebenbedingung an
+der Stelle~\eqref{eq:teilprob_lin_gl_nebenbed} die Gleichung $Ad = 0$
+geschrieben werden.
 
 \begin{algorithm}
 \emph{(SQP-Verfahren für \eqref{prob:opt_prob_mit_lin_ungl_nebenbed},
@@ -54,6 +55,32 @@ vgl. Verfahren 6.4.1 in \cite[S.~237]{alt})}
     $\Rightarrow$ Gehe zu Schritt~\ref{list:quad_opt_prob_in_sqp}.
 \end{enumerate}
 \end{algorithm}
+
+Es ist zu bemerken, dass
+der Punkt $x^k$ die notwendige Optimalitätsbedingung
+des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
+nach Satz~\ref{satz:karush_kuhn_tucker} erfüllt,
+falls $d^k = 0$ gilt.
+
+Sei $d$ eine Lösung des
+Teilproblems~\eqref{prob:quad_opt_prob_in_sqp}.
+Dann gibt es nach Satz~\ref{satz:karush_kuhn_tucker}
+die Vektoren $\lambda$ und $\mu$, sodass
+\begin{gather}
+  f''(x^k)d + \nabla f(x^k) + A^T \lambda + G^T \mu = 0 \\
+  \mu_j \geq 0, \quad
+  \mu_j (\langle g_j, x^k \rangle + \langle g_j, d \rangle - r_j) = 0,
+    \quad j = 1,\ldots,p.
+\end{gather}
+Falls $d = 0$ ist, dann gilt
+\begin{gather}
+  \nabla f(x^k) + A^T \lambda + G^T \mu = 0 \\
+  \mu_j \geq 0, \quad
+  \mu_j (\langle g_j, x^k \rangle - r_j) = 0,
+    \quad j = 1,\ldots,p,
+\end{gather}
+d.\,h., der Punkt $x^k$ erfüllt
+die notwendige Optimalitätsbedingung.
 
 Der folgende Satz macht eine Aussage zur Konvergenzgeschwindigkeit
 des Verfahrens.

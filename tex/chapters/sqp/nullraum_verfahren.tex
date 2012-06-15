@@ -22,12 +22,12 @@ Dabei sei $Q$ eine symmetrische $(n \times n)$-Matrix und $q \in \R^n$.
 $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 \end{definition}
 
-Das Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed} werden wir auf ein
-unrestringiertes Verfahren reduzieren mit Hilfe einer Nullraum-Matrix von~$A$
-(siehe Definition~\ref{def:nullraum_matrix}).
+Das Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed} wird hier auf ein
+unrestringiertes Verfahren mit Hilfe einer Nullraum-Matrix von~$A$
+(siehe Definition~\ref{def:nullraum_matrix}) reduziert werden.
 Daher kommt der Name \emph{Nullraum-Verfahren}.
-Wir schreiben nun zunächst alle Schritten des Verfahrens.
-Anschließend kommen die Erklärungen des einzelnen Schrittes.
+Es kommt nun zunächst alle Schritten des Verfahrens und
+anschließend die Erklärungen des einzelnen Schrittes.
 
 %-------------------------------------------------------------------------%
 %                                                                         %
@@ -86,16 +86,16 @@ vgl. Verfahren 6.1.1 in \cite[S.~208f]{alt})}
 \end{algorithm}
 
 %-------------------------------------------------------------------------%
-% Erklärung: In der Matrix H finden wir die Nullraum-Matrix Z
+% Erklärung: In der Matrix H ist die Nullraum-Matrix Z gespeichert
 %
 
-Bei Schritt~\ref{list:qr_zerlegung_in_nullraum_verfahren}
-berechnen wir die Matrizen $H$ und $R$.
+In Schritt~\ref{list:qr_zerlegung_in_nullraum_verfahren}
+bekommt man die Matrizen $H$ und $R$.
 Die Matrix $H$ kann so zerlegt werden, dass
 \begin{equation}
   H^T = \left(\begin{array}{cc} Y & Z \end{array}\right)
 \end{equation}
-mit $Y \in \R^{n,m}$ und $Z \in \R^{n,n-m}$.
+mit $Y \in \R^{n,m}$ und $Z \in \R^{n,n-m}$ gilt.
 Wegen der Orthogonalität von H
 können die Spaltenvektoren in $Y$ und $Z$
 eine Basis von $\R^n$ bilden.
@@ -127,7 +127,7 @@ Daraus folgt
 Deshalb ist diese Matrix $Z$ die Nullraum-Matrix von $A$.
 
 %-------------------------------------------------------------------------%
-% Erklärung: Wie wir eine spezielle Lösung der Gleichung Ax = b finden
+% Erklärung: Wie eine spezielle Lösung der Gleichung Ax = b zu finden ist
 %
 
 Sei $\xopt$ die optimale Lösung. Dann gibt es $y^*$ und $z^*$ mit
@@ -144,9 +144,9 @@ Es gilt
       \left(\begin{array}{c} y^* \\ z^* \end{array}\right)
     = R^T y^*
 \end{equation}
-Daher bestimmen wir in
+Daher ist in
 Schritt~\ref{list:vektor_y_in_nullraum_verfahren}
-eigentlich den Vektor $y^*$.
+eigentlich der Vektor $y^*$ zu bestimmen.
 
 Da $Z$ eine Nullraum-Matrix ist,
 gilt $Zz^* \in \kr{A}$, d.\,h. $AZz^* = 0$.
@@ -161,9 +161,9 @@ Der Vektor $w$ ist somit eine spezielle Lösung der Gleichung $Ax=b$.
 % Erklärung: Umformulierung des Problems als ein unrestringiertes
 %
 
-Nun können wir unser Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
+Nun ergibt sich für unser Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
 wie in~\eqref{prob:opt_prob_unrestr_mithilfe_nullraum_matrix}
-so umformulieren:
+folgende Umformulierung:
 \begin{equation}
   \min_{z \in \R^{n-m}} f(w + Zz) =: F(z).
 \end{equation}
@@ -173,7 +173,7 @@ die Optimalitätsbedingung
 \begin{equation}
   \nabla F(z^*) = 0.
 \end{equation}
-Wir sehen jetzt $F(z)$ genauer an.
+Es ist
 \begin{align}
   F(z) & = f(w + Zz) = \frac{1}{2}(w+Zz)^T Q (w+Zz) + q^T(w+(Zz)) \\
        & = \frac{1}{2}w^T Qw + \frac{1}{2}w^T Q Zz
@@ -182,36 +182,38 @@ Wir sehen jetzt $F(z)$ genauer an.
        & = \frac{1}{2}z^T Z^T QZz + (Z^T Qw + Z^T q)^T z + f(w) \\
        & = \frac{1}{2}z^T Z^T QZz + (Z^T Q Y y^* + Z^T q)^T z + f(Y y^*).
 \end{align}
-Für den Gradient von $F$ gilt
+Für den Gradienten von $F$ gilt dann
 \begin{equation}
   \nabla F(z) = Z^T QZz + Z^T Q Y y^* + Z^T q.
 \end{equation}
 
-Nun betrachten wir den Vektor $h$ und die Matrix $B$
-in Schritt~\ref{list:matrix_B_in_nullraum_verfahren}.
-\begin{gather}
+In Schritt~\ref{list:matrix_B_in_nullraum_verfahren} sind
+\begin{equation}
 \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right)
   = -Hq
   = - \left(\begin{array}{c} Y^T \\ Z^T \end{array}\right) q
-  = - \left(\begin{array}{c} Y^T q \\ Z^T q \end{array}\right) \\
+  = - \left(\begin{array}{c} Y^T q \\ Z^T q \end{array}\right)
+\end{equation}
+und
+\begin{equation}
 \left(\begin{array}{cc} B_{11} & B_{12} \\ B_{21} & B_{22} \end{array}\right)
   = H Q H^T
   = \left(\begin{array}{c} Y^T \\ Z^T \end{array}\right) Q
       \left(\begin{array}{cc} Y & Z \end{array}\right)
   = \left(\begin{array}{cc} Y^T Q Y & Y^T Q Z \\
-      Z^T Q Y & Z^T Q Z \end{array}\right)
-\end{gather}
+      Z^T Q Y & Z^T Q Z \end{array}\right).
+\end{equation}
 
 %-------------------------------------------------------------------------%
 % Erklärung: Lösung des Problems
 %
 
-Die Bedingung $\nabla F(z^*) = 0$ können wir daher als
+Die Bedingung $\nabla F(z^*) = 0$ kann daher als
 \begin{equation}
   B_{22} z^* + B_{21} y^* - h_2 = 0.
 \end{equation}
-schreiben.
-Mit Hilfe dieser Gleichung bestimmen wir in
+geschrieben werden.
+Mit Hilfe dieser Gleichung bestimmt man in
 Schritt~\ref{list:vektor_z_in_nullraum_verfahren}
 den Vektor $z^*$
 und folglich in
@@ -223,25 +225,25 @@ nach~\eqref{eq:zerlegung_von_xopt_in_nullraum_verfahren}.
 % Erklärung: Berechnung des Multiplikators
 %
 
-Zum Abschluss berechnen wir in
+Zum Abschluss wurde in
 Schritt~\ref{list:multiplikator_lambda_in_nullraum_verfahren}
-den Multiplikator $\lambda$.
+den Multiplikator $\lambda$ berechnet.
 Nach Satz~\ref{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed}
-lautet die Optimalitätsbedingung unseres
+lautet die Optimalitätsbedingung des
 Problems~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
 \begin{equation}
   Q \xopt + q + A^T \lambda = 0.
 \end{equation}
-Multiplizieren wir diese mit $H$, dann erhalten wir
+Multipliziere diese mit $H$, so ergibt sich
 \begin{equation}
   0 = HQ \xopt + Hq + H A^T \lambda
     = \left(\begin{array}{c} Y^T \\ Z^T \end{array}\right) Q \xopt
         - \left(\begin{array}{c} h_1 \\ h_2 \end{array}\right)
         + \left(\begin{array}{c} R \\ 0 \end{array}\right) \lambda.
 \end{equation}
-Aus dem oberen Teil dieses Gleichungssystems ergibt sich die Gleichung
+Aus dem oberen Teil dieses Gleichungssystems lässt sich die Gleichung
 \begin{equation}
   0 = Y^T Q (Y y^* + Z z^*) - h_1 + R^T \lambda
     = B_{11} y^* + B_{12} z^* - h_1 + R^T \lambda
 \end{equation}
-zur Berechnung von $\lambda$.
+zur Berechnung von $\lambda$ finden.

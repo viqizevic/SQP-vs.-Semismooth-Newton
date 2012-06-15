@@ -1,9 +1,13 @@
+Es ist jetzt aufzuklären,
+wie die im SQP-Verfahren vorkommenden quadratischen Teilprobleme
+mit dem Aktive-Mengen-Verfahren
+gelöst werden können.
 
-Wir haben gesehen, dass das SQP-Verfahren
-quadratische Optimierungsprobleme mit linearen Restriktionen
-als Teilprobleme hat.
-Wir werden jetzt aufklären, wie wir diese Probleme
-mit dem Aktive-Mengen-Verfahren lösen können.
+%-------------------------------------------------------------------------%
+%                                                                         %
+% Definition (Quadr. Opt.-Prob. mit lin. Ungl.-Nebenbed.)                 %
+%                                                                         %
+%-------------------------------------------------------------------------%
 
 \begin{definition}
 \emph{(Quadratische Optimierungsprobleme mit linearen Restriktionen)}
@@ -23,15 +27,12 @@ Die Idee des Aktive-Mengen-Verfahrens ist,
 iterativ durch die aktiven Nebenbedingungen
 ein Problem mit nur Gleichungsnebenbedingungen zu formulieren
 und zu lösen.
-Wir brauchen daher wieder ein anderes Verfahren,
-das wir im nächsten Abschnitt besprechen werden,
-um das entstehende Teilproblem zu lösen.
 
 Sei $x^k \in \R^n$ ein zulässiger Punkt des
 Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}.
-Angenommen, wir können eine Suchrichtung $d \in \R^n$ finden,
+Angenommen, eine Suchrichtung $d \in \R^n$ kann gefunden werden,
 sodass der Punkt $x^{k+1} := x^k + d$ ein besserer zulässiger Punkt ist.
-Diesen Vektor $d$ können wir finden, indem wir das Problem
+Diesen Vektor $d$ lässt sich finden, indem das Problem
 \begin{align}
   \min_{d \in \R^n}\ &
     \frac{1}{2} \langle Q(x^k+d), x^k+d \rangle + \langle q, x^k+d \rangle 
@@ -39,19 +40,19 @@ Diesen Vektor $d$ können wir finden, indem wir das Problem
                  \nb & A(x^k+d) = b \notag \\
                      & G(x^k+d) \leq r \notag
 \end{align}
-lösen.
+gelöst wird.
 Dies ist eigentlich das Problem~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed},
 wobei die Variable $x$ mit $x^k + d$ ersetzt wurde und das Problem über
 die Variable $d$ minimiert werden soll.
 
-Lassen wir die Konstanten in der Zielfunktion weg, dann bekommen wir
-als Zielfunktion
+Da die Konstanten in der Zielfunktion vernachlässigt werden können,
+ergibt sich als Zielfunktion
 \begin{displaymath}
   \frac{1}{2} \langle Qd,d \rangle + \langle Qx^k+q,d\rangle.
 \end{displaymath}
 Weil $x^k$ zulässig ist, d.\,h., es gilt $Ax^k = b$,
-können wir dann als Gleichungsnebenbedingungen
-$Ad = 0$ schreiben.
+vereinfacht sich die Gleichungsnebenbedingung als
+$Ad = 0$.
 
 Seien $a_1,\ldots,a_m \in \R^n$ bzw. $g_1,\ldots,g_p \in \R^n$
 wieder die Transponierten der Zeilenvektoren in $A$ bzw. $G$
@@ -68,16 +69,16 @@ Seien $J_k := J(x^k)$, $p_k := |J_k|$ und
 $j_1, \ldots, j_{p_k} \in J_k$.
 Weiter seien
 \begin{equation}
-G_k = \left(\begin{array}{c}
-g_{j_1}^T \\ \vdots \\ g_{j_{p_k}}^T
-\end{array}\right)
-\quad \text{und} \quad
-B_k = \left(\begin{array}{c}
-A \\ G_k
-\end{array}\right).
+  G_k = \left(\begin{array}{c}
+      g_{j_1}^T \\ \vdots \\ g_{j_{p_k}}^T
+    \end{array}\right)
+  \quad \text{und} \quad
+  B_k = \left(\begin{array}{c}
+      A \\ G_k
+    \end{array}\right).
 \end{equation}
 
-Wir definieren dann folgendes Teilproblem mit nur
+Definiere dann folgendes Teilproblem mit nur
 linearen Gleichungsnebenbedingungen:
 \begin{align}
   \min_{d \in \R^n}\ & \frac{1}{2} \langle Qd,d \rangle
@@ -86,7 +87,7 @@ linearen Gleichungsnebenbedingungen:
   \nb & B_k d = 0. \notag
 \end{align}
 
-Wir werden hier voraussetzen, dass folgende gelten:
+Es ist hier vorauszusetzen, dass folgende gelten:
 \begin{gather}
   \label{eq:vorauss_Bk_hat_voll_rang}
   B_k \text{ hat vollen Rang},\\
@@ -110,8 +111,10 @@ mit $\lambda \in \R^m$ und $\mu \in \R^{p_k}$, sodass
 Qd + Qx^k + q + A^T \lambda + G_k^T \mu = 0.
 \end{equation}
 
-Sei $d \neq 0$. Wir können dann zeigen, dass $d$ eine Abstiegsrichtung ist,
-vorrausgesetzt, dass die Matrix $Q$ positiv definit ist.
+Sei $d \neq 0$.
+Dann ist $d$ eine Abstiegsrichtung
+(siehe Definition~\ref{def:abstiegsrichtung}).
+
 Für den Gradient der Zielfunktion des
 Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}
 an der Stelle $x^k$ gilt
@@ -122,16 +125,24 @@ wegen~\eqref{eq:notw_bed_teilprob_in_aktive_mengen_verfahren}
 und somit
 \begin{equation}
 \nabla f(x^k)^T d = -d^T Q d - \lambda^T A d - \mu^T G_k d
-  = -d^T Q d
+  = -d^T Q d,
 \end{equation}
-wegen $Ad=0$ und $G_k d=0$.
-D.\,h. $\nabla f(x^k)^T d < 0$ für positiv definite Matrix Q.
+weil $Ad=0$ und $G_k d=0$.
+Wegen der Bedingung~\eqref{eq:vorauss_Q_pos_def_auf_ker_Bk}
+gilt $d^T Q d > 0$ und folglich
+\begin{equation}
+  \nabla f(x^k)^T d < 0,
+\end{equation}
+d.\,h., $d$ ist eine Abstiegsrichtung.
 
-Da $d$ nun eine Abstiegsrichtung ist,
-können wir also eine Schrittweite $\sigma$ berechnen,
-damit $f(x^{k+1} := x^k + \sigma d) < f(x^k)$ gilt.
+Daher kann nach Satz~\ref{satz:existenz_von_schrittweite}
+eine Schrittweite $\sigma$ berechnet werden, sodass
+\begin{equation}
+  f(x^{k+1} := x^k + \sigma d) < f(x^k)
+\end{equation}
+gilt.
 
-Sei $t$ diese Schrittweite. Es gilt
+Sei $t$ eine Schrittweite. Es gilt
 \begin{align}
 f(x^k+td) & = \tfrac{1}{2} (x^k+td)^T Q (x^k+td) + q^T (x^k+td) \\
   & = \tfrac{1}{2} (x^k)^T Q x^k + t (x^k)^T Q d + \tfrac{1}{2} t^2 d^T Q d
@@ -145,21 +156,23 @@ f(x^k+td) & = \tfrac{1}{2} (x^k+td)^T Q (x^k+td) + q^T (x^k+td) \\
 
 Die Funktion $\tfrac{1}{2} t^2 - t$ hat ein globales Minimum
 an der Stelle $t = 1$ mit dem Optimalwert $-\tfrac{1}{2}$.
-Wir erhalten also mit $t = 1$ den größten Abstieg.
+Man erhält also mit $t = 1$ den größten Abstieg.
 
-Wir müssen noch beachten,
+Es ist noch zu beachten,
 dass $x^{k+1} := x^k + td$
 nicht unbedingt ein zulässiger Punkt ist.
 Durch die Bedingungen $Ad = 0$ und $G_k d = 0$
-bekommen wir zwar
-\begin{gather}
-A x^{k+1} = A x^k + tAd = A x^k \leq 0 \\
-\text{und} \notag \\
+bekommt man zwar
+\begin{equation}
+  A x^{k+1} = A x^k + tAd = A x^k \leq 0
+\end{equation}
+und
+\begin{equation}
 \langle g_j, x^{k+1} \rangle
   = \langle g_j, x^k \rangle + t \langle g_j, d \rangle
   = \langle g_j, x^k \rangle
   = r_j \text{ für } j \in J_k,
-\end{gather}
+\end{equation}
 aber es kann sein,
 dass eine Ungleichung
 \begin{equation}
@@ -177,15 +190,13 @@ dann erfüllt $x^{k+1}$
   < \langle g_j, x^k \rangle
   \leq r_j.
 \end{equation}
-Falls $\langle g_j, d \rangle > 0$ gilt,
-müssen wir dann vorsichtig sein.
-In diesem Fall gilt
+Für den Fall $\langle g_j, d \rangle > 0$ gilt
 \begin{equation}
 \langle g_j, x^{k+1} \rangle
   = \langle g_j, x^k \rangle + t \langle g_j, d \rangle
   \leq r_j
 \end{equation}
-nur, wenn $t$ die Ungleichung
+nur dann, wenn $t$ die Ungleichung
 \begin{equation}
 \label{eq:schrittweite_bedingung_in_aktive_mengen_verfahren}
 t \leq \frac{r_j - \langle g_j, x^k \rangle}{\langle g_j, d \rangle}
@@ -200,8 +211,8 @@ Dann muss $t$ die
 Ungleichung~\eqref{eq:schrittweite_bedingung_in_aktive_mengen_verfahren}
 für alle $j \in I_k$ erfüllen.
 
-Zusammengefasst müssen wir unsere Schrittweite $\sigma_k$
-wie folgt definieren.
+Zusammengefasst ist die Schrittweite $\sigma_k$
+wie folgt zu definieren.
 \begin{equation}
 \label{eq:schrittweite_formel_fuer_aktive_mengen_verf}
 \sigma_k := \min \{ 1, \tau_k\},
@@ -217,16 +228,16 @@ wobei
   \end{cases}
 \end{equation}
 
-Wir haben den Fall $d \neq 0$ betrachtet.
-Jetzt kommen wir zu dem Fall $d = 0$.
-Für $d = 0$ lautet die Gleichung~\eqref{eq:notw_bed_teilprob_in_aktive_mengen_verfahren}
+Es ist nun der Fall $d = 0$ zu betrachten.
+In diesem Fall lautet die
+Gleichung~\eqref{eq:notw_bed_teilprob_in_aktive_mengen_verfahren}
 \begin{equation}
 \label{eq:notw_bed_teilprob_in_aktive_mengen_verf_mit_d_gl_null}
   Qx^k + q + A^T \lambda + G_k^T \mu = 0.
 \end{equation}
 
 Sei $\mu \geq 0$.
-Wir setzen
+Setze
 \begin{equation}
   \lambda^* := \lambda
   \quad \text{und} \quad
@@ -249,21 +260,21 @@ auch die hinreichende
 Optimalitätsbedingung~\eqref{satz:hinr_bed_fuer_prob_mit_lin_ungl_nebenbed}.
 Daher ist $x^k$ eine optimale Lösung
 von~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}
-und wir können somit das Verfahren stoppen.
+und das Verfahren kann somit gestoppt werden.
 
-Falls $\mu \ngeq 0$, dann wählen wir den Index $j \in J_k$ mit
+Falls $\mu \ngeq 0$, dann wähle den Index $j \in J_k$ mit
 \begin{equation}
   \mu_j = \min\{ \mu_i | i \in J_k \} < 0
 \end{equation}
-und setzen
+und setze
 \begin{equation}
   \tilde{J}_k := J_k \backslash \{\,j\}
   \quad \text{und} \quad
   \tilde{p}_k := p_k - 1.
 \end{equation}
-Mit $\tilde{J}_k$ bekommen wir eine neue Matrix $\tilde{B}_k$
+Mit $\tilde{J}_k$ bekommt man eine neue Matrix $\tilde{B}_k$
 und ein neues Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}.
-Wir beachten somit die $j$-te Ungleichung nicht mehr als aktiv.
+Die $j$-te Ungleichung wird somit nicht mehr als aktiv angesehen.
 
 Sei $\tilde{d}$ die Lösung des neuen Problems mit den zugehörigen
 Multiplikatoren $\tilde{\lambda}$ und $\tilde{\mu}$.
@@ -277,9 +288,10 @@ Angenommen ist $\tilde{d} = 0$. Dann lautet die notwendige Bedingung
 \label{eq:notw_bed_fuer_QLGk_tilde}
   Qx^k + q + A^T \tilde{\lambda} + G_k^T \tilde{\mu} = 0.
 \end{equation}
-Fassen wir diese mit der
-Gleichung~\eqref{eq:notw_bed_teilprob_in_aktive_mengen_verf_mit_d_gl_null},
-dann bekommen wir
+Fasst man diese mit der
+Gleichung~\eqref{eq:notw_bed_teilprob_in_aktive_mengen_verf_mit_d_gl_null}
+zusammen,
+dann bekommt man
 \begin{equation}
 -A^T \lambda - G_k^T \mu + A^T \tilde{\lambda} + \tilde{G_k}^T \tilde{\mu} = 0
 \end{equation}
@@ -288,7 +300,7 @@ dann bekommen wir
 + \sum_{i=1}^{p_k-1} (\tilde{\mu}_i - \mu_i) g_{j_i}
 = \mu_j g_j
 \end{equation}
-Für die letzte Gleichung haben wir o.\,B.\,d.\,A. angenommen, dass $j = p_k$.
+Für die letzte Gleichung wird o.\,B.\,d.\,A. angenommen, dass $j = p_k$.
 
 Wegen $\mu_j < 0$ heißt es, dass $g_j$ durch die Linearkombination
 der Vektoren $a_1,\ldots,a_m$ und $g_{j_1},\ldots,g_{j_{\tilde{p}_k}}$
@@ -298,7 +310,12 @@ Voraussetzung~\eqref{eq:vorauss_Bk_hat_voll_rang}.
 Daher gilt $\tilde{d} \neq 0$
 und dies wäre wie zuvor beschrieben eine Abstiegsrichtung.
 
-Insgesamt haben wir folgendes Verfahren:
+%--------------------------------------------------------------------------%
+%                                                                          %
+% Algo (Aktive-Mengen-Verf. f. quadr. Opt.-Prob. mit lin. Ungl.-Nebenbed.) %
+%                                                                          %
+%--------------------------------------------------------------------------%
+
 \begin{algorithm}
 \label{algo:aktive_mengen_verfahren}
 \emph{(Aktive-Mengen-Verfahren
@@ -307,7 +324,7 @@ vgl. Verfahren 6.2.1 in \cite[S.~213]{alt})}
 \begin{compactenum}[1.]
   \item Wähle einen Startpunkt $x^0$ und setze $k:=0$.
   \item Löse das Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}
-  	$\Rightarrow$ Wir bekommen $d^k, \lambda^k$ und $\mu^k$.
+  	$\Rightarrow$ Erhalte $d^k, \lambda^k$ und $\mu^k$.
   	\label{list:quad_teilprob_in_aktive_mengen_verf}
   \item Falls $d^k = 0$
     \begin{compactenum}[3a.]
@@ -320,7 +337,7 @@ vgl. Verfahren 6.2.1 in \cite[S.~213]{alt})}
             und bestimme $\tilde{G}_k$.
           \item Löse das neue
             Problem~\eqref{prob:teilprob_in_aktive_mengen_verfahren}
-            $\Rightarrow$ Wir bekommen $d^k \neq 0, \lambda^k$ und $\mu^k$.
+            $\Rightarrow$ Erhalte $d^k \neq 0, \lambda^k$ und $\mu^k$.
         \end{compactenum}
     \end{compactenum}
   \item Berechne die Schrittweite $\sigma_k$
