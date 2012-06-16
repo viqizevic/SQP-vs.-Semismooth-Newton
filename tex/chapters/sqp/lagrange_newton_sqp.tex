@@ -1,11 +1,15 @@
-Nun kommen wir zu den allgemeinen nichtlinearen Optimierungsproblemen.
+Nun kommt das Verfahren
+für die allgemeinen nichtlinearen Optimierungsprobleme.
 
 \begin{definition}
-Wir definieren die Lagrange-Funktion
-$\Lagrange : D \times \R^m \times \R^p \rightarrow \R$ durch
+Die Lagrange-Funktion
+$\Lagrange : D \times \R^m \times \R^p \rightarrow \R$
+des Problems~\eqref{prob:opt_prob_mit_nichtlin_restr}
+sei durch
 \begin{equation}
-\Lagrange(x,\lambda,\mu) := f(x) + \lambda^T h(x) + \mu^T g(x).
+\Lagrange(x,\lambda,\mu) := f(x) + \lambda^T h(x) + \mu^T g(x)
 \end{equation}
+definiert.
 \end{definition}
 
 \begin{algorithm}
@@ -13,17 +17,27 @@ $\Lagrange : D \times \R^m \times \R^p \rightarrow \R$ durch
 \cite[S.~294]{alt})}
 \begin{enumerate}
   \item Wähle einen Startpunkt $z^0 := (x^0, \lambda^0, \mu^0)$
-        und setze $k := 0$.
-  \item Berechne die Suchrichtung $d^k$ durch Lösung des Problems
+    und setze $k := 0$.
+  \item Löse das Problem
     \begin{align}
       \min_{d \in \R^n}\ &
         \frac{1}{2} d^T \Lagrange_{xx}(x^k,\lambda^k,\mu^k) d
           + \nabla f(x^k)^T d \\
       \nb & h(x^k) + h'(x^k) d = 0 \\
-          & g(x^k) + g'(x^k) d \leq 0
+          & g(x^k) + g'(x^k) d \leq 0.
     \end{align}
-  \item Ist $d^k = 0 \Rightarrow$ STOP.
-  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$.
-        $\Rightarrow$ Gehe zu Schritt 2.
+    $\Rightarrow$ Erhalte $d, \lambda$ und $\mu$.
+  \item Ist $d = 0 \Rightarrow$ STOP.
+  \item Setze $x^{k+1} := x^k + d,\ \lambda^{k+1} := \lambda,\ 
+    \mu^{k+1} := \mu$ und $k := k+1$.
+    $\Rightarrow$ Gehe zu Schritt 2.
 \end{enumerate}
 \end{algorithm}
+
+In diesem Verfahren wird also iterativ die Suchrichtung
+über eine quadratische Näherung der Lagrange-Funktion
+des Problems berechnet,
+wobei die Nebenbedingungen linearisiert werden.
+
+Eine ausführliche Erklärung und ein Konvergenzresultät zu diesem Verfahren
+sind in Abschnitt~8.1.2 in \cite[S.~290f]{alt} zu finden.

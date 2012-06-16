@@ -34,6 +34,7 @@ der Stelle~\eqref{eq:teilprob_lin_gl_nebenbed} die Gleichung $Ad = 0$
 geschrieben werden.
 
 \begin{algorithm}
+\label{algo:sqp_verfahren_fuer_prob_mit_lin_ungl_nebenbed}
 \emph{(SQP-Verfahren für \eqref{prob:opt_prob_mit_lin_ungl_nebenbed},
 vgl. Verfahren 6.4.1 in \cite[S.~237]{alt})}
 \begin{enumerate}
@@ -89,16 +90,38 @@ des Verfahrens.
 Sei $\xopt$ lokale Lösung von \eqref{prob:opt_prob_mit_lin_ungl_nebenbed}.
 Sei $f$ auf $D$ zweimal stetig differenzierbar
 und es gelte die Bedingung~\eqref{eq:hesse_matrix_pos_def_auf_kern_A}.
-Dann gibt es ein $\delta > 0$, sodass das SQP-Verfahren
+Dann gibt es ein $\delta > 0$, sodass das
+Verfahren~\ref{algo:sqp_verfahren_fuer_prob_mit_lin_ungl_nebenbed}
 für jeden Startpunkt $x^0 \in B(\xopt,\delta)$
 eine Folge $\{x^k\}$ definiert,
-die superlinear gegen $\xopt$ konvergiert.
+die superlinear gegen $\xopt$ konvergiert, d.\,h.,
+es existiert eine Nullfolge $\{r_k\} \subset \R_+$ mit
+\begin{equation}
+  \| x^{k+1} - \xopt \|
+    \leq r_k \| x^k - \xopt \|
+    \qquad \forall k \geq 0.
+\end{equation} 
 Ist zusätzlich $f''$ auf $D$ Lipschitz-stetig\footnote{$f''$ ist
 auf $D$ Lipschitz-stetig,
 falls es eine Konstante $L > 0$ mit
 $\|f''(x) - f''(y)\| \leq L \|x-y\|$
 für alle $x,y \in D$
 gibt},
-dann konvergiert $\{x^k\}$ für jeden Startpunkt $x^0 \in B(\xopt,\delta)$
-quadratisch gegen $\xopt$.
+dann konvergiert die Folge $\{x^k\}$ für jeden Startpunkt
+$x^0 \in B(\xopt,\delta)$ quadratisch gegen $\xopt$,
+d.\,h., es existieren $c > 0$ und $K \in \N$ mit
+\begin{equation}
+  \| x^{k+1} - \xopt \|
+    \leq c \| x^k - \xopt \|^2
+    \qquad \forall k \geq K.
+\end{equation} 
 \end{theorem}
+
+Es kann gezeigt werden, dass mit den Voraussetzungen des Satzes
+die Lösbarkeit des Problems~\eqref{prob:quad_opt_prob_in_sqp}
+gesichert werden kann.
+Der Satz zeigt auch, dass das
+Verfahren~\ref{algo:sqp_verfahren_fuer_prob_mit_lin_ungl_nebenbed}
+leider nur lokal konvergiert.
+Um ein global konvergentes Verfahren zu bekommen,
+muss eine geeignete Schrittweite gewählt werden.
