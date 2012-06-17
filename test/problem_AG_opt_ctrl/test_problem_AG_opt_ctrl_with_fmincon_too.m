@@ -1,13 +1,13 @@
 function test_problem_AG_opt_ctrl_with_fmincon_too()
 	u = [];
 	v = [];
-	x0 = [0.087; 0.000; 0.087; -0.009; 0.086; -0.016; 0.085; -0.023; 0.082; -0.030; 0.079; -0.036; 0.076; -0.042; 0.072; -0.048; 0.067; -0.054; 0.061; -0.059; 0.055; -0.065; 0.002; 0.009; 0.015; 0.018; 0.020; 0.020; 0.019; 0.016; 0.012; 0.006];
+	x0 = opt_ctrl_prob_constr_x0(5,12,50);
 	tol = 0.00001;
 	itmax = 100;
-    A = opt_ctrl_prob_constr_A([0 1; -1 0],[0; 1],1,10);
-    b = opt_ctrl_prob_constr_b(pi/36,0,10);
-	G = opt_ctrl_prob_constr_G(10);
-	r = opt_ctrl_prob_contsr_r(-1,1,10);
+    A = opt_ctrl_prob_constr_A(12,50);
+    b = opt_ctrl_prob_constr_b(5,12,50);
+	G = opt_ctrl_prob_constr_G(50);
+	r = opt_ctrl_prob_constr_r(6,50);
 	G = [ G; -eye(length(u)); eye(length(v)) ];
 	r = [ r; -u; v ];
 	tic;
