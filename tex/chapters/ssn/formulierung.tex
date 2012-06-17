@@ -1,7 +1,25 @@
+Es wird nun die Formulierung des halbglatten Newton-Verfahrens vorgestellt
+um nichtlineare Optimierungsprobleme mit linearen Restriktionen zu lösen.
 
-Wir werden jetzt das halbglatte Newton-Verfahren formulieren,
-um nichtlineare Optimierungsprobleme mit linearen Restriktionen
-zu lösen.
+Für eine Lösung $\xopt$
+des Problems~\ref{prob:opt_prob_mit_lin_ungl_nebenbed}
+\begin{align}
+  \min_{x \in \R^n}\ & f(x)
+    \tag{PLU}\\
+  \nb & Ax = b \notag \\
+      & G x \leq r \notag
+\end{align}
+gelten nach Satz~\ref{satz:karush_kuhn_tucker}
+die Optimalitätsbedingungen
+\begin{gather}
+  \nabla f(\xopt) + A^T \lambda + G^T \mu = 0 \\
+  A \xopt = b \\
+  \mu_j \geq 0, \quad \langle g_j, \xopt \rangle \leq r_j, \quad
+    \mu_j (r_j - \langle g_j, \xopt \rangle) = 0 \quad
+    \text{für } j = 1,\ldots,p
+    \label{eq:optimalitaetsbed_in_prob_mit_lin_ungl_nebenbed}
+\end{gather}
+mit Vektoren $\lambda \in \R^m$ und $\mu \in \R^p$.
 
 Gegeben seien $x_1, x_2 \in \R$.
 Es gilt
@@ -11,31 +29,19 @@ Es gilt
     x_1 x_2 = 0
   \end{array}
   \qquad \Leftrightarrow \qquad
-  \min(x_1,x_2) = 0
+  \min\{x_1,x_2\} = 0
 \end{equation}
 
-Wenn wir also die Bedingungen
+Die Bedingungen~\eqref{eq:optimalitaetsbed_in_prob_mit_lin_ungl_nebenbed}
+sind somit äquivalent zu
 \begin{equation}
-  \mu \geq 0, \quad Gx \leq r \quad \text{und} \quad \mu^T(Gx-r) = 0
+  \min\left\{ \mu_j, r_j - \langle g_j, \xopt \rangle \right\} = 0
 \end{equation}
-haben, können wir sie als
+oder
 \begin{equation}
-  \min( \mu, r-Gx ) = 0
+  \min\left\{ \mu, r - G \xopt \right\} = 0.
 \end{equation}
-schreiben. Hier arbeitet der Operator $\min$ elementenweise.
-
-Wir betrachten nun das Problem
-\begin{align}
-  \min_{x \in \R^n}\ & f(x)
-    \tag{PLU} \label{prob:opt_prob} \\
-  \nb & G x \leq r \notag
-\end{align}
-
-Die Optimalitätsbedingungen für dieses Problem ist
-\begin{align}
-  \nabla f(x) + G^T \mu & = 0 \\
-  \mu \geq 0, \quad Gx \leq r, \quad \mu^T(Gx-r) & = 0
-\end{align}
+Hier arbeitet der Operator $\min$ elementenweise.
 
 Diese können wir nach unserer vorherigen Überlegung schreiben als
 \begin{align}

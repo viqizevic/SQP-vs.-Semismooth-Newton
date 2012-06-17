@@ -1,5 +1,6 @@
 Nun kommt das Verfahren
-für die allgemeinen nichtlinearen Optimierungsprobleme.
+für die allgemeinen nichtlinearen
+Optimierungsprobleme~\eqref{prob:opt_prob_mit_nichtlin_restr}.
 
 \begin{definition}
 Die Lagrange-Funktion
@@ -13,7 +14,9 @@ definiert.
 \end{definition}
 
 \begin{algorithm}
-\emph{(Lagrange-Newton-SQP-Verfahren, vgl. Verfahren 8.1.4 in
+\label{algo:lagrange_newton_sqp_verfahren}
+\emph{(SQP-Verfahren für~\eqref{prob:opt_prob_mit_nichtlin_restr},
+vgl. Verfahren 8.1.4 in
 \cite[S.~294]{alt})}
 \begin{enumerate}
   \item Wähle einen Startpunkt $z^0 := (x^0, \lambda^0, \mu^0)$
@@ -34,10 +37,12 @@ definiert.
 \end{enumerate}
 \end{algorithm}
 
-In diesem Verfahren wird also iterativ die Suchrichtung
+In dem Verfahren~\ref{algo:lagrange_newton_sqp_verfahren}
+wird also iterativ die Suchrichtung
 über eine quadratische Näherung der Lagrange-Funktion
 des Problems berechnet,
 wobei die Nebenbedingungen linearisiert werden.
 
-Eine ausführliche Erklärung und ein Konvergenzresultät zu diesem Verfahren
+Eine ausführliche Erklärung und ein Konvergenzresultät
+zum Verfahren~\ref{algo:lagrange_newton_sqp_verfahren}
 sind in Abschnitt~8.1.2 in \cite[S.~290f]{alt} zu finden.

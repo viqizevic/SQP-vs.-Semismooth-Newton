@@ -1,10 +1,8 @@
-
-
-Wir betrachten erst mal die Definition
-einer halbglatten Funktion.
+Die Definition einer halbglatten Funktion
+kommt vorerst in Betrachtung.
 
 \begin{definition}
-\emph(Vgl. Definition 2.1 in \cite[S.~25]{ulbrich})\\
+\emph{(Vgl. Definition 2.1 in \cite[S.~25]{ulbrich})}\\
 Sei $V \subset \R^n$ eine nichtleere offene Menge.
 Sei $f \colon V \rightarrow \R^m$ lokal Lipschitz-stetig in $x \in V$.
 Sei $D_f$ die Menge aller Punkte,
@@ -26,12 +24,13 @@ von $f$ an der Stelle $x$ die konvexe Hülle
 \end{definition}
 
 \begin{definition}
-\emph(Vgl. Definition 2.5 in \cite[S.~27]{ulbrich})\\
+\emph{(Vgl. Definition 2.5 in \cite[S.~27]{ulbrich})}\\
 Sei $V \subset \R^n$ nichtleer und offen.
 Die Funktion $f \colon V \rightarrow \R^m$ heißt halbglatt in $x \in V$,
 falls $f$ lokal Lipschitz-stetig in $x$ ist und
 \begin{equation}
-  \lim_{M \in \partial f(x+ \tau d), d \rightarrow s, \tau \rightarrow 0^+} Md
+  \lim_{M \in \partial f(x+ \tau d),\: d \rightarrow s,\: \tau \rightarrow 0^+}
+    Md
 \end{equation}
 für alle $s \in \R^m$ existiert.
 
@@ -39,7 +38,35 @@ Falls $f$ halbglatt in allen $x \in V$ ist,
 dann heißt $f$ halbglatt (in $V$).  
 \end{definition}
 
-Wir formulieren nun das halbglatte Newton-Verfahren
+\begin{example}
+\emph{(Vgl. Beispiel 2.21 in \cite[S.~33]{ulbrich})}\\
+Stückweise differenzierbare Funktionen
+sind halbglatt,
+beispielsweise
+\begin{equation}
+  t \in \R \mapsto \abs{t}, \quad
+  x \in \R^2 \mapsto \max\{ x_1, x_2 \}
+  \quad \text{und} \quad
+  x \in \R^2 \mapsto \min\{ x_1, x_2 \}.
+\end{equation}
+\end{example}
+
+\begin{example}
+\emph{(Vgl. Abschnitt 2.5.1 in \cite[S.~31]{ulbrich})}\\
+Die Funktion $f \colon \R^n \to \R, x \mapsto \norm{x} = \sqrt{x^T x}$
+ist eine halbglatte Funktion mit
+\begin{equation}
+  \partial f(x) = \partial_B f(x) =
+    \left\{ \frac{x^T}{\norm{x}} \right\} \text{ für } x \neq 0,
+\end{equation}
+\begin{equation}
+  \partial_B f(0) = \left\{ v^T |\, v \in \R^n, \norm{v} = 1 \right\}
+  \quad \text{und} \quad
+  \partial f(0) = \left\{ v^T |\, v \in \R^n, \norm{v} \leq 1 \right\}.
+\end{equation}
+\end{example}
+
+Jetzt kommt die Formulierung des halbglatten Newton-Verfahrens
 zum Lösen der Gleichung
 \begin{equation}
   f(x) = 0, \label{eq:halbglatte_gleichung}
@@ -55,7 +82,7 @@ vgl. Algorithmus 2.11 in \cite[S.~29]{ulbrich})}
   \item Wähle einen Startpunkt $x^0$ und setze $k := 0$.
   \item Ist $f(x^k) = 0$ \label{list:stop_criteria_ssn}
         $\Rightarrow$ STOP.
-  \item Wähle $M_k \in \partial \nabla f (x^k)$
+  \item Wähle $M_k \in \partial \nabla f (x^k)$.
   \item Berechne die Lösung $d$ des linearen Gleichungssystems
         \begin{equation}
           M_k d = - f(x^k).
@@ -66,9 +93,9 @@ vgl. Algorithmus 2.11 in \cite[S.~29]{ulbrich})}
 \end{enumerate}
 \end{algorithm}
 
-Das halbglatte Newton-Verfahren arbeitet eigentlich genauso
+Das halbglatte Newton-Verfahren arbeitet prinzipiell
 wie das Newton-Verfahren.
-Der Unterschied liegt nur darin, dass hier die Funktion nicht
+Der Unterschied liegt darin, dass hier die Funktion nicht
 unbedingt so glatt ist.
 
 \begin{theorem}
@@ -88,6 +115,6 @@ $x_0 \in U_{\delta}(\xopt)$
 die Bedingung~(\ref{list:loesbarkeit_der_gleichung_in_halbgl_newton_verf})
 erfüllt ist und das Verfahren~\ref{algo:halbglattes_newton}
 entweder mit $x_k = \xopt$ terminiert
-oder eine Folge $(x_k)$ erzeugt,
-die $q$-superlinear gegen $\xopt$ konvergiert.
+oder eine Folge $\{x_k\}$ erzeugt,
+die superlinear gegen $\xopt$ konvergiert.
 \end{theorem}
