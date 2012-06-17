@@ -1,19 +1,18 @@
-Wir kommen nun zu dem allgemeinen nichtlinearen Optimierungsproblem.
-Wir schreiben noch einmal das Problem~\eqref{prob:opt_prob_mit_nichtlin_restr}.
+Abschließend kommt nun das allgemeine nichtlineare Optimierungsproblem.
+Das Optimierungsproblem~\eqref{prob:opt_prob_mit_nichtlin_restr} ist
 \begin{align*}
   \min_{x \in \R^n}\ & f(x) \\
               \nb & g_i(x) \leq 0 \text{ für } i = 1,\ldots,p \\
-                  & h_j(x) = 0 \text{ für } j = 1,\ldots,m
+                  & h_j(x) = 0 \text{ für } j = 1,\ldots,m.
 \end{align*}
 
 Um die Optimalitätsbedingung des Problems~\eqref{prob:opt_prob_mit_nichtlin_restr}
-zu bekommen, definiert man die sogenannte Regularitätsbedingung
+zu bekommen, definiert man eine sogenannte \emph{Regularitätsbedingung}
 (vgl. Definition 7.2.14 in \cite[S.~261]{alt}),
-die wir hier nicht näher betrachten werden.
+die hier nicht näher betrachtet wird.
 Die folgende Definition ist eine spezielle Bedingung,
-aus der diese Regularitätsbedingung folgt.
-Diese Regularitätsbedingung kann aber
-noch von anderen Bedingungen hergeleitet werden.
+aus der die Regularitätsbedingung folgt.
+Sie kann aber noch aus anderen Bedingungen hergeleitet werden.
 
 \begin{definition}
 \emph{(Mangasarian-Fromowitz-Regularitätsbedingung, vgl. Satz 7.2.24 in
@@ -38,7 +37,7 @@ existiert.
 \end{definition}
 
 Der folgende Satz gilt eigentlich mit der allgemeinen Regularitätsbedingung.
-Wir verwenden aber hier nur die Mangasarian-Fromowitz-Regularitätsbedingung.
+Es wird aber hier nur die Mangasarian-Fromowitz-Regularitätsbedingung verwendet.
 
 \begin{theorem}
 \emph{(Notwendige Bedingung, vgl. Satz 7.2.11 in \cite[S.~260]{alt})}\\
