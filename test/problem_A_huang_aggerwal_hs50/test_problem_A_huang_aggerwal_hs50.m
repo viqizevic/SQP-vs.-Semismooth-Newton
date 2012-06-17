@@ -1,4 +1,4 @@
-function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_A_huang_aggerwal_hs50(show)
+function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp,X_ssn,X_sqp] = test_problem_A_huang_aggerwal_hs50(show)
     u = [];
     v = [];
     x0 = [35; -31; 11; 5; -5];
@@ -11,15 +11,14 @@ function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_A_huang_aggerwal
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     tic;
-    %[x_ssn,fval_ssn,it_ssn] = active_set_strategy('func_for_problem_A_huang_aggerwal_hs50','grad_func_for_problem_A_huang_aggerwal_hs50','hess_func_for_problem_A_huang_aggerwal_hs50',A,b,G,r,x0,itmax,tol);
-    [x_ssn,fval_ssn,it_ssn] = semismooth_newton('func_for_problem_A_huang_aggerwal_hs50','grad_func_for_problem_A_huang_aggerwal_hs50','hess_func_for_problem_A_huang_aggerwal_hs50',A,b,G,r,x0,itmax,tol);
+    [x_ssn,fval_ssn,it_ssn,X_ssn] = semismooth_newton('func_for_problem_A_huang_aggerwal_hs50','grad_func_for_problem_A_huang_aggerwal_hs50','hess_func_for_problem_A_huang_aggerwal_hs50',A,b,G,r,x0,itmax,tol);
     t_ssn = toc;
     x1 = sprintf('%.3f ',x_ssn);
     f1 = sprintf('f(x_ssn) = %.3f',fval_ssn);
     t1 = sprintf('solved in %.2f ms.',t_ssn*1000);
     str1 = ['x_ssn = [ ', x1, '], ', f1, ', it = ', num2str(it_ssn), ', ', t1];
     tic;
-    [x_sqp,fval_sqp,it_sqp] = seq_quad_prog('func_for_problem_A_huang_aggerwal_hs50','grad_func_for_problem_A_huang_aggerwal_hs50','hess_func_for_problem_A_huang_aggerwal_hs50',A,b,G,r,x0,itmax,tol);
+    [x_sqp,fval_sqp,it_sqp,X_sqp] = seq_quad_prog('func_for_problem_A_huang_aggerwal_hs50','grad_func_for_problem_A_huang_aggerwal_hs50','hess_func_for_problem_A_huang_aggerwal_hs50',A,b,G,r,x0,itmax,tol);
     t_sqp = toc;
     x2 = sprintf('%.3f ',x_sqp);
     f2 = sprintf('f(x_sqp) = %.3f',fval_sqp);

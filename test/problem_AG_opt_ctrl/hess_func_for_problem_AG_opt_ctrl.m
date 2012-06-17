@@ -1,6 +1,6 @@
 function H = hess_func_for_problem_AG_opt_ctrl(x)
-	Q = opt_ctrl_prob_func_H(10^(-3),1,10);
-	q = opt_ctrl_prob_func_q(10);
+	Q = opt_ctrl_prob_func_H(0.2,12,50);
+	q = opt_ctrl_prob_func_q(0.1,1.5,12,50);
 	c = 0;
 	H = Q;
 end
