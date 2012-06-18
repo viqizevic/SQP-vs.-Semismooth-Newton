@@ -4,20 +4,28 @@ kommt vorerst in Betrachtung.
 \begin{definition}
 \emph{(Vgl. Definition 2.1 in \cite[S.~25]{ulbrich})}\\
 Sei $V \subset \R^n$ eine nichtleere offene Menge.
-Sei $f \colon V \rightarrow \R^m$ lokal Lipschitz-stetig in $x \in V$.
-Sei $D_f$ die Menge aller Punkte,
-wo $f$ eine (Fr\'echet-)Ableitung $f' \in L(\R^n,\R^m)$ besitzt.
+Sei $f \colon V \rightarrow \R^m$ Lipschitz-stetig in der Nähe von $x \in V$,
+d.\,h., es gibt eine offene Menge $V(x) \subset V$, wo $f$ Lipschitz-stetig ist.
+Sei $D_f \subset V$ die Menge aller Punkte $v \in V$, wo $f$ eine
+(Fr\'echet-)Ableitung\footnote{(Fr\'echet-)Ableitung einer Abbildung
+$F\colon \R^n \to \R^m$ ist $F'(x) \in L(\R^n,\R^m)$ mit
+\[ \norm{F(x+s) - F(x) - F'(x)s} = o(\norm{s}) \text{ für } \norm{s} \to 0.\]}
+$f'(v) \in \R^{m,n}$ besitzt.
 Die Menge
 \begin{equation}
   \partial_B f(x) := \left\{ M \in \R^{m \times n}\ |\ 
     \exists (x_k) \subset D_f :
-    x_k \rightarrow x, f'(x_k) \rightarrow M \right\}
+    x_k \rightarrow x,\: f'(x_k) \rightarrow M \right\}
 \end{equation}
 heißt B-Sub-Ableitung\footnote{englisch: B-subdifferential,
-\textss{B} für Bouligand}
+\textss{B} für Bouligand.}
 von $f$ an der Stelle $x$.
 Ferner ist nach Clarke die allgemeine Jacobi-Matrix
-von $f$ an der Stelle $x$ die konvexe Hülle
+von $f$ an der Stelle $x$
+die konvexe Hülle\footnote{Die konvexe Hulle einer Menge $M$ ist
+\[\co{M} := \left\{ \sum_{i=1}^k \lambda_i v_i |\: k \in \N,\:
+v_i \in M,\: \lambda_i \geq 0 \text{ für } i=1,\ldots,k,\: 
+\sum_{i=1}^k \lambda_i = 1\: \right\}.\]}
 \begin{equation}
   \partial f(x) := \co \partial_B f(x).
 \end{equation}
@@ -39,21 +47,11 @@ dann heißt $f$ halbglatt (in $V$).
 \end{definition}
 
 \begin{example}
-\emph{(Vgl. Beispiel 2.21 in \cite[S.~33]{ulbrich})}\\
-Stückweise differenzierbare Funktionen
-sind halbglatt,
-beispielsweise
+\emph{(Vgl. Abschnitt 2.5.1 in \cite[S.~31f]{ulbrich})}\\
+Die Funktion
 \begin{equation}
-  t \in \R \mapsto \abs{t}, \quad
-  x \in \R^2 \mapsto \max\{ x_1, x_2 \}
-  \quad \text{und} \quad
-  x \in \R^2 \mapsto \min\{ x_1, x_2 \}.
+  f \colon \R^n \to \R,\: x \mapsto \norm{x} = \sqrt{x^T x}
 \end{equation}
-\end{example}
-
-\begin{example}
-\emph{(Vgl. Abschnitt 2.5.1 in \cite[S.~31]{ulbrich})}\\
-Die Funktion $f \colon \R^n \to \R, x \mapsto \norm{x} = \sqrt{x^T x}$
 ist eine halbglatte Funktion mit
 \begin{equation}
   \partial f(x) = \partial_B f(x) =
@@ -63,6 +61,21 @@ ist eine halbglatte Funktion mit
   \partial_B f(0) = \left\{ v^T |\, v \in \R^n, \norm{v} = 1 \right\}
   \quad \text{und} \quad
   \partial f(0) = \left\{ v^T |\, v \in \R^n, \norm{v} \leq 1 \right\}.
+\end{equation}
+\end{example}
+
+\begin{example}
+\emph{(Vgl. Abschnitt 2.5.3 in \cite[S.~32~ff]{ulbrich})}\\
+Stückweise differenzierbare Funktionen
+sind halbglatt.
+Ein Beispiel ist die Funktion
+\begin{equation}
+  f \colon \R^2 \to \R,\: x \mapsto \min\{ x_1, x_2 \}
+\end{equation}
+mit
+\begin{equation}
+  \partial f(x) = \partial_B f(x) =
+    \ldots
 \end{equation}
 \end{example}
 
@@ -96,7 +109,7 @@ vgl. Algorithmus 2.11 in \cite[S.~29]{ulbrich})}
 Das halbglatte Newton-Verfahren arbeitet prinzipiell
 wie das Newton-Verfahren.
 Der Unterschied liegt darin, dass hier die Funktion nicht
-unbedingt so glatt ist.
+unbedingt glatt ist.
 
 \begin{theorem}
 \emph{(Vgl. Satz 2.12 in \cite[S.~29f]{ulbrich})}\\
