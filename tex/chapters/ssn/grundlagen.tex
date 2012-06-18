@@ -14,7 +14,7 @@ $f'(v) \in \R^{m,n}$ besitzt.
 Die Menge
 \begin{equation}
   \partial_B f(x) := \left\{ M \in \R^{m \times n}\ |\ 
-    \exists (x_k) \subset D_f :
+    \exists\, \{x_k\} \subset D_f :
     x_k \rightarrow x,\: f'(x_k) \rightarrow M \right\}
 \end{equation}
 heißt B-Sub-Ableitung\footnote{englisch: B-subdifferential,
@@ -23,9 +23,9 @@ von $f$ an der Stelle $x$.
 Ferner ist nach Clarke die allgemeine Jacobi-Matrix
 von $f$ an der Stelle $x$
 die konvexe Hülle\footnote{Die konvexe Hulle einer Menge $M$ ist
-\[\co{M} := \left\{ \sum_{i=1}^k \lambda_i v_i |\: k \in \N,\:
+\[\co{M} := \left\{ \sum_{i=1}^k \lambda_i v_i \left| \: k \in \N,\:
 v_i \in M,\: \lambda_i \geq 0 \text{ für } i=1,\ldots,k,\: 
-\sum_{i=1}^k \lambda_i = 1\: \right\}.\]}
+\sum_{i=1}^k \lambda_i = 1\: \right\} \right. \]}
 \begin{equation}
   \partial f(x) := \co \partial_B f(x).
 \end{equation}
@@ -70,12 +70,7 @@ Stückweise differenzierbare Funktionen
 sind halbglatt.
 Ein Beispiel ist die Funktion
 \begin{equation}
-  f \colon \R^2 \to \R,\: x \mapsto \min\{ x_1, x_2 \}
-\end{equation}
-mit
-\begin{equation}
-  \partial f(x) = \partial_B f(x) =
-    \ldots
+  f \colon \R^2 \to \R,\: x \mapsto \min\{ x_1, x_2 \}.
 \end{equation}
 \end{example}
 
@@ -95,13 +90,13 @@ vgl. Algorithmus 2.11 in \cite[S.~29]{ulbrich})}
   \item Wähle einen Startpunkt $x^0$ und setze $k := 0$.
   \item Ist $f(x^k) = 0$ \label{list:stop_criteria_ssn}
         $\Rightarrow$ STOP.
-  \item Wähle $M_k \in \partial \nabla f (x^k)$.
+  \item Wähle $M_k \in \partial f (x^k)$.
   \item Berechne die Lösung $d$ des linearen Gleichungssystems
         \begin{equation}
           M_k d = - f(x^k).
         \end{equation}
         Setze $d^k := d$.
-  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$ $\Rightarrow$
+  \item Setze $x^{k+1} := x^k + d^k$ und $k := k+1$. $\Rightarrow$
         Gehe zu Schritt~\ref{list:stop_criteria_ssn}.
 \end{enumerate}
 \end{algorithm}

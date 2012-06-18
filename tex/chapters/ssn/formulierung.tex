@@ -58,15 +58,15 @@ Sei nun die Funktion
   \left(\begin{array}{c}
     \nabla f(x) + A^T \lambda + G^T \mu \\
     Ax - b \\
-    \min\left\{ \mu, r - G \xopt \right\}
+    \min\left\{ \mu, r - Gx \right\}
   \end{array}\right).
 \end{equation}
 
 Seien die Indexmengen
 \begin{align}
   \A & := \{\ j \in \{1,\ldots,p\}\ |\ r_j - \langle g_j, x \rangle < \mu_j\ \}, \\
-  \I & := \{\ j \in \{1,\ldots,p\}\ |r_j - \langle g_j, x \rangle \geq \mu_j\ \}
-    = \{1,\ldots,p\} \backslash \A.
+  \I & := \{\ j \in \{1,\ldots,p\}\ |\ r_j - \langle g_j, x \rangle \geq \mu_j\
+  \} = \{1,\ldots,p\} \backslash \A.
 \end{align}
 Mit
 \begin{equation}
@@ -78,28 +78,30 @@ Mit
 \end{equation}
 gilt dann
 \begin{equation}
-  \min\left\{ \mu, r - G \xopt \right\} =
+  \min\left\{ \mu, r - G x \right\} =
   \left(\begin{array}{c}
-    \chi_\I(1) \mu_1 + \chi_\A(1) (r_1 - \langle g_1, x \rangle) \\
+    \chi_\I(1)\, \mu_1 + \chi_\A(1)\, (r_1 - \langle g_1, x \rangle) \\
       \vdots \\
-    \chi_\I(p) \mu_p + \chi_\A(p) (r_p - \langle g_p, x \rangle)
+    \chi_\I(p)\, \mu_p + \chi_\A(p)\, (r_p - \langle g_p, x \rangle)
   \end{array}\right).
 \end{equation}
 
-Die Ableitung von $F$ lautet somit
+Dann ist
 \begin{equation}
   F'(x,\lambda,\mu) =
   \left(\begin{array}{ccc}
-         f''(x)         &  A^T   &      G^T         \\
-           A            &   0    &       0          \\
-    - \chi_\A(1) g_1^T  &   0    & \chi_\I(1) e_1^T \\
-        \vdots          & \vdots &    \vdots        \\
-    - \chi_\A(p) g_p^T  &   0    & \chi_\I(p) e_p^T
+         f''(x)         &  A^T   &      G^T             \\
+           A            &   0    &       0              \\
+    - \chi_\A(1)\, g_1^T  &   0    & \chi_\I(1)\, e_1^T \\
+        \vdots          & \vdots &    \vdots            \\
+    - \chi_\A(p)\, g_p^T  &   0    & \chi_\I(p)\, e_p^T
   \end{array}\right)
 \end{equation}
+ein Element von $\partial F(x,\lambda,\mu)$.
 
 \begin{algorithm}
-\emph{(Das halbglatte Newton-Verfahren)}
+\emph{(Das halbglatte Newton-Verfahren
+für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
 \begin{enumerate}
   \item Wähle $x^0, \lambda^0, \mu^0$ und setze $k := 0$.
   \item Berechne die Lösung \label{list:equation_ssn}
@@ -108,13 +110,16 @@ Die Ableitung von $F$ lautet somit
         \begin{equation}
           F'(x^k,\lambda^k,\mu^k) d = - F(x^k,\lambda^k,\mu^k).
         \end{equation}
-        Setze $d^k_x := d_x, d^k_\lambda := d_\lambda$ und $d^k_\mu := d_\mu$.
+        Setze $d^k_x := d_x,\: d^k_\lambda := d_\lambda$ und $d^k_\mu := d_\mu$.
   \item Ist $d^k_x = 0$
         $\Rightarrow$ STOP.
-  \item Setze $x^{k+1} := x^k + d^k_x$,
-        $\lambda^{k+1} := \lambda^k + d^k_\lambda$,
-        $\mu^{k+1} := \mu^k + d^k_\mu$
-        und $k := k+1$
+  \item Setze
+        \begin{equation}
+          x^{k+1} := x^k + d^k_x, \quad
+          \lambda^{k+1} := \lambda^k + d^k_\lambda, \quad
+          \mu^{k+1} := \mu^k + d^k_\mu
+        \end{equation}
+        und $k := k+1$.
         $\Rightarrow$ Gehe zu Schritt~\ref{list:equation_ssn}.
 \end{enumerate}
 \end{algorithm}
