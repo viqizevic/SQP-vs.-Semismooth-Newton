@@ -1,8 +1,9 @@
-Es wird nun die Formulierung des halbglatten Newton-Verfahrens vorgestellt
-um nichtlineare Optimierungsprobleme mit linearen Restriktionen zu lösen.
+Es wird nun die Formulierung des halbglatten Newton-Verfahrens
+zur Lösung nichtlinearer Optimierungsprobleme mit linearen
+Restriktionen vorgestellt.
 
 Für eine Lösung $\xopt$
-des Problems~\ref{prob:opt_prob_mit_lin_ungl_nebenbed}
+des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
 \begin{align}
   \min_{x \in \R^n}\ & f(x)
     \tag{PLU}\\
@@ -15,7 +16,7 @@ die Optimalitätsbedingungen
   \nabla f(\xopt) + A^T \lambda + G^T \mu = 0 \\
   A \xopt = b \\
   \mu_j \geq 0, \quad \langle g_j, \xopt \rangle \leq r_j, \quad
-    \mu_j (r_j - \langle g_j, \xopt \rangle) = 0 \quad
+    \mu_j \bigl( r_j - \langle g_j, \xopt \rangle \bigr) = 0 \quad
     \text{für } j = 1,\ldots,p
     \label{eq:optimalitaetsbed_in_prob_mit_lin_ungl_nebenbed}
 \end{gather}
@@ -44,29 +45,36 @@ oder in Matrixschreibweise:
 \end{equation}
 wobei der Operator $\min$ hier dann elementenweise arbeitet.
 
-Deswegen können die Optimalitätsbedingungen wie folgt
+Auf diese Weise können die Optimalitätsbedingungen wie folgt
 geschrieben werden.
 \begin{align}
   \nabla f(\xopt) + A^T \lambda + G^T \mu & = 0 \\
   A \xopt & = b \\
-  \min\left\{ \mu, r - G \xopt \right\} & = 0
-\end{align}.
+  \min\left\{ \mu, r - G \xopt \right\} & = 0.
+\end{align}
 
-Sei nun die Funktion
+Diese Neufassung der Optimalitätsbedingungen
+motiviert die Definition der halbglatten Funktion
 \begin{equation}
   F(x,\lambda,\mu) :=
   \left(\begin{array}{c}
     \nabla f(x) + A^T \lambda + G^T \mu \\
     Ax - b \\
-    \min\left\{ \mu, r - Gx \right\}
-  \end{array}\right).
+    \min\left\{ \mu, r - Gx \right\}.
+  \end{array}\right)
+\end{equation}
+und den Einsatz des halbglatten Newton-Verfahrens
+zur Lösung des Gleichungssystems
+\begin{equation}
+  F(x,\lambda,\mu) = 0.
 \end{equation}
 
 Seien die Indexmengen
 \begin{align}
-  \A & := \{\ j \in \{1,\ldots,p\}\ |\ r_j - \langle g_j, x \rangle < \mu_j\ \}, \\
-  \I & := \{\ j \in \{1,\ldots,p\}\ |\ r_j - \langle g_j, x \rangle \geq \mu_j\
-  \} = \{1,\ldots,p\} \backslash \A.
+  \A & := \{\ j \in \{1,\ldots,p\}\ |\ 
+    r_j - \langle g_j, x \rangle < \mu_j\ \}, \\
+  \I & := \{\ j \in \{1,\ldots,p\}\ |\ 
+    r_j - \langle g_j, x \rangle \geq \mu_j\ \}.
 \end{align}
 Mit
 \begin{equation}
@@ -76,7 +84,7 @@ Mit
       0 & \text{sonst}
     \end{cases}
 \end{equation}
-gilt dann
+gilt
 \begin{equation}
   \min\left\{ \mu, r - G x \right\} =
   \left(\begin{array}{c}
@@ -100,6 +108,7 @@ Dann ist
 ein Element von $\partial F(x,\lambda,\mu)$.
 
 \begin{algorithm}
+\label{algo:halbglattes_newton_fuer_restr_opt_prob}
 \emph{(Das halbglatte Newton-Verfahren
 für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
 \begin{enumerate}

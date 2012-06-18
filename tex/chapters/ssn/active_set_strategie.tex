@@ -1,92 +1,109 @@
-Wir betrachten in diesem Unterkapitel
-die Aktive-Menge-Strategie.
-Dieses Verfahren ist für uns interessant,
-weil sie als das halbglatte Newton-Verfahren interpretiert werden kann.
+In diesem Unterkapitel wird
+die Aktive-Mengen-Strategie betrachtet.
+Dieses Verfahren ist interessant,
+weil man es in der Praxis als
+die Implementierung des halbglatten Newton-Verfahrens nimmt.
+Es hat eine gemeinsame Idee
+mit dem Aktiven-Mengen-Verfahren in Abschnitt~\ref{sec:aktive_mengen_verfahren}.
 
-Wir betrachten wieder das Problem
+Es ist hier das
+Problem~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
 \begin{align}
   \min_{x \in \R^n}\ & f(x)
-    \tag{PLU} \label{} \\
-  \nb & G x \leq r \notag
+    \tag{PLU}\\
+  \nb & Ax = b \notag \\
+      & G x \leq r \notag
 \end{align}
+zu betrachten.
 
-Eine der Optimalitätsbedingungen dieses Problems ist:
+Eine der Optimalitätsbedingungen dieses Problems ist
 \begin{equation}
-  \nabla f(x) + G^T \mu = 0.
+\label{eq:erste_opt_bed_fuer_opt_prob_mit_lin_ungl_nebenbed}
+  \nabla f(x) + A^T \lambda + G^T \mu = 0.
 \end{equation}
 Das ist ein nichtlineares Gleichungssystem, wenn $f$ nichtlinear ist.
+Es wird nun hier versucht, eine linearisierte Version zu erhalten.
 
-Wir versuchen nun, eine linearisierte Version zu bekommen.
-
-Sei $x^k$ ein zulässiger Punkt des Problems.
-Approximieren wir die Funktion $f$ in der Umgebung von $x^k$:
+Sei $x^k$ ein Punkt in der Nähe der Lösung des Problems.
+Die Approximation der Funktion $f$ in der Umgebung von $x^k$ lautet
 \begin{equation}
   f(x) \approx f(x^k) + \nabla f(x^k)^T (x-x^k)
                  + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k).
 \end{equation}
-Der Gradient von $f$ ist dann
+Die Approximation des Gradienten von $f$ ist folglich
 \begin{equation}
   \nabla f(x) \approx \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k.
 \end{equation}
 
-Ersetzen wir nun $\nabla f(x)$ in der Optimalitätsbedingung mit seiner
-Approximation, dann bekommen wir die Gleichung
+Ersetzt man $\nabla f(x)$ in der
+Bedingung~\eqref{eq:erste_opt_bed_fuer_opt_prob_mit_lin_ungl_nebenbed}
+mit seiner Approximation, dann lässt sich sie schreiben als
+das 
 \begin{align}
-  \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k + G^T \mu
+  \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k + A^T \lambda + G^T \mu
     &= 0 \\
-  f''(x^k) x + G^T \mu
-    &= f''(x^k) x^k - \nabla f(x^k)
+  f''(x^k) x + A^T \lambda + G^T \mu
+    &= f''(x^k) x^k - \nabla f(x^k).
 \end{align}
-
-Das ist nun ein lineares Gleichungssystem.
-Dieses werden wir in unserer Aktive-Mengen-Strategie verwenden.
+Dieses lineare Gleichungssystem wird in der Aktive-Mengen-Strategie verwendet.
 
 \begin{algorithm}
-\emph{(Aktive-Menge-Strategie)}
+\label{algo:aktive_mengen_strategie}
+\emph{(Aktive-Mengen-Strategie
+für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
 \begin{enumerate}
-  \item Wähle $x^0$ und setze $k := 0$. 
+  \item Wähle $x^0$ und setze $\mu^0 := 0,\: k := 0$. 
   \item Bestimme
         \begin{align}
-        \A_k & := \{i \in \{1,\ldots,p\}\ |\ r_i - g_i^T x^k < \mu_i \}, \\
-        \I_k & := \{i \in \{1,\ldots,p\}\ |\ r_i - g_i^T x^k \geq \mu_i \}
+        \A_k & := \{i \in \{1,\ldots,p\}\ |\ 
+          r_i - \langle g_i, x^k \rangle < \mu_i^k \}, \\
+        \I_k & := \{i \in \{1,\ldots,p\}\ |\ 
+          r_i - \langle g_i, x^k \rangle \geq \mu_i^k \}.
         \end{align}
+        \label{list:bestimmung_A_und_I_in_active_set_strategy}
   \item Löse das Problem
         \begin{align}
-          f''(x^k) x + G^T \mu
+          f''(x^k) x + A^T \lambda + G^T \mu
             &= f''(x^k) x^k - \nabla f(x^k) \label{eq:eq1_in_ass} \\
-          g_i^T x &= r_i \quad \text{ für } i \in \A_k
+          A x &= b \\
+          \langle g_i, x \rangle &= r_i \quad \text{ für } i \in \A_k
             \label{eq:eq2_in_ass} \\
-          \mu_i & = 0   \quad \text{ für } i \in \I_k
+          \mu_i & = 0   \quad \text{ für } i \in \I_k.
             \label{eq:eq3_in_ass}
         \end{align}
+        $\Rightarrow$ Erhalte $x, \lambda$ und $\mu$.
   \item Falls
         \begin{align}
-          \nabla f(x) + \mu & = 0\\
-          \min(\mu, r - G x) & = 0
+          \nabla f(x) + A^T \lambda + G^T \mu & = 0\\
+          \min\{\mu, r - G x\} & = 0
         \end{align}
-        $\Rightarrow$ STOP
-  \item $x^{k+1} := x, \mu^{k+1} = \mu, k := k+1$
-        $\Rightarrow$ Gehe zu Schritt 2. %TODO ref
+        $\Rightarrow$ STOP.
+  \item Setze $x^{k+1} := x,\ \mu^{k+1} := \mu$ und $k := k+1$
+        $\Rightarrow$ Gehe zu
+        Schritt~\ref{list:bestimmung_A_und_I_in_active_set_strategy}.
 \end{enumerate}
 \end{algorithm}
 
-Wir werden nun das Verfahren genauer betrachten und zeigen,
-warum es als das halbglatte Newton-Verfahren interpretiert werden kann.
+Es kann gezeigt werden, dass das Verfahren~\ref{algo:aktive_mengen_strategie}
+als das halbglatte Newton-Verfahren
+(Verfahren~\ref{algo:halbglattes_newton_fuer_restr_opt_prob}) interpretiert
+werden kann.
 
 Sei $k$ irgendeiner Iterationsschritt in den beiden Verfahren.
-Bei dem halbglatten Newton-Verfahren müssen wir dann
-folgendes Gleichungssystem lösen:
+Bei dem halbglatten Newton-Verfahren ist dann
+folgendes Gleichungssystem zu lösen:
 \begin{equation}
-  \left(\begin{array}{cc}
-         f''(x^k)         &       G^T \\
-    - \chi_{\A_k}(1) g_1^T  &  \chi_{\I_k}(1) e_1^T \\
-        \vdots          &      \vdots \\
-    - \chi_{\A_k}(p) g_p^T  &  \chi_{\I_k}(p) e_p^T
+  \left(\begin{array}{ccc}
+         f''(x)         &  A^T   &      G^T             \\
+           A            &   0    &       0              \\
+    - \chi_\A(1)\, g_1^T  &   0    & \chi_\I(1)\, e_1^T \\
+        \vdots          & \vdots &    \vdots            \\
+    - \chi_\A(p)\, g_p^T  &   0    & \chi_\I(p)\, e_p^T
   \end{array}\right)
-  \left(\begin{array}{c} d_x \\ d_\mu \end{array}\right)
+  \left(\begin{array}{c} d_x \\ d_\lambda \\ d_\mu \end{array}\right)
   = -
   \left(\begin{array}{c}
-    \nabla f(x^k) + G^T \mu^k \\
+    \nabla f(x^k) + A^T \lambda^k + G^T \mu^k \\
     \chi_{\I_k}(1) \mu_1 + \chi_{\A_k}(1) (r_1 - g_1^T x^k) \\
       \vdots \\
     \chi_{\I_k}(p) \mu_p + \chi_{\A_k}(p) (r_p - g_p^T x^k)
