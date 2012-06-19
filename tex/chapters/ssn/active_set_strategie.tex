@@ -22,7 +22,6 @@ Eine der Optimalitätsbedingungen dieses Problems ist
   \nabla f(x) + A^T \lambda + G^T \mu = 0.
 \end{equation}
 Das ist ein nichtlineares Gleichungssystem, wenn $f$ nichtlinear ist.
-Es wird nun hier versucht, eine linearisierte Version zu erhalten.
 
 Sei $x^k$ ein Punkt in der Nähe der Lösung des Problems.
 Die Approximation der Funktion $f$ in der Umgebung von $x^k$ lautet
@@ -65,18 +64,21 @@ für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
         \begin{align}
           f''(x^k) x + A^T \lambda + G^T \mu
             &= f''(x^k) x^k - \nabla f(x^k) \label{eq:eq1_in_ass} \\
-          A x &= b \\
+          A x &= b \label{eq:eq2_in_ass} \\
           \langle g_i, x \rangle &= r_i \quad \text{ für } i \in \A_k
-            \label{eq:eq2_in_ass} \\
+            \label{eq:eq3_in_ass} \\
           \mu_i & = 0   \quad \text{ für } i \in \I_k.
-            \label{eq:eq3_in_ass}
+            \label{eq:eq4_in_ass}
         \end{align}
         $\Rightarrow$ Erhalte $x, \lambda$ und $\mu$.
   \item Falls
-        \begin{align}
-          \nabla f(x) + A^T \lambda + G^T \mu & = 0\\
-          \min\{\mu, r - G x\} & = 0
-        \end{align}
+        \begin{equation}
+          \nabla f(x) + A^T \lambda + G^T \mu = 0
+        \end{equation}
+        und
+        \begin{equation}
+          \min\{\mu, r - G x\} = 0
+        \end{equation}
         $\Rightarrow$ STOP.
   \item Setze $x^{k+1} := x,\ \mu^{k+1} := \mu$ und $k := k+1$
         $\Rightarrow$ Gehe zu
@@ -91,8 +93,9 @@ werden kann.
 
 Sei $k$ irgendeiner Iterationsschritt in den beiden Verfahren.
 Bei dem halbglatten Newton-Verfahren ist dann
+in Schritt~\ref{list:gleichungssystem_in_halbgl_newton_fuer_PLU}
 folgendes Gleichungssystem zu lösen:
-\begin{equation}
+\begin{equation*}
   \left(\begin{array}{ccc}
          f''(x)         &  A^T   &      G^T             \\
            A            &   0    &       0              \\
@@ -104,56 +107,83 @@ folgendes Gleichungssystem zu lösen:
   = -
   \left(\begin{array}{c}
     \nabla f(x^k) + A^T \lambda^k + G^T \mu^k \\
-    \chi_{\I_k}(1) \mu_1 + \chi_{\A_k}(1) (r_1 - g_1^T x^k) \\
-      \vdots \\
-    \chi_{\I_k}(p) \mu_p + \chi_{\A_k}(p) (r_p - g_p^T x^k)
-  \end{array}\right)
+    Ax^k - b \\
+    \chi_\I(1)\, \mu_1^k + \chi_\A(1)\,
+      \bigl( r_1 - \langle g_1, x^k \rangle \bigr) \\
+    \vdots \\
+    \chi_\I(p)\, \mu_p^k + \chi_\A(p)\,
+      \bigl( r_p - \langle g_p, x^k \rangle \bigr)
+  \end{array}\right),
+\end{equation*}
+d.\,h.
+\begin{align}
+  f''(x^k) d_x + A^T d_\lambda + G^T d_\mu &
+    = - \nabla f(x^k) - A \lambda^k - G^T \mu^k
+    \label{eq:eq1_in_ssn} \\
+  A d_x & = - A x^k + b \label{eq:eq2_in_ssn} \\
+  - \chi_{\A}(i)\, g_i^T d_x + \chi_{\I}(i)\, e_i^T d_\mu
+    & = -\chi_{\I}(i)\, \mu_i^k - \chi_{\A}(i)\,
+    \bigl( r_i - \langle g_i, x^k \rangle \bigr)
+    \quad i = 1,\ldots,p \label{eq:eq3_in_ssn}
+\end{align}
+
+Die Indexmengen $\A$ und $\I$ sind dabei genau wie
+die in der Aktive-Mengen-Strategie.
+
+Bei dem halbglatten Newton-Verfahren
+werden in Schritt~\ref{list:update_in_halbgl_newton_fuer_PLU}
+die Variablen $x^{k+1},\: \lambda^{k+1}$ und $\mu^{k+1}$ gesetzt.
+Es gilt hiernach
+\begin{equation}
+  d_x = x^{k+1} - x^k, \quad
+  d_\lambda = \lambda^{k+1} - \lambda^k, \quad \text{und} \quad
+  d_\mu = \mu^{k+1} - \mu^k.
 \end{equation}
 
-D.\,h.
+Dann lautet Gleichung~\eqref{eq:eq1_in_ssn}
 \begin{align}
-  f''(x^k) d_x + G^T d_\mu & = -\nabla f(x^k) - G^T \mu^k \\
-  - \chi_{\A_k}(j) g_j^T d_x + \chi_{\I_k}(j) e_j^T d_\mu
-    & = -\chi_{\I_k}(j) \mu_j - \chi_{\A_k}(j) (r_j - g_j^T x^k)
-    \quad \text{für } j = 1,\ldots,p \label{eq:eq2in_ssn}
-\end{align}
-
-Die Indexmengen $\A_k$ und $\I_k$ sind dabei genau wie
-in der Aktive-Mengen-Strategie.
-
-Bei dem halbglatten Newton-Verfahren setzen wir dann
-$x^{k+1} := x^k + d_x$ und $\mu^{k+1} := \mu^k + d_\mu$.
-Es gilt also $d_x = x^{k+1} - x^k$ und $d_\mu = \mu^{k+1} - \mu^k$.
-D.\,h.
-\begin{align}
-  f''(x^k) (x^{k+1} - x^k) + G^T (\mu^{k+1} - \mu^k)
-    & = -\nabla f(x^k) - G^T \mu^k \\
-  \Rightarrow \qquad f''(x^k) x^{k+1} + G^T \mu^{k+1} & =
-    f''(x^k) x^k - \nabla f(x^k)
+  f''(x^k) (x^{k+1} - x^k) + A^T (\lambda^{k+1} - \lambda^k)
+    + G^T (\mu^{k+1} - \mu^k) & = -\nabla f(x^k) - A^T \lambda^k - G^T \mu^k
+    \notag \\
+  f''(x^k) x^{k+1} + A^T \lambda^{k+1} + G^T \mu^{k+1} & =
+    f''(x^k) x^k - \nabla f(x^k).
 \end{align}
 Das ist genau die Gleichung~\eqref{eq:eq1_in_ass}
-in der Aktive-Mengen-Strategie.
+in der Aktive-Mengen-Strategie
+mit $x^{k+1},\, \lambda^{k+1},\, \mu^{k+1}$
+anstatt $x,\, \lambda,\, \mu$.
 
-Sei $j \in \A_k$.
-Die Gleichung~\eqref{eq:eq2in_ssn} ist dann gleich
+Für die Gleichung~\eqref{eq:eq2_in_ssn} gilt
 \begin{align}
-  - g_j^T d_x & = - (r_j - g_j^T x^k) \\
-  \Rightarrow - g_j^T (x^{k+1} - x^k) & = - (r_j - g_j^T x^k) \\
-  \Rightarrow   g_j^T x^{k+1} & = r_j
+  A (x^{k+1} - x^k) & = - A x^k + b \\
+  A x^{k+1} & = b.
 \end{align}
-Das ist genau die Gleichung~\eqref{eq:eq2_in_ass}
-in der Aktive-Mengen-Strategie.
+Sie entspricht also der Gleichung~\eqref{eq:eq2_in_ass}
+in Verfahren~\ref{algo:aktive_mengen_strategie}.
 
-Sei nun $j \in \I_k$.
-Die Gleichung~\eqref{eq:eq2in_ssn} ist dann gleich
+Sei $i \in \A_k$.
+Die Gleichung~\eqref{eq:eq3_in_ssn}
+lässt sich somit schreiben als
 \begin{align}
-  e_j^T d_\mu & = - \mu_j \\
-  \Rightarrow e_j^T (\mu^{k+1} - \mu^k) & = - \mu_j \\
-  \Rightarrow \mu^{k+1}_j - \mu^k_j & = - \mu_j \\
-  \Rightarrow \mu^{k+1}_j & = 0
+  - g_i^T d_x & = - \bigl( r_i - \langle g_i, x^k \rangle \bigr) \\
+  - g_i^T (x^{k+1} - x^k) & = - r_i + \langle g_i, x^k \rangle \\
+  r_i & = \langle g_i, x^{k+1} \rangle.
 \end{align}
-Das ist genau die Gleichung~\eqref{eq:eq3_in_ass}
+Sie findet man auch in der Gleichung~\eqref{eq:eq3_in_ass}
 in der Aktive-Mengen-Strategie.
 
-Somit sind die Iterationsschritte in den beiden Verfahren gleich.
-Und deswegen sind die beiden Verfahren äquivalent.
+Sei nun $i \in \I_k$.
+Dann sieht die Gleichung~\eqref{eq:eq3_in_ssn} wie folgt aus.
+\begin{align}
+  e_i^T d_\mu & = - \mu_i^k \\
+  e_i^T (\mu^{k+1} - \mu^k) & = - \mu_i^k \\
+  \mu^{k+1}_i - \mu^k_i & = - \mu_i^k \\
+  \mu^{k+1}_i & = 0.
+\end{align}
+Das ist die Gleichung~\eqref{eq:eq4_in_ass}
+in der Aktive-Mengen-Strategie mit $\mu^{k+1}_i$ anstatt $\mu_i$.
+
+D.\,h., die beiden Verfahren berechnen eigentlich
+denselben nächsten Iterationspunkt $x^{k+1}$.
+Deswegen kann die Aktive-Mengen-Strategie als
+das halbglatte Newton-Verfahren interpretiert werden.

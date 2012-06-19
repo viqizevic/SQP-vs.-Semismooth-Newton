@@ -88,9 +88,11 @@ gilt
 \begin{equation}
   \min\left\{ \mu, r - G x \right\} =
   \left(\begin{array}{c}
-    \chi_\I(1)\, \mu_1 + \chi_\A(1)\, (r_1 - \langle g_1, x \rangle) \\
-      \vdots \\
-    \chi_\I(p)\, \mu_p + \chi_\A(p)\, (r_p - \langle g_p, x \rangle)
+    \chi_\I(1)\, \mu_1 + \chi_\A(1)\,
+      \bigl( r_1 - \langle g_1, x \rangle \bigr) \\
+    \vdots \\
+    \chi_\I(p)\, \mu_p + \chi_\A(p)\,
+      \bigl( r_p - \langle g_p, x \rangle \bigr)
   \end{array}\right).
 \end{equation}
 
@@ -120,9 +122,10 @@ für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
           F'(x^k,\lambda^k,\mu^k) d = - F(x^k,\lambda^k,\mu^k).
         \end{equation}
         Setze $d^k_x := d_x,\: d^k_\lambda := d_\lambda$ und $d^k_\mu := d_\mu$.
+        \label{list:gleichungssystem_in_halbgl_newton_fuer_PLU}
   \item Ist $d^k_x = 0$
         $\Rightarrow$ STOP.
-  \item Setze
+  \item Setze \label{list:update_in_halbgl_newton_fuer_PLU}
         \begin{equation}
           x^{k+1} := x^k + d^k_x, \quad
           \lambda^{k+1} := \lambda^k + d^k_\lambda, \quad
