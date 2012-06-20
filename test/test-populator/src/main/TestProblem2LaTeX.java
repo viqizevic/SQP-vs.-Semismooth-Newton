@@ -17,20 +17,18 @@ public class TestProblem2LaTeX {
 		if (tp.getDescription() != null) {
 			r += tp.getDescription() + "\n";
 		}
-		r += "\\begin{equation}\n";
-		r += getFuncDef() + "\n";
-		r += "\\end{equation}\n";
-		r += "\\begin{equation*}\n";
+		r += "\\begin{gather}\n";
+		r += getFuncDef() + " \\notag \\\\\n";
 		r += "\\begin{split}\n";
 		r += "\\nb " + getConstraints();
 		r += "\\end{split}\n";
-		r += "\\end{equation*}\n";
+		r += "\\end{gather}\n";
 		String x0 = tp.get_x0().replace('[', '(')
 			.replace(']', ')').replace(';', ',') + "^T";
-		r += "\n\\begin{equation*}\n";
+		r += "\\begin{equation*}\n";
 		r += "x_0 = " + x0;
 		if (tp.get_xstar() != null) {
-			r += ",\\quad \\xopt = "+getVectorInLaTeX(tp.get_xstar());
+			r += " \\quad\\text{und}\\quad \\xopt = "+getVectorInLaTeX(tp.get_xstar())+".";
 		}
 		r += "\n\\end{equation*}\n";
 		r += "\\end{testproblem}\n";

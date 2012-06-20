@@ -2,7 +2,7 @@
 	
 	<problem>
 		<name>example_16_2_nocedal_wright</name>
-		<description>(Vgl. Beispiel 16.2 in \cite[S.~452]{nocedal}</description>
+		<description>(Vgl. Beispiel 16.2 in \cite[S.~452]{nocedal})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
@@ -20,6 +20,7 @@
 
 	<problem>
 		<name>simple_example</name>
+		<description>(Vgl. Beispiel~\ref{example:opt_prob_mit_lin_gl_nebenbed} auf Seite~\pageref{example:opt_prob_mit_lin_gl_nebenbed})</description>
 		<function_name>norm_func</function_name>
 		<function_constant>
 			<constant_name>xd</constant_name>

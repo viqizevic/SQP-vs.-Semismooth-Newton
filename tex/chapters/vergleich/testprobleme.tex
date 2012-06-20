@@ -1,201 +1,167 @@
 \begin{testproblem}
-(Vgl. Beispiel 16.2 in \cite[S.~452]{nocedal}
-\begin{equation}
-\min_{x\in\R^3}\ 3 x_1^2 + 2 x_1 x_2 + x_1 x_3 + 2.5 x_2^2 + 2 x_2 x_3 + 2 x_3^2 - 8 x_1 - 3 x_2 - 3 x_3
-\end{equation}
-\begin{equation*}
+(Vgl. Beispiel 16.2 in \cite[S.~452]{nocedal})
+\begin{gather}
+\min_{x\in\R^3}\ 3 x_1^2 + 2 x_1 x_2 + x_1 x_3 + 2.5 x_2^2 + 2 x_2 x_3 + 2 x_3^2 - 8 x_1 - 3 x_2 - 3 x_3 \notag \\
 \begin{split}
 \nb x_1 + x_3 & = 3 \\
 x_2 + x_3 & = 0 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (5, 2, -2)^T,\quad \xopt = (2, -1, 1)^T
+x_0 = (5, 2, -2)^T \quad\text{und}\quad \xopt = (2, -1, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^5}\ \| x \|^2
-\end{equation}
-\begin{equation*}
+(Vgl. Beispiel~\ref{example:opt_prob_mit_lin_gl_nebenbed} auf Seite~\pageref{example:opt_prob_mit_lin_gl_nebenbed})
+\begin{gather}
+\min_{x\in\R^5}\ \| x \|^2 \notag \\
 \begin{split}
 \nb x_1 + x_2 + x_3 + x_4 + x_5 & = 1 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (5, -1, -1, -1, -1)^T,\quad \xopt = (0.2, 0.2, 0.2, 0.2, 0.2)^T
+x_0 = (5, -1, -1, -1, -1)^T \quad\text{und}\quad \xopt = (0.2, 0.2, 0.2, 0.2, 0.2)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 28 in \cite[S.~51]{hock})
-\begin{equation}
-\min_{x\in\R^3}\ (x_1 + x_2)^2 + (x_2 + x_3)^2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^3}\ (x_1 + x_2)^2 + (x_2 + x_3)^2 \notag \\
 \begin{split}
 \nb x_1 + 2 x_2 + 3 x_3 & = 1 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (-4, 1, 1)^T,\quad \xopt = (0.5, -0.5, 0.5)^T
+x_0 = (-4, 1, 1)^T \quad\text{und}\quad \xopt = (0.5, -0.5, 0.5)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 48 in \cite[S.~71]{hock})
-\begin{equation}
-\min_{x\in\R^5}\ (x_1 - 1)^2 + (x_2 - x_3)^2 + (x_4 - x_5)^2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^5}\ (x_1 - 1)^2 + (x_2 - x_3)^2 + (x_4 - x_5)^2 \notag \\
 \begin{split}
 \nb x_1 + x_2 + x_3 + x_4 + x_5 & = 5 \\
 x_3 - 2 x_4 - 2 x_5 & = -3 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (3, 5, -3, 2, -2)^T,\quad \xopt = (1, 1, 1, 1, 1)^T
+x_0 = (3, 5, -3, 2, -2)^T \quad\text{und}\quad \xopt = (1, 1, 1, 1, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 51 in \cite[S.~74]{hock})
-\begin{equation}
-\min_{x\in\R^5}\ (x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^5}\ (x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2 \notag \\
 \begin{split}
 \nb x_1 + 3 x_2 & = 4 \\
 x_3 + x_4 - 2 x_5 & = 0 \\
 x_2 - x_5 & = 0 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (2.5, 0.5, 2, -1, 0.5)^T,\quad \xopt = (1, 1, 1, 1, 1)^T
+x_0 = (2.5, 0.5, 2, -1, 0.5)^T \quad\text{und}\quad \xopt = (1, 1, 1, 1, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 52 in \cite[S.~75]{hock})
-\begin{equation}
-\min_{x\in\R^5}\ (4 x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^5}\ (4 x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2 \notag \\
 \begin{split}
 \nb x_1 + 3 x_2 & = 0 \\
 x_3 + x_4 - 2 x_5 & = 0 \\
 x_2 - x_5 & = 0 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (-1.5, 0.5, 2, -1, 0.5)^T,\quad \xopt = (-0.095, 0.032, 0.516, -0.453, 0.032)^T
+x_0 = (-1.5, 0.5, 2, -1, 0.5)^T \quad\text{und}\quad \xopt = (-0.095, 0.032, 0.516, -0.453, 0.032)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 53 in \cite[S.~76]{hock})
-\begin{equation}
-\min_{x\in\R^5}\ (x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^5}\ (x_1 - x_2)^2 + (x_2 + x_3 - 2)^2 + (x_4 - 1)^2 + (x_5 - 1)^2 \notag \\
 \begin{split}
 \nb x_1 + 3 x_2 & = 0 \\
 x_3 + x_4 - 2 x_5 & = 0 \\
 x_2 - x_5 & = 0 \\
 -10 \leq x_i & \leq 10,\ i = 1,\ldots,5 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (-1.5, 0.5, 2, -1, 0.5)^T,\quad \xopt = (-0.767, 0.256, 0.628, -0.116, 0.256)^T
+x_0 = (-1.5, 0.5, 2, -1, 0.5)^T \quad\text{und}\quad \xopt = (-0.767, 0.256, 0.628, -0.116, 0.256)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 49 in \cite[S.~72]{hock})
-\begin{equation}
-\min_{x\in\R^5}\ (x_1-x_2)^2 + (x_3-1)^2 + (x_4-1)^2 + (x_5-1)^6 
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^5}\ (x_1-x_2)^2 + (x_3-1)^2 + (x_4-1)^2 + (x_5-1)^6  \notag \\
 \begin{split}
 \nb x_1 + x_2 + x_3 + 4 x_4 & = 7 \\
 x_3 + 5 x_5 & = 6 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (10, 7, 2, -3, 0.8)^T,\quad \xopt = (1, 1, 1, 1, 1)^T
+x_0 = (10, 7, 2, -3, 0.8)^T \quad\text{und}\quad \xopt = (1, 1, 1, 1, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 50 in \cite[S.~73]{hock})
-\begin{equation}
-\min_{x\in\R^5}\ (x_1-x_2)^2 + (x_2-x_3)^2 + (x_3-x_4)^4 + (x_4-x_5)^2 
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^5}\ (x_1-x_2)^2 + (x_2-x_3)^2 + (x_3-x_4)^4 + (x_4-x_5)^2  \notag \\
 \begin{split}
 \nb x_1 + 2 x_2 + 3 x_3 & = 6 \\
 x_2 + 2 x_3 + 3 x_4 & = 6 \\
 x_3 + 2 x_4 + 3 x_5 & = 6 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (35, -31, 11, 5, -5)^T,\quad \xopt = (1, 1, 1, 1, 1)^T
+x_0 = (35, -31, 11, 5, -5)^T \quad\text{und}\quad \xopt = (1, 1, 1, 1, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^2}\ x_1^2 + x_2^2 - 4 x_1 - 4 x_2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^2}\ x_1^2 + x_2^2 - 4 x_1 - 4 x_2 \notag \\
 \begin{split}
 \nb 2 x_1 + x_2 & \leq 2 \\
 x_1 - x_2 & \leq 1 \\
 -x_1 - x_2 & \leq 1 \\
 -2 x_1 + x_2 & \leq 2 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (-1, 0)^T,\quad \xopt = (0.4, 1.2)^T
+x_0 = (-1, 0)^T \quad\text{und}\quad \xopt = (0.4, 1.2)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-(Vgl. Beispiel 16.4 in \cite[S.~475]{nocedal})
-\begin{equation}
-\min_{x\in\R^2}\ (x_1 - 1)^2 + (x_2 - 2.5)^2
-\end{equation}
-\begin{equation*}
+(Vgl. Beispiel~\ref{example:opt_prob_mit_lin_ungl_nebenbed} auf Seite~\pageref{example:opt_prob_mit_lin_ungl_nebenbed})
+\begin{gather}
+\min_{x\in\R^2}\ (x_1 - 1)^2 + (x_2 - 2.5)^2 \notag \\
 \begin{split}
 \nb -x_1 + 2 x_2 & \leq 2 \\
 x_1 + 2 x_2 & \leq 6 \\
 x_1 - 2 x_2 & \leq 2 \\
 0 & \leq x_i,\ i = 1,2 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (2, 0)^T,\quad \xopt = (1.4, 1.7)^T
+x_0 = (2, 0)^T \quad\text{und}\quad \xopt = (1.4, 1.7)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-(Vgl. Beispiel 13.2 in \cite[S.~415f]{antoniou})
-\begin{equation}
-\min_{x\in\R^4}\ (x_1 - x_3)^2 + (x_2 - x_4)^2
-\end{equation}
-\begin{equation*}
+(Vgl. Beispiel~\ref{example:abstand_zw_dreiecken_problem} auf Seite~\pageref{example:abstand_zw_dreiecken_problem})
+\begin{gather}
+\min_{x\in\R^4}\ (x_1 - x_3)^2 + (x_2 - x_4)^2 \notag \\
 \begin{split}
 \nb -x_1 & \leq 0 \\
 -x_2 & \leq 0 \\
@@ -204,43 +170,36 @@ x_1 + 2 x_2 & \leq 2 \\
 -x_3 - x_4 & \leq -3 \\
 x_3 + 2 x_4 & \leq 6 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (0, 1, 2, 2)^T,\quad \xopt = (0.4, 0.8, 1, 2)^T
+x_0 = (0, 1, 2, 2)^T \quad\text{und}\quad \xopt = (0.4, 0.8, 1, 2)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 21 in \cite[S.~44]{hock})
-\begin{equation}
-\min_{x\in\R^2}\ 0.01 x_1^2 + x_2^2 - 100
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^2}\ 0.01 x_1^2 + x_2^2 - 100 \notag \\
 \begin{split}
 \nb -10 x_1 + x_2 & \leq -10 \\
 2 \leq x_1 & \leq 50 \\
 -50 \leq x_2 & \leq 50 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (10, -10)^T,\quad \xopt = (2, 0)^T
+x_0 = (10, -10)^T \quad\text{und}\quad \xopt = (2, 0)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Vgl. Problem 35 in \cite[S.~58]{hock})
-\begin{equation}
-\min_{x\in\R^3}\ 2 x_1^2 + 2 x_1 x_2 + 2 x_1 x_3 + 2 x_2^2 + x_3^2 - 8 x_1 - 6 x_2 - 4 x_3 + 9
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^3}\ 2 x_1^2 + 2 x_1 x_2 + 2 x_1 x_3 + 2 x_2^2 + x_3^2 - 8 x_1 - 6 x_2 - 4 x_3 + 9 \notag \\
 \begin{split}
 \nb x_1 + x_2 + 2 x_3 & \leq 3 \\
 0 & \leq x_i,\ i = 1,2,3 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
 x_0 = (0.5, 0.5, 0.5)^T
 \end{equation*}
@@ -248,19 +207,16 @@ x_0 = (0.5, 0.5, 0.5)^T
 
 \begin{testproblem}
 (Vgl. Problem 76 in \cite[S.~96]{hock})
-\begin{equation}
-\min_{x\in\R^4}\ x_1^2 + 0.5 x_2^2 + x_3^2 + 0.5 x_4^2 - x_1 x_3 + x_3 x_4 - x_1 - 3 x_2 + x_3 - x_4
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^4}\ x_1^2 + 0.5 x_2^2 + x_3^2 + 0.5 x_4^2 - x_1 x_3 + x_3 x_4 - x_1 - 3 x_2 + x_3 - x_4 \notag \\
 \begin{split}
 \nb x_1 + 2 x_2 + x_3 + x_4 & \leq 5 \\
 3 x_1 + x_2 + 2 x_3 - x_4 & \leq 4 \\
 -x_2 - 4 x_3 & \leq -1.5 \\
 0 & \leq x_i,\ i = 1,\ldots,4 \\
 \end{split}
-\end{equation*}
-
+\end{gather}
 \begin{equation*}
-x_0 = (0.5, 1, 0.5, 0.5)^T,\quad \xopt = (0.273, 2.091, 0, 0.545)^T
+x_0 = (0.5, 1, 0.5, 0.5)^T \quad\text{und}\quad \xopt = (0.273, 2.091, 0, 0.545)^T.
 \end{equation*}
 \end{testproblem}

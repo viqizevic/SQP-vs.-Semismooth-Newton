@@ -19,7 +19,7 @@
 
 	<problem>
 		<name>example_16_4_nocedal_wright</name>
-		<description>(Vgl. Beispiel 16.4 in \cite[S.~475]{nocedal})</description>
+		<description>(Vgl. Beispiel~\ref{example:opt_prob_mit_lin_ungl_nebenbed} auf Seite~\pageref{example:opt_prob_mit_lin_ungl_nebenbed})</description>
 		<function_name>norm_func</function_name>
 		<function_constant>
 			<constant_name>xd</constant_name>
@@ -34,7 +34,7 @@
 
 	<problem>
 		<name>example_13_2_antoniou_lu</name>
-		<description>(Vgl. Beispiel 13.2 in \cite[S.~415~f.]{antoniou})</description>
+		<description>(Vgl. Beispiel~\ref{example:abstand_zw_dreiecken_problem} auf Seite~\pageref{example:abstand_zw_dreiecken_problem})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>

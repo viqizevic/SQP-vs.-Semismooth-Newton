@@ -102,10 +102,10 @@ public class Main {
 			String resultFile = pathToDataDir+configs.get("result_file");
 			TestResultParser trp = new TestResultParser(resultFile, problems);
 			trp.parse();
-//			for (TestProblem p : problems) {
-//				TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
-//				System.out.println(tp2tex.toString());
-//			}
+			for (TestProblem p : problems) {
+				TestProblem2LaTeX tp2tex = new TestProblem2LaTeX(p);
+				System.out.println(tp2tex.toString());
+			}
 		}
 	}
 	

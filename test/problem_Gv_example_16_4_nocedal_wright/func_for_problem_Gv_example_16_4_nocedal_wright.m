@@ -1,5 +1,5 @@
 %problem_Gv_example_16_4_nocedal_wright
-%(Vgl. Beispiel 16.4 in \cite[S.~475]{nocedal})
+%(Vgl. Beispiel~\ref{example:opt_prob_mit_lin_ungl_nebenbed} auf Seite~\pageref{example:opt_prob_mit_lin_ungl_nebenbed})
 %\min_{x\in\R^2}\ (x_1 - 1)^2 + (x_2 - 2.5)^2
 %\nb -x_1 + 2 x_2 & \leq 2 \\
 %x_1 + 2 x_2 & \leq 6 \\
