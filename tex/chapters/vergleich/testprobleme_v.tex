@@ -1,23 +1,25 @@
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^2}\ (x_1 - 4)^2 + (x_2 - 7)^2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^2}\ (x_1 - 4)^2 + (x_2 - 7)^2 \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (8, 9)^T \quad\text{und}\quad \xopt = (4, 7)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Rosenbrock-Funktion, vgl. Beispiel 1.4.1 in \cite[S.~14]{alt})
-\begin{equation}
-\min_{x\in\R^2}\ 100 (x_2-x_1^2)^2+(1-x_1)^2 
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^2}\ 100 (x_2-x_1^2)^2+(1-x_1)^2  \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (-1, 2)^T \quad\text{und}\quad \xopt = (1, 1)^T.
 \end{equation*}
 \end{testproblem}
 
@@ -30,49 +32,54 @@
 \end{figure}
 
 \begin{testproblem}
-(Himmelblau-Funktion, vgl. Beispiel 1.4.2 in \cite[S.~14f]{alt})
-\begin{equation}
-\min_{x\in\R^2}\ (x_1^2+x_2-11)^2 + (x_1+x_2^2-7)^2 
-\end{equation}
-\begin{equation*}
+(Himmelblau-Funktion, vgl. Beispiel 1.4.2 in \cite[S.~14~f.]{alt})
+\begin{gather}
+\min_{x\in\R^2}\ (x_1^2+x_2-11)^2 + (x_1+x_2^2-7)^2  \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (5, 5)^T \quad\text{und}\quad \xopt = (3, 2)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-(Bazaraa-Shetty-Funktion, vgl. Beispiel 1.4.3 in \cite[S.~15f]{alt})
-\begin{equation}
-\min_{x\in\R^2}\ (x_1-2)^4+(x_1-2 x_2)^2 
-\end{equation}
-\begin{equation*}
+(Bazaraa-Shetty-Funktion, vgl. Beispiel 1.4.3 in \cite[S.~15~f.]{alt})
+\begin{gather}
+\min_{x\in\R^2}\ (x_1-2)^4+(x_1-2 x_2)^2  \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (5, 5)^T \quad\text{und}\quad \xopt = (2, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Beale-Funktion, vgl. Aufgabe 2.2 in \cite[S.~39]{alt})
-\begin{equation}
-\min_{x\in\R^2}\ (1.5-x_1 (1-x_2))^2+(2.25-x_1 (1-x_2^2))^2+(2.625-x_1 (1-x_2^3))^2 
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^2}\ (1.5-x_1 (1-x_2))^2+(2.25-x_1 (1-x_2^2))^2+(2.625-x_1 (1-x_2^3))^2  \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (5, 0)^T \quad\text{und}\quad \xopt = (3, 0.5)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^2}\ e^{\|x\|^2} 
-\end{equation}
-\begin{equation*}
+(Exponent-Funktion)
+\begin{gather}
+\min_{x\in\R^2}\ e^{\|x\|^2} \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (5, 4)^T \quad\text{und}\quad \xopt = (0, 0)^T.
 \end{equation*}
 \end{testproblem}
 
@@ -85,142 +92,169 @@
 \end{figure}
 
 \begin{testproblem}
-\begin{equation}
+\begin{gather}
 \begin{split}
   \min_{x\in\R^4}\ & 100(x_2-x_1^2)^2 + (1-x_1)^2 + 90(x_4-x_3^2)^2 + (1-x_3)^2\\
     & + 10.1((x_2-1)^2 + (x_4-1)^2) + 19.8(x_2-1)(x_4-1)
-\end{split}
-\end{equation}
-\begin{equation*}
+\end{split} \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,\ldots,4 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (3, -1, -3, -1)^T \quad\text{und}\quad \xopt = (1, 1, 1, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 (Dixon-Funktion, vgl. Beispiel 1.4.5 in \cite[S.~16]{alt})
-\begin{equation}
-\min_{x\in\R^{10}}\ (1-x_1)^2 + \sum_{k=1}^{9} (x_k^2-x_{k+1})^2 + (1-x_{10})^2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^{10}}\ (1-x_1)^2 + \sum_{k=1}^{9} (x_k^2-x_{k+1})^2 + (1-x_{10})^2 \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,\ldots,10 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (10, \ldots, 10)^T \quad\text{und}\quad \xopt = (1, \ldots, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^3}\ (x_1 - 4)^2 + (x_2 - 2)^2 + (x_3 - 7)^2
-\end{equation}
-\begin{equation*}
+\begin{gather}
+\min_{x\in\R^3}\ (x_1 - 4)^2 + (x_2 - 2)^2 + (x_3 - 7)^2 \notag \\
 \begin{split}
 \nb 5 \leq x_i & \leq 10,\ i = 1,2,3 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (7, 10, 9)^T \quad\text{und}\quad \xopt = (5, 5, 7)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^2}\ 100 (x_2-x_1^2)^2+(1-x_1)^2 
-\end{equation}
-\begin{equation*}
+(Rosenbrock-Funktion)
+\begin{gather}
+\min_{x\in\R^2}\ 100 (x_2-x_1^2)^2+(1-x_1)^2  \notag \\
 \begin{split}
 \nb -10 \leq x_1 & \leq 10 \\
 1.5 \leq x_2 & \leq 10 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (2, 3)^T \quad\text{und}\quad \xopt = (1.224, 1.5)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^2}\ (x_1^2+x_2-11)^2 + (x_1+x_2^2-7)^2 
-\end{equation}
-\begin{equation*}
+(Himmelblau-Funktion)
+\begin{gather}
+\min_{x\in\R^2}\ (x_1^2+x_2-11)^2 + (x_1+x_2^2-7)^2  \notag \\
 \begin{split}
 \nb -10 \leq x_1 & \leq 10 \\
 5 \leq x_2 & \leq 10 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (10, 10)^T \quad\text{und}\quad \xopt = (-2.928, 5)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^2}\ (x_1-2)^4+(x_1-2 x_2)^2 
-\end{equation}
-\begin{equation*}
+(Bazaraa-Shetty-Funktion)
+\begin{gather}
+\min_{x\in\R^2}\ (x_1-2)^4+(x_1-2 x_2)^2  \notag \\
 \begin{split}
 \nb 4 \leq x_1 & \leq 10 \\
 -10 \leq x_2 & \leq 10 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (7, 5)^T \quad\text{und}\quad \xopt = (4, 2)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^2}\ (1.5-x_1 (1-x_2))^2+(2.25-x_1 (1-x_2^2))^2+(2.625-x_1 (1-x_2^3))^2 
-\end{equation}
-\begin{equation*}
+(Beale-Funktion)
+\begin{gather}
+\min_{x\in\R^2}\ (1.5-x_1 (1-x_2))^2+(2.25-x_1 (1-x_2^2))^2+(2.625-x_1 (1-x_2^3))^2  \notag \\
 \begin{split}
 \nb 3 \leq x_1 & \leq 10 \\
 -10 \leq x_2 & \leq 10 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (5, 0)^T \quad\text{und}\quad \xopt = (3, 0.5)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^3}\ e^{\|x\|^2} 
-\end{equation}
-\begin{equation*}
+(Exponent-Funktion)
+\begin{gather}
+\min_{x\in\R^3}\ e^{\|x\|^2} \notag \\
 \begin{split}
 \nb 0.5 \leq x_1 & \leq 10 \\
-1 \leq x_i & \leq 10,\ i = 2,3 \\
+1 \leq x_2 & \leq 10 \\
+1 \leq x_3 & \leq 10 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (5, 2, 4)^T \quad\text{und}\quad \xopt = (0.5, 1, 1)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
+\begin{gather}
 \begin{split}
   \min_{x\in\R^4}\ & 100(x_2-x_1^2)^2 + (1-x_1)^2 + 90(x_4-x_3^2)^2 + (1-x_3)^2\\
     & + 10.1((x_2-1)^2 + (x_4-1)^2) + 19.8(x_2-1)(x_4-1)
-\end{split}
-\end{equation}
-\begin{equation*}
+\end{split} \notag \\
 \begin{split}
 \nb 2 \leq x_1 & \leq 10 \\
--10 \leq x_i & \leq 10,\ i = 2,3,4 \\
+-10 \leq x_2 & \leq 10 \\
+-10 \leq x_3 & \leq 10 \\
+-10 \leq x_4 & \leq 10 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (3, -1, -3, -1)^T \quad\text{und}\quad \xopt = (2, 3.831, 0.03, -0.178)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
-\begin{equation}
-\min_{x\in\R^{10}}\ (1-x_1)^2 + \sum_{k=1}^{9} (x_k^2-x_{k+1})^2 + (1-x_{10})^2
-\end{equation}
-\begin{equation*}
+(Dixon-Funktion)
+\begin{gather}
+\min_{x\in\R^{10}}\ (1-x_1)^2 + \sum_{k=1}^{9} (x_k^2-x_{k+1})^2 + (1-x_{10})^2 \notag \\
 \begin{split}
 \nb 2 \leq x_i & \leq 10,\ i = 1,\ldots,10 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (10, \ldots, 10)^T \quad\text{und}\quad \xopt = (2, \ldots, 2, 2.5)^T.
 \end{equation*}
 \end{testproblem}
 
 \begin{testproblem}
 \label{test_prob:lin_regres}
-Lineare Regression (Vgl. Beispiel~\ref{example:lineare_regression})
-\begin{equation}
-\min_{x\in\R^2}\ \sum_{i=1}^{10} (x_1 \xi_i + x_2 - \eta_i)^2
-\end{equation}
-\begin{equation*}
+Lineare Regression (Vgl. Beispiel~\ref{example:lineare_regression}
+auf Seite~\pageref{example:lineare_regression})
+\begin{gather}
+\min_{x\in\R^2}\ \sum_{i=1}^{10} (x_1 \xi_i + x_2 - \eta_i)^2 \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (-10, 10)^T.
 \end{equation*}
+
 Die Messwerte $(\xi_i,\eta_i), i = 1,\ldots,10,$
 sind in der Tabelle~\ref{tbl:messwerte_lin_regres}
 zu finden.
+\begin{equation*}
+\xopt = (0.7, -4.3)^T
+\quad \Rightarrow \quad
+\tilde{\eta}(\xi) = 0.7\, \xi - 4.3 \,.
+\end{equation*}
 \end{testproblem}
 
 \begin{table}[h]
@@ -240,23 +274,31 @@ und~\ref{test_prob:nichtlin_regres_quad}}
 \label{test_prob:nichtlin_regres_quad}
 Nichtlineare Regression mit dem funktionalen
 Zusammenhang~\eqref{eq:nichtlin_regres_quad_zusammenhang}
-(Vgl. Beispiel~\ref{example:nichtlineare_regression})
-\begin{equation}
-\min_{x\in\R^3}\ \sum_{i=1}^{10} (x_1 (\xi_i -x_2)^2 + x_3 - \eta_i)^2
-\end{equation}
-\begin{equation*}
+(Vgl. Beispiel~\ref{example:nichtlineare_regression}
+auf Seite~\pageref{example:nichtlineare_regression})
+\begin{gather}
+\min_{x\in\R^3}\ \sum_{i=1}^{10} (x_1 (\xi_i -x_2)^2 + x_3 - \eta_i)^2 \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 20,\ i = 1,2,3 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (1, 3, -4)^T.
 \end{equation*}
+
 Die Messwerte
 in der Tabelle~\ref{tbl:messwerte_lin_regres}
 sind zu benutzen.
+\begin{equation*}
+\xopt = (0.242, 4.056, -2.955)^T
+\quad \Rightarrow \quad
+\hat{\eta}(\xi) = 0.242\, (\xi - 4.056)^2 - 2.955 \,.
+\end{equation*}
 \end{testproblem}
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}[domain=-0.1:10.4,scale=0.75]
+\begin{tikzpicture}[domain=-0.1:10.4,scale=0.55]
   \draw[very thin,color=gray,step=2] (-0.1,-4.4) grid (11.4,7.4);
   \draw[->] (-0.1,0) -- (11.4,0) node[right] {$\xi$};
   \draw[->] (0,-4.4) -- (0,7.5) node[above] {$\eta$};
@@ -269,11 +311,11 @@ sind zu benutzen.
     {1/-0.5, 2/-2, 3/-3, 4/-3, 5/-2.5, 6/-2, 7/-1, 8/1, 9/3, 10/5.5}
     \fill (\x,\y) circle(0.1);
   \draw[color=blue] plot (\x,{0.242*(\x-4.056)^2-2.955})
-    node[right] {$\eta_2(\xi)$};
+    node[right] {$\hat{\eta}(\xi)$};
   \draw[color=red] plot (\x,{0.7*\x-4.3})
-    node[right] {$\eta_1(\xi)$};
+    node[right] {$\tilde{\eta}(\xi)$};
 \end{tikzpicture}
-\caption{Lösungen der Testprobleme~\ref{test_prob:lin_regres}
+\caption{Ergebnisse der Testprobleme~\ref{test_prob:lin_regres}
 und~\ref{test_prob:nichtlin_regres_quad}}
 \end{figure}
 
@@ -281,18 +323,26 @@ und~\ref{test_prob:nichtlin_regres_quad}}
 \label{test_prob:nichtlin_regres_exp}
 Nichtlineare Regression mit dem funktionalen
 Zusammenhang~\eqref{eq:nichtlin_regres_exp_zusammenhang}
-(Vgl. Beispiel~\ref{example:nichtlineare_regression})
-\begin{equation}
-\min_{x\in\R^2}\ \sum_{i=1}^{10} (x_1 e^{\xi x_2} - \eta_i)^2
-\end{equation}
-\begin{equation*}
+(Vgl. Beispiel~\ref{example:nichtlineare_regression}
+auf Seite~\pageref{example:nichtlineare_regression})
+\begin{gather}
+\min_{x\in\R^2}\ \sum_{i=1}^{10} (x_1 e^{\xi x_2} - \eta_i)^2 \notag \\
 \begin{split}
 \nb -10 \leq x_i & \leq 10,\ i = 1,2 \\
 \end{split}
+\end{gather}
+\begin{equation*}
+x_0 = (0.2, 0.5)^T.
 \end{equation*}
+
 Die Messwerte $(\xi_i,\eta_i), i = 1,\ldots,10,$
 sind in der Tabelle~\ref{tbl:messwerte_nichtlin_regres}
 gegeben.
+\begin{equation*}
+\xopt = (0.632, 0.195)^T
+\quad \Rightarrow \quad
+\bar{\eta}(\xi) = 0.632\, e^{0.195\,\xi}.
+\end{equation*}
 \end{testproblem}
 
 \begin{table}[h]

@@ -1,4 +1,5 @@
 %problem_v_rosenbrock_1
+%(Rosenbrock-Funktion)
 %\min_{x\in\R^2}\ 100 (x_2-x_1^2)^2+(1-x_1)^2 
 %\nb -10 \leq x_1 & \leq 10 \\
 %1.5 \leq x_2 & \leq 10 \\

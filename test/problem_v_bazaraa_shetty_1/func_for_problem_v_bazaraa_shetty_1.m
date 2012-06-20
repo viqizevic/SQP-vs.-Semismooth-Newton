@@ -1,4 +1,5 @@
 %problem_v_bazaraa_shetty_1
+%(Bazaraa-Shetty-Funktion)
 %\min_{x\in\R^2}\ (x_1-2)^4+(x_1-2 x_2)^2 
 %\nb 4 \leq x_1 & \leq 10 \\
 %-10 \leq x_2 & \leq 10 \\

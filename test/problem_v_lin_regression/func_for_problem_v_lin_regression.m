@@ -1,4 +1,5 @@
 %problem_v_lin_regression
+%Lineare Regression (Vgl. Beispiel~\ref{example:lineare_regression})
 %\min_{x\in\R^2}\ f(x) %TODO write f(x)
 %% y = 0;
 %% 	m = length(xi);
