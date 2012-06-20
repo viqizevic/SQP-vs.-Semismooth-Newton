@@ -1,0 +1,22 @@
+\begin{testproblem}
+(Steuerungsproblem, vgl. Beispiel~6.2.6 in \cite[S.~216~f.]{alt})\\
+Es ist ein Produktionsplanungsproblem mit beschränktem Lager zu betrachten.
+In einem Zeitraum $[0,T]$ mit $T > 0$
+soll eine Produktion so gesteuert werden,
+dass die Gesamtkosten minimal sind.
+Seien
+\begin{itemize}
+  \item $z(t)$ die Anzahl der zur Zeit $t$ am Lager vorhandenen Produkte,
+  \item $r(t)$ die Nachfrage nach den Produkten zur Zeit $t$,
+  \item $u(t)$ die Produktionsrate zur Zeit $t$.
+\end{itemize}
+Die Änderung der verfügbaren Lagermenge $z(t)$
+sei durch die Lagerbilanzgleichung
+\begin{equation}
+  \dot{z}(t) = u(t) - r(t), \quad \forall t \in [0,T]
+\end{equation}
+mit dem Anfangslagerbestand $z(0) = a \geq 0$ gegeben.
+Die Produktions- und Lagehaltungskosten zur Zeit $t$ seien
+$\frac{1}{2} \rho_u u(t)^2 + \rho_z z(t)$
+mit Konstanten $\rho_u, \rho_z > 0$.
+\end{testproblem}
