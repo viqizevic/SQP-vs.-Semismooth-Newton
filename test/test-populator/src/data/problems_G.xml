@@ -34,7 +34,7 @@
 
 	<problem>
 		<name>example_13_2_antoniou_lu</name>
-		<description>(Vgl. Beispiel 13.2 in \cite[S.~415f]{antoniou})</description>
+		<description>(Vgl. Beispiel 13.2 in \cite[S.~415~f.]{antoniou})</description>
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>

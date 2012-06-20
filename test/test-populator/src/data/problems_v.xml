@@ -24,7 +24,7 @@
 
 	<problem>
 		<name>himmelblau</name>
-		<description>(Himmelblau-Funktion, vgl. Beispiel 1.4.2 in \cite[S.~14f]{alt})</description>
+		<description>(Himmelblau-Funktion, vgl. Beispiel 1.4.2 in \cite[S.~14~f.]{alt})</description>
 		<function_name>himmelblau_func</function_name>
 		<u>[-10; -10]</u>
 		<v>[10; 10]</v>
@@ -33,7 +33,7 @@
 	
 	<problem>
 		<name>bazaraa_shetty</name>
-		<description>(Bazaraa-Shetty-Funktion, vgl. Beispiel 1.4.3 in \cite[S.~15f]{alt})</description>
+		<description>(Bazaraa-Shetty-Funktion, vgl. Beispiel 1.4.3 in \cite[S.~15~f.]{alt})</description>
 		<function_name>bazaraa_shetty_func</function_name>
 		<u>[-10; -10]</u>
 		<v>[10; 10]</v>

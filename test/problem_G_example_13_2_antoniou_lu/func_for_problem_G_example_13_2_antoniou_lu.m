@@ -1,5 +1,5 @@
 %problem_G_example_13_2_antoniou_lu
-%(Vgl. Beispiel 13.2 in \cite[S.~415f]{antoniou})
+%(Vgl. Beispiel 13.2 in \cite[S.~415~f.]{antoniou})
 %\min_{x\in\R^4}\ (x_1 - x_3)^2 + (x_2 - x_4)^2
 %\nb -x_1 & \leq 0 \\
 %-x_2 & \leq 0 \\
