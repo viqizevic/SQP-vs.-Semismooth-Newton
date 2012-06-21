@@ -32,7 +32,7 @@ Sei $x^k \in \R^n$ ein zulässiger Punkt des
 Problems~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}.
 Angenommen, eine Suchrichtung $d \in \R^n$ kann gefunden werden,
 sodass der Punkt $x^{k+1} := x^k + d$ ein besserer zulässiger Punkt ist.
-Diesen Vektor $d$ lässt sich finden, indem das Problem
+Dieser Vektor $d$ lässt sich finden, indem das Problem
 \begin{align}
   \min_{d \in \R^n}\ &
     \frac{1}{2} \langle Q(x^k+d), x^k+d \rangle + \langle q, x^k+d \rangle 
@@ -51,7 +51,7 @@ ergibt sich als Zielfunktion
   \frac{1}{2} \langle Qd,d \rangle + \langle Qx^k+q,d\rangle.
 \end{displaymath}
 Weil $x^k$ zulässig ist, d.\,h., es gilt $Ax^k = b$,
-vereinfacht sich die Gleichungsnebenbedingung als
+vereinfacht sich die Gleichungsnebenbedingung zu
 $Ad = 0$.
 
 Seien $a_1,\ldots,a_m \in \R^n$ bzw. $g_1,\ldots,g_p \in \R^n$
@@ -62,7 +62,7 @@ die Indexmenge der aktiven Ungleichungsrestriktionen zu $x^k$
 wie in~\eqref{eq:indexmenge_der_aktiven_restr}.
 
 Ist eine Ungleichungsrestriktion zu $x^k$ mit Index $j$ aktiv,
-dann kann diese Ungleichungsrestriktion auch zu $x^k+d$ aktiv bleiben,
+so kann diese Ungleichungsrestriktion auch zu $x^k+d$ aktiv bleiben,
 wenn $\langle g_j, d \rangle = 0$ gilt.
 
 Seien $J_k := J(x^k)$, $p_k := |J_k|$ und
@@ -87,7 +87,7 @@ linearen Gleichungsnebenbedingungen:
   \nb & B_k d = 0. \notag
 \end{align}
 
-Es ist hier vorauszusetzen, dass folgende gelten:
+Wir setzen hier folgende Annahmen voraus:
 \begin{gather}
   \label{eq:vorauss_Bk_hat_voll_rang}
   B_k \text{ hat vollen Rang},\\
@@ -283,7 +283,7 @@ Es gilt die notwendige Bedingung
 Q\tilde{d} + Qx^k + q + A^T \tilde{\lambda} + G_k^T \tilde{\mu} = 0.
 \end{equation}
 
-Angenommen ist $\tilde{d} = 0$. Dann lautet die notwendige Bedingung
+Angenommen es gilt $\tilde{d} = 0$. Dann lautet die notwendige Bedingung
 \begin{equation}
 \label{eq:notw_bed_fuer_QLGk_tilde}
   Qx^k + q + A^T \tilde{\lambda} + G_k^T \tilde{\mu} = 0.
@@ -291,7 +291,7 @@ Angenommen ist $\tilde{d} = 0$. Dann lautet die notwendige Bedingung
 Fasst man diese mit der
 Gleichung~\eqref{eq:notw_bed_teilprob_in_aktive_mengen_verf_mit_d_gl_null}
 zusammen,
-dann bekommt man
+so bekommt man
 \begin{equation}
 -A^T \lambda - G_k^T \mu + A^T \tilde{\lambda} + \tilde{G_k}^T \tilde{\mu} = 0
 \end{equation}

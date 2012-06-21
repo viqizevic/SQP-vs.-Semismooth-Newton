@@ -25,9 +25,9 @@ $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 Das Problem~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed} wird hier auf ein
 unrestringiertes Verfahren mit Hilfe einer Nullraum-Matrix von~$A$
 (siehe Definition~\ref{def:nullraum_matrix}) reduziert werden.
-Daher kommt der Name \emph{Nullraum-Verfahren}.
-Es kommt nun zun‰chst alle Schritten des Verfahrens und
-anschlieﬂend die Erkl‰rungen des einzelnen Schrittes.
+Daher stammt der Name \emph{Nullraum-Verfahren}.
+Es folgen zun‰chst s‰mtliche Schritte des Verfahrens und
+anschlieﬂend die Erkl‰rungen der einzelnen Schritte.
 
 %-------------------------------------------------------------------------%
 %                                                                         %
@@ -40,8 +40,8 @@ anschlieﬂend die Erkl‰rungen des einzelnen Schrittes.
 vgl. Verfahren 6.1.1 in \cite[S.~208~f.]{alt})}
 \begin{enumerate}
   \item Finde mit Hilfe der QR-Zerlegung
-  unit‰re $(n \times n)$-Matrix~$H$
-  und obere $(m \times m)$-Dreiecksmatrix~$R$ mit
+  eine unit‰re $(n \times n)$-Matrix~$H$
+  und eine obere $(m \times m)$-Dreiecksmatrix~$R$ mit
   \begin{equation}
     H A^T = \left(\begin{array}{c} R \\ 0 \end{array}\right).
   \end{equation}
@@ -114,7 +114,7 @@ Ad = AY d_y + AZ d_z = AH^T \left(\begin{array}{c} d_y \\ d_z \end{array}\right)
    = (R^T \ 0) \left(\begin{array}{c} d_y \\ d_z \end{array}\right)
    = R^T d_y
 \end{equation}
-und wegen der Invertierbarkeit von der Matrix $R$
+und wegen der Invertierbarkeit der Matrix $R$
 \begin{equation}
   Ad = 0 \quad \Leftrightarrow \quad d_y = 0
   \quad \Leftrightarrow \quad d = Z d_z.
@@ -210,7 +210,7 @@ und
 
 Die Bedingung $\nabla F(z^*) = 0$ kann daher als
 \begin{equation}
-  B_{22} z^* + B_{21} y^* - h_2 = 0.
+  B_{22} z^* + B_{21} y^* - h_2 = 0
 \end{equation}
 geschrieben werden.
 Mit Hilfe dieser Gleichung bestimmt man in
@@ -227,7 +227,7 @@ nach~\eqref{eq:zerlegung_von_xopt_in_nullraum_verfahren}.
 
 Zum Abschluss wird in
 Schritt~\ref{list:multiplikator_lambda_in_nullraum_verfahren}
-den Multiplikator $\lambda$ berechnet.
+der Multiplikator $\lambda$ berechnet.
 Nach Satz~\ref{satz:notw_bed_fuer_prob_mit_lin_gl_nebenbed}
 lautet die Optimalit‰tsbedingung des
 Problems~\eqref{prob:quad_opt_prob_mit_lin_gl_nebenbed}
