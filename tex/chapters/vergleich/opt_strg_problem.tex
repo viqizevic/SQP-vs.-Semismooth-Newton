@@ -16,7 +16,48 @@ sei durch die Lagerbilanzgleichung
   \dot{z}(t) = u(t) - r(t), \quad \forall t \in [0,T]
 \end{equation}
 mit dem Anfangslagerbestand $z(0) = a \geq 0$ gegeben.
-Die Produktions- und Lagehaltungskosten zur Zeit $t$ seien
+Die Produktions- und Lagehaltungskosten zur Zeit $t$ betragen
 $\frac{1}{2} \rho_u u(t)^2 + \rho_z z(t)$
 mit Konstanten $\rho_u, \rho_z > 0$.
+Durch den Verkauf des Lagerrestbestandes $z(T)$
+kommt ein Gewinn $\sigma z(T)$ mit $\sigma \geq 0$.
+Dabei sind $u(t)$ und $z(t)$ zu bestimmen,
+wobei die Lagerkapazität beschränkt ist,
+d.\,h. $z(t) \leq \zeta$ für alle $t \in [0,T]$ mit $\zeta > 0$.
+Damit ergibt sich das folgende zeitkontinuierliche Problem: 
+\begin{gather}
+  \min\: f(z,u) :=
+    \int_0^T \left( \tfrac{1}{2} \rho_u u(t)^2 + \rho_z z(t) \right) d\!t
+    - \sigma z(T) \\
+  \nb \quad \dot{z}(t) = u(t) - r(t) \quad \forall t \in [0,T] \notag \\
+    z(0) = a \notag \\
+    0 \leq z(t) \leq \zeta \quad \forall t \in [0,T] \notag \\
+    0 \leq u(t) \quad \forall t \in [0,T]. \notag
+\end{gather}
+Eine Diskretisierung wird durchgeführt,
+damit das Problem numerisch gelöst werden kann.
+Mit $N \in \N$ und $\tau := \frac{T}{N}$
+wird das Intervall $[0,T]$ in $N$ Teilintervalle
+$[t_0,t_1], \ldots, [t_{N-1},t_N]$ unterteilt,
+wobei $t_i = i\tau$ für alle $i = 0,\ldots,N$.
+Die Produktionsrate $u(t)$ wird durch eine Funktion $\hat{u}(t)$ mit
+\begin{equation}
+  \hat{u}(t) := u_i \qquad
+    \forall t \in [t_i, t_{i+1}] \qquad
+    \forall i=0,\ldots,N-1
+\end{equation}
+approximiert
+und die Lagermenge $z(t)$ durch eine Funktion $\hat{z}(t)$ mit
+$\hat{z}(i\tau) := z_i$ für $i = 1,\ldots,N$ sowie $\hat{0} := a$.
+Das Problem lässt sich dann wie folgt umformulieren.
+\begin{gather}
+  \min\: \frac{1}{2} \tau \rho_u \sum_{i=0}^{N-1} u_i^2
+    + \tau \rho_z \sum_{i=1}^{N} z_i
+    - \sigma z_N \\
+  \nb \quad z_{i+1} - z_i - \tau (u_i - r_i) = 0
+    \quad \forall i = 1,\ldots,N-1 \notag \\
+    z_1 - \tau (u_0 - r_0) = a \notag \\
+    0 \leq z_i \leq \zeta \quad \forall i = 1,\ldots,N \notag \\
+    0 \leq u_i \quad \forall i = 1,\ldots,N-1. \notag
+\end{gather}
 \end{testproblem}
