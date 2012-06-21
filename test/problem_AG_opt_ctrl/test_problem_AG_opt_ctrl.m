@@ -1,13 +1,13 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp,X_ssn,X_sqp] = test_problem_AG_opt_ctrl(show)
     u = [];
     v = [];
-    x0 = opt_ctrl_prob_constr_x0(5,12,50);
+    x0 = opt_ctrl_prob_constr_x0(5,12,100);
     tol = 0.00001;
     itmax = 100;
-    A = opt_ctrl_prob_constr_A(12,50);
-    b = opt_ctrl_prob_constr_b(5,12,50);
-    G = opt_ctrl_prob_constr_G(50);
-    r = opt_ctrl_prob_constr_r(6,50);
+    A = opt_ctrl_prob_constr_A(12,100);
+    b = opt_ctrl_prob_constr_b(5,12,100);
+    G = opt_ctrl_prob_constr_G(100);
+    r = opt_ctrl_prob_constr_r(6,100);
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     tic;

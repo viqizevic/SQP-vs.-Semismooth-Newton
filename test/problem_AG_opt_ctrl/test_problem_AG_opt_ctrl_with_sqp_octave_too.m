@@ -1,13 +1,13 @@
 function test_problem_AG_opt_ctrl_with_sqp_octave_too(show)
     u = [];
     v = [];
-    x0 = opt_ctrl_prob_constr_x0(5,12,50);
+    x0 = opt_ctrl_prob_constr_x0(5,12,100);
     tol = 0.00001;
     itmax = 100;
-    A = opt_ctrl_prob_constr_A(12,50);
-    b = opt_ctrl_prob_constr_b(5,12,50);
-    G = opt_ctrl_prob_constr_G(50);
-    r = opt_ctrl_prob_constr_r(6,50);
+    A = opt_ctrl_prob_constr_A(12,100);
+    b = opt_ctrl_prob_constr_b(5,12,100);
+    G = opt_ctrl_prob_constr_G(100);
+    r = opt_ctrl_prob_constr_r(6,100);
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     tic;
@@ -57,16 +57,16 @@ function obj = phi(x)
 end
 
 function c = h(x)
-    A = opt_ctrl_prob_constr_A(12,50);
-    b = opt_ctrl_prob_constr_b(5,12,50);
+    A = opt_ctrl_prob_constr_A(12,100);
+    b = opt_ctrl_prob_constr_b(5,12,100);
     c = b - A*x;
 end
 
 function s = g(x)
     u = [];
     v = [];
-    G = opt_ctrl_prob_constr_G(50);
-    r = opt_ctrl_prob_constr_r(6,50);
+    G = opt_ctrl_prob_constr_G(100);
+    r = opt_ctrl_prob_constr_r(6,100);
     G = [ G; -eye(length(u)); eye(length(v)) ];
     r = [ r; -u; v ];
     s = r - G*x;

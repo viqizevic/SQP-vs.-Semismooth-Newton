@@ -1,7 +1,7 @@
 function test_problem_Gv_murtagh_sargent_hs76_with_sqp_octave_too(show)
     u = [0; 0; 0; 0];
     v = [];
-    x0 = [0.5; 1; 0.5; 0.5];
+    x0 = [0.25; 1.5; 0.25; 0.5];
     tol = 0.00001;
     itmax = 100;
     A = [];

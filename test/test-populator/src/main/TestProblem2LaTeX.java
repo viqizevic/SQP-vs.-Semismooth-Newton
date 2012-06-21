@@ -159,7 +159,11 @@ public class TestProblem2LaTeX {
 		for (int i=0; i<m; i++) {
 			String[] t = s[i].trim().split("\\s+");
 			for (int j=0; j<n; j++) {
-				r[i][j] = Double.parseDouble(t[j]);
+				try {
+					r[i][j] = Double.parseDouble(t[j]);
+				} catch (NumberFormatException e) {
+					System.err.println(e);
+				}
 			}
 		}
 		return r;
