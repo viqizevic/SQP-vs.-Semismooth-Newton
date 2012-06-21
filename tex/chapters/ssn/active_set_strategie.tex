@@ -2,9 +2,15 @@ In diesem Unterkapitel wird
 die Aktive-Mengen-Strategie betrachtet.
 Dieses Verfahren ist interessant,
 weil man es in der Praxis als
-die Implementierung des halbglatten Newton-Verfahrens nimmt.
+die Implementierung des halbglatten Newton-Verfahrens nehmen kann.
 Es hat eine gemeinsame Idee
 mit dem Aktiven-Mengen-Verfahren in Abschnitt~\ref{sec:aktive_mengen_verfahren}.
+
+Als Literatur über diesem Verfahren sei
+auf \cite[Kapitel~7, S.~189~ff.]{ito} verwiesen.
+Es wurde in \cite[Abschnitt~8.4, S.~240~ff.]{ito}
+gezeigt, dass es als ein halbglattes
+Newton-Verfahren interpretiert werden kann.
 
 Es ist hier das
 Problem~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
@@ -17,6 +23,7 @@ Problem~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
 zu betrachten.
 
 Eine der Optimalitätsbedingungen dieses Problems ist
+nach Satz~\ref{satz:karush_kuhn_tucker}
 \begin{equation}
 \label{eq:erste_opt_bed_fuer_opt_prob_mit_lin_ungl_nebenbed}
   \nabla f(x) + A^T \lambda + G^T \mu = 0.
@@ -86,11 +93,10 @@ für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
 \end{enumerate}
 \end{algorithm}
 
-Es kann gezeigt werden, dass das Verfahren~\ref{algo:aktive_mengen_strategie}
+Das Verfahren~\ref{algo:aktive_mengen_strategie} kann
 als das halbglatte Newton-Verfahren
-(Verfahren~\ref{algo:halbglattes_newton_fuer_restr_opt_prob}) interpretiert
-werden kann.
-
+(Verfahren~\ref{algo:halbglattes_newton_fuer_restr_opt_prob})
+interpretiert werden.
 Sei $k$ irgendeiner Iterationsschritt in den beiden Verfahren.
 Bei dem halbglatten Newton-Verfahren ist dann
 in Schritt~\ref{list:gleichungssystem_in_halbgl_newton_fuer_PLU}
