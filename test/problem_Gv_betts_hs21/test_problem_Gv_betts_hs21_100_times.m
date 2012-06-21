@@ -15,6 +15,7 @@ function test_problem_Gv_betts_hs21_100_times(show)
         k_total = k_total+1;
         [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp] = test_problem_Gv_betts_hs21(0);
         if (norm(x_ssn-x_sqp) > 0.1)
+            disp('Different solutions..');
             break;
         end
         if (t_ssn > t_max || t_sqp > t_max)

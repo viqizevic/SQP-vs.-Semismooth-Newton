@@ -1,7 +1,7 @@
 function [x_ssn,it_ssn,t_ssn,x_sqp,it_sqp,t_sqp,X_ssn,X_sqp] = test_problem_Gv_beale_hs35(show)
     u = [0; 0; 0];
     v = [];
-    x0 = [0.5; 0.5; 0.5];
+    x0 = [1.5; 0.5; 0.5];
     tol = 0.00001;
     itmax = 100;
     A = [];

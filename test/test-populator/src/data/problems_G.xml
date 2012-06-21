@@ -94,7 +94,7 @@
 		<G>[1 1 2]</G>
 		<r>[3]</r>
 		<u>[0; 0; 0]</u>
-		<x0>[0.5; 0.5; 0.5]</x0>
+		<x0>[1.5; 0.5; 0.5]</x0>
 	</problem>
 	
 	<problem>
@@ -113,7 +113,7 @@
 		<G>[1 2 1 1; 3 1 2 -1; 0 -1 -4 0]</G>
 		<r>[5; 4; -1.5]</r>
 		<u>[0; 0; 0; 0]</u>
-		<x0>[0.5; 1; 0.5; 0.5]</x0>
+		<x0>[0.25; 1.5; 0.25; 0.5]</x0>
 	</problem>
 	
 	<!--problem>
@@ -195,17 +195,17 @@
 		<function_name>quad_func</function_name>
 		<function_constant>
 			<constant_name>Q</constant_name>
-			<constant_value>opt_ctrl_prob_func_H(0.2,12,50)</constant_value>
+			<constant_value>opt_ctrl_prob_func_H(0.2,12,100)</constant_value>
 		</function_constant>
 		<function_constant>
 			<constant_name>q</constant_name>
-			<constant_value>opt_ctrl_prob_func_q(0.1,1.5,12,50)</constant_value>
+			<constant_value>opt_ctrl_prob_func_q(0.1,1.5,12,100)</constant_value>
 		</function_constant>
-		<A>opt_ctrl_prob_constr_A(12,50)</A>
-		<b>opt_ctrl_prob_constr_b(5,12,50)</b>
-		<G>opt_ctrl_prob_constr_G(50)</G>
-		<r>opt_ctrl_prob_constr_r(6,50)</r>
-		<x0>opt_ctrl_prob_constr_x0(5,12,50)</x0>
+		<A>opt_ctrl_prob_constr_A(12,100)</A>
+		<b>opt_ctrl_prob_constr_b(5,12,100)</b>
+		<G>opt_ctrl_prob_constr_G(100)</G>
+		<r>opt_ctrl_prob_constr_r(6,100)</r>
+		<x0>opt_ctrl_prob_constr_x0(5,12,100)</x0>
 	</problem>
 	
 </problems>
