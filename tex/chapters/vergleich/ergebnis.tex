@@ -1,89 +1,89 @@
 \begin{table}[h]
 \centering
-\begin{tabular*}{0.5\linewidth}{@{\extracolsep{\fill}}crr}
+\begin{tabular*}{0.75\linewidth}{@{\extracolsep{\fill}}crrrr}
   \toprule
-  Testproblem &   SSN   &   SQP   \\
-  \cmidrule{2-3}
-              & \multicolumn{2}{c}{T (ms)} \\
+  Nr. & T$_\text{SSN}$\,(ms) & T$_\text{SQP}$\,(ms)
+    & \#It$_\text{SSN}$ & \#It$_\text{SQP}$ \\
   \midrule
-  1 & 17.5 & 17.5 \\ % test_problem_v_norm
-  2 & 22.5 & 37.34 \\ % test_problem_v_rosenbrock
-  3 & 23.91 & 40.0 \\ % test_problem_v_himmelblau
-  4 & 62.03 & 134.69 \\ % test_problem_v_bazaraa_shetty
-  5 & 67.66 & 83.75 \\ % test_problem_v_beale
-  6 & 205.62 & 355.31 \\ % test_problem_v_exp
-  7 & 592.03 & 659.22 \\ % test_problem_v_colville
-  8 & 15.78 & 19.84 \\ % test_problem_v_norm_1
-  9 & 22.97 & 51.25 \\ % test_problem_v_rosenbrock_1
-  10 & 23.59 & 80.62 \\ % test_problem_v_himmelblau_1
-  11 & 19.38 & 23.28 \\ % test_problem_v_bazaraa_shetty_1
-  12 & 81.88 & 80.31 \\ % test_problem_v_beale_1
-  13 & 206.41 & 374.53 \\ % test_problem_v_exp_1
-  14 & 267.5 & 328.28 \\ % test_problem_v_colville_1
-  15 & 62.5 & 72.5 \\ % test_problem_v_lin_regression
-  16 & 680.94 & 741.88 \\ % test_problem_v_quad_regression
-  17 & 412.03 & 490.78 \\ % test_problem_v_nichtlin_regression
+  1 & 1.38 & 1.94 & 2 & 1 \\ % problem_v_norm
+  2 & 3.87 & 6.94 & 6 & 5 \\ % problem_v_rosenbrock
+  3 & 4.80 & 8.88 & 7 & 6 \\ % problem_v_himmelblau
+  4 & 17.61 & 35.68 & 30 & 29 \\ % problem_v_bazaraa_shetty
+  5 & 19.82 & 24.85 & 9 & 8 \\ % problem_v_beale
+  6 & 35.54 & 64.52 & 48 & 47 \\ % problem_v_exp
+  7 & 171.86 & 195.18 & 27 & 26 \\ % problem_v_colville
+  8 & 139.26 & 218.51 & 34 & 33 \\ % problem_v_dixon
+  9 & 2.56 & 6.17 & 3 & 1 \\ % problem_v_norm_1
+  10 & 5.78 & 13.16 & 9 & 6 \\ % problem_v_rosenbrock_1
+  11 & 6.22 & 21.10 & 9 & 10 \\ % problem_v_himmelblau_1
+  12 & 3.98 & 5.30 & 6 & 3 \\ % problem_v_bazaraa_shetty_1
+  13 & 22.27 & 21.36 & 10 & 5 \\ % problem_v_beale_1
+  14 & 50.24 & 91.33 & 49 & 46 \\ % problem_v_exp_1
+  15 & 70.10 & 85.54 & 11 & 10 \\ % problem_v_colville_1
+  16 & 41.64 & 97.56 & 10 & 8 \\ % problem_v_dixon_1
+  17 & 15.24 & 18.42 & 3 & 2 \\ % problem_v_lin_regression
+  18 & 141.55 & 151.97 & 14 & 13 \\ % problem_v_quad_regression
+  19 & 75.10 & 87.43 & 21 & 20 \\ % problem_v_nichtlin_regression
   \bottomrule
 \end{tabular*}
-\caption{Laufzeiten der Programme für Testprobleme 1 bis 17}
+\caption{Ergebnisse der Programme für Testprobleme 1 bis 19}
 \end{table}
 
 \begin{table}[h]
 \centering
-\begin{tabular*}{0.5\linewidth}{@{\extracolsep{\fill}}crr}
+\begin{tabular*}{0.75\linewidth}{@{\extracolsep{\fill}}crrrr}
   \toprule
-  Testproblem &   SSN   &   SQP   \\
-  \cmidrule{2-3}
-              & \multicolumn{2}{c}{T (ms)} \\
+  Nr. & T$_\text{SSN}$\,(ms) & T$_\text{SQP}$\,(ms)
+    & \#It$_\text{SSN}$ & \#It$_\text{SQP}$ \\
   \midrule
-  18 & 15.62 & 15.78 \\ % test_problem_A_example_16_2_nocedal_wright
-  19 & 16.09 & 15.62 \\ % test_problem_A_simple_example
-  20 & 16.41 & 15.94 \\ % test_problem_A_huang_aggerwal_hs28
-  21 & 16.09 & 16.88 \\ % test_problem_A_huang_aggerwal_miele_hs48
-  22 & 15.62 & 15.62 \\ % test_problem_A_huang_aggerwal_hs51
-  23 & 15.94 & 16.25 \\ % test_problem_A_miele_hs52
-  24 & 17.03 & 18.28 \\ % test_problem_Av_betts_miele_hs53
-  25 & 67.81 & 73.91 \\ % test_problem_A_huang_aggerwal_hs49
-  26 & 232.5 & 265.31 \\ % test_problem_A_huang_aggerwal_hs50
+  20 & 1.05 & 2.27 & 2 & 1 \\ % problem_A_example_16_2_nocedal_wright
+  21 & 1.08 & 2.31 & 2 & 1 \\ % problem_A_simple_example
+  22 & 1.03 & 2.22 & 2 & 1 \\ % problem_A_huang_aggerwal_hs28
+  23 & 1.07 & 2.34 & 2 & 1 \\ % problem_A_huang_aggerwal_miele_hs48
+  24 & 1.05 & 2.30 & 2 & 1 \\ % problem_A_huang_aggerwal_hs51
+  25 & 1.10 & 2.35 & 2 & 1 \\ % problem_A_miele_hs52
+  26 & 2.21 & 3.81 & 2 & 1 \\ % problem_Av_betts_miele_hs53
+  27 & 20.07 & 22.30 & 3 & 2 \\ % problem_A_huang_aggerwal_hs49
+  28 & 65.47 & 73.87 & 9 & 8 \\ % problem_A_huang_aggerwal_hs50
   \bottomrule
 \end{tabular*}
-\caption{Laufzeiten der Programme für Testprobleme 18 bis 26}
+\caption{Ergebnisse der Programme für Testprobleme 20 bis 28}
 \end{table}
 
 \begin{table}[h]
 \centering
-\begin{tabular*}{0.5\linewidth}{@{\extracolsep{\fill}}crr}
+\begin{tabular*}{0.75\linewidth}{@{\extracolsep{\fill}}crrrr}
   \toprule
-  Testproblem &   SSN   &   SQP   \\
-  \cmidrule{2-3}
-              & \multicolumn{2}{c}{T (ms)} \\
+  Nr. & T$_\text{SSN}$\,(ms) & T$_\text{SQP}$\,(ms)
+    & \#It$_\text{SSN}$ & \#It$_\text{SQP}$ \\
   \midrule
-  27 & 16.09 & 18.75 \\ % test_problem_G_example_with_diamond_area
-  28 & 15.62 & 19.84 \\ % test_problem_Gv_example_16_4_nocedal_wright
-  29 & 15.94 & 31.09 \\ % test_problem_G_example_13_2_antoniou_lu
-  30 & 16.41 & 17.66 \\ % test_problem_Gv_betts_hs21
-  31 & 15.78 & 16.25 \\ % test_problem_Gv_beale_hs35
-  32 & 16.41 & 42.34 \\ % test_problem_Gv_murtagh_sargent_hs76
+  29 & 2.12 & 5.72 & 3 & 1 \\ % problem_G_example_with_diamond_area
+  30 & 2.16 & 5.53 & 3 & 1 \\ % problem_Gv_example_16_4_nocedal_wright
+  31 & 2.78 & 9.62 & 3 & 1 \\ % problem_G_example_13_2_antoniou_lu
+  32 & 2.92 & 3.77 & 4 & 1 \\ % problem_Gv_betts_hs21
+  33 & 2.01 & 4.36 & 3 & 1 \\ % problem_Gv_beale_hs35
+  34 & 3.97 & 7.59 & 5 & 1 \\ % problem_Gv_murtagh_sargent_hs76
   \bottomrule
 \end{tabular*}
-\caption{Laufzeiten der Programme für Testprobleme 27 bis 32}
+\caption{Ergebnisse der Programme für Testprobleme 29 bis 34}
 \end{table}
 
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}[yscale=0.05,xscale=0.35]
-  \draw[->] (1,0) -- (35.5,0) node [above] {Testproblem};
-  \foreach \x in {1,5,...,35}
-    \draw (\x,0.5) -- (\x,-0.5) node [below] {\x};
-  \draw[->] (1,0) -- (1,205) node [right] {(ms)};
+\begin{tikzpicture}[yscale=0.04,xscale=0.3]
+  \draw[->] (1,0) -- (35.5,0) node [right] {Nr.};
+  \foreach \x in {2,6,...,34}
+    \draw (\x,0.7) -- (\x,-0.7) node [below] {\x};
+  \draw[->] (1,0) -- (1,222) node [right] {T\,(ms)};
   \foreach \y in {0,50,...,200}
-    \draw (1.1,\y) -- (0.9,\y) node [left] {\y};
-  \draw[color=blue] plot file {images/sqp_results_under_150_ms.table};
-  \draw[color=red] plot file {images/ssn_results_under_150_ms.table};
-  \draw[color=blue] (5,125) -- (9,125) node [right] {SQP};
-  \draw[color=red] (5,115) -- (9,115) node [right] {SSN};
+    \draw (1.2,\y) -- (0.8,\y) node [left] {\y};
+  \draw[color=blue] plot file {images/sqp_results.table};
+  \draw[color=red,dashed] plot file {images/ssn_results.table};
+  \draw[color=blue] (25,180) -- (29,180) node [right] {SQP};
+  \draw[color=red,dashed] (25,167) -- (29,167) node [right] {SSN};
 \end{tikzpicture}
-\caption{Laufzeiten der Programme unterhalb 200 ms (sortiert nach den
-Ergebnissen von SQP, d.\,h. andere Nummerierung der Testprobleme)}
+\caption{Laufzeiten der Programme für Testprobleme 1 bis 34}
+%\caption{Laufzeiten der Programme unterhalb 200 ms (sortiert nach den
+%Ergebnissen von SQP, d.\,h. andere Nummerierung der Testprobleme)}
 \end{figure}

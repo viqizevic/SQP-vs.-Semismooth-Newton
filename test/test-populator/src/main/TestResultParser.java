@@ -89,8 +89,8 @@ public class TestResultParser {
 			System.out.println("Comparison Table:");
 			System.out.println(getComparisonTable());
 			
-			System.out.println("Sorting..\n");
-			sort();
+//			System.out.println("Sorting..\n");
+//			sort();
 			
 			System.out.println("Results of SSN (for plot):");
 			System.out.println(getResultForPlot(ssn));
@@ -169,7 +169,7 @@ public class TestResultParser {
 	
 	private String getComparisonTable() {
 		String s = " TP & SSN t[ms] & SQP t(ms) " +
-				"& SSN #it & SQP #it & n \\\\\n";
+				"& SSN #it & SQP #it \\\\\n";
 		int i = 1;
 		for (TestProblem p : testProblems) {
 			String d1 = p.getSsnSolveTime()+"";
@@ -183,7 +183,7 @@ public class TestResultParser {
 			s += "  " + i + " & " + d1 + " & " + d2
 				+ " & " + p.getSsnSolveIterationNumber()
 				+ " & " + p.getSqpSolveIterationNumber()
-				+ " & " + p.getDimension() + " \\\\"
+				+ " \\\\"
 				+ " % " + p.getName() + "\n";
 			i++;
 		}
