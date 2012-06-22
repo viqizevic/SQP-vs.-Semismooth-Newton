@@ -13,7 +13,7 @@ Seien
 Die Änderung der verfügbaren Lagermenge $z(t)$
 sei durch die Lagerbilanzgleichung
 \begin{equation}
-  \dot{z}(t) = u(t) - r(t), \quad \forall t \in [0,T]
+  \dot{z}(t) = u(t) - r(t) \qquad \forall t \in [0,T]
 \end{equation}
 mit dem Anfangslagerbestand $z(0) = a \geq 0$ gegeben.
 Die Produktions- und Lagehaltungskosten zur Zeit $t$ betragen
@@ -34,7 +34,7 @@ Damit ergibt sich das folgende zeitkontinuierliche Problem:
     0 \leq z(t) \leq \zeta \quad \forall t \in [0,T] \notag \\
     0 \leq u(t) \quad \forall t \in [0,T]. \notag
 \end{gather}
-Eine Diskretisierung wird durchgeführt,
+Eine Diskretisierung soll durchgeführt werden,
 damit das Problem numerisch gelöst werden kann.
 Mit $N \in \N$ und $\tau := \frac{T}{N}$
 wird das Intervall $[0,T]$ in $N$ Teilintervalle
@@ -75,7 +75,11 @@ Das Problem~\eqref{prob:opt_strg_prob_produktionsplan_diskr}
 ist ein Problem vom Typ~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}
 und $x := (u_0,z_1,u_1,z_2,\ldots,u_{N-1},z_{N})^T$ sei
 als die Reihenfolge der Variablen gewählt.
-
+Konkrete Daten für das Testproblem seien
+\begin{gather}
+  N = 100,\ T = 12,\ \rho_u = 0.2,\ \rho_z = 0.1,\\
+  \sigma = 1.5,\ a = 5,\ \zeta = 6,\ r(t) = 10 + 5 \sin{t}.
+\end{gather}
 Der Startvektor $x^0 \in \R^{2N}$ sei durch
 \begin{equation}
   x^0_{2i+1} := r_i, \quad x^0_{2i+2} := a

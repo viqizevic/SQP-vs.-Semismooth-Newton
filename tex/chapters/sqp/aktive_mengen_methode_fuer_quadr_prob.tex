@@ -241,17 +241,18 @@ Setze
 \begin{equation}
   \lambda^* := \lambda
   \quad \text{und} \quad
-  \mu^* = (\mu_j^*)_{j=1,\ldots,p} :=
+  \mu^* = (\mu_j^*)_{j=1,\ldots,p} \text{ mit }
+  \mu_j^*:=
     \begin{cases}
       \mu_j, & \text{falls } j \in J_k \\
       0, & \text{sonst}.
     \end{cases}
 \end{equation}
-Dann erfüllt $x_k$ die notwendigen
+Dann erfüllt $x^k$ die notwendigen
 Bedingungen von Satz~\ref{satz:karush_kuhn_tucker}
 \begin{align}
 \nabla f(x^k) + A^T \lambda^* + G^T \mu^* &=
-    Qx^k + q + A^T \lambda + G_k^T \mu= 0 \\
+    Qx^k + q + A^T \lambda^* + G_k^T \mu^* = 0 \\
 \mu_j^* (\langle g_j, x^k \rangle - r_j ) & = 0 \text{ für } j = 1,\ldots,p \\
                                     \mu^* & \geq 0
 \end{align}
