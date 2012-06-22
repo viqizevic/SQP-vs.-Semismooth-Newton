@@ -6,10 +6,10 @@ kommt vorerst in Betrachtung.
 Sei $V \subset \R^n$ eine nichtleere offene Menge.
 Sei $f \colon V \rightarrow \R^m$ Lipschitz-stetig in der Nähe von $x \in V$,
 d.\,h., es gibt eine offene Menge $V(x) \subset V$, wo $f$ Lipschitz-stetig ist.
-Sei $D_f \subset V$ die Menge aller Punkte $v \in V$, wo $f$ eine
-(Fr\'echet-)Ableitung\footnote{(Fr\'echet-)Ableitung einer Abbildung
-$F\colon \R^n \to \R^m$ ist $F'(x) \in L(\R^n,\R^m)$ mit
-\[ \norm{F(x+s) - F(x) - F'(x)s} = o(\norm{s}) \text{ für } \norm{s} \to 0.\]}
+Sei $D_f \subset V$ die Menge aller Punkte $v \in V$, wo $f$ eine Ableitung
+%\footnote{(Fr\'echet-)Ableitung einer Abbildung $F\colon \R^n \to \R^m$ an der
+% Stelle $x \in \R^n$ ist $F'(x) \in L(\R^n,\R^m)$ mit
+%\[ \norm{F(x+s) - F(x) - F'(x)s} = o(\norm{s}) \text{ für } \norm{s} \to 0.\]}
 $f'(v) \in \R^{m,n}$ besitzt.
 Die Menge
 \begin{equation}
@@ -23,9 +23,9 @@ von $f$ an der Stelle $x$.
 Ferner ist nach Clarke die allgemeine Jacobi-Matrix
 von $f$ an der Stelle $x$
 die konvexe Hülle\footnote{Die konvexe Hulle einer Menge $M$ ist
-\[\co{M} := \left\{ \sum_{i=1}^k \lambda_i v_i \left| \: k \in \N,\:
-v_i \in M,\: \lambda_i \geq 0 \text{ für } i=1,\ldots,k,\: 
-\sum_{i=1}^k \lambda_i = 1\: \right\} \right. \]}
+\[\textstyle \co{M} := \left\{ \sum_{i=1}^k \lambda_i v_i \left|\:
+k \in \N,\: v_i \in M,\: \lambda_i \geq 0 \text{ für } i=1,\ldots,k,\: 
+\sum_{i=1}^k \lambda_i = 1\: \right\}. \right. \]}
 \begin{equation}
   \partial f(x) := \co \partial_B f(x).
 \end{equation}

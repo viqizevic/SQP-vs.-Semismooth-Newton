@@ -7,7 +7,7 @@ dass die Gesamtkosten minimal sind.
 Seien
 \begin{itemize}
   \item $z(t)$ die Anzahl der zur Zeit $t$ am Lager vorhandenen Produkte,
-  \item $r(t)$ die Nachfrage nach den Produkten zur Zeit $t$,
+  \item $r(t)$ die Nachfrage nach den Produkten zur Zeit $t$ und
   \item $u(t)$ die Produktionsrate zur Zeit $t$.
 \end{itemize}
 Die Änderung der verfügbaren Lagermenge $z(t)$
@@ -28,7 +28,7 @@ Damit ergibt sich das folgende zeitkontinuierliche Problem:
 \begin{gather}
   \min\: f(z,u) :=
     \int_0^T \left( \tfrac{1}{2} \rho_u u(t)^2 + \rho_z z(t) \right) d\!t
-    - \sigma z(T) \\
+    - \sigma z(T) \label{prob:opt_strg_prob_produktionsplannung} \\
   \nb \quad \dot{z}(t) = u(t) - r(t) \quad \forall t \in [0,T] \notag \\
     z(0) = a \notag \\
     0 \leq z(t) \leq \zeta \quad \forall t \in [0,T] \notag \\
@@ -40,24 +40,46 @@ Mit $N \in \N$ und $\tau := \frac{T}{N}$
 wird das Intervall $[0,T]$ in $N$ Teilintervalle
 $[t_0,t_1], \ldots, [t_{N-1},t_N]$ unterteilt,
 wobei $t_i = i\tau$ für alle $i = 0,\ldots,N$.
-Die Produktionsrate $u(t)$ wird durch eine Funktion $\hat{u}(t)$ mit
+Die Produktionsrate $u(t)$ wird durch
+eine stückweise konstante Funktion $\hat{u}(t)$ mit
 \begin{equation}
   \hat{u}(t) := u_i \qquad
-    \forall t \in [t_i, t_{i+1}] \qquad
-    \forall i=0,\ldots,N-1
+    \forall\, t \in [t_i, t_{i+1}[,\:
+    i=0,\ldots,N-1
 \end{equation}
 approximiert
-und die Lagermenge $z(t)$ durch eine Funktion $\hat{z}(t)$ mit
-$\hat{z}(i\tau) := z_i$ für $i = 1,\ldots,N$ sowie $\hat{0} := a$.
-Das Problem lässt sich dann wie folgt umformulieren.
+und die Lagermenge $z(t)$ durch
+eine lineare Interpolationsfunktion $\hat{z}(t)$
+mit den Stützstellen
+$(t_0,a),(t_1,z_1),\ldots,(t_N,z_N)$, d.\,h.
+\begin{equation}
+  \hat{z}(t) := z_i + \frac{1}{\tau}(z_{i+1} - z_i)(t - t_i) \qquad
+    \forall\, t \in [t_i, t_{i+1}[, \:
+    i=0,\ldots,N-1
+\end{equation}
+mit $z_0 := a$.
+Die diskrete Version des
+Problems~\eqref{prob:opt_strg_prob_produktionsplannung}
+lässt sich dann wie folgt formulieren.
 \begin{gather}
   \min\: \frac{1}{2} \tau \rho_u \sum_{i=0}^{N-1} u_i^2
     + \tau \rho_z \sum_{i=1}^{N} z_i
-    - \sigma z_N \\
+    - \sigma z_N \label{prob:opt_strg_prob_produktionsplan_diskr}\\
   \nb \quad z_{i+1} - z_i - \tau (u_i - r_i) = 0
-    \quad \forall i = 1,\ldots,N-1 \notag \\
-    z_1 - \tau (u_0 - r_0) = a \notag \\
+    \quad \forall i = 0,\ldots,N-1 \notag \\
     0 \leq z_i \leq \zeta \quad \forall i = 1,\ldots,N \notag \\
-    0 \leq u_i \quad \forall i = 1,\ldots,N-1. \notag
+    0 \leq u_i \quad \forall i = 0,\ldots,N-1, \notag
 \end{gather}
+wobei $r_i := r(t_i)$ für $i=0,\ldots,N-1$.
+Das Problem~\eqref{prob:opt_strg_prob_produktionsplan_diskr}
+ist ein Problem vom Typ~\eqref{prob:quad_opt_prob_mit_lin_ungl_nebenbed}
+und $x := (u_0,z_1,u_1,z_2,\ldots,u_{N-1},z_{N})^T$ sei
+als die Reihenfolge der Variablen gewählt.
+
+Der Startvektor $x^0 \in \R^{2N}$ sei durch
+\begin{equation}
+  x^0_{2i+1} := r_i, \quad x^0_{2i+2} := a
+  \qquad \forall i=0,\ldots,N-1
+\end{equation}
+definiert.
 \end{testproblem}
