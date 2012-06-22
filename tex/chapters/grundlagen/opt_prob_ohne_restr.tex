@@ -39,7 +39,7 @@ Neben linearen Regressionsaufgaben sind auch oft
 nichtlineare Regressionsaufgaben zu lösen.
 Gesucht ist der funktionale Zusammenhang $\eta(\xi)$
 zwischen den $\xi$- und den $\eta$-Werten,
-beispielweise
+beispielsweise
 \begin{equation}\label{eq:nichtlin_regres_quad_zusammenhang}
   \eta(\xi) := x_1 (\xi -x_2)^2 + x_3
 \end{equation}
@@ -212,7 +212,7 @@ dass die Funktion $f$ zweimal differenzierbar ist.
 \end{enumerate}
 \end{algorithm}
 
-Der Punkt $x^{k+1}$ in jedem Iterationschritt ist eigentlich die Lösung des
+Der Punkt $x^{k+1}$ in jedem Iterationsschritt ist eigentlich die Lösung des
 Minimierungsproblems, welches durch die quadratische Approximation von $f$ in Punkt $x^k$ definiert ist.
 In der Umgebung von $x^k$ kann die Funktion $f$ wie folgt approximiert werden:
 \begin{equation}
@@ -230,7 +230,7 @@ Setzen wir diese gleich null, dann bekommen wir
             x      & = x^k \underbrace{- [f''(x^k)]^{-1} \nabla f(x^k)}_{d}.
 \end{align}
 Das ist genau unser Punkt $x^{k+1}$.
-D.\,h., wir lösen in jedem Iterationschritt eigentlich das Problem
+D.\,h., wir lösen in jedem Iterationsschritt eigentlich das Problem
 \begin{equation}
   \min_{x \in \R^n}\ f(x^k) + \nabla f(x^k)^T (x-x^k)
                  + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k),
