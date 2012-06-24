@@ -1,3 +1,21 @@
+Bei allen vorgestellten Testproblemen sind
+die beiden Verfahren in der Lage,
+die Lösung zu finden.
+Die folgenden Tabelle zeigen die Ergebnisse
+der beiden Verfahren für die Testprobleme.
+Die beiden Verfahren wurden 100 Mal
+auf die verschiedenen Probleme angewendet
+und der Durschnitt der Laufzeiten ist
+als die ermittelte Laufzeit zu verstehen. 
+Die Bezeichnung T$_\text{SSN}$ bzw. T$_\text{SQP}$
+steht für die Laufzeit des halbglatten Newton-Verfahrens
+bzw. des SQP-Verfahrens zur Lösung des Problems
+und \#It bezeichnet die Anzahl der Iterationen.
+Als Abbruchschranke für die beiden Verfahren
+werden $\varepsilon = 0.00001$ gewählt.
+Die Abbildung~\ref{fig:vergleich_der_laufzeiten}
+stellt die Laufzeiten der beiden Verfahren graphisch dar.
+
 \begin{table}[h]
 \centering
 \begin{tabular*}{0.75\linewidth}{@{\extracolsep{\fill}}crrrr}
@@ -84,6 +102,5 @@
   \draw[color=red,dashed] (25,167) -- (29,167) node [right] {SSN};
 \end{tikzpicture}
 \caption{Laufzeiten der Programme für Testprobleme 1 bis 34}
-%\caption{Laufzeiten der Programme unterhalb 200 ms (sortiert nach den
-%Ergebnissen von SQP, d.\,h. andere Nummerierung der Testprobleme)}
+\label{fig:vergleich_der_laufzeiten}
 \end{figure}
