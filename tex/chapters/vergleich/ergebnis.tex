@@ -48,7 +48,9 @@ stellt die Laufzeiten der beiden Programme graphisch dar.
   19 & 75.10 & 87.43 & 21 & 20 \\ % problem_v_nichtlin_regression
   \bottomrule
 \end{tabular*}
-\caption{Ergebnisse der Programme für Testprobleme 1 bis 19}
+\caption{Ergebnisse der Programme für
+Testprobleme~\ref{test_prob:prob_v_quad_func}
+bis~\ref{test_prob:nichtlin_regres_exp}}
 \end{table}
 
 \begin{table}[h]
@@ -67,29 +69,19 @@ stellt die Laufzeiten der beiden Programme graphisch dar.
   26 & 2.21 & 3.81 & 2 & 1 \\ % problem_Av_betts_miele_hs53
   27 & 20.07 & 22.30 & 3 & 2 \\ % problem_A_huang_aggerwal_hs49
   28 & 65.47 & 73.87 & 9 & 8 \\ % problem_A_huang_aggerwal_hs50
-  \bottomrule
-\end{tabular*}
-\caption{Ergebnisse der Programme für Testprobleme 20 bis 28}
-\end{table}
-
-\begin{table}[h]
-\centering
-\begin{tabular*}{0.75\linewidth}{@{\extracolsep{\fill}}crrrr}
-  \toprule
-  Nr. & T$_\text{SSN}$\,(ms) & T$_\text{SQP}$\,(ms)
-    & \#It$_\text{SSN}$ & \#It$_\text{SQP}$ \\
-  \midrule
   29 & 2.12 & 5.72 & 3 & 1 \\ % problem_G_example_with_diamond_area
   30 & 2.16 & 5.53 & 3 & 1 \\ % problem_Gv_example_16_4_nocedal_wright
   31 & 2.78 & 9.62 & 3 & 1 \\ % problem_G_example_13_2_antoniou_lu
   32 & 2.92 & 3.77 & 4 & 1 \\ % problem_Gv_betts_hs21
   33 & 2.01 & 4.36 & 3 & 1 \\ % problem_Gv_beale_hs35
   34 & 3.97 & 7.59 & 5 & 1 \\ % problem_Gv_murtagh_sargent_hs76
+  35 & 798.02 & 509.44 & 14 & 1 \\ % problem_AG_opt_ctrl
   \bottomrule
 \end{tabular*}
-\caption{Ergebnisse der Programme für Testprobleme 29 bis 34}
+\caption{Ergebnisse der Programme für
+Testprobleme~\ref{test_prob:prob_A_nocedal}
+bis~\ref{test_prob:produktionsplanungsprob}}
 \end{table}
-
 
 \begin{figure}[h]
 \centering
@@ -105,6 +97,8 @@ stellt die Laufzeiten der beiden Programme graphisch dar.
   \draw[color=blue] (25,180) -- (29,180) node [right] {SQP};
   \draw[color=red,dashed] (25,167) -- (29,167) node [right] {SSN};
 \end{tikzpicture}
-\caption{Laufzeiten der Programme für Testprobleme 1 bis 34}
+\caption{Laufzeiten der Programme für
+Testprobleme~\ref{test_prob:prob_v_quad_func}
+bis~\ref{test_prob:prob_Gv_hs76}}
 \label{fig:vergleich_der_laufzeiten}
 \end{figure}

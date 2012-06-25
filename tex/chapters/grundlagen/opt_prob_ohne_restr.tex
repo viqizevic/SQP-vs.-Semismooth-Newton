@@ -174,9 +174,11 @@ nur theoretisch zu verstehen ist.
 Praktisch gibt man eine Abbruchschranke $\varepsilon > 0$ vor
 und führt beispielsweise den Test
 \begin{equation}
-  \|d^k\| < \varepsilon
+  \max\, \{ \abs{d_1^k}, \ldots, \abs{d_n^k} \} < \varepsilon
 \end{equation}
 durch.
+Es wird damit überprüft, ob alle Elemente
+von $d^k$ klein genug sind.
 
 Zur Bestimmung der Schrittweite $\sigma_k$ kann man das
 Schrittweitenverfahren von Armijo oder das Schrittweitenverfahren von
