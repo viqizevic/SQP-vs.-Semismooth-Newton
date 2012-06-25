@@ -1,6 +1,6 @@
-Es wird nun die Formulierung des halbglatten Newton-Verfahrens
+Es wird nun das halbglatte Newton-Verfahren
 zur Lösung nichtlinearer Optimierungsprobleme mit linearen
-Restriktionen vorgestellt.
+Restriktionen formuliert.
 
 Für eine Lösung $\xopt$
 des Problems~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
@@ -60,7 +60,7 @@ motiviert die Definition der halbglatten Funktion
   \left(\begin{array}{c}
     \nabla f(x) + A^T \lambda + G^T \mu \\
     Ax - b \\
-    \min\left\{ \mu, r - Gx \right\}.
+    \min\left\{ \mu, r - Gx \right\}
   \end{array}\right)
 \end{equation}
 und den Einsatz des halbglatten Newton-Verfahrens
@@ -115,7 +115,9 @@ ein Element von $\partial F(x,\lambda,\mu)$.
 für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
 \begin{enumerate}
   \item Wähle $x^0, \lambda^0, \mu^0$ und setze $k := 0$.
-  \item Berechne die Lösung \label{list:equation_ssn}
+  \item Ist $F(x^k,\lambda^k,\mu^k) = 0$
+        $\Rightarrow$ STOP. \label{list:stop_criteria_ssn_for_PLU}
+  \item Berechne die Lösung
         $d = \left(\begin{array}{c} d_x \\ d_\lambda \\ d_\mu \end{array}\right)$
         des linearen Gleichungssystems
         \begin{equation}
@@ -123,8 +125,6 @@ für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
         \end{equation}
         Setze $d^k_x := d_x,\: d^k_\lambda := d_\lambda$ und $d^k_\mu := d_\mu$.
         \label{list:gleichungssystem_in_halbgl_newton_fuer_PLU}
-  \item Ist $d^k_x = 0$
-        $\Rightarrow$ STOP.
   \item Setze \label{list:update_in_halbgl_newton_fuer_PLU}
         \begin{equation}
           x^{k+1} := x^k + d^k_x, \quad
@@ -132,6 +132,6 @@ für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
           \mu^{k+1} := \mu^k + d^k_\mu
         \end{equation}
         und $k := k+1$.
-        $\Rightarrow$ Gehe zu Schritt~\ref{list:equation_ssn}.
+        $\Rightarrow$ Gehe zu Schritt~\ref{list:stop_criteria_ssn_for_PLU}.
 \end{enumerate}
 \end{algorithm}

@@ -4,7 +4,7 @@
   \min_{x \in \R^n}\ & f(x)
     \tag{PLU} \label{prob:opt_prob_mit_lin_ungl_nebenbed} \\
                  \nb & Ax = b \notag \\
-                     & Gx \leq r \notag
+                     & Gx \leq r. \notag
 \end{align}
 $A$ sei eine $(m \times n)$-Matrix mit $m \leq n$ und $b \in \R^m$.
 $G$ sei eine $(p \times n)$-Matrix und $r \in \R^p$.
@@ -38,12 +38,12 @@ Vektoren in der Matrix $A$ bzw. $G$, sodass
 
 Seien $b_k \in \R$, $k = 1,\ldots,m$, bzw. $r_j \in \R$, $j = 1,\ldots,p$,
 die Elemente von $b$ bzw. $r$.
-Dann können wir das Problem~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
-wie folgt ausführlicher schreiben.
+Dann kann das Problem~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed}
+wie folgt geschrieben werden.
 \begin{align*}
   \min_{x \in \R^n}\ & f(x) \\
      \nb & \langle a_k, x \rangle = b_k \text{ für } k = 1,\ldots,m \\
-         & \langle g_j, x \rangle \leq r_j \text{ für } j = 1,\ldots,p
+         & \langle g_j, x \rangle \leq r_j \text{ für } j = 1,\ldots,p.
 \end{align*}
 
 \begin{example}\label{example:opt_prob_mit_lin_ungl_nebenbed}

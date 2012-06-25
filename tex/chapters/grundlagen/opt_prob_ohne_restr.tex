@@ -1,11 +1,11 @@
 Wir beginnen nun zuerst mit Optimierungsproblemen ohne Restriktionen
-und stellen notwendige und hinreichende Optimalitätsbedingungen bereit.
-Wir werden auch zwei numerische Verfahren hierfür vorstellen.
+und stellen die notwendigen und hinreichenden Optimalitätsbedingungen bereit.
+Zwei numerische Verfahren hierfür werden auch vorgestellt.
 
 \begin{definition}
 \emph{(Unrestringierte Optimierungsprobleme)}
 \begin{equation}
-  \min_{x \in \R^n} f(x) \tag{PU} \label{prob:opt_prob_unrestr}
+  \min_{x \in \R^n} f(x). \tag{PU} \label{prob:opt_prob_unrestr}
 \end{equation}
 Wir nehmen hier der Einfachheit halber an, dass der Definitionsbereich
 $D$ gleich $\R^n$ sei.
@@ -25,12 +25,13 @@ die \textss{optimal} zu den Messwerten passt.
 D.\,h., der Parameter $x = (x_1,x_2)^T \in \R^2$
 soll so bestimmt werden, dass die Summe der Fehlerquadrate
 in den Messpunkten minimiert wird.
-Wir haben somit das unrestringierte Optimierungsproblem
+Somit ist ein unrestringiertes Optimierungsproblem
 \begin{equation}
   \min_{x \in \R^2}\ 
   f(x) := \sum_{i=1}^{m} (\eta(\xi_i) - \eta_i)^2
-        = \sum_{i=1}^{m} (x_1 \xi_i + x_2 - \eta_i)^2.
+        = \sum_{i=1}^{m} (x_1 \xi_i + x_2 - \eta_i)^2
 \end{equation}
+zu lösen.
 \end{example}
 
 \begin{example}\label{example:nichtlineare_regression}
@@ -178,9 +179,8 @@ und führt beispielsweise den Test
 durch.
 
 Zur Bestimmung der Schrittweite $\sigma_k$ kann man das
-Schrittweitenverfahren von Armijo oder das Schrittweitenverfahren von Wolfe-Powell verwenden.
-Wir verweisen auf den Abschnitt 4.2.7 über Schrittweitenverfahren in
-\cite[S.~90~ff.]{alt}.
+Schrittweitenverfahren von Armijo oder das Schrittweitenverfahren von
+Wolfe-Powell verwenden (vgl. Abschnitt 4.2.7 in \cite[S.~90~ff.]{alt}).
 
 \subsection{Newton-Verfahren} \label{sec:newton_verfahren}
 
@@ -189,11 +189,11 @@ Gleichung zu lösen, ist das Newton-Verfahren.
 Man berechnet mit dem Newton-Verfahren eine Nullstelle
 von einer gegebenen Abbildung $F:\R^n \rightarrow \R^n$,
 d.\,h. eine Lösung $\xopt \in \R^n$ der nichtlinearen Gleichung $F(x) = 0$.
-Für unsere unrestringierten Optimierungsprobleme können wir das Newton-Verfahren
-verwenden, um die Lösung der nichtlinearen
+Für die unrestringierten Optimierungsprobleme kann das Newton-Verfahren
+angewendet werden, um die Lösung der nichtlinearen
 Gleichung~\eqref{eq:grad_zero},
 $\nabla f(x) = 0$, zu finden.
-Wir müssen dabei voraussetzen,
+Es wird dabei vorausgesetzt,
 dass die Funktion $f$ zweimal differenzierbar ist.
 
 \begin{algorithm}
@@ -223,27 +223,26 @@ Die Ableitung der rechten Seite ist
 \begin{equation}
   \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k.
 \end{equation}
-Setzen wir diese gleich null, dann bekommen wir
+Setzt man diese gleich null, dann bekommt man
 \begin{align}
   f''(x^k) (x-x^k) & = - \nabla f(x^k) \\
             x-x^k  & = - [f''(x^k)]^{-1} \nabla f(x^k) \\
             x      & = x^k \underbrace{- [f''(x^k)]^{-1} \nabla f(x^k)}_{d}.
 \end{align}
 Das ist genau unser Punkt $x^{k+1}$.
-D.\,h., wir lösen in jedem Iterationsschritt eigentlich das Problem
+D.\,h., es wird in jedem Iterationsschritt eigentlich das Problem
 \begin{equation}
   \min_{x \in \R^n}\ f(x^k) + \nabla f(x^k)^T (x-x^k)
-                 + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k),
+                 + \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k)
 \end{equation}
-wobei die Konstante $f(x^k)$ weggelassen werden kann.
+gelöst, wobei die Konstante $f(x^k)$ weggelassen werden kann.
 
-Wir werden später sehen, dass das SQP-Verfahren diese Idee auch
+Es ist später zu sehen, dass das SQP-Verfahren diese Idee auch
 gebrauchen wird.
 
-Man kann auch noch eine Schrittweitensteuerung wie bei dem Gradientenverfahren
-durchführen. D.\,h., man bestimmt ein $\sigma_k \in \R$ und definiert
+Eine Schrittweitensteuerung wie bei dem Gradientenverfahren kann auch
+durchgeführt werden, d.\,h., man bestimmt ein $\sigma_k \in \R$ und definiert
 $x^{k+1} := x^k + \sigma_k d^k$.
 Dann bekommt man ein Abstiegsverfahren,
-welches man als das gedämpfte Newton-Verfahren bezeichnet.
-Wir verweisen auf den Abschnitt 4.3.2 über dieses Verfahren in
-\cite[S.~111~ff.]{alt}.
+welches als das gedämpfte Newton-Verfahren bezeichnet wird
+(vgl. Abschnitt 4.3.2 in \cite[S.~111~ff.]{alt}).

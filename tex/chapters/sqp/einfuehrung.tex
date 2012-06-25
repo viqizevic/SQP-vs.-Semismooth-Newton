@@ -16,8 +16,9 @@ löst.
 Diese Idee wird bei SQP auch verwendet. Aber es wird nicht mehr ein
 unrestringiertes Problem sein, weil die Nebenbedingungen auch
 berücksichtigt werden, d.\,h.
-\begin{equation} \label{prob:teilprob_von_sqp_allg}
-  \min_{x \in \F}\ \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k)
-                     + \nabla f(x^k)^T (x-x^k).
-\end{equation}
-Es ist auch vorauszusetzen, dass $x^k \in \F$ ist.
+\begin{gather} \label{prob:teilprob_von_sqp_allg}
+  \min\ \frac{1}{2} (x-x^k)^T f''(x^k) (x-x^k)
+                     + \nabla f(x^k)^T (x-x^k) \\
+  \nb x \in \F. \notag
+\end{gather}
+Es wird auch vorausgesetzt, dass $x^k \in \F$ ist.

@@ -1,5 +1,5 @@
-Die Definition einer halbglatten Funktion
-kommt vorerst in Betrachtung.
+Vor der Vorstellung des Verfahres benötigen wir
+die Definition einer halbglatten Funktion.
 
 \begin{definition}
 \emph{(Vgl. Definition 2.1 in \cite[S.~25]{ulbrich})}\\
@@ -42,8 +42,8 @@ falls $f$ lokal Lipschitz-stetig in $x$ ist und
 \end{equation}
 für alle $s \in \R^m$ existiert.
 
-Falls $f$ halbglatt in allen $x \in V$ ist,
-dann heißt $f$ halbglatt (in $V$).  
+$f$ heißt halbglatt (in $V$),
+falls $f$ halbglatt in allen $x \in V$ ist.
 \end{definition}
 
 \begin{example}
@@ -74,14 +74,15 @@ Ein Beispiel ist die Funktion
 \end{equation}
 \end{example}
 
-Jetzt kommt die Formulierung des halbglatten Newton-Verfahrens
+Jetzt kann das halbglatte Newton-Verfahren
 zum Lösen der Gleichung
 \begin{equation}
   f(x) = 0, \label{eq:halbglatte_gleichung}
 \end{equation}
 wobei
 $f \colon V \rightarrow \R^n$, $V \subset \R^n$ offen,
-halbglatt an der Stelle der Lösung $\xopt \in V$ ist.
+halbglatt an der Stelle der Lösung $\xopt \in V$ ist,
+formuliert werden.
 
 \begin{algorithm}\label{algo:halbglattes_newton}
 \emph{(Das halbglatte Newton-Verfahren,

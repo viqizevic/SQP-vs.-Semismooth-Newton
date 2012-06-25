@@ -6,10 +6,10 @@ die Implementierung des halbglatten Newton-Verfahrens nehmen kann.
 Es hat eine gemeinsame Idee
 mit dem Aktiven-Mengen-Verfahren in Abschnitt~\ref{sec:aktive_mengen_verfahren}.
 
-Als Literatur über diesem Verfahren sei
+Als Literatur über dieses Verfahren sei
 auf \cite[Kapitel~7, S.~189~ff.]{ito} verwiesen.
 Es wurde in \cite[Abschnitt~8.4, S.~240~ff.]{ito}
-gezeigt, dass es als ein halbglattes
+gezeigt, dass es als halbglattes
 Newton-Verfahren interpretiert werden kann.
 
 Es ist hier das
@@ -28,7 +28,7 @@ nach Satz~\ref{satz:karush_kuhn_tucker}
 \label{eq:erste_opt_bed_fuer_opt_prob_mit_lin_ungl_nebenbed}
   \nabla f(x) + A^T \lambda + G^T \mu = 0.
 \end{equation}
-Das ist ein nichtlineares Gleichungssystem, wenn $f$ nichtlinear ist.
+Dies ist ein nichtlineares Gleichungssystem, wenn $f$ nichtlinear ist.
 
 Sei $x^k$ ein Punkt in der Nähe der Lösung des Problems.
 Die Approximation der Funktion $f$ in der Umgebung von $x^k$ lautet
@@ -43,12 +43,11 @@ Die Approximation des Gradienten von $f$ ist folglich
 
 Ersetzt man $\nabla f(x)$ in der
 Bedingung~\eqref{eq:erste_opt_bed_fuer_opt_prob_mit_lin_ungl_nebenbed}
-mit seiner Approximation, dann lässt sich sie schreiben als
-das 
+mit seiner Approximation, so lässt sie sich schreiben als 
 \begin{align}
-  \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k + A^T \lambda + G^T \mu
+  && \nabla f(x^k) + f''(x^k) x - f''(x^k) x^k + A^T \lambda + G^T \mu
     &= 0 \\
-  f''(x^k) x + A^T \lambda + G^T \mu
+  &\Leftrightarrow& f''(x^k) x + A^T \lambda + G^T \mu
     &= f''(x^k) x^k - \nabla f(x^k).
 \end{align}
 Dieses lineare Gleichungssystem wird in der Aktive-Mengen-Strategie verwendet.
@@ -94,10 +93,10 @@ für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
 \end{algorithm}
 
 Das Verfahren~\ref{algo:aktive_mengen_strategie} kann
-als das halbglatte Newton-Verfahren
+als halbglattes Newton-Verfahren
 (Verfahren~\ref{algo:halbglattes_newton_fuer_restr_opt_prob})
 interpretiert werden.
-Sei $k$ irgendeiner Iterationsschritt in den beiden Verfahren.
+Sei $k$ irgendein Iterationsschritt in beiden Verfahren.
 Bei dem halbglatten Newton-Verfahren ist dann
 in Schritt~\ref{list:gleichungssystem_in_halbgl_newton_fuer_PLU}
 folgendes Gleichungssystem zu lösen:
