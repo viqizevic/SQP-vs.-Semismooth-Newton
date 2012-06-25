@@ -1,20 +1,24 @@
-Bei allen vorgestellten Testproblemen sind
-die beiden Verfahren in der Lage,
-die Lösung zu finden.
-Die folgenden Tabelle zeigen die Ergebnisse
-der beiden Verfahren für die Testprobleme.
-Die beiden Verfahren wurden 100 Mal
-auf die verschiedenen Probleme angewendet
+Das halbglatte Newton-Verfahren und das SQP-Verfahren
+wurden in der Programmiersprache MATLAB implementiert.
+Bei allen im Unterkapitel~\ref{sec:testprobleme}
+vorgestellten Testproblemen sind
+die implementierten Programme in der Lage,
+die angegebene Lösung zu finden.
+Die entsprechenden Programme werden jeweils
+als SSN und SQP bezeichnet.
+
+Die folgenden Tabelle zeigen die Ergebnisse des Tests.
+Die beiden Programme wurden 100 Mal
+auf die Testprobleme angewendet
 und der Durschnitt der Laufzeiten ist
-als die ermittelte Laufzeit zu verstehen. 
-Die Bezeichnung T$_\text{SSN}$ bzw. T$_\text{SQP}$
-steht für die Laufzeit des halbglatten Newton-Verfahrens
-bzw. des SQP-Verfahrens zur Lösung des Problems
-und \#It bezeichnet die Anzahl der Iterationen.
-Als Abbruchschranke für die beiden Verfahren
-werden $\varepsilon = 0.00001$ gewählt.
+als die ermittelte Laufzeit zu verstehen.
+Die Bezeichnung T steht für die Laufzeit
+des Programms zur Lösung des Problems in Millisekunden
+und \#It bezeichnet die Anzahl der benötigten Iterationen.
+Als Abbruchschranke für die beiden Programme
+wird $\varepsilon = 10^{-5}$ gewählt.
 Die Abbildung~\ref{fig:vergleich_der_laufzeiten}
-stellt die Laufzeiten der beiden Verfahren graphisch dar.
+stellt die Laufzeiten der beiden Programme graphisch dar.
 
 \begin{table}[h]
 \centering
