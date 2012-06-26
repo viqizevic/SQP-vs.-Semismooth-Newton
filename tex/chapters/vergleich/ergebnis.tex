@@ -1,22 +1,22 @@
 Das halbglatte Newton-Verfahren und das SQP-Verfahren
 wurden in der Programmiersprache MATLAB implementiert.
 Bei allen im Unterkapitel~\ref{sec:testprobleme}
-vorgestellten Testproblemen sind
+vorgestellten Testproblemen waren
 die implementierten Programme in der Lage,
 die angegebene Lösung zu finden.
-Die entsprechenden Programme werden jeweils
-als SSN und SQP bezeichnet.
+Die entsprechenden Programme bezeichnen wir
+hier jeweils als SSN und SQP.
 
 Die folgenden zwei Tabellen zeigen die Ergebnisse des Tests.
 Die beiden Programme wurden 100 Mal
-auf die Testprobleme angewendet
+auf jedes Testproblem angewendet
 und der Durschnitt der Laufzeiten ist
 als die ermittelte Laufzeit zu verstehen.
 Die Bezeichnung $T$ steht für die Laufzeit
 des Programms zur Lösung des Problems in Millisekunden
 und \#\emph{It} bezeichnet die Anzahl der benötigten Iterationen.
 Als Abbruchschranke für die beiden Programme
-wird $\varepsilon = 10^{-5}$ gewählt.
+wurde $\varepsilon = 10^{-5}$ gewählt.
 Die Abbildung~\ref{fig:vergleich_der_laufzeiten}
 stellt die Laufzeiten der beiden Programme graphisch dar.
 
@@ -86,27 +86,27 @@ bis~\ref{test_prob:produktionsplanungsprob}}
 \end{table}
 
 Wie aus den Tabellen zu entnehmen ist,
-liefert SSN eine bessere Leistung bezüglich der Laufzeit
-bei den Testproblemen mit weniger als 10 Variablen.
+hat SSN eine bessere Leistung bezüglich der Laufzeit
+bei den Testproblemen mit weniger als 10 Variablen geliefert.
 Beim Testproblem~\ref{test_prob:produktionsplanungsprob}
-mit 200~Variablen hat SQP eine bessere Laufzeit.
+mit 200~Variablen war SQP schneller.
 
-Bei den meisten Testproblemen benötigt SQP
-wenigere Anzahl von Iterationen als SSN.
+Bei den meisten Testproblemen hat SQP
+wenigere Anzahl von Iterationen als SSN benötigt.
 Theoretisch ist das auch zu erwarten,
 weil nach Satz~\ref{satz:konvergenz_seq_quad_prog}
-eine quadratische Konvergenz bei SQP im besten Fall vorkommen kann,
-bei SSN ist es dagegen nach Satz~\ref{satz:konvergenz_halbglattes_newton}
-nur superlineare Konvergenz.
+eine quadratische Konvergenz bei SQP-Verfahren im besten Fall vorkommen kann,
+bei halbglattem Newton-Verfahren ist es dagegen nach
+Satz~\ref{satz:konvergenz_halbglattes_newton} nur superlineare Konvergenz.
 Besonders bei Testproblemen mit quadratischer Zielfunktion
-beansprucht SQP nur eine Iteration.
+hat SQP nur eine Iterationen beansprucht.
 
-Nur bei zwei Fällen braucht SQP mehr Iterationen,
-damit die Abbruchbedingung erfüllt wird.
-Betrachtet man aber die Iterationen genauer,
-kann man eigentlich das Programm schon
-bei wenigeren Iterationen abbrechen,
-weil die berechnete Lösung schon erreicht wurde.
+Nur bei zwei Fällen hat SQP mehr Iterationen gebraucht,
+damit die Abbruchbedingung erfüllt wurde.
+Wenn man aber die Iterationen genauer betrachtet,
+hätte man eigentlich das Programm schon
+bei wenigeren Iterationen abbrechen können,
+weil die berechnete Lösung da schon erreicht wurde.
 
 \begin{figure}[h]
 \centering
