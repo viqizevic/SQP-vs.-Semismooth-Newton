@@ -44,7 +44,7 @@ function [x,fval,it,X] = seq_quad_prog(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 		end
 		z = zeros(n,1);
 		[d, it2] = aktive_mengen_methode(Q,q,A,b,G,rd,z,tol,itmax);
-		if( norm(d) < tol )
+		if( max(abs(d)) < tol )
 			stop = true; % => x is the solution
 		else
 			x = x + d;

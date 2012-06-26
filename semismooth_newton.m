@@ -52,6 +52,10 @@ function [x,fval,it,X] = semismooth_newton(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 		h = -[ h1;
 					 h2;
 					 h3 ];
+		% Check the stop criteria
+		if (max(abs(h)) < tol)
+			stop = true;
+		end
 		H = [ feval(hessf,x)  A' G';
 						H2;
 						zeros(p,n+m+p) ];
@@ -72,10 +76,6 @@ function [x,fval,it,X] = semismooth_newton(f,gradf,hessf,A,b,G,r,x0,itmax,tol)
 		X(it+1,:) = x';
 		lambda = lambda + dlambda;
 		mu = mu + dmu;
-		% Check the stop criteria
-		if (norm(d) < tol)
-			stop = true;
-		end
 		% If there are too many iterations
 		if (it >= itmax)
 			stop = true;
