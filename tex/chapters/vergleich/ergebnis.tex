@@ -7,14 +7,14 @@ die angegebene Lösung zu finden.
 Die entsprechenden Programme werden jeweils
 als SSN und SQP bezeichnet.
 
-Die folgenden Tabelle zeigen die Ergebnisse des Tests.
+Die folgenden zwei Tabellen zeigen die Ergebnisse des Tests.
 Die beiden Programme wurden 100 Mal
 auf die Testprobleme angewendet
 und der Durschnitt der Laufzeiten ist
 als die ermittelte Laufzeit zu verstehen.
-Die Bezeichnung T steht für die Laufzeit
+Die Bezeichnung $T$ steht für die Laufzeit
 des Programms zur Lösung des Problems in Millisekunden
-und \#It bezeichnet die Anzahl der benötigten Iterationen.
+und \#\emph{It} bezeichnet die Anzahl der benötigten Iterationen.
 Als Abbruchschranke für die beiden Programme
 wird $\varepsilon = 10^{-5}$ gewählt.
 Die Abbildung~\ref{fig:vergleich_der_laufzeiten}
@@ -24,17 +24,18 @@ stellt die Laufzeiten der beiden Programme graphisch dar.
 \centering
 \begin{tabular*}{0.75\linewidth}{@{\extracolsep{\fill}}crrrr}
   \toprule
-  Nr. & T$_\text{SSN}$\,(ms) & T$_\text{SQP}$\,(ms)
-    & \#It$_\text{SSN}$ & \#It$_\text{SQP}$ \\
+  \emph{Nr.} & $T_\text{\emph{SSN}}$\,\emph{(ms)} &
+    $T_\text{\emph{SQP}}$\,\emph{(ms)} &
+    \#\emph{It}$_\text{\emph{SSN}}$ & \#\emph{It}$_\text{\emph{SQP}}$ \\
   \midrule
   1 & 1.38 & 1.94 & 2 & 1 \\ % problem_v_norm
   2 & 3.87 & 6.94 & 6 & 5 \\ % problem_v_rosenbrock
   3 & 4.80 & 8.88 & 7 & 6 \\ % problem_v_himmelblau
-  4 & 17.61 & 35.68 & 30 & 29 \\ % problem_v_bazaraa_shetty
+  4 & 9.12 & 36.33 & 15 & 29 \\ % problem_v_bazaraa_shetty
   5 & 19.82 & 24.85 & 9 & 8 \\ % problem_v_beale
   6 & 35.54 & 64.52 & 48 & 47 \\ % problem_v_exp
   7 & 171.86 & 195.18 & 27 & 26 \\ % problem_v_colville
-  8 & 139.26 & 218.51 & 34 & 33 \\ % problem_v_dixon
+  8 & 148.26 & 210.62 & 36 & 31 \\ % problem_v_dixon
   9 & 2.56 & 6.17 & 3 & 1 \\ % problem_v_norm_1
   10 & 5.78 & 13.16 & 9 & 6 \\ % problem_v_rosenbrock_1
   11 & 6.22 & 21.10 & 9 & 10 \\ % problem_v_himmelblau_1
@@ -57,8 +58,9 @@ bis~\ref{test_prob:nichtlin_regres_exp}}
 \centering
 \begin{tabular*}{0.75\linewidth}{@{\extracolsep{\fill}}crrrr}
   \toprule
-  Nr. & T$_\text{SSN}$\,(ms) & T$_\text{SQP}$\,(ms)
-    & \#It$_\text{SSN}$ & \#It$_\text{SQP}$ \\
+  \emph{Nr.} & $T_\text{\emph{SSN}}$\,\emph{(ms)} &
+    $T_\text{\emph{SQP}}$\,\emph{(ms)} &
+    \#\emph{It}$_\text{\emph{SSN}}$ & \#\emph{It}$_\text{\emph{SQP}}$ \\
   \midrule
   20 & 1.05 & 2.27 & 2 & 1 \\ % problem_A_example_16_2_nocedal_wright
   21 & 1.08 & 2.31 & 2 & 1 \\ % problem_A_simple_example
@@ -83,13 +85,36 @@ Testprobleme~\ref{test_prob:prob_A_nocedal}
 bis~\ref{test_prob:produktionsplanungsprob}}
 \end{table}
 
+Wie aus den Tabellen zu entnehmen ist,
+liefert SSN eine bessere Leistung bezüglich der Laufzeit
+bei den Testproblemen mit weniger als 10 Variablen.
+Beim Testproblem~\ref{test_prob:produktionsplanungsprob}
+mit 200~Variablen hat SQP eine bessere Laufzeit.
+
+Bei den meisten Testproblemen benötigt SQP
+wenigere Anzahl von Iterationen als SSN.
+Theoretisch ist das auch zu erwarten,
+weil nach Satz~\ref{satz:konvergenz_seq_quad_prog}
+eine quadratische Konvergenz bei SQP im besten Fall vorkommen kann,
+bei SSN ist es dagegen nach Satz~\ref{satz:konvergenz_halbglattes_newton}
+nur superlineare Konvergenz.
+Besonders bei Testproblemen mit quadratischer Zielfunktion
+beansprucht SQP nur eine Iteration.
+
+Nur bei zwei Fällen braucht SQP mehr Iterationen,
+damit die Abbruchbedingung erfüllt wird.
+Betrachtet man aber die Iterationen genauer,
+kann man eigentlich das Programm schon
+bei wenigeren Iterationen abbrechen,
+weil die berechnete Lösung schon erreicht wurde.
+
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[yscale=0.04,xscale=0.3]
-  \draw[->] (1,0) -- (35.5,0) node [right] {Nr.};
+  \draw[->] (1,0) -- (35.5,0) node [right] {\emph{Nr.}};
   \foreach \x in {2,6,...,34}
     \draw (\x,0.7) -- (\x,-0.7) node [below] {\x};
-  \draw[->] (1,0) -- (1,222) node [right] {T\,(ms)};
+  \draw[->] (1,0) -- (1,222) node [right] {$T$\emph{(ms)}};
   \foreach \y in {0,50,...,200}
     \draw (1.2,\y) -- (0.8,\y) node [left] {\y};
   \draw[color=blue] plot file {images/sqp_results.table};
