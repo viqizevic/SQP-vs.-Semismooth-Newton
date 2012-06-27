@@ -37,20 +37,24 @@ striktes globales Minimum, wenn
 \end{equation}
 gilt.
 Ein Punkt $\xopt \in \F$ heißt lokale Lösung des Problems~\eqref{prob:allg_opt_prob} oder
-lokales Minimum, wenn für eine Umgebung $U(\xopt)$ von $\xopt$
+lokales Minimum, wenn für eine
+Umgebung\footnote{Für $\epsilon>0$ und $x \in \R^n$ heißt
+$U_\epsilon(x) := \{ u \in \R^n \,|\ \norm{u-x} < \epsilon \}$
+die $\epsilon$-Umgebung von $x$.
+Eine Menge $U$ heißt eine Umgebung von $x$, wenn es $\epsilon > 0$ gibt,
+sodass $U_\epsilon(x) \subset U$.}
+$U$ von $\xopt$
 \begin{equation}
   f(\xopt) \leq f(x) \qquad \forall x \in U(\xopt) \cap \F
 \end{equation}
 gilt.
 Ein Punkt $\xopt \in \F$ heißt strikte lokale Lösung des Problems~\eqref{prob:allg_opt_prob}
-oder striktes lokales Minimum, wenn für eine Umgebung $U(\xopt)$ von
+oder striktes lokales Minimum, wenn für eine Umgebung $U$ von
 $\xopt$
 \begin{equation}
   f(\xopt) < f(x) \qquad \forall x \in U(\xopt) \cap \F\backslash\{\xopt\}
 \end{equation}
 gilt.
-Eine Umgebung $U(\xopt)$ von $\xopt$ ist eine offene Menge, die $\xopt$
-beinhaltet.
 \end{definition}
 
 Von diesen Definitionen kommt der Begriff \emph{globale Optimierung} her.
