@@ -57,7 +57,15 @@ Dieses lineare Gleichungssystem wird in der Aktive-Mengen-Strategie verwendet.
 \emph{(Aktive-Mengen-Strategie
 für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
 \begin{enumerate}
-  \item Wähle $x^0$ und setze $\mu^0 := 0,\: k := 0$. 
+  \item Wähle $x^0$ und setze $\lambda^0 := 0,\: \mu^0 := 0,\: k := 0$. 
+  \item Falls
+        \begin{align*}
+          \nabla f(x^k) + A^T \lambda^k + G^T \mu^k &= 0 \\
+          Ax^k &= b \\
+          \min\{\mu^k, r - G x^k\} &= 0
+        \end{align*}
+        $\Rightarrow$ STOP.
+        \label{list:stop_criteria_in_active_set_strategy}
   \item Bestimme
         \begin{align}
         \A_k & := \{i \in \{1,\ldots,p\}\ |\ 
@@ -65,7 +73,6 @@ für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
         \I_k & := \{i \in \{1,\ldots,p\}\ |\ 
           r_i - \langle g_i, x^k \rangle \geq \mu_i^k \}.
         \end{align}
-        \label{list:bestimmung_A_und_I_in_active_set_strategy}
   \item Löse das Problem
         \begin{align}
           f''(x^k) x + A^T \lambda + G^T \mu
@@ -77,18 +84,9 @@ für~\eqref{prob:opt_prob_mit_lin_ungl_nebenbed})}
             \label{eq:eq4_in_ass}
         \end{align}
         $\Rightarrow$ Erhalte $x, \lambda$ und $\mu$.
-  \item Falls
-        \begin{equation}
-          \nabla f(x) + A^T \lambda + G^T \mu = 0
-        \end{equation}
-        und
-        \begin{equation}
-          \min\{\mu, r - G x\} = 0
-        \end{equation}
-        $\Rightarrow$ STOP.
   \item Setze $x^{k+1} := x,\ \mu^{k+1} := \mu$ und $k := k+1$
         $\Rightarrow$ Gehe zu
-        Schritt~\ref{list:bestimmung_A_und_I_in_active_set_strategy}.
+        Schritt~\ref{list:stop_criteria_in_active_set_strategy}.
 \end{enumerate}
 \end{algorithm}
 
