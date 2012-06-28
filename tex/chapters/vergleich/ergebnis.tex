@@ -1,6 +1,6 @@
 Das halbglatte Newton-Verfahren und das SQP-Verfahren
 wurden in der Programmiersprache MATLAB implementiert.
-Bei allen im Unterkapitel~\ref{sec:testprobleme}
+Bei allen im Abschnitt~\ref{sec:testprobleme}
 vorgestellten Testproblemen waren
 die implementierten Programme in der Lage,
 die angegebene Lösung zu finden.
@@ -92,20 +92,20 @@ Beim Testproblem~\ref{test_prob:produktionsplanungsprob}
 mit 200~Variablen war SQP schneller.
 
 Bei den meisten Testproblemen hat SQP
-wenigere Anzahl von Iterationen als SSN benötigt.
+eine geringere Anzahl von Iterationen als SSN benötigt.
 Theoretisch ist das auch zu erwarten,
 weil nach Satz~\ref{satz:konvergenz_seq_quad_prog}
 eine quadratische Konvergenz bei SQP-Verfahren im besten Fall vorkommen kann,
 bei halbglattem Newton-Verfahren ist es dagegen nach
 Satz~\ref{satz:konvergenz_halbglattes_newton} nur superlineare Konvergenz.
 Besonders bei Testproblemen mit quadratischer Zielfunktion
-hat SQP nur eine Iterationen beansprucht.
+hat SQP nur eine Iteration beansprucht.
 
 Nur bei zwei Fällen hat SQP mehr Iterationen gebraucht,
 damit die Abbruchbedingung erfüllt wurde.
 Wenn man aber die Iterationen genauer betrachtet,
-hätte man eigentlich das Programm schon
-bei wenigeren Iterationen abbrechen können,
+hätte man das Programm eigentlich schon
+bei weniger Iterationen abbrechen können,
 weil die berechnete Lösung da schon erreicht wurde.
 
 \begin{figure}[h]

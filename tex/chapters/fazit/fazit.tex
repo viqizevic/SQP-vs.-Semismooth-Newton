@@ -3,18 +3,18 @@
 Es gibt mehrere Kriterien, um die Effizienz eines Verfahrens zu bewerten.
 Die Kriterien sind z.\,B. die Laufzeit des Programms und
 die Anzahl der benötigten Iterationen.
-Hier bei dem halbglatten Newton-Verfahren
-und SQP-Verfahren ziehen wir daher folgende Schlussfolgerungen:
+Hier ziehen wir beim halbglatten Newton-Verfahren
+und beim SQP-Verfahren daher folgende Schlussfolgerungen:
 \begin{itemize}
   \item Falls die Laufzeit das wichtigste Kriterium sein soll, dann ist
-  halbglattes Newton-Verfahren das beste Verfahren für Probleme
-  mit wenigen Variablen und SQP-Verfahren das bessere Verfahren für
+  das halbglatte Newton-Verfahren das beste Verfahren für Probleme
+  mit wenigen Variablen und das SQP-Verfahren das bessere Verfahren für
   Probleme mit vielen Variablen.
   \item Falls die Anzahl der Iterationen eine wichtigere Rolle spielt,
-  dann ist SQP-Verfahren das beste Verfahren.
+  dann ist das SQP-Verfahren das beste Verfahren.
 \end{itemize}
-Wenn man die Implementierung des Verfahrens
-berücksichtigt, dann ist halbglattes Newton-Verfahren
+Wenn die Implementierung des Verfahrens
+berücksichtigt werden soll, dann ist das halbglatte Newton-Verfahren
 die bessere Wahl, da die Implementierung von SQP-Verfahren
 aufwendig sein kann.
 
@@ -31,11 +31,11 @@ damit ein beliebiger Startpunkt benutzt werden kann.
 Diese Varianten beider Verfahren mit globaler Konvergenz
 sollten noch untersucht und verglichen werden.
 
-Eine Idee von Ulbrich~\cite{ulbrich} ist,
-dass man beide Verfahren kombiniert.
-Man kann versuchen, das Teilproblem in SQP-Verfahren
+Eine Idee von Ulbrich ist,
+dass man beide Verfahren kombiniert~\cite[S.~13]{ulbrich}.
+Demnach sollte man versuchen, das Teilproblem in SQP-Verfahren
 mit halbglattem Newton-Verfahren
-anstatt mit der Aktive-Mengen-Verfahren
+anstatt mit dem Aktive-Mengen-Verfahren
 zu lösen.
 Es sollte untersucht werden,
 wie konkurrenzfähig diese Kombination ist.
