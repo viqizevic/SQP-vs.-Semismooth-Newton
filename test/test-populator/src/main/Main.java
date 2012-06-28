@@ -9,13 +9,12 @@ import java.util.LinkedList;
 
 /**
  * This is a project for a bachelor thesis using Matlab
- * to make a comparison of two methods of the nonlinear optimization:
- * SQP and Semismooth-Newton.
+ * to make a comparison between two methods of the nonlinear optimization:
+ * SQP and Semismooth Newton.
  * 
  * This Java project should create the needed Matlab test files.
- * Therefore is the name of this project: Matlab-Test-Files-Creator.
  * 
- * This class is called Main, since it is the only one that has a main function.
+ * This class is called Main, since it is the one that has a main function.
  * The main function reads the xml files
  * containing the test functions and the test problems
  * and then calls the file creator.
@@ -27,16 +26,17 @@ import java.util.LinkedList;
  *       |-- SQP-vs.-Semismooth-Newton (The Git repository)
  *           |-- tex
  *           |-- test
- *              |-- 1st_test_problem_func
+ *              |-- problem_...
  *              |-- ...
- *              |-- n-th_test_problem_func
+ *              |-- problem_...
+ *              |-- extras
  *              |-- test-populator
  *                  |-- src
  *                       |-- data
  *                       |-- main
  * 
  * The source of this project is linked from the folder in test-populator.
- * Read readme.markdown in the folder test-populator for more informations.
+ * Read README.markdown in the folder test-populator for more informations.
  * 
  * @author Vicky H. Tanzil
  */

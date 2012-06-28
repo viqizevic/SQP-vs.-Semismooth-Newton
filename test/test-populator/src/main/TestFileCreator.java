@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * TestFileCreator can be used to create the needed test files
- * for the test problem.
+ * {@link TestFileCreator} can be used to create the needed test files
+ * for the {@link TestProblem}.
  * @author Vicky H. Tanzil
  */
 public class TestFileCreator {
