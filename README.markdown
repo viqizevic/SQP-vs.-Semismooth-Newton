@@ -1,6 +1,6 @@
 # SQP vs. Semismooth-Newton
 
-This is a project for a *bachelor thesis* using [MATLAB][]
+This is a project using [MATLAB][]
 to make a comparison between two methods of the nonlinear optimization:
 **Sequential Quadratic Programming** and **Semismooth Newton**.
 
@@ -49,8 +49,5 @@ The two subdirectories are:
       or for the results interpretation.
 
 ---
-
-* <vicky.tanzil@googlemail.com>
-* <http://homepages.math.tu-berlin.de/~tanzil>
 
 [matlab]: http://de.wikipedia.org/wiki/MATLAB "MATLAB"
